@@ -8,6 +8,11 @@ public class FirstPersonController : MonoBehaviour
     public float walkSpeed = 5f;
     public float jumpHeight = 1.5f;
     public float gravity = -9.81f;
+    public float crouchHeight = 1f; // Altura al agacharse
+    public float crouchCameraOffset = 0.5f; // Cuánto baja la cámara al agacharse
+    public float crouchSmoothTime = 0.2f; // Velocidad de interpolación
+    private float originalHeight;
+    private Vector3 originalCameraPos;
 
     [Header("Cinemachine")]
     public Transform cameraRoot;
@@ -28,10 +33,15 @@ public class FirstPersonController : MonoBehaviour
     private Vector2 moveInput;
     private Vector2 lookInput;
     private bool jumpPressed;
+    private bool walkPressed;
+    private bool crouchPressed;
 
     void Awake()
     {
         controller = GetComponent<CharacterController>();
+        originalHeight = controller.height;
+        originalCameraPos = cameraRoot.localPosition;
+
         inputActions = new InputSystem_Actions();
 
         // --- Movimiento (Vector2) ---
@@ -46,9 +56,13 @@ public class FirstPersonController : MonoBehaviour
         inputActions.Player.Jump.performed += ctx => jumpPressed = true;
         inputActions.Player.Jump.canceled += ctx => jumpPressed = false;
 
-        // --- Si quieres caminar lento más tarde, añade otra acción Button ---
-        // inputActions.Player.Walk.performed += ctx => walkPressed = true;
-        // inputActions.Player.Walk.canceled += ctx => walkPressed = false;
+        // --- Caminar lento ---
+        inputActions.Player.Walk.performed += ctx => walkPressed = true;
+        inputActions.Player.Walk.canceled += ctx => walkPressed = false;
+
+        // --- Agacharse ---
+        inputActions.Player.Crouch.performed += ctx => crouchPressed = true;
+        inputActions.Player.Crouch.canceled += ctx => crouchPressed = false;
     }
 
     void OnEnable()
@@ -67,7 +81,9 @@ public class FirstPersonController : MonoBehaviour
         // --- Ground Check ---
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
+        {
             velocity.y = -2f;
+        }
 
         // --- Movimiento ---
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
@@ -78,6 +94,41 @@ public class FirstPersonController : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
+
+        // --- Andar lento ---
+        if (walkPressed && isGrounded)
+        {
+            walkSpeed = 2.5f;
+        }
+        else
+        {
+            walkSpeed = 5.0f;
+        }
+
+        // --- Agacharse ---
+        float targetHeight;
+        if (crouchPressed)
+        {
+            targetHeight = crouchHeight;
+        }
+        else
+        {
+            targetHeight = originalHeight;
+        }
+        controller.height = Mathf.Lerp(controller.height, targetHeight, Time.deltaTime * 10f);
+
+        // --- Cámara suavizada al agacharse ---
+        Vector3 targetCameraPos;
+        if (crouchPressed)
+        {
+            targetCameraPos = originalCameraPos + Vector3.down * crouchCameraOffset;
+            walkSpeed = 3.5f;
+        }
+        else
+        {
+            targetCameraPos = originalCameraPos;
+        }
+        cameraRoot.localPosition = Vector3.Lerp(cameraRoot.localPosition, targetCameraPos, Time.deltaTime / crouchSmoothTime);
 
         // --- Gravedad ---
         velocity.y += gravity * Time.deltaTime;

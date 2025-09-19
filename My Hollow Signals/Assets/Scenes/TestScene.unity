@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 25907911}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Colectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1061,6 +1061,9 @@ MonoBehaviour:
   walkSpeed: 5
   jumpHeight: 1.5
   gravity: -9.81
+  crouchHeight: 1
+  crouchCameraOffset: 0.5
+  crouchSmoothTime: 0.2
   cameraRoot: {fileID: 1483230676}
   mouseSensitivity: 0.1
   groundCheck: {fileID: 1264872539}
@@ -1161,7 +1164,7 @@ Light:
   m_InnerSpotAngle: 15.4
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1981,7 +1984,7 @@ GameObject:
   - component: {fileID: 1606927897}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Colectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2086,7 +2089,7 @@ GameObject:
   - component: {fileID: 1670892733}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Colectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
