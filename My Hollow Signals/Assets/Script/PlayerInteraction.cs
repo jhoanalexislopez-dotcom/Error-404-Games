@@ -1,6 +1,6 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using TMPro;
-using UnityEngine.InputSystem; // <- Nuevo input system
+using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -10,29 +10,43 @@ public class PlayerInteraction : MonoBehaviour
 
     [Header("UI")]
     public GameObject interactionUI;
+    public GameObject interactionReticle;
     public TextMeshProUGUI interactionText;
 
+    [Header("UI Elements")]
+    public GameObject keyUI;    // â† arrastra aquÃ­ el objeto "Key"
+    public GameObject buttonUI; // â† arrastra aquÃ­ el objeto "Button"
+
     [Header("Input System")]
-    [Tooltip("Arrastra aquí la InputAction 'Interact' desde tu Input Actions (como InputActionReference).")]
-    public InputActionReference interactAction; // Debe apuntar a la acción llamada "Interact"
+    [Tooltip("Arrastra aquÃ­ la InputAction 'Interact' desde tu Input Actions (como InputActionReference).")]
+    public InputActionReference interactAction;
+
+    private bool usingGamepad = false;
 
     void OnEnable()
     {
-        // Asegura que la acción esté habilitada cuando el objeto se active
         if (interactAction != null && interactAction.action != null)
             interactAction.action.Enable();
+
+        // Detectar cambio de dispositivo
+        InputSystem.onActionChange += OnActionChange;
     }
 
     void OnDisable()
     {
-        // Deshabilita para evitar escuchas fantasma
         if (interactAction != null && interactAction.action != null)
             interactAction.action.Disable();
+
+        InputSystem.onActionChange -= OnActionChange;
     }
 
     void Update()
     {
         InteractionRay();
+
+        // Activar Key o Button segÃºn dispositivo
+        if (keyUI != null) keyUI.SetActive(!usingGamepad);
+        if (buttonUI != null) buttonUI.SetActive(usingGamepad);
     }
 
     void InteractionRay()
@@ -52,8 +66,6 @@ public class PlayerInteraction : MonoBehaviour
                 if (interactionText != null)
                     interactionText.text = interactable.GetDescription();
 
-                // --- Nuevo Input System ---
-                // Usamos polling para detectar el "press" de la acción "Interact"
                 if (interactAction != null && interactAction.action != null &&
                     interactAction.action.WasPressedThisFrame())
                 {
@@ -64,5 +76,23 @@ public class PlayerInteraction : MonoBehaviour
 
         if (interactionUI != null)
             interactionUI.SetActive(hitSomething);
+        if (interactionReticle != null)
+            interactionReticle.SetActive(hitSomething);
+    }
+
+    private void OnActionChange(object obj, InputActionChange change)
+    {
+        if (change == InputActionChange.ActionPerformed)
+        {
+            if (obj is InputAction action)
+            {
+                var device = action.activeControl?.device;
+
+                if (device is Gamepad)
+                    usingGamepad = true;
+                else if (device is Keyboard || device is Mouse)
+                    usingGamepad = false;
+            }
+        }
     }
 }
