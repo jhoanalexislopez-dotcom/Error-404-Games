@@ -480,8 +480,7 @@ Transform:
   m_LocalPosition: {x: 0.5869, y: -0.4554, z: 0.686}
   m_LocalScale: {x: 0.23349528, y: 0.20644985, z: 1.0601559}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 677709137}
+  m_Children: []
   m_Father: {fileID: 1483230676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &118029457
@@ -745,9 +744,17 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0ddcc376ebc74a24f96aeb34c662c117, type: 2}
+    - target: {fileID: -8140499575222096, guid: b5243568e19df6d4fbf20d02cb9284df, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b5243568e19df6d4fbf20d02cb9284df, type: 3}
       propertyPath: m_Name
       value: sala_proto
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b5243568e19df6d4fbf20d02cb9284df, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1547,12 +1554,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677709136}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.326}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 1.5719237e-17, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.63}
+  m_LocalScale: {x: 0.2334953, y: 0.20644988, z: 1.0601559}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 118029456}
+  m_Father: {fileID: 1483230676}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!108 &677709138
 Light:
@@ -2920,6 +2927,7 @@ Transform:
   - {fileID: 2107188056}
   - {fileID: 384685370}
   - {fileID: 118029456}
+  - {fileID: 677709137}
   m_Father: {fileID: 490301345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1483230677
