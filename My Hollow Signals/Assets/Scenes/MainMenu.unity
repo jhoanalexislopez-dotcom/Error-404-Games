@@ -765,7 +765,7 @@ GameObject:
   m_Component:
   - component: {fileID: 301570496}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: ButtonParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -805,7 +805,7 @@ GameObject:
   - component: {fileID: 345455115}
   - component: {fileID: 345455114}
   m_Layer: 5
-  m_Name: Image
+  m_Name: LogoImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1780,6 +1780,7 @@ GameObject:
   - component: {fileID: 1158014089}
   - component: {fileID: 1158014088}
   - component: {fileID: 1158014087}
+  - component: {fileID: 1158014091}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1871,6 +1872,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!222 &1158014091
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158014086}
+  m_CullTransparentMesh: 1
 --- !u!4 &1165044142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b5243568e19df6d4fbf20d02cb9284df, type: 3}
