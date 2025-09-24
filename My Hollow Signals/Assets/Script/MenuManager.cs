@@ -22,6 +22,7 @@ public class MenuManager : MonoBehaviour
 
     public Button AudiobacktoMenuButton;
     public Button PlayMainMenuButton;
+    public Button ControlsbacktoMenuButton;
 
     public AudioMixer mixer;
     float volume, exposedParam;
@@ -47,7 +48,7 @@ public class MenuManager : MonoBehaviour
 
     public void EnterAudioSettings()
     {
-        ControlsMenu.SetActive(true);
+        AudioSettings.SetActive(true);
         MainMenuObject.SetActive(false);
 
         AudiobacktoMenuButton.Select();
@@ -55,17 +56,17 @@ public class MenuManager : MonoBehaviour
 
     public void EnterControls()
     {
-        AudioSettings.SetActive(true);
+        ControlsMenu.SetActive(true);
         MainMenuObject.SetActive(false);
 
-        AudiobacktoMenuButton.Select();
+        ControlsbacktoMenuButton.Select();
     }
 
     public void ReturnToMainMenu()
     {
         MainMenuObject.SetActive(true);
         AudioSettings.SetActive(false);
-        //ControlsMenu.SetActive(false);
+        ControlsMenu.SetActive(false);
 
         PlayMainMenuButton.Select();
     }
