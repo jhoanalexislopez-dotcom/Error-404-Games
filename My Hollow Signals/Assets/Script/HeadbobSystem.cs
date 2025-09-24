@@ -38,6 +38,22 @@ public class HeadBob : MonoBehaviour
     public float runAmplitude = 0.055f;
     public float runFrequency = 9.5f;
 
+    [Header("Idle Motion")]
+    [Tooltip("Enable subtle idle motion when not moving")]
+    public bool enableIdleMotion = true;
+
+    [Tooltip("Amplitude of the idle breathing motion")]
+    [Range(0.001f, 0.02f)]
+    public float idleAmplitude = 0.005f;
+
+    [Tooltip("Frequency of the idle breathing motion")]
+    [Range(0.5f, 3f)]
+    public float idleFrequency = 1.2f;
+
+    [Tooltip("How quickly to transition to idle motion")]
+    [Range(1f, 10f)]
+    public float idleTransitionSpeed = 3f;
+
     [Header("Strafe & Axis Mix")]
     [Tooltip("Peso del eje horizontal en el bob (0 = solo vertical; 1 = vertical+horizontal).")]
     [Range(0f, 1f)] public float horizontalBobFactor = 0.3f;
@@ -56,8 +72,10 @@ public class HeadBob : MonoBehaviour
     // Internals
     private Vector3 _initialLocalPos;
     private float _bobTimer;
+    private float _idleTimer;
     private bool _hasMove;
     private bool _isSprinting;
+    private float _idleBlendWeight = 0f;
 
     void Reset()
     {
@@ -106,52 +124,78 @@ public class HeadBob : MonoBehaviour
         {
             // Sin bob si no estás en el suelo
             _bobTimer = 0f;
+            _idleBlendWeight = 0f;
             Vector3 targetNoBob = _initialLocalPos + baseLocalOffset;
             cameraTarget.localPosition = Vector3.Lerp(cameraTarget.localPosition, targetNoBob, Time.deltaTime * smooth);
             return;
         }
 
-        // 3) Si no te mueves, vuelve a reposo suave
+        Vector3 target = _initialLocalPos + baseLocalOffset;
+
+        // 3) Handle movement or idle state
         if (!_hasMove)
         {
+            // Player is not moving - apply idle motion
             _bobTimer = 0f;
-            Vector3 targetNoBob = _initialLocalPos + baseLocalOffset;
-            cameraTarget.localPosition = Vector3.Lerp(cameraTarget.localPosition, targetNoBob, Time.deltaTime * smooth);
-            return;
+
+            if (enableIdleMotion)
+            {
+                // Blend into idle motion
+                _idleBlendWeight = Mathf.Lerp(_idleBlendWeight, 1f, Time.deltaTime * idleTransitionSpeed);
+
+                // Update idle timer
+                _idleTimer += Time.deltaTime * idleFrequency;
+
+                // Calculate idle breathing motion (subtle vertical movement)
+                float idleVertical = Mathf.Sin(_idleTimer) * idleAmplitude * _idleBlendWeight;
+
+                // Optional: very subtle horizontal sway
+                float idleHorizontal = Mathf.Sin(_idleTimer * 0.7f) * idleAmplitude * 0.3f * _idleBlendWeight;
+
+                target.y += idleVertical;
+                target.x += idleHorizontal;
+            }
+            else
+            {
+                _idleBlendWeight = 0f;
+            }
         }
-
-        // 4) Elegir parámetros según sprint o walk
-        float amp = _isSprinting ? runAmplitude : walkAmplitude;
-        float freq = _isSprinting ? runFrequency : walkFrequency;
-
-        // Opcional: escalar por velocidad real
-        float speedFactor = 1f;
-        if (scaleWithSpeed && characterController != null)
+        else
         {
-            // Horizontal speed solamente
-            Vector3 vel = characterController.velocity;
-            vel.y = 0f;
-            float v = vel.magnitude;
-            // Limitar un poco la contribución
-            speedFactor += Mathf.Clamp01(v) * speedAmplitudeFactor;
+            // Player is moving - apply movement bob
+            _idleBlendWeight = Mathf.Lerp(_idleBlendWeight, 0f, Time.deltaTime * idleTransitionSpeed * 2f);
+
+            // 4) Elegir parámetros según sprint o walk
+            float amp = _isSprinting ? runAmplitude : walkAmplitude;
+            float freq = _isSprinting ? runFrequency : walkFrequency;
+
+            // Opcional: escalar por velocidad real
+            float speedFactor = 1f;
+            if (scaleWithSpeed && characterController != null)
+            {
+                // Horizontal speed solamente
+                Vector3 vel = characterController.velocity;
+                vel.y = 0f;
+                float v = vel.magnitude;
+                // Limitar un poco la contribución
+                speedFactor += Mathf.Clamp01(v) * speedAmplitudeFactor;
+            }
+
+            amp *= speedFactor;
+
+            // 5) Avanzar tiempo del bob
+            _bobTimer += Time.deltaTime * freq;
+
+            // 6) Calcular offsets seno/coseno (clásico headbob)
+            float bobVertical = Mathf.Sin(_bobTimer) * amp * verticalScale;
+            float bobHorizontal = Mathf.Cos(_bobTimer * 0.5f) * amp * horizontalScale * horizontalBobFactor;
+
+            // Apply movement bob
+            target.x += bobHorizontal;
+            target.y += bobVertical;
         }
 
-        amp *= speedFactor;
-
-        // 5) Avanzar tiempo del bob
-        _bobTimer += Time.deltaTime * freq;
-
-        // 6) Calcular offsets seno/coseno (clásico headbob)
-        float bobVertical = Mathf.Sin(_bobTimer) * amp * verticalScale;
-        float bobHorizontal = Mathf.Cos(_bobTimer * 0.5f) * amp * horizontalScale * horizontalBobFactor;
-
-        // 7) Construir la posición objetivo
-        Vector3 target = _initialLocalPos + baseLocalOffset;
-        // Side-to-side en X, up/down en Y (asumiendo forward en Z)
-        target.x += bobHorizontal;
-        target.y += bobVertical;
-
-        // 8) Interpolar suave
+        // 7) Interpolar suave
         cameraTarget.localPosition = Vector3.Lerp(cameraTarget.localPosition, target, Time.deltaTime * smooth);
     }
 }
