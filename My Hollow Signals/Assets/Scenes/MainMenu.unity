@@ -97,7 +97,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 6e1b8552cfe93c24786e16d9e12f4cbe, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 7993c9853f427464bad56eff13c9066c, type: 2}
+  m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2105,8 +2105,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: v.0.0.0-a
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dbdc853357bf84747853bd3f99b6b81c, type: 2}
-  m_sharedMaterial: {fileID: 4905555175109002490, guid: dbdc853357bf84747853bd3f99b6b81c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e637df420a6a6aa4e930f823ec35001f, type: 2}
+  m_sharedMaterial: {fileID: -4786216806558671716, guid: e637df420a6a6aa4e930f823ec35001f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
