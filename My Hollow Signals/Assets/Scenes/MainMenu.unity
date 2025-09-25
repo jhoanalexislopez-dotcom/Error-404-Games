@@ -2699,7 +2699,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1725074351}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: loadScene
+        m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5713,6 +5713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1725074350}
   - component: {fileID: 1725074351}
+  - component: {fileID: 1725074352}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -5761,6 +5762,20 @@ MonoBehaviour:
   controlsBackButton: {fileID: 1158194347}
   mixer: {fileID: 24100000, guid: 4402df8d9e0fe044790970632b208147, type: 2}
   sceneToLoad: 0
+--- !u!114 &1725074352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725074348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5d1cc16b112cf46a257a1cee578ffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseMovementThreshold: 0.1
+  debugInputMode: 0
 --- !u!1 &1743121144
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,8 +30,17 @@ public class MenuManager : MonoBehaviour
     [Header("Scene")]
     [SerializeField] private int sceneToLoad = 1;
 
+    private InputModeManager inputModeManager;
+
     private void Start()
     {
+        // Get or add InputModeManager
+        inputModeManager = FindObjectOfType<InputModeManager>();
+        if (inputModeManager == null)
+        {
+            inputModeManager = gameObject.AddComponent<InputModeManager>();
+        }
+
         // Initialize sliders from mixer
         float value;
         if (mixer.GetFloat("masterVolume", out value)) mMasterSlider.value = value;
@@ -58,8 +67,8 @@ public class MenuManager : MonoBehaviour
         audioPanel.SetActive(false);
         controlsPanel.SetActive(false);
 
-        // Select the play button for gamepad navigation
-        if (playButton != null)
+        // Only auto-select if in gamepad mode
+        if (inputModeManager != null && inputModeManager.IsGamepadMode && playButton != null)
         {
             EventSystem.current.SetSelectedGameObject(playButton.gameObject);
         }
@@ -71,8 +80,8 @@ public class MenuManager : MonoBehaviour
         audioPanel.SetActive(true);
         controlsPanel.SetActive(false);
 
-        // Select the master volume slider for gamepad navigation
-        if (mMasterSlider != null)
+        // Only auto-select if in gamepad mode
+        if (inputModeManager != null && inputModeManager.IsGamepadMode && mMasterSlider != null)
         {
             EventSystem.current.SetSelectedGameObject(mMasterSlider.gameObject);
         }
@@ -84,8 +93,8 @@ public class MenuManager : MonoBehaviour
         audioPanel.SetActive(false);
         controlsPanel.SetActive(true);
 
-        // Select the back button for gamepad navigation
-        if (controlsBackButton != null)
+        // Only auto-select if in gamepad mode
+        if (inputModeManager != null && inputModeManager.IsGamepadMode && controlsBackButton != null)
         {
             EventSystem.current.SetSelectedGameObject(controlsBackButton.gameObject);
         }
