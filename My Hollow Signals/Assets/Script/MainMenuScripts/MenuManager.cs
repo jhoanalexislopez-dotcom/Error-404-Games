@@ -1,85 +1,77 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
-
 using UnityEngine.UI;
-
 
 public class MenuManager : MonoBehaviour
 {
-    public Slider mMasterSlider;
-    public Slider mSFXSlider;
-    public Slider mBGMSlider;
-    public int scene;
+    [Header("Sliders")]
+    [SerializeField] private Slider mMasterSlider;
+    [SerializeField] private Slider mSFXSlider;
+    [SerializeField] private Slider mBGMSlider;
 
-    public GameObject AudioSettings;
-    public GameObject MainMenuObject;
-    public GameObject ControlsMenu;
+    [Header("Menu Objects")]
+    [SerializeField] private GameObject mainMenuPanel;
+    [SerializeField] private GameObject audioPanel;
+    [SerializeField] private GameObject controlsPanel;
 
-    public Button AudiobacktoMenuButton;
-    public Button PlayMainMenuButton;
-    public Button ControlsbacktoMenuButton;
+    [Header("Buttons")]
+    [SerializeField] private Button playButton;
 
-    public AudioMixer mixer;
-    float volume, exposedParam;
+    [Header("Audio")]
+    [SerializeField] private AudioMixer mixer;
 
-    void Start()
+    [Header("Scene")]
+    [SerializeField] private int sceneToLoad = 1;
+
+    private void Start()
     {
-        mixer.GetFloat("masterVolume", out exposedParam);
-        mMasterSlider.value = exposedParam;
+        // Initialize sliders from mixer
+        float value;
+        if (mixer.GetFloat("masterVolume", out value)) mMasterSlider.value = value;
+        if (mixer.GetFloat("bgmVolume", out value)) mBGMSlider.value = value;
+        if (mixer.GetFloat("sfxVolume", out value)) mSFXSlider.value = value;
 
-        mixer.GetFloat("bgmVolume", out exposedParam);
-        mBGMSlider.value = exposedParam;
+        // Hook up listeners
+        mMasterSlider.onValueChanged.AddListener(SetMasterVolume);
+        mBGMSlider.onValueChanged.AddListener(SetBGMVolume);
+        mSFXSlider.onValueChanged.AddListener(SetSFXVolume);
 
-        mixer.GetFloat("sfxVolume", out exposedParam);
-        mSFXSlider.value = exposedParam;
+        ShowMainMenu();
     }
 
+    // ---------------- AUDIO ----------------
+    private void SetMasterVolume(float value) => mixer.SetFloat("masterVolume", value);
+    private void SetBGMVolume(float value) => mixer.SetFloat("bgmVolume", value);
+    private void SetSFXVolume(float value) => mixer.SetFloat("sfxVolume", value);
 
-    // Update is called once per frame
-    void Update()
+    // ---------------- MENUS ----------------
+    public void ShowMainMenu()
     {
-
+        mainMenuPanel.SetActive(true);
+        audioPanel.SetActive(false);
+        controlsPanel.SetActive(false);
     }
 
-    public void EnterAudioSettings()
+    public void ShowAudioMenu()
     {
-        AudioSettings.SetActive(true);
-        MainMenuObject.SetActive(false);
-
-        AudiobacktoMenuButton.Select();
+        mainMenuPanel.SetActive(false);
+        audioPanel.SetActive(true);
+        controlsPanel.SetActive(false);
     }
 
-    public void EnterControls()
+    public void ShowControlsMenu()
     {
-        ControlsMenu.SetActive(true);
-        MainMenuObject.SetActive(false);
-
-        ControlsbacktoMenuButton.Select();
+        mainMenuPanel.SetActive(false);
+        audioPanel.SetActive(false);
+        controlsPanel.SetActive(true);
     }
 
-    public void ReturnToMainMenu()
-    {
-        MainMenuObject.SetActive(true);
-        AudioSettings.SetActive(false);
-        ControlsMenu.SetActive(false);
+    // ---------------- SCENES ----------------
+    public void PlayGame() => SceneManager.LoadScene(sceneToLoad);
 
-        PlayMainMenuButton.Select();
-    }
-
-    public void loadScene()
+    public void ExitGame()
     {
-        SceneManager.LoadScene(scene);
-    }
-
-    public void Exit()
-    {
-        //EditorApplication.ExitPlaymode();
         Application.Quit();
     }
-
 }
