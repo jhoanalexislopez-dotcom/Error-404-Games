@@ -1974,7 +1974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &471211234
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5349,7 +5349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1501757868
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5754,8 +5754,13 @@ MonoBehaviour:
   audioPanel: {fileID: 1678427775}
   controlsPanel: {fileID: 1501757867}
   playButton: {fileID: 642891808}
+  optionsButton: {fileID: 167127552}
+  controlsButton: {fileID: 181557358}
+  quitButton: {fileID: 1993430719}
+  audioBackButton: {fileID: 2033126491}
+  controlsBackButton: {fileID: 1158194347}
   mixer: {fileID: 24100000, guid: 4402df8d9e0fe044790970632b208147, type: 2}
-  sceneToLoad: 1
+  sceneToLoad: 0
 --- !u!1 &1743121144
 GameObject:
   m_ObjectHideFlags: 0

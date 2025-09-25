@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuManager : MonoBehaviour
 {
@@ -17,6 +18,11 @@ public class MenuManager : MonoBehaviour
 
     [Header("Buttons")]
     [SerializeField] private Button playButton;
+    [SerializeField] private Button optionsButton;
+    [SerializeField] private Button controlsButton;
+    [SerializeField] private Button quitButton;
+    [SerializeField] private Button audioBackButton;
+    [SerializeField] private Button controlsBackButton;
 
     [Header("Audio")]
     [SerializeField] private AudioMixer mixer;
@@ -51,6 +57,12 @@ public class MenuManager : MonoBehaviour
         mainMenuPanel.SetActive(true);
         audioPanel.SetActive(false);
         controlsPanel.SetActive(false);
+
+        // Select the play button for gamepad navigation
+        if (playButton != null)
+        {
+            EventSystem.current.SetSelectedGameObject(playButton.gameObject);
+        }
     }
 
     public void ShowAudioMenu()
@@ -58,6 +70,12 @@ public class MenuManager : MonoBehaviour
         mainMenuPanel.SetActive(false);
         audioPanel.SetActive(true);
         controlsPanel.SetActive(false);
+
+        // Select the master volume slider for gamepad navigation
+        if (mMasterSlider != null)
+        {
+            EventSystem.current.SetSelectedGameObject(mMasterSlider.gameObject);
+        }
     }
 
     public void ShowControlsMenu()
@@ -65,6 +83,12 @@ public class MenuManager : MonoBehaviour
         mainMenuPanel.SetActive(false);
         audioPanel.SetActive(false);
         controlsPanel.SetActive(true);
+
+        // Select the back button for gamepad navigation
+        if (controlsBackButton != null)
+        {
+            EventSystem.current.SetSelectedGameObject(controlsBackButton.gameObject);
+        }
     }
 
     // ---------------- SCENES ----------------
