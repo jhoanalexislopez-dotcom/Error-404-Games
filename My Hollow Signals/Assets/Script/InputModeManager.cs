@@ -8,6 +8,10 @@ public class InputModeManager : MonoBehaviour
     [SerializeField] private float mouseMovementThreshold = 0.1f;
     [SerializeField] private bool debugInputMode = false;
 
+    [Header("UI Controls")]
+    [SerializeField] private GameObject controlsImageGamepad;
+    [SerializeField] private GameObject controlsImageKeyboard;
+
     private Vector2 lastMousePosition;
     private bool isGamepadMode = false;
     private InputSystem_Actions inputActions;
@@ -16,6 +20,8 @@ public class InputModeManager : MonoBehaviour
     {
         inputActions = new InputSystem_Actions();
         lastMousePosition = Mouse.current?.position.ReadValue() ?? Vector2.zero;
+
+        UpdateUI(); // Mostrar la imagen correcta al iniciar
     }
 
     private void OnEnable()
@@ -55,7 +61,6 @@ public class InputModeManager : MonoBehaviour
     {
         if (Gamepad.current == null) return;
 
-        // Check for any gamepad navigation input
         Vector2 navigation = inputActions.UI.Navigate.ReadValue<Vector2>();
         bool submitPressed = inputActions.UI.Submit.WasPressedThisFrame();
         bool cancelPressed = inputActions.UI.Cancel.WasPressedThisFrame();
@@ -73,11 +78,12 @@ public class InputModeManager : MonoBehaviour
     {
         isGamepadMode = false;
 
-        // Clear the current selection to allow pure mouse interaction
         if (EventSystem.current != null)
         {
             EventSystem.current.SetSelectedGameObject(null);
         }
+
+        UpdateUI();
 
         if (debugInputMode)
             Debug.Log("Switched to Mouse Mode");
@@ -87,11 +93,12 @@ public class InputModeManager : MonoBehaviour
     {
         isGamepadMode = true;
 
-        // Find a selectable object to highlight if none is currently selected
         if (EventSystem.current != null && EventSystem.current.currentSelectedGameObject == null)
         {
             SetDefaultSelectedObject();
         }
+
+        UpdateUI();
 
         if (debugInputMode)
             Debug.Log("Switched to Gamepad Mode");
@@ -99,7 +106,6 @@ public class InputModeManager : MonoBehaviour
 
     private void SetDefaultSelectedObject()
     {
-        // Try to find the first active selectable in the scene
         UnityEngine.UI.Selectable firstSelectable = FindFirstActiveSelectable();
         if (firstSelectable != null)
         {
@@ -109,7 +115,6 @@ public class InputModeManager : MonoBehaviour
 
     private UnityEngine.UI.Selectable FindFirstActiveSelectable()
     {
-        // Look for active selectables in order of preference
         UnityEngine.UI.Selectable[] selectables = FindObjectsOfType<UnityEngine.UI.Selectable>();
 
         foreach (var selectable in selectables)
@@ -121,6 +126,15 @@ public class InputModeManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void UpdateUI()
+    {
+        if (controlsImageGamepad != null)
+            controlsImageGamepad.SetActive(isGamepadMode);
+
+        if (controlsImageKeyboard != null)
+            controlsImageKeyboard.SetActive(!isGamepadMode);
     }
 
     public bool IsGamepadMode => isGamepadMode;
