@@ -3,6 +3,7 @@ using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 public class MenuManager : MonoBehaviour
 {
@@ -30,7 +31,18 @@ public class MenuManager : MonoBehaviour
     [Header("Scene")]
     [SerializeField] private int sceneToLoad = 1;
 
+    [Header("Transition Settings")]
+    [Tooltip("Animator for scene transition")]
+    public Animator transitionAnimator;
+
+    [Tooltip("Time to wait after triggering transition before loading scene")]
+    public float transitionDelayBeforeSceneLoad = 2f;
+
+    [Tooltip("Name of the animator trigger for the transition")]
+    public string transitionTriggerName = "StartTransition";
+
     private InputModeManager inputModeManager;
+    private bool isTransitioning = false;
 
     private void Start()
     {
@@ -39,6 +51,16 @@ public class MenuManager : MonoBehaviour
         if (inputModeManager == null)
         {
             inputModeManager = gameObject.AddComponent<InputModeManager>();
+        }
+
+        // Auto-assign transition animator if not set
+        if (transitionAnimator == null)
+        {
+            transitionAnimator = GameObject.Find("LayoutCanvas/Image")?.GetComponent<Animator>();
+            if (transitionAnimator == null)
+            {
+                Debug.LogWarning("Transition Animator not found! Please assign the transitionAnimator field in the MenuManager component.");
+            }
         }
 
         // Initialize sliders from mixer
@@ -101,7 +123,33 @@ public class MenuManager : MonoBehaviour
     }
 
     // ---------------- SCENES ----------------
-    public void PlayGame() => SceneManager.LoadScene(sceneToLoad);
+    public void PlayGame()
+    {
+        if (isTransitioning)
+            return;
+
+        isTransitioning = true;
+        StartCoroutine(TriggerTransitionAndLoadScene());
+    }
+
+    private IEnumerator TriggerTransitionAndLoadScene()
+    {
+        if (transitionAnimator != null)
+        {
+            Debug.Log($"Triggering transition animation with '{transitionTriggerName}' trigger...");
+            transitionAnimator.SetTrigger(transitionTriggerName);
+        }
+        else
+        {
+            Debug.LogWarning("transitionAnimator is null, loading scene without transition animation!");
+        }
+
+        Debug.Log($"Waiting {transitionDelayBeforeSceneLoad} seconds before loading scene...");
+        yield return new WaitForSeconds(transitionDelayBeforeSceneLoad);
+
+        Debug.Log($"Loading scene: {sceneToLoad}");
+        SceneManager.LoadScene(sceneToLoad);
+    }
 
     public void ExitGame()
     {
