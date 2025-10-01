@@ -129,7 +129,52 @@ public class MenuManager : MonoBehaviour
             return;
 
         isTransitioning = true;
+
+        StartCoroutine(PlayGameWithSFX());
+    }
+
+    private IEnumerator PlayGameWithSFX()
+    {
+        // Wait a few frames to allow the button click SFX to trigger
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+
+        // Now disable all inputs after the SFX has had time to play
+        DisableAllInputs();
+
+        // Start the transition
         StartCoroutine(TriggerTransitionAndLoadScene());
+    }
+
+    private void DisableAllInputs()
+    {
+        // Disable the InputModeManager's input actions
+        if (inputModeManager != null)
+        {
+            inputModeManager.enabled = false;
+        }
+
+        // Disable all UI interactions by disabling the EventSystem
+        if (EventSystem.current != null)
+        {
+            EventSystem.current.enabled = false;
+        }
+
+        // Make all buttons non-interactable
+        Button[] allButtons = FindObjectsOfType<Button>();
+        foreach (Button button in allButtons)
+        {
+            button.interactable = false;
+        }
+
+        // Make all sliders non-interactable
+        Slider[] allSliders = FindObjectsOfType<Slider>();
+        foreach (Slider slider in allSliders)
+        {
+            slider.interactable = false;
+        }
+
+        Debug.Log("All inputs have been disabled during scene transition.");
     }
 
     private IEnumerator TriggerTransitionAndLoadScene()
