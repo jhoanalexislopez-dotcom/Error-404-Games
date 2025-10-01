@@ -12602,10 +12602,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultHoverSound: {fileID: 8300000, guid: 2415c7b019091024dbadd71600c46c47, type: 3}
   defaultClickSound: {fileID: 8300000, guid: fd831c96456d3c54fa9bf0546fd4df85, type: 3}
+  defaultHighlightPrefab: {fileID: 7987603971906539471, guid: da8f0a82eb7521e4889cdaf3e1c76977, type: 3}
   defaultHoverVolume: 0.7
   defaultClickVolume: 1
   autoSetupAllButtons: 1
+  autoSetupHighlights: 1
+  autoSetupPressDown: 1
   skipExistingButtonSFX: 1
+  skipExistingButtonHighlight: 1
+  skipExistingButtonPressDown: 1
 --- !u!1 &1743121144
 GameObject:
   m_ObjectHideFlags: 0
