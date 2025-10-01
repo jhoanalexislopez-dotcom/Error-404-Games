@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Audio;
 
 [RequireComponent(typeof(Button))]
-public class ButtonSFX : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ButtonSFX : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
 {
     [Header("Audio Sources")]
     [Tooltip("AudioSource to play button sounds (will auto-find sfxMixer if not assigned)")]
@@ -96,6 +96,11 @@ public class ButtonSFX : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             PlayHoverSound();
         }
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        isHovered = false;
     }
 
     private void PlayHoverSound()
