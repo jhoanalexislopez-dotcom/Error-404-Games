@@ -130,8 +130,10 @@ public class FirstPersonController : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
         // --- Rotación de cámara ---
-        float mouseX = lookInput.x * currentSensitivity;
-        float mouseY = lookInput.y * currentSensitivity;
+        // Make sensitivity frame rate independent
+        float frameRateMultiplier = Time.unscaledDeltaTime * 60f; // Normalize to 60 FPS
+        float mouseX = lookInput.x * currentSensitivity * frameRateMultiplier;
+        float mouseY = lookInput.y * currentSensitivity * frameRateMultiplier;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
