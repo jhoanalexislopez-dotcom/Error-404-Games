@@ -158,18 +158,15 @@ public class PauseMenuManager : MonoBehaviour
 
     public void OpenOptions()
     {
-        // Find the MenuManager (your existing options system)
-        MenuManager menuManager = FindObjectOfType<MenuManager>();
-        if (menuManager != null)
+        SensitivitySettingsManager settingsManager = FindObjectOfType<SensitivitySettingsManager>();
+        if (settingsManager != null)
         {
-            // If you have an options menu in your MenuManager, call it
-            // You might need to adapt this based on your MenuManager structure
-            Debug.Log("Opening options from pause menu");
-            // menuManager.EnterAudioSettings(); // Uncomment if you want direct audio settings
+            settingsManager.OpenSettings();
+            Debug.Log("Opening sensitivity settings from pause menu");
         }
         else
         {
-            Debug.Log("Options not implemented yet");
+            Debug.LogWarning("SensitivitySettingsManager not found! Please add it to your scene.");
         }
     }
 

@@ -89,7 +89,15 @@ public class FirstPersonController : MonoBehaviour
         inputActions.Player.Enable();
         Cursor.lockState = CursorLockMode.Locked;
 
-        currentSensitivity = mouseSensitivity; // Valor inicial
+        LoadSensitivitySettings();
+    }
+
+    void LoadSensitivitySettings()
+    {
+        mouseSensitivity = SensitivitySettingsManager.GetMouseSensitivity();
+        gamepadSensitivity = SensitivitySettingsManager.GetGamepadSensitivity();
+
+        currentSensitivity = mouseSensitivity;
     }
 
     void OnDisable()
