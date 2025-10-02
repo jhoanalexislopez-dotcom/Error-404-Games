@@ -1,10 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class SensitivitySettingsManager : MonoBehaviour
 {
-    [Header("UI Elements")]
+    [Header("UI Navigation")]
     public GameObject settingsPanel;
+    public List<GameObject> pauseMenuElements = new List<GameObject>(); // Drag pause menu UI elements here
+
+    [Header("UI Elements")]
     public Slider mouseSensitivitySlider;
     public Slider gamepadSensitivitySlider;
     public Button backButton;
@@ -128,6 +132,14 @@ public class SensitivitySettingsManager : MonoBehaviour
 
     public void OpenSettings()
     {
+        // Hide main pause menu elements
+        foreach (GameObject element in pauseMenuElements)
+        {
+            if (element != null)
+                element.SetActive(false);
+        }
+
+        // Show settings panel
         if (settingsPanel != null)
         {
             settingsPanel.SetActive(true);
@@ -139,8 +151,21 @@ public class SensitivitySettingsManager : MonoBehaviour
 
     public void CloseSettings()
     {
+        // Hide settings panel
         if (settingsPanel != null)
             settingsPanel.SetActive(false);
+
+        // Show main pause menu elements
+        foreach (GameObject element in pauseMenuElements)
+        {
+            if (element != null)
+                element.SetActive(true);
+        }
+
+        // Try to select options button for controller navigation
+        Button optionsButton = FindObjectOfType<PauseMenuManager>()?.optionsButton;
+        if (optionsButton != null)
+            optionsButton.Select();
     }
 
     public void ResetToDefaults()
