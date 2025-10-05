@@ -2419,8 +2419,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 384685370}
   characterController: {fileID: 490301344}
-  moveAction: {fileID: -1680190386980627800, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
-  sprintAction: {fileID: -7471211009204490832, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
+  moveAction: {fileID: -1680190386980627800, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
+  sprintAction: {fileID: -7471211009204490832, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
   requireGrounded: 1
   baseLocalOffset: {x: 0, y: 0, z: 0}
   moveThreshold: 0.1
@@ -3721,7 +3721,7 @@ MonoBehaviour:
   interactionText: {fileID: 639604751}
   keyUI: {fileID: 668771910}
   buttonUI: {fileID: 1589182363}
-  interactAction: {fileID: 1781555164194001046, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
+  interactAction: {fileID: 1781555164194001046, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
 --- !u!114 &490301347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3735,7 +3735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlightLight: {fileID: 677709136}
-  flashlightAction: {fileID: 3878550802990046869, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
+  flashlightAction: {fileID: 3878550802990046869, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
 --- !u!1 &496224083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -785227680258626056, guid: cb8e1e75afef6a2498e8ad5a6b12efa4, type: 3}
