@@ -12009,7 +12009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 9306d266c072253469d2bb102fc030d5, type: 3}
-  VHSClip: {fileID: 32900000, guid: 8960814de1b286c4f8fd3293f65fa28e, type: 3}
+  VHSClip: {fileID: 32900000, guid: 383580eafc813c845a747347a9371163, type: 3}
 --- !u!328 &384685376
 VideoPlayer:
   m_ObjectHideFlags: 0
