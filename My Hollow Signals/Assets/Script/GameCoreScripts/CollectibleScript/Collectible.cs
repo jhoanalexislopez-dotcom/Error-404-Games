@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Bianca Marinica]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Represents collectible items (like notes or objects) that players can pick up. Implements the IInteractable interface..
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 

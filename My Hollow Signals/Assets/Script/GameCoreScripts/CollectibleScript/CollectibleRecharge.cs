@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Represents rechargable items that players can pick up. Implements the IInteractable interface.
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 

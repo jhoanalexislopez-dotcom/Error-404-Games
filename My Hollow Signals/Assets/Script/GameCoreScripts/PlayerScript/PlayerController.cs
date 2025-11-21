@@ -1,3 +1,9 @@
+/*******************************************************
+ * Author: [Jhoan Alexis Lopez]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Main first-person controller handling movement, looking, crouching, and player physics.
+ *******************************************************/
 using UnityEngine;
 using UnityEngine.InputSystem;
 

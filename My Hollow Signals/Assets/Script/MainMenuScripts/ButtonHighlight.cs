@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Alejandro Vila]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Adds visual highlight effects to menu buttons when hovered over
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;

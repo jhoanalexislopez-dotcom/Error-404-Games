@@ -1,3 +1,12 @@
+/*******************************************************
+ * Author: [Alejandro Vila]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *   Manages a typewriter-style dialogue system with sound effects and automatic scene transitions. 
+ *   This system displays text character by character, plays typing sounds, and can transition to another scene after dialogue completes.
+ *******************************************************/
+
+
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;

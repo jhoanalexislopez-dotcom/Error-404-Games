@@ -1,3 +1,9 @@
+/*******************************************************
+ * Author: [Bianca Marinica]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Controls flashlight on/off state, likely handles input for toggling and manages light intensity/battery if applicable.
+ *******************************************************/
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem; // <- Nuevo Input System

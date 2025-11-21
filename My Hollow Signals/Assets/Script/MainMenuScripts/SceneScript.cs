@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Bianca Marinica]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Simple scene transition helper with animator control.
+ *******************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

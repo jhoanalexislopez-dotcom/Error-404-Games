@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Manages audio mixing and audio-related game logic.
+ *******************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

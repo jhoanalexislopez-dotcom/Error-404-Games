@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Alejandro Vila]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Centralized manager providing default sound effects for all buttons.
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.UI;
 

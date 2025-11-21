@@ -1,3 +1,9 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Manages sensitivity/settings panel and UI navigation between pause menu and settings.
+ *******************************************************/
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;

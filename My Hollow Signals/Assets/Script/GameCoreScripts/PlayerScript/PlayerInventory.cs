@@ -1,3 +1,9 @@
+/*******************************************************
+ * Author: [Jhoan Alexis Lopez]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Singleton inventory system tracking collected items.
+ *******************************************************/
 using UnityEngine;
 using TMPro;
 

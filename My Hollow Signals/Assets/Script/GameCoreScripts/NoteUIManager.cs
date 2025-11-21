@@ -1,3 +1,9 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Manages the display of collectible notes/documents in the UI.
+ *******************************************************/
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;

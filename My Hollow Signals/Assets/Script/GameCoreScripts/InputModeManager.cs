@@ -1,3 +1,9 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Detects and manages input mode switching between keyboard/mouse and gamepad, automatically updating UI prompts and cursor visibility.
+ *******************************************************/
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;

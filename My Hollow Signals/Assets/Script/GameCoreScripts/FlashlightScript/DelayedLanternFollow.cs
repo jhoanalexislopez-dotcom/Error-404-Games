@@ -1,3 +1,9 @@
+/*******************************************************
+ * Author: [Bianca Marinica]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Makes the flashlight/lantern follow the player's camera with a slight delay and smoothing for realistic movement.
+ *******************************************************/
 using UnityEngine;
 
 public class DelayedLanternFollow : MonoBehaviour

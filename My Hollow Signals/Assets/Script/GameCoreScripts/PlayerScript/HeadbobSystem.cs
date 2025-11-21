@@ -1,3 +1,9 @@
+/*******************************************************
+ * Author: [Jhoan Alexis Lopez]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Creates realistic camera bobbing effect when the player walks or runs.
+ *******************************************************/
 using UnityEngine;
 using UnityEngine.InputSystem; // <- Input System
 

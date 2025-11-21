@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Alejandro Vila]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Allows buttons to trigger on press down instead of release for more responsive feel.
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;

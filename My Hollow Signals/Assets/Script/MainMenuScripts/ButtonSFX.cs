@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Alejandro Vila]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Plays sound effects for button interactions (hover, click, select, deselect).
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;

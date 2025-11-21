@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Manages game-wide audio system including footsteps, flashlight sounds, and environmental audio based on player state.
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
