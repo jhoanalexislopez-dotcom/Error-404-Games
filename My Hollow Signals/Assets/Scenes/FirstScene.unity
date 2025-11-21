@@ -1470,7 +1470,7 @@ MonoBehaviour:
   - text: No one believed her. Not even me.
   - text: "Until one night, my phone vibrates. It\u2019s a message from her\u2026"
   typingSpeed: 0.05
-  playerInputActions: {fileID: -944628639613478452, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
+  playerInputActions: {fileID: -944628639613478452, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
   advanceActionName: Jump
   typingAudioSource: {fileID: 1132833074}
   typingSound: {fileID: 8300000, guid: 749e0cac6e9856c48b49404e8993ec71, type: 3}

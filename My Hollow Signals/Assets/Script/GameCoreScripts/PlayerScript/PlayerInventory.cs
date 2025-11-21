@@ -15,6 +15,10 @@ public class PlayerInventory : MonoBehaviour
     [Header("UI (opcional)")]
     [Tooltip("Arrastra aquí un TextMeshProUGUI para mostrar el contador")]
     public TextMeshProUGUI counterText;
+    public TextMeshProUGUI batteryUI;
+
+    [SerializeField] private FlashlightController flashlight;
+
 
     private void Awake()
     {
@@ -38,11 +42,22 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (batteryUI != null && flashlight != null)
+        {
+            batteryUI.text = $"{Mathf.RoundToInt(flashlight.battery)}%";
+        }
+    }
+
     private void UpdateUI()
     {
         if (counterText != null)
         {
             counterText.text = $"{collected}/{target}";
+        }
+        if (batteryUI != null) {
+            batteryUI.text = $"{flashlight.battery}";
         }
     }
 

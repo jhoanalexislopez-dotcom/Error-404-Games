@@ -55,6 +55,7 @@ public class GameAudioManager : MonoBehaviour
     [Header("Flashlight SFX")]
     [SerializeField] private AudioClip flashlightOnClip;
     [SerializeField] private AudioClip flashlightOffClip;
+    [SerializeField] private AudioClip flashlightRechargeClip;
     [Range(0f, 1f)][SerializeField] private float flashlightVolume = 0.8f;
 
     // Internos
@@ -174,6 +175,15 @@ public class GameAudioManager : MonoBehaviour
             sfxSource.PlayOneShot(clip, flashlightVolume);
         }
     }
+    public void PlayFlashlightRecharge()
+    {
+        if (flashlightRechargeClip != null)
+        {
+            sfxSource.pitch = 1f;
+            sfxSource.PlayOneShot(flashlightRechargeClip, flashlightVolume);
+        }
+    }
+
 
     // Si tu crouch es toggle: cambia estado cuando se pulse
     private void OnCrouchPerformed(InputAction.CallbackContext ctx)

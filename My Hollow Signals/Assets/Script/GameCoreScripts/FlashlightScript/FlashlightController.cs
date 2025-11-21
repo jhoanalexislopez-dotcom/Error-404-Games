@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem; // <- Nuevo Input System
 
@@ -9,6 +10,17 @@ public class FlashlightController : MonoBehaviour
     [Header("Input System")]
     [Tooltip("Arrastra aquí la InputAction 'Flashlight' desde tu Input Actions (como InputActionReference).")]
     public InputActionReference flashlightAction;
+
+    [SerializeField] public float battery = 100f;
+
+    public void RechargeBattery()
+    {
+        battery = 100f;
+
+        GameAudioManager audioManager = FindAnyObjectByType<GameAudioManager>();
+        audioManager.PlayFlashlightRecharge();
+
+    }
 
     void OnEnable()
     {
@@ -34,6 +46,16 @@ public class FlashlightController : MonoBehaviour
         {
             flashlightEnabled = !flashlightEnabled;
             flashlightLight.gameObject.SetActive(flashlightEnabled);
+        }
+        if (flashlightEnabled) {
+            battery -= 10*Time.deltaTime;
+
+            battery = Mathf.Clamp(battery, 0, 100);
+        }
+        if (battery <= 0)
+        {
+            flashlightEnabled = false;
+            flashlightLight.gameObject.SetActive(false);
         }
     }
 }
