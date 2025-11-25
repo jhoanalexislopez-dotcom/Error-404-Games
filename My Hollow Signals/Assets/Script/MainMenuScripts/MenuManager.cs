@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private Slider mMasterSlider;
     [SerializeField] private Slider mSFXSlider;
     [SerializeField] private Slider mBGMSlider;
+    public GameObject BlackLayoutTransitionUI;
 
     [Header("Menu Objects")]
     [SerializeField] private GameObject mainMenuPanel;
@@ -82,6 +83,9 @@ public class MenuManager : MonoBehaviour
         mSFXSlider.onValueChanged.AddListener(SetSFXVolume);
 
         ShowMainMenu();
+
+        if (BlackLayoutTransitionUI != null)
+            BlackLayoutTransitionUI.SetActive(true);
     }
 
     // ---------------- AUDIO ----------------

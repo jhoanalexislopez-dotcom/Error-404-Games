@@ -23,7 +23,7 @@ public class PauseMenuManager : MonoBehaviour
     private bool isPaused = false;
     private InputSystem_Actions inputActions;
     private FirstPersonController playerController;
-    private GameAudioManager gameAudioManager;
+    private GameManager gameManager;
 
     // Store original cursor state
     private CursorLockMode originalCursorLockMode;
@@ -39,7 +39,7 @@ public class PauseMenuManager : MonoBehaviour
 
         // Find player components
         playerController = FindObjectOfType<FirstPersonController>();
-        gameAudioManager = FindObjectOfType<GameAudioManager>();
+        gameManager = FindObjectOfType<GameManager>();
 
         // Set up button events
         if (resumeButton != null)

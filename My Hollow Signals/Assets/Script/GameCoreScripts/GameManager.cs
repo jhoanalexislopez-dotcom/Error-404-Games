@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 
-public class GameAudioManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [Header("References")]
     [Tooltip("Opcional: CharacterController para grounded/velocidad.")]
@@ -65,6 +65,8 @@ public class GameAudioManager : MonoBehaviour
     [SerializeField] private AudioClip flashlightRechargeClip;
     [Range(0f, 1f)][SerializeField] private float flashlightVolume = 0.8f;
 
+    public GameObject BlackLayoutTransitionUI;
+
     // Internos
     private float stepTimer;
     private bool isCrouched;
@@ -88,6 +90,12 @@ public class GameAudioManager : MonoBehaviour
         EnableAction(sprintAction);
         EnableAction(crouchAction);
         EnableAction(flashlightToggle);
+    }
+
+    private void Start()
+    {
+        if (BlackLayoutTransitionUI != null)
+            BlackLayoutTransitionUI.SetActive(true);
     }
 
     private void OnEnable()

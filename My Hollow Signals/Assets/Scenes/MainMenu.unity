@@ -31973,6 +31973,7 @@ MonoBehaviour:
   mMasterSlider: {fileID: 873943216}
   mSFXSlider: {fileID: 40483172}
   mBGMSlider: {fileID: 1438932912}
+  BlackLayoutTransitionUI: {fileID: 1893036428}
   mainMenuPanel: {fileID: 471211233}
   audioPanel: {fileID: 1678427775}
   controlsPanel: {fileID: 1501757867}
@@ -32624,13 +32625,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5879810087552982224, guid: 59b93443ba4a49a4d95c3be027ce68d1, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59b93443ba4a49a4d95c3be027ce68d1, type: 3}
+--- !u!1 &1893036428 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5879810087552982224, guid: 59b93443ba4a49a4d95c3be027ce68d1, type: 3}
+  m_PrefabInstance: {fileID: 1893036427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1920505682
 GameObject:
   m_ObjectHideFlags: 0

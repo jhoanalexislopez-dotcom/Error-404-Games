@@ -18,12 +18,13 @@ public class FlashlightController : MonoBehaviour
     public InputActionReference flashlightAction;
 
     [SerializeField] public float battery = 100f;
+    [SerializeField] public int consume = 10;
 
     public void RechargeBattery()
     {
         battery = 100f;
 
-        GameAudioManager audioManager = FindAnyObjectByType<GameAudioManager>();
+        GameManager audioManager = FindAnyObjectByType<GameManager>();
         audioManager.PlayFlashlightRecharge();
 
     }
@@ -54,7 +55,7 @@ public class FlashlightController : MonoBehaviour
             flashlightLight.gameObject.SetActive(flashlightEnabled);
         }
         if (flashlightEnabled) {
-            battery -= 10*Time.deltaTime;
+            battery -= consume*Time.deltaTime;
 
             battery = Mathf.Clamp(battery, 0, 100);
         }
