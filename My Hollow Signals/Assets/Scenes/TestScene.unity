@@ -5280,6 +5280,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7325845425995807678, guid: cb8e1e75afef6a2498e8ad5a6b12efa4, type: 3}
+--- !u!1 &714673319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a6d8e40f51fbdbb48a85863d6a0f20c9, type: 3}
+  m_PrefabInstance: {fileID: 1415598872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &722081653
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10726,6 +10731,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a6d8e40f51fbdbb48a85863d6a0f20c9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a6d8e40f51fbdbb48a85863d6a0f20c9, type: 3}
       propertyPath: m_Name
       value: flashlight
@@ -10733,6 +10742,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a6d8e40f51fbdbb48a85863d6a0f20c9, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a6d8e40f51fbdbb48a85863d6a0f20c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11921,6 +11934,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notePanel: {fileID: 1688654175}
   noteText: {fileID: 1108411813}
+  flashlight: {fileID: 714673319}
 --- !u!1 &1690841548
 GameObject:
   m_ObjectHideFlags: 0

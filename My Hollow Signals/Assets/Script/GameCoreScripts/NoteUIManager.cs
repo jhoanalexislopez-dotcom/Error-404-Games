@@ -14,6 +14,8 @@ public class NoteUIManager : MonoBehaviour
     [SerializeField] private GameObject notePanel;
     [SerializeField] private TextMeshProUGUI noteText; // Reference to the text component
 
+    [SerializeField] private GameObject flashlight;
+
     private InputSystem_Actions inputActions;
     private FirstPersonController playerController;
     private PauseMenuManager pauseMenuManager;
@@ -119,6 +121,18 @@ public class NoteUIManager : MonoBehaviour
         }
 
         Debug.Log("Note manually set as active with text: " + noteText);
+
+        // Desactivar mesh renderer de flashlight
+        if (flashlight != null)
+        {
+            MeshRenderer mesh = flashlight.GetComponent<MeshRenderer>();
+            if (mesh == null)
+                mesh = flashlight.GetComponentInChildren<MeshRenderer>();
+
+            if (mesh != null)
+                mesh.enabled = false;
+        }
+
     }
 
     // Public method to set just the text without changing active state
@@ -158,6 +172,16 @@ public class NoteUIManager : MonoBehaviour
         }
 
         Debug.Log("Note closed - NoteUI disabled and game resumed via PauseMenuManager");
+        // Activar mesh renderer de flashlight
+        if (flashlight != null)
+        {
+            MeshRenderer mesh = flashlight.GetComponent<MeshRenderer>();
+            if (mesh == null)
+                mesh = flashlight.GetComponentInChildren<MeshRenderer>();
+
+            if (mesh != null)
+                mesh.enabled = true;
+        }
     }
 
     void OnDestroy()
