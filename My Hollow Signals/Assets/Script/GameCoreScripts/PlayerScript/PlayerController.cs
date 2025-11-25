@@ -111,6 +111,15 @@ public class FirstPersonController : MonoBehaviour
         inputActions.Player.Disable();
     }
 
+    void Start()
+    {
+        // Forzar cámara mirando al frente
+        xRotation = 0f;
+
+        if (cameraRoot != null)
+            cameraRoot.localRotation = Quaternion.Euler(90f, 0f, 0f);
+    }
+
     void Update()
     {
         // --- Ground Check ---
