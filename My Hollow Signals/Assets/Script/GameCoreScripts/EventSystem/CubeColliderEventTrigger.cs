@@ -42,7 +42,8 @@ public class CubeColliderEventTrigger : MonoBehaviour
     // Camera reset storage
     private Quaternion originalCameraRotation;
     private Vector3 originalCameraPosition;
-    private bool savedCameraState = false;
+
+    private bool thisCinematicChangedCamera = false;
 
 
     private void Start()
@@ -147,18 +148,23 @@ public class CubeColliderEventTrigger : MonoBehaviour
     {
         cinematicActive = true;
 
-        // Save camera transform ONCE
-        if (!savedCameraState)
+        // Only save camera state if THIS trigger is configured to use the cinematic camera
+        if (useCinematicCamera)
         {
             Camera cam = Camera.main;
             if (cam != null)
             {
                 originalCameraRotation = cam.transform.rotation;
                 originalCameraPosition = cam.transform.position;
-                savedCameraState = true;
+                thisCinematicChangedCamera = true;  // <--- important!
             }
         }
+        else
+        {
+            thisCinematicChangedCamera = false;  // <--- ensures we don't restore on exit
+        }
 
+        // Lock player if required
         if (lockPlayer && playerController != null)
             playerController.enabled = false;
     }
@@ -168,16 +174,21 @@ public class CubeColliderEventTrigger : MonoBehaviour
     {
         cinematicActive = false;
 
-        // Restore the original camera transform
         Camera cam = Camera.main;
-        if (cam != null && savedCameraState)
+
+        // Only restore if THIS cinematic modified the camera!
+        if (thisCinematicChangedCamera && cam != null)
         {
             cam.transform.rotation = originalCameraRotation;
             cam.transform.position = originalCameraPosition;
         }
 
+        // Unlock player
         if (lockPlayer && playerController != null)
             playerController.enabled = true;
+
+        // Reset per-cinematic flag
+        thisCinematicChangedCamera = false;
     }
 
 }
