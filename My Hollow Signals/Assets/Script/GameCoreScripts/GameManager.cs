@@ -159,7 +159,7 @@ public class GameManager : MonoBehaviour
         {
             // Elige set de clips seg�n estado
             AudioClip[] pool = isCrouched ? crouchFootsteps : (running ? runFootsteps : walkFootsteps);
-            if (pool != null && pool.Length > 0)
+            if (pool != null && pool.Length > 0 && sfxSource != null)
             {
                 var clip = pool[Random.Range(0, pool.Length)];
                 float vol = isCrouched ? crouchVolume : (running ? runVolume : walkVolume);
@@ -190,7 +190,7 @@ public class GameManager : MonoBehaviour
             flashlightObject.SetActive(flashlightOn);
 
         var clip = flashlightOn ? flashlightOnClip : flashlightOffClip;
-        if (clip != null)
+        if (clip != null && sfxSource != null)
         {
             sfxSource.pitch = 1f;
             sfxSource.PlayOneShot(clip, flashlightVolume);
@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
     }
     public void PlayFlashlightRecharge()
     {
-        if (flashlightRechargeClip != null)
+        if (flashlightRechargeClip != null && sfxSource != null)
         {
             sfxSource.pitch = 1f;
             sfxSource.PlayOneShot(flashlightRechargeClip, flashlightVolume);
@@ -227,6 +227,10 @@ public class GameManager : MonoBehaviour
         flashlightOn = on;
         if (flashlightObject != null) flashlightObject.SetActive(on);
         var clip = on ? flashlightOnClip : flashlightOffClip;
-        if (clip != null) { sfxSource.pitch = 1f; sfxSource.PlayOneShot(clip, flashlightVolume); }
+        if (clip != null && sfxSource != null) 
+        { 
+            sfxSource.pitch = 1f; 
+            sfxSource.PlayOneShot(clip, flashlightVolume); 
+        }
     }
 }
