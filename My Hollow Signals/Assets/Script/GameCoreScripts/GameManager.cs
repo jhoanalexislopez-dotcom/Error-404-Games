@@ -79,13 +79,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (sfxSource == null)
-        {
-            sfxSource = gameObject.AddComponent<AudioSource>();
-            sfxSource.playOnAwake = false;
-            sfxSource.spatialBlend = 1f; // 3D por defecto; ajusta a 0 si lo quieres 2D
-        }
-
+        RefreshReferences();
+        
         EnableAction(moveAction);
         EnableAction(sprintAction);
         EnableAction(crouchAction);
@@ -96,6 +91,25 @@ public class GameManager : MonoBehaviour
     {
         if (BlackLayoutTransitionUI != null)
             BlackLayoutTransitionUI.SetActive(true);
+    }
+    
+    private void RefreshReferences()
+    {
+        if (characterController == null)
+        {
+            characterController = GetComponentInParent<CharacterController>();
+        }
+        
+        if (sfxSource == null)
+        {
+            sfxSource = GetComponent<AudioSource>();
+            if (sfxSource == null)
+            {
+                sfxSource = gameObject.AddComponent<AudioSource>();
+                sfxSource.playOnAwake = false;
+                sfxSource.spatialBlend = 1f;
+            }
+        }
     }
 
     private void OnEnable()

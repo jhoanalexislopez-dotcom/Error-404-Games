@@ -7,9 +7,6 @@ public class CinematicManager : MonoBehaviour
     
     public static bool IsCinematicActive { get; private set; }
     
-    private static FlashlightController flashlightController;
-    private static PlayerInput playerInput;
-    
     void Awake()
     {
         if (instance == null)
@@ -27,21 +24,13 @@ public class CinematicManager : MonoBehaviour
     {
         IsCinematicActive = true;
         
-        if (flashlightController == null)
-        {
-            flashlightController = FindObjectOfType<FlashlightController>();
-        }
-        
+        FlashlightController flashlightController = FindObjectOfType<FlashlightController>();
         if (flashlightController != null)
         {
             flashlightController.enabled = false;
         }
         
-        if (playerInput == null)
-        {
-            playerInput = FindObjectOfType<PlayerInput>();
-        }
-        
+        PlayerInput playerInput = FindObjectOfType<PlayerInput>();
         if (playerInput != null)
         {
             playerInput.enabled = false;
@@ -52,11 +41,13 @@ public class CinematicManager : MonoBehaviour
     {
         IsCinematicActive = false;
         
+        FlashlightController flashlightController = FindObjectOfType<FlashlightController>();
         if (flashlightController != null)
         {
             flashlightController.enabled = true;
         }
         
+        PlayerInput playerInput = FindObjectOfType<PlayerInput>();
         if (playerInput != null)
         {
             playerInput.enabled = true;

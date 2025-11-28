@@ -177,11 +177,26 @@ public class PauseMenuManager : MonoBehaviour
 
     public void QuitToMainMenu()
     {
-        // Resume time before loading scene
         Time.timeScale = 1f;
-
-        // Load main menu scene
-        SceneManager.LoadScene("MainMenu"); // Change to your main menu scene name
+        
+        DestroyPersistentObjects();
+        
+        SceneManager.LoadScene("MainMenu");
+    }
+    
+    private void DestroyPersistentObjects()
+    {
+        GameManager gameManagerInstance = FindObjectOfType<GameManager>();
+        if (gameManagerInstance != null)
+        {
+            Destroy(gameManagerInstance.gameObject);
+        }
+        
+        CinematicManager cinematicManagerInstance = FindObjectOfType<CinematicManager>();
+        if (cinematicManagerInstance != null)
+        {
+            Destroy(cinematicManagerInstance.gameObject);
+        }
     }
 
     void OnDestroy()
