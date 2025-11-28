@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InputActionReference flashlightToggle;  // Button
 
     [Header("Audio Sources")]
-    [Tooltip("Source para efectos (PlayOneShot). Si está vacío, se crea uno.")]
+    [Tooltip("Source para efectos (PlayOneShot). Si estï¿½ vacï¿½o, se crea uno.")]
     [SerializeField] private AudioSource sfxSource;
     [Tooltip("Pitch aleatorio de pasos (min/max).")]
     [SerializeField] private Vector2 footstepPitchRange = new Vector2(0.95f, 1.05f);
@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip[] walkFootsteps;
     [Tooltip("Clips de pasos corriendo (pueden ser los mismos).")]
     [SerializeField] private AudioClip[] runFootsteps;
-    [Tooltip("Clips de pasos agachado (más suaves).")]
+    [Tooltip("Clips de pasos agachado (mï¿½s suaves).")]
     [SerializeField] private AudioClip[] crouchFootsteps;
 
     [Header("Footsteps - Timings & Volumes")]
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     [Range(0f, 1f)][SerializeField] private float crouchVolume = 0.5f;
 
     [Header("Footsteps - Misc")]
-    [Tooltip("Umbral mínimo de input para considerar que te mueves.")]
+    [Tooltip("Umbral mï¿½nimo de input para considerar que te mueves.")]
     [SerializeField] private float moveThreshold = 0.1f;
     [Tooltip("Requiere estar en el suelo para sonar pasos.")]
     [SerializeField] private bool requireGrounded = true;
@@ -119,13 +119,19 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         HandleFootsteps();
-        // Si tu crouch es "hold" en vez de toggle, puedes leerlo aquí:
+        // Si tu crouch es "hold" en vez de toggle, puedes leerlo aquï¿½:
         // isCrouched = crouchAction?.action?.IsPressed() ?? isCrouched;
     }
 
     // ---------- Footsteps ----------
     private void HandleFootsteps()
     {
+        if (CinematicManager.IsCinematicActive)
+        {
+            stepTimer = 0f;
+            return;
+        }
+
         Vector2 move = moveAction != null && moveAction.action != null
             ? moveAction.action.ReadValue<Vector2>()
             : Vector2.zero;
@@ -151,23 +157,23 @@ public class GameManager : MonoBehaviour
 
         if (stepTimer <= 0f)
         {
-            // Elige set de clips según estado
+            // Elige set de clips segï¿½n estado
             AudioClip[] pool = isCrouched ? crouchFootsteps : (running ? runFootsteps : walkFootsteps);
             if (pool != null && pool.Length > 0)
             {
                 var clip = pool[Random.Range(0, pool.Length)];
                 float vol = isCrouched ? crouchVolume : (running ? runVolume : walkVolume);
 
-                // sutil variación de pitch
+                // sutil variaciï¿½n de pitch
                 sfxSource.pitch = Random.Range(footstepPitchRange.x, footstepPitchRange.y);
 
-                // Reproducir en la posición del CharacterController si existe
+                // Reproducir en la posiciï¿½n del CharacterController si existe
                 if (characterController != null) sfxSource.transform.position = characterController.transform.position;
 
                 sfxSource.PlayOneShot(clip, vol);
             }
 
-            // Ajuste simple con la velocidad para que aumente la cadencia si vas más rápido
+            // Ajuste simple con la velocidad para que aumente la cadencia si vas mï¿½s rï¿½pido
             float speedFactor = Mathf.Clamp01(horizontalSpeed); // 0..1 aprox
             float dynamicInterval = Mathf.Lerp(interval * 0.75f, interval * 1.25f, 1f - speedFactor);
 
@@ -203,7 +209,7 @@ public class GameManager : MonoBehaviour
     // Si tu crouch es toggle: cambia estado cuando se pulse
     private void OnCrouchPerformed(InputAction.CallbackContext ctx)
     {
-        // Si quieres "hold", comenta esta línea y usa isCrouched = crouchAction.action.IsPressed() en Update()
+        // Si quieres "hold", comenta esta lï¿½nea y usa isCrouched = crouchAction.action.IsPressed() en Update()
         isCrouched = !isCrouched;
     }
 
@@ -214,7 +220,7 @@ public class GameManager : MonoBehaviour
             actionRef.action.Enable();
     }
 
-    // ---------- API pública opcional ----------
+    // ---------- API pï¿½blica opcional ----------
     public void SetCrouched(bool crouched) => isCrouched = crouched;
     public void ForceFlashlight(bool on)
     {

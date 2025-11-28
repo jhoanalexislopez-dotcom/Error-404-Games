@@ -114,6 +114,13 @@ public class HeadBob : MonoBehaviour
     {
         if (cameraTarget == null) return;
 
+        if (CinematicManager.IsCinematicActive)
+        {
+            _bobTimer = 0f;
+            _idleBlendWeight = 0f;
+            return;
+        }
+
         // 1) Leer input del Input System
         Vector2 move = Vector2.zero;
         if (moveAction != null && moveAction.action != null)

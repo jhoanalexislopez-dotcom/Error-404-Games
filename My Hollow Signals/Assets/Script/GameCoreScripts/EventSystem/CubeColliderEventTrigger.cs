@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using TMPro;
 
@@ -196,6 +196,14 @@ public class CubeColliderEventTrigger : MonoBehaviour
     {
         cinematicActive = true;
 
+        if (lockPlayer)
+        {
+            CinematicManager.StartCinematic();
+            
+            if (playerController != null)
+                playerController.enabled = false;
+        }
+
         if (useCinematicCamera)
         {
             Camera cam = Camera.main;
@@ -210,14 +218,19 @@ public class CubeColliderEventTrigger : MonoBehaviour
         {
             thisCinematicChangedCamera = false;
         }
-
-        if (lockPlayer && playerController != null)
-            playerController.enabled = false;
     }
 
     private void EndCinematic()
     {
         cinematicActive = false;
+
+        if (lockPlayer)
+        {
+            CinematicManager.EndCinematic();
+            
+            if (playerController != null)
+                playerController.enabled = true;
+        }
 
         Camera cam = Camera.main;
 
@@ -226,9 +239,6 @@ public class CubeColliderEventTrigger : MonoBehaviour
             cam.transform.rotation = originalCameraRotation;
             cam.transform.position = originalCameraPosition;
         }
-
-        if (lockPlayer && playerController != null)
-            playerController.enabled = true;
 
         thisCinematicChangedCamera = false;
     }

@@ -14,7 +14,7 @@ public class FlashlightController : MonoBehaviour
     private bool flashlightEnabled = false;
 
     [Header("Input System")]
-    [Tooltip("Arrastra aquí la InputAction 'Flashlight' desde tu Input Actions (como InputActionReference).")]
+    [Tooltip("Arrastra aquï¿½ la InputAction 'Flashlight' desde tu Input Actions (como InputActionReference).")]
     public InputActionReference flashlightAction;
 
     [SerializeField] public float battery = 100f;
@@ -48,6 +48,11 @@ public class FlashlightController : MonoBehaviour
 
     void Update()
     {
+        if (CinematicManager.IsCinematicActive)
+        {
+            return;
+        }
+
         if (flashlightAction != null && flashlightAction.action != null &&
             flashlightAction.action.WasPressedThisFrame())
         {
