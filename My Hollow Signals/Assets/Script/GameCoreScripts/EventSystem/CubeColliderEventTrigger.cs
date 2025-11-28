@@ -55,6 +55,13 @@ public class CubeColliderEventTrigger : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         playerController = player?.GetComponent<MonoBehaviour>();
+
+        // Hide the cube mesh
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        if (meshRenderer != null)
+        {
+            meshRenderer.enabled = false;
+        }
     }
 
     private void Update()
