@@ -414,7 +414,21 @@ MonoBehaviour:
   description: Pick up
   value: 1
   noteUI: {fileID: 1688654175}
-  noteText: This is a note 2...
+  noteText: 'I''ve seen things you wouldn''t understand.
+
+
+    They watch me, they
+    guide me, they show me the truth.
+
+
+    You''ve always been weak, but I...
+
+
+    I''m
+    learning to be strong.
+
+
+    Soon you''ll understand.'
 --- !u!1 &31509081 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1971216328234509900, guid: cb8e1e75afef6a2498e8ad5a6b12efa4, type: 3}
@@ -4904,6 +4918,8 @@ MonoBehaviour:
   subtext: {fileID: 573712061}
   dialogueLines:
   - "Voy a mirar a la nevera mientras mi tel\xE9fono vibra y me quedo quieto."
+  postEventDialogueLines:
+  - que me quedo sin comee
   typingSpeed: 0.03
   lineDelay: 1.2
   autoHideDelay: 1.25
@@ -9451,8 +9467,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14091,6 +14107,8 @@ MonoBehaviour:
   subtext: {fileID: 573712061}
   dialogueLines:
   - Ya voy...
+  postEventDialogueLines:
+  - O no voy.
   typingSpeed: 0.05
   lineDelay: 1.2
   autoHideDelay: 2

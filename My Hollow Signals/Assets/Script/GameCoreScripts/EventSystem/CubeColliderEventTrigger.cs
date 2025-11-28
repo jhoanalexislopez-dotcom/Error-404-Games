@@ -7,9 +7,13 @@ public class CubeColliderEventTrigger : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI subtext;
 
-    [Header("Dialogue Lines")]
+    [Header("Main Dialogue (First Trigger Only)")]
     [TextArea]
     public string[] dialogueLines;
+
+    [Header("Post-Event Dialogue (After Main Event Completes)")]
+    [TextArea]
+    public string[] postEventDialogueLines;
 
     [Header("Typing Settings")]
     [Range(0.01f, 0.2f)]
@@ -29,8 +33,9 @@ public class CubeColliderEventTrigger : MonoBehaviour
     public float cameraTurnSpeed = 5f;
 
     [Header("Trigger Settings")]
-    public bool triggerOnlyOnce = true;   // <--- NEW
-    private bool hasTriggered = false;    // <--- NEW
+    public bool triggerOnlyOnce = true;
+    private bool hasTriggered = false;
+    private bool hasFinishedMainEvent = false;
 
     private bool inCube = false;
     private bool cinematicActive = false;
@@ -39,12 +44,10 @@ public class CubeColliderEventTrigger : MonoBehaviour
     private Transform player;
     private MonoBehaviour playerController;
 
-    // Camera reset storage
     private Quaternion originalCameraRotation;
     private Vector3 originalCameraPosition;
 
     private bool thisCinematicChangedCamera = false;
-
 
     private void Start()
     {
@@ -73,16 +76,22 @@ public class CubeColliderEventTrigger : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        // Block retriggering if already fired once
+        // If the main event already happened and post-event lines exist → play them
+        if (hasFinishedMainEvent && postEventDialogueLines.Length > 0)
+        {
+            PlayPostEventDialogue();
+            return;
+        }
+
+        // If main event can only happen once and already did → ignore
         if (triggerOnlyOnce && hasTriggered)
             return;
 
-        // If still inside, don't retrigger
         if (inCube)
             return;
 
         inCube = true;
-        hasTriggered = true;  // <--- Marks event as completed
+        hasTriggered = true;
 
         StartCinematic();
 
@@ -95,24 +104,8 @@ public class CubeColliderEventTrigger : MonoBehaviour
         typingCoroutine = StartCoroutine(PlayDialogueSequence());
     }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (!other.CompareTag("Player"))
-    //        return;
-
-    //    if (!inCube) return;
-
-    //    inCube = false;
-
-    //    // If triggerOnlyOnce is enabled, do NOT reset or interrupt the cinematic
-    //    if (!triggerOnlyOnce)
-    //        EndCinematic();
-
-    //    subtext.text = "";
-    //}
-
     // ------------------------------
-    // Dialogue System
+    // MAIN EVENT DIALOGUE
     // ------------------------------
 
     private IEnumerator PlayDialogueSequence()
@@ -127,7 +120,38 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         subtext.text = "";
         EndCinematic();
+
+        hasFinishedMainEvent = true; // <---- enables post-event dialogue
     }
+
+    // ------------------------------
+    // POST EVENT DIALOGUE
+    // ------------------------------
+
+    private void PlayPostEventDialogue()
+    {
+        if (typingCoroutine != null)
+            StopCoroutine(typingCoroutine);
+
+        typingCoroutine = StartCoroutine(PlayPostEventDialogueSequence());
+    }
+
+    private IEnumerator PlayPostEventDialogueSequence()
+    {
+        foreach (string line in postEventDialogueLines)
+        {
+            yield return StartCoroutine(TypeText(line));
+            yield return new WaitForSeconds(lineDelay);
+        }
+
+        yield return new WaitForSeconds(autoHideDelay);
+
+        subtext.text = "";
+    }
+
+    // ------------------------------
+    // TYPEWRITER
+    // ------------------------------
 
     private IEnumerator TypeText(string text)
     {
@@ -141,14 +165,13 @@ public class CubeColliderEventTrigger : MonoBehaviour
     }
 
     // ------------------------------
-    // Cinematic Control
+    // CINEMATIC CONTROL
     // ------------------------------
 
     private void StartCinematic()
     {
         cinematicActive = true;
 
-        // Only save camera state if THIS trigger is configured to use the cinematic camera
         if (useCinematicCamera)
         {
             Camera cam = Camera.main;
@@ -156,19 +179,17 @@ public class CubeColliderEventTrigger : MonoBehaviour
             {
                 originalCameraRotation = cam.transform.rotation;
                 originalCameraPosition = cam.transform.position;
-                thisCinematicChangedCamera = true;  // <--- important!
+                thisCinematicChangedCamera = true;
             }
         }
         else
         {
-            thisCinematicChangedCamera = false;  // <--- ensures we don't restore on exit
+            thisCinematicChangedCamera = false;
         }
 
-        // Lock player if required
         if (lockPlayer && playerController != null)
             playerController.enabled = false;
     }
-
 
     private void EndCinematic()
     {
@@ -176,19 +197,15 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         Camera cam = Camera.main;
 
-        // Only restore if THIS cinematic modified the camera!
         if (thisCinematicChangedCamera && cam != null)
         {
             cam.transform.rotation = originalCameraRotation;
             cam.transform.position = originalCameraPosition;
         }
 
-        // Unlock player
         if (lockPlayer && playerController != null)
             playerController.enabled = true;
 
-        // Reset per-cinematic flag
         thisCinematicChangedCamera = false;
     }
-
 }
