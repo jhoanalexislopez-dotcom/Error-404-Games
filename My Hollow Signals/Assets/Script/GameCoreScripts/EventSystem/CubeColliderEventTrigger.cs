@@ -49,6 +49,8 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
     private bool thisCinematicChangedCamera = false;
 
+    private bool hasShownPostEventDialogue = false;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -79,7 +81,11 @@ public class CubeColliderEventTrigger : MonoBehaviour
         // If the main event already happened and post-event lines exist → play them
         if (hasFinishedMainEvent && postEventDialogueLines.Length > 0)
         {
-            PlayPostEventDialogue();
+            if (!hasShownPostEventDialogue)  // Add this check
+            {
+                PlayPostEventDialogue();
+                hasShownPostEventDialogue = true;  // Mark as shown
+            }
             return;
         }
 
@@ -102,6 +108,8 @@ public class CubeColliderEventTrigger : MonoBehaviour
             StopCoroutine(typingCoroutine);
 
         typingCoroutine = StartCoroutine(PlayDialogueSequence());
+
+
     }
 
     // ------------------------------
@@ -121,8 +129,17 @@ public class CubeColliderEventTrigger : MonoBehaviour
         subtext.text = "";
         EndCinematic();
 
-        hasFinishedMainEvent = true; // <---- enables post-event dialogue
+        hasFinishedMainEvent = true;
+
+        // Automatically show post-event dialogue if it exists
+        if (postEventDialogueLines.Length > 0 && !hasShownPostEventDialogue)
+        {
+            yield return new WaitForSeconds(0.5f); // Optional small delay
+            hasShownPostEventDialogue = true;
+            yield return StartCoroutine(PlayPostEventDialogueSequence());
+        }
     }
+
 
     // ------------------------------
     // POST EVENT DIALOGUE
