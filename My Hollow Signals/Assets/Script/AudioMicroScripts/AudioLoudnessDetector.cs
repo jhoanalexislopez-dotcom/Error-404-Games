@@ -9,6 +9,10 @@ public class AudioLoudnessDetector : MonoBehaviour
     private AudioClip _microphoneClip;
     private string _microphoneName;
 
+    public AudioClip MicrophoneClip => _microphoneClip;
+    public string MicrophoneName => _microphoneName;
+    public bool IsRecording => !string.IsNullOrEmpty(_microphoneName) && Microphone.IsRecording(_microphoneName);
+
     private void Start()
     {
         MicrophoneToAudioClip(0);
