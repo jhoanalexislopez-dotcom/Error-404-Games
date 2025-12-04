@@ -4,17 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Events;
+using UnityEditorInternal.VersionControl;
 
 public class SanityManager : MonoBehaviour
-{
-    Slider sanitySlider;
+{   
+    [Header("UI & PostProcess")]
+    public Slider sanitySlider;
     public PostProcessProfile profile;
     Vignette vignette;
-    public int fullSanity;
-    public int difficulty;
-    float percent;
 
+    [Header("Sanity Values")]
+    public int fullSanity;
+        
+    [Header("Mic Settings")]
+    public AudioLoudnessDetector micDetector;
+    private float micThreshold = 0.01f; 
+    public float micSanityLossMultiplier; //cuánto afecta hablar fuerte
+    public float micQuietRecoveryMultiplier; //cuánto affecta no hablar
+
+    [Header("Eventos")]
     public UnityEvent onInsane; //Evento cuando muere
+    private bool isInsane = false;
+
+    [Header("Sanity visual")]
+    public Image sanityImage;
+    public Sprite[] sanitySprites;
 
     // Start is called before the first frame update
     void Start()
@@ -23,26 +37,90 @@ public class SanityManager : MonoBehaviour
         sanitySlider = GetComponent<Slider>();
         sanitySlider.maxValue = fullSanity;
         sanitySlider.value = fullSanity;
+
         vignette.intensity.value = 0;
 
-        StartCoroutine(LoseSanity());
+        StartCoroutine(MicSanityRoutine());
     }
 
-    IEnumerator LoseSanity()
+    IEnumerator MicSanityRoutine()
     {
-        while (sanitySlider.value > 0)
+        while (!isInsane)
         {
-            sanitySlider.value -= 2f * difficulty;
-            float newValue = (sanitySlider.value - sanitySlider.maxValue) * -1;
-            percent = newValue / sanitySlider.maxValue;
-            vignette.intensity.value = percent;
+            float loudness = 0f;
+
+            if (micDetector != null)
+            {
+                loudness = micDetector.GetLoudnessFromMicrophone();
+            }
+
+            if (loudness > micThreshold)
+            {
+                float loss = micSanityLossMultiplier * Time.deltaTime;
+                sanitySlider.value -= loss;
+            }
+
+            else
+            {
+                float gain = micQuietRecoveryMultiplier * Time.deltaTime;
+                sanitySlider.value += gain;
+            }
+
+            sanitySlider.value = Mathf.Clamp(sanitySlider.value, 0f, fullSanity);
+
+            float newValue = (fullSanity - sanitySlider.value) / fullSanity;
+            vignette.intensity.value = Mathf.Clamp01(newValue);
+
+            UpdateSanityImage();
+
+            if (sanitySlider.value <= 0)
+            {
+                isInsane = true;
+                Debug.Log("You're nuts!");
+                onInsane.Invoke(); //Parte del evento cuando muere
+                yield break;
+            }
+
             yield return null;
+        }            
+    }    
+
+    public void UpdateSanityImage()
+    {
+        if (sanitySprites.Length == 0 || sanityImage == null)
+        {
+            return;
         }
 
-        //After gone insane.
-        Debug.Log("You're nuts!");
+        float percent = sanitySlider.value / fullSanity;
 
-        onInsane.Invoke(); //Parte del evento cuando muere
+        int index = 0;
+
+        if (percent > 0f && percent < 0.2f)
+        {
+            index = 0;
+        }
+
+        else if (percent >= 0.2f && percent < 0.4f)
+        {
+            index = 1;
+        }
+
+        else if (percent >= 0.4f && percent < 0.6f)
+        {
+            index = 2;
+        }
+
+        else if (percent >= 0.6f && percent < 0.8f)
+        {
+            index = 3;
+        }
+
+        else if (percent >= 0.8f)
+        {
+            index = 4;
+        }
+
+        sanityImage.sprite = sanitySprites[index];
     }
-    
 }

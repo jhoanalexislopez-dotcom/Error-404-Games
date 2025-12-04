@@ -4986,7 +4986,7 @@ GameObject:
   - component: {fileID: 560228173}
   - component: {fileID: 560228172}
   m_Layer: 8
-  m_Name: Sanity
+  m_Name: SanityVignette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5017,8 +5017,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560228171}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7571007, y: 1.9062307, z: -0.16522981}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.7571007, y: 1.9062307, z: -0.16522978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11218,6 +11218,81 @@ Transform:
   - {fileID: 1670892732}
   m_Father: {fileID: 1023936438}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1264726601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1264726602}
+  - component: {fileID: 1264726604}
+  - component: {fileID: 1264726603}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1264726602
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264726601}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0000786461}
+  m_LocalScale: {x: 1.2343847, y: 0.7406308, z: 1.2343851}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1434518144}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 152.07611, y: -722.8561}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1264726603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264726601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1264726604
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264726601}
+  m_CullTransparentMesh: 1
 --- !u!1 &1264872538
 GameObject:
   m_ObjectHideFlags: 0
@@ -12265,7 +12340,7 @@ GameObject:
   - component: {fileID: 1434518145}
   - component: {fileID: 1434518146}
   m_Layer: 5
-  m_Name: InsanitySlider
+  m_Name: SanitySlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12286,6 +12361,7 @@ RectTransform:
   - {fileID: 761606352}
   - {fileID: 1104703668}
   - {fileID: 1954644904}
+  - {fileID: 1264726602}
   m_Father: {fileID: 1158014090}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -12356,9 +12432,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef104981e4b598c4389d28e7c00d03c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sanitySlider: {fileID: 1434518145}
   profile: {fileID: 11400000, guid: fccc0940d2b4ef546a5ac228c2423778, type: 2}
-  fullSanity: 5000
-  difficulty: 2
+  fullSanity: 500
+  micDetector: {fileID: 604117809}
+  micSanityLossMultiplier: 20
+  micQuietRecoveryMultiplier: 10
   onInsane:
     m_PersistentCalls:
       m_Calls:
@@ -12374,6 +12453,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  sanityImage: {fileID: 1264726603}
+  sanitySprites:
+  - {fileID: 21300000, guid: f48ea2ec0fe3c0c4580fd388227d80a2, type: 3}
+  - {fileID: 21300000, guid: 52528635d6bb0dc40ab6928b82d16060, type: 3}
+  - {fileID: 21300000, guid: d79ced202dc03bb42803868c023984ee, type: 3}
+  - {fileID: 21300000, guid: 21280390b9484f5408755724b8c4e2b2, type: 3}
+  - {fileID: 21300000, guid: bd846c5d5af930a4695c0974da5b082f, type: 3}
 --- !u!1 &1436588887 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7236239636576443390, guid: cb8e1e75afef6a2498e8ad5a6b12efa4, type: 3}
