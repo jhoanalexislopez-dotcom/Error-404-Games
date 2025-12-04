@@ -31,6 +31,10 @@ public class CubeColliderEventTrigger : MonoBehaviour
     public bool useCinematicCamera = true;
     public Transform cameraFocusTarget;
     public float cameraTurnSpeed = 5f;
+    
+    [Header("UI Settings")]
+    [Tooltip("Hide player UI elements during the event (battery, item counter, etc.)")]
+    public bool hideUI = false;
 
     [Header("Trigger Settings")]
     public bool triggerOnlyOnce = true;
@@ -50,6 +54,9 @@ public class CubeColliderEventTrigger : MonoBehaviour
     private bool thisCinematicChangedCamera = false;
 
     private bool hasShownPostEventDialogue = false;
+    
+    private GameObject uiToHide;
+    private bool wasUIActive;
 
     private void Start()
     {
@@ -203,6 +210,16 @@ public class CubeColliderEventTrigger : MonoBehaviour
             if (playerController != null)
                 playerController.enabled = false;
         }
+        
+        if (hideUI)
+        {
+            uiToHide = GameObject.Find("GameUI");
+            if (uiToHide != null)
+            {
+                wasUIActive = uiToHide.activeSelf;
+                uiToHide.SetActive(false);
+            }
+        }
 
         if (useCinematicCamera)
         {
@@ -230,6 +247,12 @@ public class CubeColliderEventTrigger : MonoBehaviour
             
             if (playerController != null)
                 playerController.enabled = true;
+        }
+        
+        if (hideUI && uiToHide != null)
+        {
+            uiToHide.SetActive(wasUIActive);
+            uiToHide = null;
         }
 
         Camera cam = Camera.main;
