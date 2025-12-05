@@ -6,6 +6,20 @@
  *******************************************************/
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
+
+[System.Serializable]
+public class NoteData
+{
+    public string noteTitle;
+    public string noteContent;
+
+    public NoteData(string title, string content)
+    {
+        noteTitle = title;
+        noteContent = content;
+    }
+}
 
 public class PlayerInventory : MonoBehaviour
 {
@@ -19,12 +33,13 @@ public class PlayerInventory : MonoBehaviour
     public int target = 3;
 
     [Header("UI (opcional)")]
-    [Tooltip("Arrastra aquí un TextMeshProUGUI para mostrar el contador")]
+    [Tooltip("Arrastra aquï¿½ un TextMeshProUGUI para mostrar el contador")]
     public TextMeshProUGUI counterText;
     public TextMeshProUGUI batteryUI;
 
     [SerializeField] private FlashlightController flashlight;
 
+    private List<NoteData> collectedNotes = new List<NoteData>();
 
     private void Awake()
     {
@@ -48,6 +63,23 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    public void AddNote(string noteTitle, string noteContent)
+    {
+        NoteData newNote = new NoteData(noteTitle, noteContent);
+        collectedNotes.Add(newNote);
+        Debug.Log($"Note '{noteTitle}' added to inventory. Total notes: {collectedNotes.Count}");
+    }
+
+    public List<NoteData> GetCollectedNotes()
+    {
+        return new List<NoteData>(collectedNotes);
+    }
+
+    public int GetNoteCount()
+    {
+        return collectedNotes.Count;
+    }
+
     void Update()
     {
         if (batteryUI != null && flashlight != null)
@@ -69,7 +101,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnAllCollected()
     {
-        // Aquí puedes lanzar un evento, cargar escena, mostrar mensaje, etc.
-        Debug.Log("¡Has recogido todos los objetos!");
+        // Aquï¿½ puedes lanzar un evento, cargar escena, mostrar mensaje, etc.
+        Debug.Log("ï¿½Has recogido todos los objetos!");
     }
 }

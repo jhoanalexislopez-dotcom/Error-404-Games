@@ -15,6 +15,7 @@ public class Collectible : MonoBehaviour, IInteractable
     [SerializeField] private GameObject noteUI; // Reference to NoteUI
 
     [Header("Note Settings")]
+    [SerializeField] private string noteTitle = "Note";
     [SerializeField][TextArea(3, 6)] private string noteText = "This is a note..."; // Individual note text
 
     void Start()
@@ -69,6 +70,7 @@ public class Collectible : MonoBehaviour, IInteractable
         if (PlayerInventory.Instance != null)
         {
             PlayerInventory.Instance.AddItem(value);
+            PlayerInventory.Instance.AddNote(noteTitle, noteText);
         }
 
         // Destroy the collectible object
