@@ -19,8 +19,8 @@ public class SanityManager : MonoBehaviour
     [Header("Mic Settings")]
     public AudioLoudnessDetector micDetector;
     private float micThreshold = 0.01f; 
-    public float micSanityLossMultiplier; //cuánto afecta hablar fuerte
-    public float micQuietRecoveryMultiplier; //cuánto affecta no hablar
+    public float micSanityLossMultiplier; //cuï¿½nto afecta hablar fuerte
+    public float micQuietRecoveryMultiplier; //cuï¿½nto affecta no hablar
 
     [Header("Eventos")]
     public UnityEvent onInsane; //Evento cuando muere
@@ -69,7 +69,7 @@ public class SanityManager : MonoBehaviour
             sanitySlider.value = Mathf.Clamp(sanitySlider.value, 0f, fullSanity);
 
             float newValue = (fullSanity - sanitySlider.value) / fullSanity;
-            vignette.intensity.value = Mathf.Clamp01(newValue);
+            vignette.intensity.value = Mathf.Clamp01(newValue) * 0.5f;
 
             UpdateSanityImage();
 
@@ -78,6 +78,7 @@ public class SanityManager : MonoBehaviour
                 isInsane = true;
                 Debug.Log("You're nuts!");
                 onInsane.Invoke(); //Parte del evento cuando muere
+                vignette.intensity.value = 0f;
                 yield break;
             }
 
