@@ -4412,7 +4412,7 @@ MonoBehaviour:
   interactionText: {fileID: 639604751}
   keyUI: {fileID: 668771910}
   buttonUI: {fileID: 1589182363}
-  interactAction: {fileID: 1781555164194001046, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
+  interactAction: {fileID: 1781555164194001046, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
 --- !u!114 &490301347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4426,7 +4426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlightLight: {fileID: 677709136}
-  flashlightAction: {fileID: 3878550802990046869, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
+  flashlightAction: {fileID: 3878550802990046869, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
   battery: 100
   consume: 0
 --- !u!20 &490301349
@@ -14260,10 +14260,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 490301344}
   flashlightObject: {fileID: 677709136}
-  moveAction: {fileID: -1680190386980627800, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
-  sprintAction: {fileID: -7471211009204490832, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
-  crouchAction: {fileID: 7040659881675835329, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
-  flashlightToggle: {fileID: 3878550802990046869, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
+  moveAction: {fileID: -1680190386980627800, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
+  sprintAction: {fileID: -7471211009204490832, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
+  crouchAction: {fileID: 7040659881675835329, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
+  flashlightToggle: {fileID: 3878550802990046869, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
   sfxSource: {fileID: 543942470}
   footstepPitchRange: {x: 1, y: 1}
   walkFootsteps:
