@@ -64,7 +64,5 @@ public class AudioLoudnessDetector : MonoBehaviour
         }
 
         return totalLoudness / sampleWindow;
-    }
-
-    
+    }    
 }
