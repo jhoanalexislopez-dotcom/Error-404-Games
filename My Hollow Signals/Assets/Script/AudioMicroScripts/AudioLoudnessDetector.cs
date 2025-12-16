@@ -15,8 +15,16 @@ public class AudioLoudnessDetector : MonoBehaviour
 
     private void Start()
     {
-        MicrophoneToAudioClip(0);
+        if (Microphone.devices.Length > 0)
+        {
+            MicrophoneToAudioClip(0);
+        }
+        else
+        {
+            Debug.LogWarning("No microphones detected on Start()");
+        }
     }
+
 
     private void OnEnable()
     {
@@ -34,10 +42,27 @@ public class AudioLoudnessDetector : MonoBehaviour
     }
     private void MicrophoneToAudioClip(int microphoneIndex)
     {
-       
+        if (Microphone.devices.Length == 0)
+        {
+            Debug.LogError("No microphone devices found");
+            return;
+        }
+
+        if (microphoneIndex < 0 || microphoneIndex >= Microphone.devices.Length)
+        {
+            Debug.LogError("Microphone index out of range");
+            return;
+        }
+
         _microphoneName = Microphone.devices[microphoneIndex];
-        _microphoneClip = Microphone.Start(_microphoneName, true, 20, AudioSettings.outputSampleRate);
+        _microphoneClip = Microphone.Start(
+            _microphoneName,
+            true,
+            20,
+            AudioSettings.outputSampleRate
+        );
     }
+
 
     public float GetLoudnessFromMicrophone()
     {

@@ -4312,15 +4312,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'jlgka
+  m_text: 'TEXT
 
-    jdkfj+kfd+s
+    TEXTTEXT
 
-    djfdslkf
+    TEXTTEXTTEXT
 
-    fdsf
+    TEXTTEXTTEXTTEXT
 
-    sdfksf'
+    TEXTTEXTTEXTTEXTTEXT'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e93ae3a573efa4f4db59e8fa0d0989aa, type: 2}
   m_sharedMaterial: {fileID: 3505267541774906881, guid: e93ae3a573efa4f4db59e8fa0d0989aa, type: 2}
@@ -11756,7 +11756,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1261161887
 Transform:
   m_ObjectHideFlags: 0
@@ -13626,7 +13626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1554293852
 Transform:
   m_ObjectHideFlags: 0
