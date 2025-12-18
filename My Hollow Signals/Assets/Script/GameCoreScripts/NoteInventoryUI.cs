@@ -13,18 +13,17 @@ public class NoteInventoryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI noteContentText;
     [SerializeField] private TextMeshProUGUI noteTitleText;
 
-    [Header("Settings")]
-    [SerializeField] private Key inventoryKey = Key.F;
-
     private bool isInventoryOpen = false;
     private List<GameObject> spawnedButtons = new List<GameObject>();
     private PauseMenuManager pauseMenuManager;
-    private Keyboard keyboard;
+    private InputSystem_Actions inputActions;
 
     private void Awake()
     {
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
-        keyboard = Keyboard.current;
+        inputActions = new InputSystem_Actions();
+
+        inputActions.Player.Inventory.performed += OnInventoryPressed;
 
         if (inventoryPanel != null)
         {
@@ -32,18 +31,25 @@ public class NoteInventoryUI : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        if (keyboard != null && keyboard[inventoryKey].wasPressedThisFrame)
+        inputActions?.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputActions?.Player.Disable();
+    }
+
+    private void OnInventoryPressed(InputAction.CallbackContext context)
+    {
+        if (isInventoryOpen)
         {
-            if (isInventoryOpen)
-            {
-                CloseInventory();
-            }
-            else
-            {
-                OpenInventory();
-            }
+            CloseInventory();
+        }
+        else
+        {
+            OpenInventory();
         }
     }
 
@@ -58,9 +64,10 @@ public class NoteInventoryUI : MonoBehaviour
         isInventoryOpen = true;
         inventoryPanel.SetActive(true);
 
+        Time.timeScale = 0f;
+
         if (pauseMenuManager != null)
         {
-            pauseMenuManager.PauseGame();
             pauseMenuManager.enabled = false;
         }
 
@@ -83,9 +90,10 @@ public class NoteInventoryUI : MonoBehaviour
         isInventoryOpen = false;
         inventoryPanel.SetActive(false);
 
+        Time.timeScale = 1f;
+
         if (pauseMenuManager != null)
         {
-            pauseMenuManager.ResumeGame();
             pauseMenuManager.enabled = true;
         }
 
@@ -172,10 +180,19 @@ public class NoteInventoryUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (isInventoryOpen && pauseMenuManager != null)
+        if (inputActions != null)
         {
-            pauseMenuManager.ResumeGame();
-            pauseMenuManager.enabled = true;
+            inputActions.Player.Inventory.performed -= OnInventoryPressed;
+            inputActions.Dispose();
+        }
+
+        if (isInventoryOpen)
+        {
+            Time.timeScale = 1f;
+            if (pauseMenuManager != null)
+            {
+                pauseMenuManager.enabled = true;
+            }
         }
     }
 }
