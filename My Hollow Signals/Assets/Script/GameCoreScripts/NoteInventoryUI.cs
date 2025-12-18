@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 
 public class NoteInventoryUI : MonoBehaviour
 {
@@ -14,9 +15,10 @@ public class NoteInventoryUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI noteTitleText;
 
     private bool isInventoryOpen = false;
-    private List<GameObject> spawnedButtons = new List<GameObject>();
+    private List<Button> spawnedButtons = new List<Button>();
     private PauseMenuManager pauseMenuManager;
     private InputSystem_Actions inputActions;
+    private int currentlySelectedNoteIndex = -1;
 
     private void Awake()
     {
@@ -128,7 +130,6 @@ public class NoteInventoryUI : MonoBehaviour
         {
             int index = i;
             GameObject buttonObj = Instantiate(noteButtonPrefab, noteListContainer.transform);
-            spawnedButtons.Add(buttonObj);
 
             TextMeshProUGUI buttonText = buttonObj.GetComponentInChildren<TextMeshProUGUI>();
             if (buttonText != null)
@@ -139,13 +140,50 @@ public class NoteInventoryUI : MonoBehaviour
             Button button = buttonObj.GetComponent<Button>();
             if (button != null)
             {
-                button.onClick.AddListener(() => DisplayNote(index));
+                button.onClick.AddListener(() => OnNoteButtonClicked(index));
+                spawnedButtons.Add(button);
             }
         }
+
+        SetupButtonNavigation();
 
         if (notes.Count > 0)
         {
             DisplayNote(notes.Count - 1);
+            SelectButton(notes.Count - 1);
+        }
+    }
+
+    private void SetupButtonNavigation()
+    {
+        for (int i = 0; i < spawnedButtons.Count; i++)
+        {
+            Navigation nav = new Navigation();
+            nav.mode = Navigation.Mode.Explicit;
+
+            if (i > 0)
+                nav.selectOnUp = spawnedButtons[i - 1];
+
+            if (i < spawnedButtons.Count - 1)
+                nav.selectOnDown = spawnedButtons[i + 1];
+
+            spawnedButtons[i].navigation = nav;
+        }
+    }
+
+    private void OnNoteButtonClicked(int index)
+    {
+        DisplayNote(index);
+        currentlySelectedNoteIndex = index;
+    }
+
+    private void SelectButton(int index)
+    {
+        if (index >= 0 && index < spawnedButtons.Count)
+        {
+            currentlySelectedNoteIndex = index;
+            spawnedButtons[index].Select();
+            EventSystem.current.SetSelectedGameObject(spawnedButtons[index].gameObject);
         }
     }
 
@@ -170,12 +208,13 @@ public class NoteInventoryUI : MonoBehaviour
 
     private void ClearNoteList()
     {
-        foreach (GameObject button in spawnedButtons)
+        foreach (Button button in spawnedButtons)
         {
             if (button != null)
-                Destroy(button);
+                Destroy(button.gameObject);
         }
         spawnedButtons.Clear();
+        currentlySelectedNoteIndex = -1;
     }
 
     private void OnDestroy()
