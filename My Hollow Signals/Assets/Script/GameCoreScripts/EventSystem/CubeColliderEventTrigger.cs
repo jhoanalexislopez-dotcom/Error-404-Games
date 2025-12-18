@@ -36,6 +36,10 @@ public class CubeColliderEventTrigger : MonoBehaviour
     [Tooltip("Hide player UI elements during the event (battery, item counter, etc.)")]
     public bool hideUI = false;
 
+    [Header("Sanity Settings")]
+    [Tooltip("Amount of sanity to lower when this event triggers")]
+    public float sanityLossAmount = 0f;
+
     [Header("Trigger Settings")]
     public bool triggerOnlyOnce = true;
     private bool hasTriggered = false;
@@ -218,6 +222,15 @@ public class CubeColliderEventTrigger : MonoBehaviour
             {
                 wasUIActive = uiToHide.activeSelf;
                 uiToHide.SetActive(false);
+            }
+        }
+
+        if (sanityLossAmount > 0f)
+        {
+            SanityManager sanityManager = FindObjectOfType<SanityManager>(true);
+            if (sanityManager != null)
+            {
+                sanityManager.LowerSanity(sanityLossAmount);
             }
         }
 

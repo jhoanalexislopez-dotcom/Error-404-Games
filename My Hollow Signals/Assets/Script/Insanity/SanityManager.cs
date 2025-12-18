@@ -30,7 +30,8 @@ public class SanityManager : MonoBehaviour
     public Image sanityImage;
     public Sprite[] sanitySprites;
 
-    // Start is called before the first frame update
+    private Coroutine sanityCoroutine;
+
     void Start()
     {
         profile.TryGetSettings(out vignette);
@@ -40,7 +41,24 @@ public class SanityManager : MonoBehaviour
 
         vignette.intensity.value = 0;
 
-        StartCoroutine(MicSanityRoutine());
+        sanityCoroutine = StartCoroutine(MicSanityRoutine());
+    }
+
+    void OnEnable()
+    {
+        if (vignette != null && sanityCoroutine == null && !isInsane)
+        {
+            sanityCoroutine = StartCoroutine(MicSanityRoutine());
+        }
+    }
+
+    void OnDisable()
+    {
+        if (sanityCoroutine != null)
+        {
+            StopCoroutine(sanityCoroutine);
+            sanityCoroutine = null;
+        }
     }
 
     IEnumerator MicSanityRoutine()
@@ -123,5 +141,40 @@ public class SanityManager : MonoBehaviour
         }
 
         sanityImage.sprite = sanitySprites[index];
+    }
+
+    public void LowerSanity(float amount)
+    {
+        if (isInsane)
+        {
+            return;
+        }
+
+        if (sanitySlider == null)
+        {
+            sanitySlider = GetComponent<Slider>();
+        }
+
+        sanitySlider.value -= amount;
+        sanitySlider.value = Mathf.Clamp(sanitySlider.value, 0f, fullSanity);
+
+        if (vignette != null)
+        {
+            float newValue = (fullSanity - sanitySlider.value) / fullSanity;
+            vignette.intensity.value = Mathf.Clamp01(newValue) * 0.5f;
+        }
+
+        UpdateSanityImage();
+
+        if (sanitySlider.value <= 0)
+        {
+            isInsane = true;
+            Debug.Log("You're nuts!");
+            onInsane.Invoke();
+            if (vignette != null)
+            {
+                vignette.intensity.value = 0f;
+            }
+        }
     }
 }
