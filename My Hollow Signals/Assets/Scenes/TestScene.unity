@@ -2867,8 +2867,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 384685370}
   characterController: {fileID: 490301344}
-  moveAction: {fileID: -1680190386980627800, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
-  sprintAction: {fileID: -7471211009204490832, guid: 6b459642887074d46aadc08c13998fb7, type: 3}
+  moveAction: {fileID: -1680190386980627800, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
+  sprintAction: {fileID: -7471211009204490832, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
   requireGrounded: 1
   baseLocalOffset: {x: 0, y: 0, z: 0}
   moveThreshold: 0.1
