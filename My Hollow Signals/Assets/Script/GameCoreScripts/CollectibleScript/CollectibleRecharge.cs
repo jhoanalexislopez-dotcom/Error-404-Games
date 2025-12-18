@@ -13,6 +13,10 @@ public class CollectibleRecharge : MonoBehaviour, IInteractable
     [SerializeField] private string description = "Recharge";
     [SerializeField] private FlashlightController flashlight;
 
+    [Header("Sanity Settings")]
+    [Tooltip("Amount of sanity to lower when this item is collected")]
+    [SerializeField] private float sanityLossAmount = 0f;
+
     void Start()
     {
 
@@ -25,9 +29,17 @@ public class CollectibleRecharge : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (sanityLossAmount > 0f)
+        {
+            SanityManager sanityManager = FindObjectOfType<SanityManager>(true);
+            if (sanityManager != null)
+            {
+                sanityManager.LowerSanity(sanityLossAmount);
+            }
+        }
+
         flashlight.RechargeBattery();
 
-        // Destroy the collectible object
         Destroy(gameObject);
     }
 }

@@ -16,7 +16,11 @@ public class Collectible : MonoBehaviour, IInteractable
 
     [Header("Note Settings")]
     [SerializeField] private string noteTitle = "Note";
-    [SerializeField][TextArea(3, 6)] private string noteText = "This is a note..."; // Individual note text
+    [SerializeField][TextArea(3, 6)] private string noteText = "This is a note...";
+
+    [Header("Sanity Settings")]
+    [Tooltip("Amount of sanity to lower when this item is collected")]
+    [SerializeField] private float sanityLossAmount = 0f;
 
     void Start()
     {
@@ -30,33 +34,36 @@ public class Collectible : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        // Show the NoteUI
+        if (sanityLossAmount > 0f)
+        {
+            SanityManager sanityManager = FindObjectOfType<SanityManager>(true);
+            if (sanityManager != null)
+            {
+                sanityManager.LowerSanity(sanityLossAmount);
+            }
+        }
+
         if (noteUI != null)
         {
             noteUI.SetActive(true);
 
-            // Tell the NoteUIManager that a note is now active and set the text
             var noteUIManager = noteUI.GetComponent<NoteUIManager>();
             if (noteUIManager != null)
             {
-                noteUIManager.SetNoteActive(noteText); // Pass the individual note text
+                noteUIManager.SetNoteActive(noteText);
             }
 
-            // Find and use PauseMenuManager to pause the game
             PauseMenuManager pauseManager = FindObjectOfType<PauseMenuManager>();
             if (pauseManager != null)
             {
                 pauseManager.PauseGame();
 
-                // Disable the pause menu to prevent conflicts with note UI
                 pauseManager.enabled = false;
             }
 
-            // Unlock cursor for UI interaction
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
-            // Optionally disable player movement
             var playerController = FindObjectOfType<FirstPersonController>();
             if (playerController != null)
             {
@@ -66,14 +73,12 @@ public class Collectible : MonoBehaviour, IInteractable
             }
         }
 
-        // Add to inventory if it exists
         if (PlayerInventory.Instance != null)
         {
             PlayerInventory.Instance.AddItem(value);
             PlayerInventory.Instance.AddNote(noteTitle, noteText);
         }
 
-        // Destroy the collectible object
         Destroy(gameObject);
     }
 }

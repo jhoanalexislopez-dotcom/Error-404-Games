@@ -15772,7 +15772,7 @@ MonoBehaviour:
   cameraFocusTarget: {fileID: 0}
   cameraTurnSpeed: 5
   hideUI: 0
-  sanityLossAmount: 400
+  sanityLossAmount: 100
   triggerOnlyOnce: 1
 --- !u!1 &1937295555 stripped
 GameObject:
@@ -17917,6 +17917,10 @@ PrefabInstance:
       propertyPath: flashlight
       value: 
       objectReference: {fileID: 490301347}
+    - target: {fileID: 395617880081267455, guid: 3564b24ac919be84e96407309a0bca4a, type: 3}
+      propertyPath: sanityLossAmount
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4572672431704762209, guid: 3564b24ac919be84e96407309a0bca4a, type: 3}
       propertyPath: m_Name
       value: BatteryPrefab
