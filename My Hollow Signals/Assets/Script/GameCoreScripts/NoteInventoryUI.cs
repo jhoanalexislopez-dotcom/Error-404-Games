@@ -20,6 +20,11 @@ public class NoteInventoryUI : MonoBehaviour
     private InputSystem_Actions inputActions;
     private int currentlySelectedNoteIndex = -1;
 
+    [Header("3D Inventory")]
+    [SerializeField] private Inventory3DManager inventory3DManager;
+    [SerializeField] private bool use3DInventory = true;
+
+
     private void Awake()
     {
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
@@ -32,6 +37,23 @@ public class NoteInventoryUI : MonoBehaviour
             inventoryPanel.SetActive(false);
         }
     }
+
+    private void Update()
+    {
+        if (isInventoryOpen && use3DInventory && inventory3DManager != null)
+        {
+            NoteData selectedNote = inventory3DManager.GetSelectedNoteData();
+            if (selectedNote != null)
+            {
+                if (noteTitleText != null)
+                    noteTitleText.text = selectedNote.noteTitle;
+
+                if (noteContentText != null)
+                    noteContentText.text = selectedNote.noteContent;
+            }
+        }
+    }
+
 
     private void OnEnable()
     {
@@ -84,29 +106,51 @@ public class NoteInventoryUI : MonoBehaviour
                 playerInput.enabled = false;
         }
 
-        PopulateNoteList();
+        if (use3DInventory && inventory3DManager != null)
+        {
+            List<NoteData> notes = PlayerInventory.Instance.GetCollectedNotes();
+            inventory3DManager.EnableInventoryView(true);
+            inventory3DManager.SpawnInventoryItems(notes);
+
+            if (notes.Count > 0)
+            {
+                DisplayNote(notes.Count - 1);
+            }
+        }
+        else
+        {
+            PopulateNoteList();
+        }
     }
 
-    private void CloseInventory()
+
+private void CloseInventory()
+{
+    isInventoryOpen = false;
+    inventoryPanel.SetActive(false);
+
+    Time.timeScale = 1f;
+
+    if (pauseMenuManager != null)
     {
-        isInventoryOpen = false;
-        inventoryPanel.SetActive(false);
-
-        Time.timeScale = 1f;
-
-        if (pauseMenuManager != null)
-        {
-            pauseMenuManager.enabled = true;
-        }
-
-        var playerController = FindObjectOfType<FirstPersonController>();
-        if (playerController != null)
-        {
-            var playerInput = playerController.GetComponent<PlayerInput>();
-            if (playerInput != null)
-                playerInput.enabled = true;
-        }
+        pauseMenuManager.enabled = true;
     }
+
+    var playerController = FindObjectOfType<FirstPersonController>();
+    if (playerController != null)
+    {
+        var playerInput = playerController.GetComponent<PlayerInput>();
+        if (playerInput != null)
+            playerInput.enabled = true;
+    }
+
+    if (use3DInventory && inventory3DManager != null)
+    {
+        inventory3DManager.EnableInventoryView(false);
+        inventory3DManager.ClearInventoryItems();
+    }
+}
+
 
     private void PopulateNoteList()
     {

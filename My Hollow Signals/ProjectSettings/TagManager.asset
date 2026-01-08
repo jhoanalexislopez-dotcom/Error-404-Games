@@ -16,8 +16,8 @@ TagManager:
   - Weapon
   - Text
   - PostProcessing
-  - 
-  - 
+  - InventoryItems
+  - InventoryUI
   - 
   - 
   - 
