@@ -34,6 +34,12 @@ public class Collectible : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (PlayerInventory.Instance != null)
+        {
+            PlayerInventory.Instance.AddItem(value);
+            PlayerInventory.Instance.AddNote(noteTitle, noteText);
+        }
+
         if (sanityLossAmount > 0f)
         {
             SanityManager sanityManager = FindObjectOfType<SanityManager>(true);
@@ -57,7 +63,6 @@ public class Collectible : MonoBehaviour, IInteractable
             if (pauseManager != null)
             {
                 pauseManager.PauseGame();
-
                 pauseManager.enabled = false;
             }
 
@@ -71,12 +76,6 @@ public class Collectible : MonoBehaviour, IInteractable
                 if (playerInput != null)
                     playerInput.enabled = false;
             }
-        }
-
-        if (PlayerInventory.Instance != null)
-        {
-            PlayerInventory.Instance.AddItem(value);
-            PlayerInventory.Instance.AddNote(noteTitle, noteText);
         }
 
         Destroy(gameObject);
