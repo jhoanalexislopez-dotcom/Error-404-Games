@@ -7,14 +7,12 @@ public class Inventory3DController : MonoBehaviour
 {
     [Header("Container Settings")]
     [SerializeField] private Transform inventoryContainer;
+    [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private Camera inventoryCamera;
     
     [Header("Movement Settings")]
     [SerializeField] private float moveDistance = 2f;
     [SerializeField] private float moveSpeed = 5f;
-    
-    [Header("Item Bounds")]
-    [SerializeField] private int minItemIndex = 0;
-    [SerializeField] private int maxItemIndex = 4;
     
     [Header("Rotation Settings")]
     [SerializeField] private float rotationSpeed = 50f;
@@ -28,10 +26,13 @@ public class Inventory3DController : MonoBehaviour
     private int currentItemIndex = 0;
     private Vector3 targetPosition;
     private bool isMoving = false;
+    private bool isInventoryOpen = false;
     private List<Transform> inventoryItems = new List<Transform>();
+    private List<NoteData> collectedNotes = new List<NoteData>();
     private Dictionary<Transform, Vector3> originalEulerAngles = new Dictionary<Transform, Vector3>();
     private Transform currentlySelectedItem;
     private Transform previouslySelectedItem;
+    private PlayerInput playerInput;
 
     private void Awake()
     {
@@ -39,12 +40,14 @@ public class Inventory3DController : MonoBehaviour
         
         inputActions.Player.Previous.performed += OnPreviousPressed;
         inputActions.Player.Next.performed += OnNextPressed;
+        inputActions.Player.Inventory.performed += OnInventoryPressed;
         
         if (inventoryContainer != null)
         {
             targetPosition = inventoryContainer.localPosition;
-            CacheInventoryItems();
         }
+        
+        CloseInventory();
     }
 
     private void CacheInventoryItems()
@@ -52,17 +55,117 @@ public class Inventory3DController : MonoBehaviour
         inventoryItems.Clear();
         originalEulerAngles.Clear();
         
+        if (PlayerInventory.Instance == null)
+        {
+            Debug.LogWarning("PlayerInventory instance not found!");
+            return;
+        }
+        
+        collectedNotes = PlayerInventory.Instance.GetCollectedNotes();
+        
+        int childIndex = 0;
         foreach (Transform child in inventoryContainer)
         {
-            inventoryItems.Add(child);
-            originalEulerAngles[child] = child.localEulerAngles;
+            if (childIndex < collectedNotes.Count)
+            {
+                child.gameObject.SetActive(true);
+                inventoryItems.Add(child);
+                originalEulerAngles[child] = child.localEulerAngles;
+            }
+            else
+            {
+                child.gameObject.SetActive(false);
+            }
+            childIndex++;
         }
         
         if (inventoryItems.Count > 0)
         {
+            currentItemIndex = 0;
             currentlySelectedItem = inventoryItems[currentItemIndex];
-            UpdateDisplayText();
+            MoveToItem(currentItemIndex);
         }
+        else
+        {
+            ClearDisplayText();
+        }
+    }
+    
+    private void OnInventoryPressed(InputAction.CallbackContext context)
+    {
+        ToggleInventory();
+    }
+    
+    public void ToggleInventory()
+    {
+        if (isInventoryOpen)
+        {
+            CloseInventory();
+        }
+        else
+        {
+            OpenInventory();
+        }
+    }
+    
+    private void OpenInventory()
+    {
+        CacheInventoryItems();
+        
+        if (inventoryItems.Count == 0)
+        {
+            Debug.Log("No notes collected yet!");
+            return;
+        }
+        
+        isInventoryOpen = true;
+        
+        if (inventoryUI != null)
+        {
+            inventoryUI.SetActive(true);
+        }
+        
+        if (inventoryCamera != null)
+        {
+            inventoryCamera.enabled = true;
+        }
+        
+        playerInput = FindObjectOfType<FirstPersonController>()?.GetComponent<PlayerInput>();
+        if (playerInput != null)
+        {
+            playerInput.enabled = false;
+        }
+        
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
+        UpdateDisplayText();
+    }
+    
+    private void CloseInventory()
+    {
+        isInventoryOpen = false;
+        
+        if (inventoryUI != null)
+        {
+            inventoryUI.SetActive(false);
+        }
+        
+        if (inventoryCamera != null)
+        {
+            inventoryCamera.enabled = false;
+        }
+        
+        if (playerInput != null)
+        {
+            playerInput.enabled = true;
+            playerInput = null;
+        }
+        
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void OnEnable()
@@ -77,12 +180,14 @@ public class Inventory3DController : MonoBehaviour
 
     private void Update()
     {
+        if (!isInventoryOpen) return;
+        
         if (isMoving && inventoryContainer != null)
         {
             inventoryContainer.localPosition = Vector3.Lerp(
                 inventoryContainer.localPosition, 
                 targetPosition, 
-                Time.deltaTime * moveSpeed
+                Time.unscaledDeltaTime * moveSpeed
             );
 
             if (Vector3.Distance(inventoryContainer.localPosition, targetPosition) < 0.01f)
@@ -97,7 +202,7 @@ public class Inventory3DController : MonoBehaviour
             Vector3 currentEuler = currentlySelectedItem.localEulerAngles;
             Vector3 originalEuler = originalEulerAngles[currentlySelectedItem];
             
-            currentEuler.y += rotationSpeed * Time.deltaTime;
+            currentEuler.y += rotationSpeed * Time.unscaledDeltaTime;
             
             currentEuler.x = originalEuler.x;
             currentEuler.z = originalEuler.z;
@@ -113,7 +218,7 @@ public class Inventory3DController : MonoBehaviour
                 Vector3 originalEuler = originalEulerAngles[previouslySelectedItem];
                 
                 float yDiff = Mathf.DeltaAngle(currentEuler.y, originalEuler.y);
-                currentEuler.y = Mathf.LerpAngle(currentEuler.y, originalEuler.y, Time.deltaTime * returnRotationSpeed);
+                currentEuler.y = Mathf.LerpAngle(currentEuler.y, originalEuler.y, Time.unscaledDeltaTime * returnRotationSpeed);
                 
                 currentEuler.x = originalEuler.x;
                 currentEuler.z = originalEuler.z;
@@ -141,7 +246,7 @@ public class Inventory3DController : MonoBehaviour
 
     private void NavigateToPreviousItem()
     {
-        if (currentItemIndex > minItemIndex)
+        if (currentItemIndex > 0)
         {
             currentItemIndex--;
             MoveToItem(currentItemIndex);
@@ -150,7 +255,7 @@ public class Inventory3DController : MonoBehaviour
 
     private void NavigateToNextItem()
     {
-        if (currentItemIndex < maxItemIndex)
+        if (currentItemIndex < inventoryItems.Count - 1)
         {
             currentItemIndex++;
             MoveToItem(currentItemIndex);
@@ -173,73 +278,23 @@ public class Inventory3DController : MonoBehaviour
 
     private void UpdateDisplayText()
     {
-        if (currentlySelectedItem == null)
+        if (currentlySelectedItem == null || currentItemIndex >= collectedNotes.Count)
         {
             ClearDisplayText();
             return;
         }
         
-        Collectible collectible = currentlySelectedItem.GetComponent<Collectible>();
-        if (collectible != null)
+        NoteData currentNote = collectedNotes[currentItemIndex];
+        
+        if (titleText != null)
         {
-            if (titleText != null)
-            {
-                titleText.text = GetCollectibleTitle(collectible);
-            }
-            
-            if (contentText != null)
-            {
-                contentText.text = GetCollectibleContent(collectible);
-            }
+            titleText.text = currentNote.noteTitle;
         }
-        else
+        
+        if (contentText != null)
         {
-            CollectibleRecharge recharge = currentlySelectedItem.GetComponent<CollectibleRecharge>();
-            if (recharge != null)
-            {
-                if (titleText != null)
-                {
-                    titleText.text = currentlySelectedItem.name;
-                }
-                
-                if (contentText != null)
-                {
-                    contentText.text = "Battery item - restores flashlight charge";
-                }
-            }
-            else
-            {
-                if (titleText != null)
-                {
-                    titleText.text = currentlySelectedItem.name;
-                }
-                
-                if (contentText != null)
-                {
-                    contentText.text = "No description available";
-                }
-            }
+            contentText.text = currentNote.noteContent;
         }
-    }
-
-    private string GetCollectibleTitle(Collectible collectible)
-    {
-        var field = collectible.GetType().GetField("noteTitle", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        if (field != null)
-        {
-            return field.GetValue(collectible) as string ?? "Unknown Item";
-        }
-        return "Unknown Item";
-    }
-
-    private string GetCollectibleContent(Collectible collectible)
-    {
-        var field = collectible.GetType().GetField("noteText", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-        if (field != null)
-        {
-            return field.GetValue(collectible) as string ?? "No description available";
-        }
-        return "No description available";
     }
 
     private void ClearDisplayText()
@@ -255,18 +310,13 @@ public class Inventory3DController : MonoBehaviour
         }
     }
 
-    public void SetCurrentItem(int index)
-    {
-        currentItemIndex = Mathf.Clamp(index, minItemIndex, maxItemIndex);
-        MoveToItem(currentItemIndex);
-    }
-
     private void OnDestroy()
     {
         if (inputActions != null)
         {
             inputActions.Player.Previous.performed -= OnPreviousPressed;
             inputActions.Player.Next.performed -= OnNextPressed;
+            inputActions.Player.Inventory.performed -= OnInventoryPressed;
             inputActions.Dispose();
         }
     }

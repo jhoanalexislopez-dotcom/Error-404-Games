@@ -6041,14 +6041,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2556541085933029647, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344798506074563826, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5530090884887891387, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: m_Name
       value: Inventory3D
       objectReference: {fileID: 0}
     - target: {fileID: 5530090884887891387, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: inventoryUI
+      value: 
+      objectReference: {fileID: 1451842850}
+    - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: inventoryCamera
+      value: 
+      objectReference: {fileID: 1832460186}
     - target: {fileID: 8395701560865187144, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -16.5931
@@ -13231,6 +13247,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1451842850 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8317115380293356131, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+  m_PrefabInstance: {fileID: 623885352}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1455825478 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5435876712256277641, guid: cb8e1e75afef6a2498e8ad5a6b12efa4, type: 3}
@@ -15098,6 +15119,11 @@ GameObject:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5907635687362747458, guid: e7bbcb1130996704bad67443a709705b, type: 3}
   m_PrefabInstance: {fileID: 5632539499555265244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1832460186 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4344798506074563826, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+  m_PrefabInstance: {fileID: 623885352}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1834843684 stripped
 GameObject:
