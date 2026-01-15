@@ -147,6 +147,8 @@ public class Inventory3DController : MonoBehaviour
     {
         isInventoryOpen = false;
         
+        ResetAllRotations();
+        
         if (inventoryUI != null)
         {
             inventoryUI.SetActive(false);
@@ -166,6 +168,19 @@ public class Inventory3DController : MonoBehaviour
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+    
+    private void ResetAllRotations()
+    {
+        foreach (Transform item in inventoryItems)
+        {
+            if (originalEulerAngles.ContainsKey(item))
+            {
+                item.localEulerAngles = originalEulerAngles[item];
+            }
+        }
+        
+        previouslySelectedItem = null;
     }
 
     private void OnEnable()
