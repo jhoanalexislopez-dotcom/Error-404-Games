@@ -3696,55 +3696,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -7553471771475561135, guid: f581600d1587b654691812f14db40ddd, type: 3}
---- !u!1 &423002930
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 423002931}
-  - component: {fileID: 423002932}
-  m_Layer: 0
-  m_Name: OldNoteInventoryManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &423002931
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423002930}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.75, y: 1.9060013, z: -0.2909972}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &423002932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 423002930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93aaab27305322848a0e2914162c0b92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryPanel: {fileID: 203711904}
-  noteListContainer: {fileID: 862362455}
-  noteButtonPrefab: {fileID: 62414766036826323, guid: 5c936c1dbd8917447abb03d0c1de2c47, type: 3}
-  noteContentText: {fileID: 485172876}
-  noteTitleText: {fileID: 1015596359}
 --- !u!1 &430158216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7010399642806051312, guid: cb8e1e75afef6a2498e8ad5a6b12efa4, type: 3}
@@ -6157,9 +6108,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 397781106}
     - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: openSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fd831c96456d3c54fa9bf0546fd4df85, type: 3}
+    - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: closeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fd831c96456d3c54fa9bf0546fd4df85, type: 3}
+    - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 543942470}
+    - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 1451842850}
+    - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: selectSound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: navigateSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2415c7b019091024dbadd71600c46c47, type: 3}
     - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: noteUIManager
       value: 
@@ -18512,5 +18483,4 @@ SceneRoots:
   - {fileID: 22547775}
   - {fileID: 603584692}
   - {fileID: 560228173}
-  - {fileID: 423002931}
   - {fileID: 623885352}

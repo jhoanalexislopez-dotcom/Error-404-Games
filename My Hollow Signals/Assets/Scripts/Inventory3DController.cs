@@ -25,6 +25,13 @@ public class Inventory3DController : MonoBehaviour
     [Header("Note UI")]
     [SerializeField] private NoteUIManager noteUIManager;
     
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip openSound;
+    [SerializeField] private AudioClip closeSound;
+    [SerializeField] private AudioClip navigateSound;
+    [SerializeField] private AudioClip selectSound;
+    
     private InputSystem_Actions inputActions;
     private int currentItemIndex = 0;
     private Vector3 targetPosition;
@@ -60,6 +67,16 @@ public class Inventory3DController : MonoBehaviour
         if (pauseMenuManager == null)
         {
             pauseMenuManager = FindObjectOfType<PauseMenuManager>();
+        }
+        
+        if (audioSource == null)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+                audioSource.playOnAwake = false;
+            }
         }
         
         CloseInventory();
@@ -150,6 +167,8 @@ public class Inventory3DController : MonoBehaviour
         NoteData selectedNote = collectedNotes[currentItemIndex];
         Debug.Log("Opening note: " + selectedNote.noteTitle);
         
+        PlaySound(selectSound);
+        
         CloseInventory();
         
         noteUIManager.gameObject.SetActive(true);
@@ -213,6 +232,8 @@ public class Inventory3DController : MonoBehaviour
         
         isInventoryOpen = true;
         
+        PlaySound(openSound);
+        
         if (inventoryUI != null)
         {
             inventoryUI.SetActive(true);
@@ -232,6 +253,11 @@ public class Inventory3DController : MonoBehaviour
     
     private void CloseInventory()
     {
+        if (isInventoryOpen)
+        {
+            PlaySound(closeSound);
+        }
+        
         isInventoryOpen = false;
         
         ResetAllRotations();
@@ -347,6 +373,7 @@ public class Inventory3DController : MonoBehaviour
         {
             currentItemIndex--;
             MoveToItem(currentItemIndex);
+            PlaySound(navigateSound);
         }
     }
 
@@ -356,6 +383,7 @@ public class Inventory3DController : MonoBehaviour
         {
             currentItemIndex++;
             MoveToItem(currentItemIndex);
+            PlaySound(navigateSound);
         }
     }
 
@@ -404,6 +432,14 @@ public class Inventory3DController : MonoBehaviour
         if (hintText != null)
         {
             hintText.text = "";
+        }
+    }
+    
+    private void PlaySound(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            audioSource.PlayOneShot(clip);
         }
     }
 
