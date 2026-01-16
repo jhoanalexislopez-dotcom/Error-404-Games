@@ -766,6 +766,11 @@ Transform:
   - {fileID: 842803571}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &108668741 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 601120737852400702, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+  m_PrefabInstance: {fileID: 1014072042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &113319429 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8626158941783684756, guid: cb8e1e75afef6a2498e8ad5a6b12efa4, type: 3}
@@ -4427,6 +4432,7 @@ GameObject:
   - component: {fileID: 490301342}
   - component: {fileID: 490301341}
   - component: {fileID: 490301349}
+  - component: {fileID: 490301350}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4642,6 +4648,20 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &490301350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490301340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466821fa80720b8419efc62074bc288e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mobileCanvas: {fileID: 108668741}
+  playerController: {fileID: 490301343}
 --- !u!1 &496224083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -785227680258626056, guid: cb8e1e75afef6a2498e8ad5a6b12efa4, type: 3}
@@ -5549,11 +5569,88 @@ MonoBehaviour:
   cameraTurnSpeed: 5
   hideUI: 1
   sanityLossAmount: 200
-  addPhoneMessages: 0
-  addTimestamp: 0
-  timestampDay: 
-  timestampTime: 
-  phoneMessages: []
+  addPhoneMessages: 1
+  phoneMessages:
+  - entryType: 1
+    isPlayerMessage: 0
+    messageText: 
+    timestampDay: Yesterday
+    timestampTime: 12:00 PM
+  - entryType: 0
+    isPlayerMessage: 0
+    messageText: Hi!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 1
+    isPlayerMessage: 1
+    messageText: 
+    timestampDay: Today
+    timestampTime: 12:01 PM
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
+  - entryType: 0
+    isPlayerMessage: 1
+    messageText: Hey!
+    timestampDay: 
+    timestampTime: 
   triggerOnlyOnce: 1
 --- !u!65 &583962703
 BoxCollider:
@@ -10337,10 +10434,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 601120737852400702, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 710263193004244964, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863934933895558502, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_Horizontal
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1894468843543433133, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
@@ -10353,6 +10454,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1966473934206695196, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1966473934206695196, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2980355120474247580, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
@@ -10369,15 +10474,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3693137224624340322, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3693137224624340322, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364021608954183585, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364021608954183585, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364021608954183585, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364021608954183585, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 4433509322920314160, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606557090973524135, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_Direction
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4635780525851087277, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -10385,19 +10510,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5833278515935124122, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5833278515935124122, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5833278515935124122, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -17
       objectReference: {fileID: 0}
     - target: {fileID: 6259562580671424956, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259562580671424956, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -469.00034
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259562580671424956, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 6501440293387665114, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_Pivot.x
@@ -10495,7 +10628,8 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8078120633621137234, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -16322,14 +16456,27 @@ MonoBehaviour:
   hideUI: 0
   sanityLossAmount: 100
   addPhoneMessages: 1
-  addTimestamp: 1
-  timestampDay: Yesterday
-  timestampTime: 12:00 PM
   phoneMessages:
-  - isPlayerMessage: 1
+  - entryType: 1
+    isPlayerMessage: 0
+    messageText: 
+    timestampDay: Yesterday
+    timestampTime: 12:00 PM
+  - entryType: 0
+    isPlayerMessage: 0
     messageText: Hi!
-  - isPlayerMessage: 0
+    timestampDay: 
+    timestampTime: 
+  - entryType: 1
+    isPlayerMessage: 1
+    messageText: 
+    timestampDay: Today
+    timestampTime: 12:01 PM
+  - entryType: 0
+    isPlayerMessage: 1
     messageText: Hey!
+    timestampDay: 
+    timestampTime: 
   triggerOnlyOnce: 1
 --- !u!1 &1937295555 stripped
 GameObject:

@@ -19,6 +19,7 @@ public class NoteUIManager : MonoBehaviour
     private InputSystem_Actions inputActions;
     private FirstPersonController playerController;
     private PauseMenuManager pauseMenuManager;
+    private MobilePhoneToggle mobilePhoneToggle;
     private CursorLockMode originalCursorLockMode;
     private bool originalCursorVisible;
     private bool isNoteActive = false;
@@ -28,6 +29,7 @@ public class NoteUIManager : MonoBehaviour
         inputActions = new InputSystem_Actions();
         playerController = FindObjectOfType<FirstPersonController>();
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
+        mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
 
         // Find the note text component if not assigned
         if (noteText == null && notePanel != null)
@@ -112,6 +114,11 @@ public class NoteUIManager : MonoBehaviour
     // Public method for Collectible to set note text and make it active
     public void SetNoteActive(string noteText = "")
     {
+        if (mobilePhoneToggle != null && mobilePhoneToggle.IsPhoneVisible)
+        {
+            return;
+        }
+        
         isNoteActive = true;
 
         // Set the note text if provided

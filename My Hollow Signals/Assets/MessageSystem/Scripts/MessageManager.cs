@@ -1,6 +1,8 @@
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Collections;
 
 public class MessageManager : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class MessageManager : MonoBehaviour
     public GameObject ContactSms_Ins;
     public GameObject CurrentTime_Ins;
 
+    private ScrollRect scrollRect;
+
     private void Awake()
     {
         if(instance == null)
@@ -22,6 +26,8 @@ public class MessageManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        scrollRect = Content_Parent.GetComponentInParent<ScrollRect>();
     }
 
     void Start()
@@ -49,6 +55,8 @@ public class MessageManager : MonoBehaviour
         {
             txt.text = Message;
         }
+        
+        StartCoroutine(ScrollToBottom());
     }
 
     public void AddTimestamp()
@@ -75,6 +83,19 @@ public class MessageManager : MonoBehaviour
             {
                 txt.text = dayLabel;
             }
+        }
+        
+        StartCoroutine(ScrollToBottom());
+    }
+    
+    private IEnumerator ScrollToBottom()
+    {
+        yield return new WaitForEndOfFrame();
+        
+        if (scrollRect != null)
+        {
+            Canvas.ForceUpdateCanvases();
+            scrollRect.verticalNormalizedPosition = 0f;
         }
     }
 }

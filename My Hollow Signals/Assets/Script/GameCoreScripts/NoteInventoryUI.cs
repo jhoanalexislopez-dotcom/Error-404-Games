@@ -19,10 +19,14 @@ public class NoteInventoryUI : MonoBehaviour
     private PauseMenuManager pauseMenuManager;
     private InputSystem_Actions inputActions;
     private int currentlySelectedNoteIndex = -1;
+    private MobilePhoneToggle mobilePhoneToggle;
+    
+    public bool IsInventoryOpen => isInventoryOpen;
 
     private void Awake()
     {
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
+        mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
         inputActions = new InputSystem_Actions();
 
         inputActions.Player.Inventory.performed += OnInventoryPressed;
@@ -45,6 +49,11 @@ public class NoteInventoryUI : MonoBehaviour
 
     private void OnInventoryPressed(InputAction.CallbackContext context)
     {
+        if (mobilePhoneToggle != null && mobilePhoneToggle.IsPhoneVisible)
+        {
+            return;
+        }
+        
         if (isInventoryOpen)
         {
             CloseInventory();

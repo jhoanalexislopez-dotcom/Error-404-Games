@@ -24,6 +24,7 @@ public class PauseMenuManager : MonoBehaviour
     private InputSystem_Actions inputActions;
     private FirstPersonController playerController;
     private GameManager gameManager;
+    private MobilePhoneToggle mobilePhoneToggle;
 
     // Store original cursor state
     private CursorLockMode originalCursorLockMode;
@@ -40,6 +41,7 @@ public class PauseMenuManager : MonoBehaviour
         // Find player components
         playerController = FindObjectOfType<FirstPersonController>();
         gameManager = FindObjectOfType<GameManager>();
+        mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
 
         // Set up button events
         if (resumeButton != null)
@@ -89,6 +91,11 @@ public class PauseMenuManager : MonoBehaviour
 
     public void TogglePause()
     {
+        if (mobilePhoneToggle != null && mobilePhoneToggle.IsPhoneVisible)
+        {
+            return;
+        }
+        
         if (isPaused)
             ResumeGame();
         else

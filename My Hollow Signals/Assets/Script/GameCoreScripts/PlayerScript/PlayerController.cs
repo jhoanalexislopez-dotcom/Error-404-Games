@@ -25,7 +25,7 @@ public class FirstPersonController : MonoBehaviour
 
     [Header("Cinemachine")]
     public Transform cameraRoot;
-    [Tooltip("Sensibilidad al usar ratón")]
+    [Tooltip("Sensibilidad al usar ratï¿½n")]
     public float mouseSensitivity = 1f;
     [Tooltip("Sensibilidad al usar gamepad")]
     public float gamepadSensitivity = 3f;
@@ -49,7 +49,7 @@ public class FirstPersonController : MonoBehaviour
     private bool walkPressed;
     private bool crouchPressed;
 
-    // Último dispositivo usado
+    // ï¿½ltimo dispositivo usado
     private InputDevice lastUsedDevice;
 
     void Awake()
@@ -67,6 +67,12 @@ public class FirstPersonController : MonoBehaviour
         // --- Mirada ---
         inputActions.Player.Look.performed += ctx =>
         {
+            if (CinematicManager.IsCinematicActive)
+            {
+                lookInput = Vector2.zero;
+                return;
+            }
+            
             lookInput = ctx.ReadValue<Vector2>();
             lastUsedDevice = ctx.control.device; // Guardamos el dispositivo
 
@@ -110,10 +116,15 @@ public class FirstPersonController : MonoBehaviour
     {
         inputActions.Player.Disable();
     }
+    
+    public void ResetLookInput()
+    {
+        lookInput = Vector2.zero;
+    }
 
     void Start()
     {
-        // Forzar cámara mirando al frente
+        // Forzar cï¿½mara mirando al frente
         xRotation = 0f;
 
         if (cameraRoot != null)
@@ -122,6 +133,9 @@ public class FirstPersonController : MonoBehaviour
 
     void Update()
     {
+        if (CinematicManager.IsCinematicActive)
+            return;
+            
         // --- Ground Check ---
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
@@ -142,7 +156,7 @@ public class FirstPersonController : MonoBehaviour
         float targetHeight = crouchPressed ? crouchHeight : originalHeight;
         controller.height = Mathf.Lerp(controller.height, targetHeight, Time.deltaTime * 10f);
 
-        // --- Cámara suavizada al agacharse ---
+        // --- Cï¿½mara suavizada al agacharse ---
         Vector3 targetCameraPos = crouchPressed
             ? originalCameraPos + Vector3.down * crouchCameraOffset
             : originalCameraPos;
@@ -152,7 +166,7 @@ public class FirstPersonController : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        // --- Rotación de cámara ---
+        // --- Rotaciï¿½n de cï¿½mara ---
         // Make sensitivity frame rate independent
         float frameRateMultiplier = Time.unscaledDeltaTime * 60f; // Normalize to 60 FPS
         float mouseX = lookInput.x * currentSensitivity * frameRateMultiplier;

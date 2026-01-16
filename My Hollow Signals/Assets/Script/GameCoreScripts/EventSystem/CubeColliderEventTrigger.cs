@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class CubeColliderEventTrigger : MonoBehaviour
 {
@@ -31,36 +32,52 @@ public class CubeColliderEventTrigger : MonoBehaviour
     public bool useCinematicCamera = true;
     public Transform cameraFocusTarget;
     public float cameraTurnSpeed = 5f;
-    
+
     [Header("UI Settings")]
-    [Tooltip("Hide player UI elements during the event (battery, item counter, etc.)")]
     public bool hideUI = false;
 
     [Header("Sanity Settings")]
-    [Tooltip("Amount of sanity to lower when this event triggers")]
     public float sanityLossAmount = 0f;
+
+    // ==========================
+    // PHONE MESSAGE SYSTEM
+    // ==========================
 
     [Header("Phone Message Settings")]
     public bool addPhoneMessages = false;
-    [Tooltip("Add a timestamp before the messages")]
-    public bool addTimestamp = false;
-    [Tooltip("Custom day label (leave empty for current day)")]
-    public string timestampDay = "";
-    [Tooltip("Custom time text (leave empty for current time)")]
-    public string timestampTime = "";
+
+    public enum PhoneEntryType
+    {
+        Message,
+        Timestamp
+    }
+
     [System.Serializable]
     public struct PhoneMessage
     {
+        public PhoneEntryType entryType;
+
         public bool isPlayerMessage;
+
         [TextArea]
         public string messageText;
+
+        public string timestampDay;
+        public string timestampTime;
     }
+
     public PhoneMessage[] phoneMessages;
+
+    // ==========================
+    // INTERNAL STATE
+    // ==========================
 
     [Header("Trigger Settings")]
     public bool triggerOnlyOnce = true;
+
     private bool hasTriggered = false;
     private bool hasFinishedMainEvent = false;
+    private bool hasShownPostEventDialogue = false;
 
     private bool inCube = false;
     private bool cinematicActive = false;
@@ -69,13 +86,6 @@ public class CubeColliderEventTrigger : MonoBehaviour
     private Transform player;
     private MonoBehaviour playerController;
 
-    private Quaternion originalCameraRotation;
-    private Vector3 originalCameraPosition;
-
-    private bool thisCinematicChangedCamera = false;
-
-    private bool hasShownPostEventDialogue = false;
-    
     private GameObject uiToHide;
     private bool wasUIActive;
 
@@ -84,12 +94,9 @@ public class CubeColliderEventTrigger : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         playerController = player?.GetComponent<MonoBehaviour>();
 
-        // Hide the cube mesh
         MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
         if (meshRenderer != null)
-        {
             meshRenderer.enabled = false;
-        }
     }
 
     private void Update()
@@ -113,18 +120,16 @@ public class CubeColliderEventTrigger : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        // If the main event already happened and post-event lines exist → play them
         if (hasFinishedMainEvent && postEventDialogueLines.Length > 0)
         {
-            if (!hasShownPostEventDialogue)  // Add this check
+            if (!hasShownPostEventDialogue)
             {
                 PlayPostEventDialogue();
-                hasShownPostEventDialogue = true;  // Mark as shown
+                hasShownPostEventDialogue = true;
             }
             return;
         }
 
-        // If main event can only happen once and already did → ignore
         if (triggerOnlyOnce && hasTriggered)
             return;
 
@@ -133,6 +138,9 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         inCube = true;
         hasTriggered = true;
+
+        // 🔥 ADD PHONE MESSAGES IMMEDIATELY
+        AddPhoneMessagesIfEnabled();
 
         StartCinematic();
 
@@ -143,13 +151,11 @@ public class CubeColliderEventTrigger : MonoBehaviour
             StopCoroutine(typingCoroutine);
 
         typingCoroutine = StartCoroutine(PlayDialogueSequence());
-
-
     }
 
-    // ------------------------------
-    // MAIN EVENT DIALOGUE
-    // ------------------------------
+    // ==========================
+    // MAIN DIALOGUE
+    // ==========================
 
     private IEnumerator PlayDialogueSequence()
     {
@@ -166,21 +172,17 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         hasFinishedMainEvent = true;
 
-        AddPhoneMessagesIfEnabled();
-
-        // Automatically show post-event dialogue if it exists
         if (postEventDialogueLines.Length > 0 && !hasShownPostEventDialogue)
         {
-            yield return new WaitForSeconds(0.5f); // Optional small delay
+            yield return new WaitForSeconds(0.5f);
             hasShownPostEventDialogue = true;
             yield return StartCoroutine(PlayPostEventDialogueSequence());
         }
     }
 
-
-    // ------------------------------
+    // ==========================
     // POST EVENT DIALOGUE
-    // ------------------------------
+    // ==========================
 
     private void PlayPostEventDialogue()
     {
@@ -199,13 +201,12 @@ public class CubeColliderEventTrigger : MonoBehaviour
         }
 
         yield return new WaitForSeconds(autoHideDelay);
-
         subtext.text = "";
     }
 
-    // ------------------------------
+    // ==========================
     // TYPEWRITER
-    // ------------------------------
+    // ==========================
 
     private IEnumerator TypeText(string text)
     {
@@ -218,9 +219,9 @@ public class CubeColliderEventTrigger : MonoBehaviour
         }
     }
 
-    // ------------------------------
-    // CINEMATIC CONTROL
-    // ------------------------------
+    // ==========================
+    // PHONE MESSAGE HANDLING
+    // ==========================
 
     private void AddPhoneMessagesIfEnabled()
     {
@@ -229,33 +230,45 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         if (MessageManager.instance == null)
         {
-            Debug.LogWarning("MessageManager instance not found. Cannot add phone messages.");
+            Debug.LogWarning("MessageManager instance not found.");
             return;
         }
 
-        if (addTimestamp)
+        foreach (PhoneMessage entry in phoneMessages)
         {
-            if (string.IsNullOrEmpty(timestampDay) && string.IsNullOrEmpty(timestampTime))
+            if (entry.entryType == PhoneEntryType.Timestamp)
             {
-                MessageManager.instance.AddTimestamp();
+                if (string.IsNullOrEmpty(entry.timestampDay) &&
+                    string.IsNullOrEmpty(entry.timestampTime))
+                {
+                    MessageManager.instance.AddTimestamp();
+                }
+                else
+                {
+                    string day = string.IsNullOrEmpty(entry.timestampDay)
+                        ? DateTime.Now.ToString("dddd")
+                        : entry.timestampDay;
+
+                    string time = string.IsNullOrEmpty(entry.timestampTime)
+                        ? DateTime.Now.ToString("h:mm tt")
+                        : entry.timestampTime;
+
+                    MessageManager.instance.AddTimestamp(day, time);
+                }
             }
             else
             {
-                string day = string.IsNullOrEmpty(timestampDay) ? System.DateTime.Now.ToString("dddd") : timestampDay;
-                string time = string.IsNullOrEmpty(timestampTime) ? System.DateTime.Now.ToString("h:mm tt") : timestampTime;
-                MessageManager.instance.AddTimestamp(day, time);
+                MessageManager.instance.AddMessage(
+                    entry.isPlayerMessage,
+                    entry.messageText
+                );
             }
-        }
-
-        foreach (PhoneMessage message in phoneMessages)
-        {
-            MessageManager.instance.AddMessage(message.isPlayerMessage, message.messageText);
         }
     }
 
-    // ------------------------------
+    // ==========================
     // CINEMATIC CONTROL
-    // ------------------------------
+    // ==========================
 
     private void StartCinematic()
     {
@@ -264,11 +277,10 @@ public class CubeColliderEventTrigger : MonoBehaviour
         if (lockPlayer)
         {
             CinematicManager.StartCinematic();
-            
             if (playerController != null)
                 playerController.enabled = false;
         }
-        
+
         if (hideUI)
         {
             uiToHide = GameObject.Find("GameUI");
@@ -283,24 +295,7 @@ public class CubeColliderEventTrigger : MonoBehaviour
         {
             SanityManager sanityManager = FindObjectOfType<SanityManager>(true);
             if (sanityManager != null)
-            {
                 sanityManager.LowerSanity(sanityLossAmount);
-            }
-        }
-
-        if (useCinematicCamera)
-        {
-            Camera cam = Camera.main;
-            if (cam != null)
-            {
-                originalCameraRotation = cam.transform.rotation;
-                originalCameraPosition = cam.transform.position;
-                thisCinematicChangedCamera = true;
-            }
-        }
-        else
-        {
-            thisCinematicChangedCamera = false;
         }
     }
 
@@ -311,25 +306,14 @@ public class CubeColliderEventTrigger : MonoBehaviour
         if (lockPlayer)
         {
             CinematicManager.EndCinematic();
-            
             if (playerController != null)
                 playerController.enabled = true;
         }
-        
+
         if (hideUI && uiToHide != null)
         {
             uiToHide.SetActive(wasUIActive);
             uiToHide = null;
         }
-
-        Camera cam = Camera.main;
-
-        if (thisCinematicChangedCamera && cam != null)
-        {
-            cam.transform.rotation = originalCameraRotation;
-            cam.transform.position = originalCameraPosition;
-        }
-
-        thisCinematicChangedCamera = false;
     }
 }
