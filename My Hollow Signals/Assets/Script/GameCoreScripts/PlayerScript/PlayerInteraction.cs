@@ -1,4 +1,4 @@
-﻿/*******************************************************
+/*******************************************************
  * Author: [Jhoan Alexis Lopez]
  * Last Modified: [21/11/2025]
  * Description:
@@ -28,6 +28,18 @@ public class PlayerInteraction : MonoBehaviour
     public InputActionReference interactAction;
 
     private bool usingGamepad = false;
+    private PauseMenuManager pauseMenuManager;
+    private NoteInventoryUI noteInventoryUI;
+    private NoteUIManager noteUIManager;
+    private MobilePhoneToggle mobilePhoneToggle;
+
+    void Awake()
+    {
+        pauseMenuManager = FindObjectOfType<PauseMenuManager>();
+        noteInventoryUI = FindObjectOfType<NoteInventoryUI>();
+        noteUIManager = FindObjectOfType<NoteUIManager>(true);
+        mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
+    }
 
     void OnEnable()
     {
@@ -75,7 +87,10 @@ public class PlayerInteraction : MonoBehaviour
                 if (interactAction != null && interactAction.action != null &&
                     interactAction.action.WasPressedThisFrame())
                 {
-                    interactable.Interact();
+                    if (CanInteract())
+                    {
+                        interactable.Interact();
+                    }
                 }
             }
         }
@@ -84,6 +99,36 @@ public class PlayerInteraction : MonoBehaviour
             interactionUI.SetActive(hitSomething);
         if (interactionReticle != null)
             interactionReticle.SetActive(hitSomething);
+    }
+
+    private bool CanInteract()
+    {
+        if (pauseMenuManager != null && pauseMenuManager.IsPaused)
+        {
+            return false;
+        }
+
+        if (noteInventoryUI != null && noteInventoryUI.IsInventoryOpen)
+        {
+            return false;
+        }
+
+        if (noteUIManager != null && noteUIManager.IsNoteActive)
+        {
+            return false;
+        }
+
+        if (mobilePhoneToggle != null && mobilePhoneToggle.IsPhoneVisible)
+        {
+            return false;
+        }
+
+        if (CinematicManager.IsCinematicActive)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     private void OnActionChange(object obj, InputActionChange change)

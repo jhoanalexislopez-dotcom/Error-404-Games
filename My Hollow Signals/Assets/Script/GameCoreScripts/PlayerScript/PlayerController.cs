@@ -121,6 +121,18 @@ public class FirstPersonController : MonoBehaviour
     {
         lookInput = Vector2.zero;
     }
+    
+    public void SetPlayerInputEnabled(bool enabled)
+    {
+        if (enabled)
+        {
+            inputActions.Player.Enable();
+        }
+        else
+        {
+            inputActions.Player.Disable();
+        }
+    }
 
     void Start()
     {

@@ -25,6 +25,7 @@ public class PauseMenuManager : MonoBehaviour
     private FirstPersonController playerController;
     private GameManager gameManager;
     private MobilePhoneToggle mobilePhoneToggle;
+    private FlashlightController flashlightController;
 
     // Store original cursor state
     private CursorLockMode originalCursorLockMode;
@@ -42,6 +43,7 @@ public class PauseMenuManager : MonoBehaviour
         playerController = FindObjectOfType<FirstPersonController>();
         gameManager = FindObjectOfType<GameManager>();
         mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
+        flashlightController = FindObjectOfType<FlashlightController>();
 
         // Set up button events
         if (resumeButton != null)
@@ -128,11 +130,20 @@ public class PauseMenuManager : MonoBehaviour
         // Disable player input
         if (playerController != null && playerController.enabled)
         {
-            var playerInput = playerController.GetComponent<PlayerInput>();
-            if (playerInput != null)
-                playerInput.enabled = false;
-            else
-                playerController.enabled = false;
+            playerController.enabled = false;
+            playerController.SetPlayerInputEnabled(false);
+        }
+        
+        // Disable phone input
+        if (mobilePhoneToggle != null)
+        {
+            mobilePhoneToggle.SetPhoneInputEnabled(false);
+        }
+        
+        // Disable flashlight controller
+        if (flashlightController != null)
+        {
+            flashlightController.SetFlashlightInputEnabled(false);
         }
 
         Debug.Log("Game Paused");
@@ -158,11 +169,20 @@ public class PauseMenuManager : MonoBehaviour
         // Re-enable player input
         if (playerController != null)
         {
-            var playerInput = playerController.GetComponent<PlayerInput>();
-            if (playerInput != null)
-                playerInput.enabled = true;
-            else
-                playerController.enabled = true;
+            playerController.enabled = true;
+            playerController.SetPlayerInputEnabled(true);
+        }
+        
+        // Re-enable phone input
+        if (mobilePhoneToggle != null)
+        {
+            mobilePhoneToggle.SetPhoneInputEnabled(true);
+        }
+        
+        // Re-enable flashlight controller
+        if (flashlightController != null)
+        {
+            flashlightController.SetFlashlightInputEnabled(true);
         }
 
         Debug.Log("Game Resumed");

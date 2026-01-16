@@ -20,6 +20,7 @@ public class NoteUIManager : MonoBehaviour
     private FirstPersonController playerController;
     private PauseMenuManager pauseMenuManager;
     private MobilePhoneToggle mobilePhoneToggle;
+    private FlashlightController flashlightController;
     private CursorLockMode originalCursorLockMode;
     private bool originalCursorVisible;
     private bool isNoteActive = false;
@@ -30,6 +31,7 @@ public class NoteUIManager : MonoBehaviour
         playerController = FindObjectOfType<FirstPersonController>();
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
         mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
+        flashlightController = FindObjectOfType<FlashlightController>();
 
         // Find the note text component if not assigned
         if (noteText == null && notePanel != null)
@@ -114,12 +116,21 @@ public class NoteUIManager : MonoBehaviour
     // Public method for Collectible to set note text and make it active
     public void SetNoteActive(string noteText = "")
     {
+        Debug.Log($"[NoteUIManager] SetNoteActive called with text length: {noteText?.Length ?? 0}");
+        Debug.Log($"[NoteUIManager] MobilePhoneToggle found: {mobilePhoneToggle != null}");
+        if (mobilePhoneToggle != null)
+        {
+            Debug.Log($"[NoteUIManager] MobilePhoneToggle.IsPhoneVisible: {mobilePhoneToggle.IsPhoneVisible}");
+        }
+        
         if (mobilePhoneToggle != null && mobilePhoneToggle.IsPhoneVisible)
         {
+            Debug.Log("[NoteUIManager] Note blocked: Phone is visible");
             return;
         }
         
         isNoteActive = true;
+        Debug.Log($"[NoteUIManager] isNoteActive set to TRUE");
 
         // Set the note text if provided
         if (!string.IsNullOrEmpty(noteText) && this.noteText != null)
@@ -128,6 +139,39 @@ public class NoteUIManager : MonoBehaviour
         }
 
         Debug.Log("Note manually set as active with text: " + noteText);
+
+        // Store cursor state
+        originalCursorLockMode = Cursor.lockState;
+        originalCursorVisible = Cursor.visible;
+
+        // Unlock cursor for note reading
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        // Disable player controller
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+            playerController.SetPlayerInputEnabled(false);
+        }
+
+        // Disable pause menu while note is active
+        if (pauseMenuManager != null)
+        {
+            pauseMenuManager.enabled = false;
+        }
+        
+        // Disable phone input while note is active
+        if (mobilePhoneToggle != null)
+        {
+            mobilePhoneToggle.SetPhoneInputEnabled(false);
+        }
+        
+        // Disable flashlight controller while note is active
+        if (flashlightController != null)
+        {
+            flashlightController.SetFlashlightInputEnabled(false);
+        }
 
         // Desactivar mesh renderer de flashlight
         if (flashlight != null)
@@ -171,13 +215,17 @@ public class NoteUIManager : MonoBehaviour
 
         // Resume the game manually
         Time.timeScale = 1f;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
+        // Restore cursor state
+        Cursor.lockState = originalCursorLockMode;
+        Cursor.visible = originalCursorVisible;
 
         // Re-enable player controller
         if (playerController != null)
         {
             playerController.enabled = true;
+            playerController.SetPlayerInputEnabled(true);
+            
             Debug.Log("Player controller re-enabled");
         }
 
@@ -185,6 +233,18 @@ public class NoteUIManager : MonoBehaviour
         if (pauseMenuManager != null)
         {
             pauseMenuManager.enabled = true;
+        }
+        
+        // Re-enable phone input
+        if (mobilePhoneToggle != null)
+        {
+            mobilePhoneToggle.SetPhoneInputEnabled(true);
+        }
+        
+        // Re-enable flashlight controller
+        if (flashlightController != null)
+        {
+            flashlightController.SetFlashlightInputEnabled(true);
         }
 
         Debug.Log("Note closed - NoteUI disabled and game resumed");

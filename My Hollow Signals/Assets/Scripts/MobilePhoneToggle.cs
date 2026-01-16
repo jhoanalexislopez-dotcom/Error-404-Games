@@ -17,8 +17,21 @@ public class MobilePhoneToggle : MonoBehaviour
     private PauseMenuManager pauseMenuManager;
     private NoteInventoryUI noteInventoryUI;
     private NoteUIManager noteUIManager;
+    private FlashlightController flashlightController;
     
     public bool IsPhoneVisible => isPhoneVisible;
+    
+    public void SetPhoneInputEnabled(bool enabled)
+    {
+        if (enabled)
+        {
+            inputActions.Player.Enable();
+        }
+        else
+        {
+            inputActions.Player.Disable();
+        }
+    }
 
     void Awake()
     {
@@ -40,6 +53,7 @@ public class MobilePhoneToggle : MonoBehaviour
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
         noteInventoryUI = FindObjectOfType<NoteInventoryUI>();
         noteUIManager = FindObjectOfType<NoteUIManager>(true);
+        flashlightController = FindObjectOfType<FlashlightController>();
         
         if (noteUIManager == null)
         {
@@ -63,6 +77,13 @@ public class MobilePhoneToggle : MonoBehaviour
         {
             Debug.LogWarning("Mobile Canvas reference is not set in MobilePhoneToggle!");
             return;
+        }
+        
+        Debug.Log($"[MobilePhoneToggle] Attempting to toggle phone. Current state: {isPhoneVisible}");
+        Debug.Log($"[MobilePhoneToggle] NoteUIManager found: {noteUIManager != null}");
+        if (noteUIManager != null)
+        {
+            Debug.Log($"[MobilePhoneToggle] NoteUIManager.IsNoteActive: {noteUIManager.IsNoteActive}");
         }
         
         if (pauseMenuManager != null && pauseMenuManager.IsPaused)
@@ -89,6 +110,8 @@ public class MobilePhoneToggle : MonoBehaviour
             return;
         }
         
+        Debug.Log($"[MobilePhoneToggle] All checks passed, toggling phone to: {!isPhoneVisible}");
+        
         isPhoneVisible = !isPhoneVisible;
         mobileCanvas.SetActive(isPhoneVisible);
         
@@ -100,6 +123,12 @@ public class MobilePhoneToggle : MonoBehaviour
             if (playerController != null)
             {
                 playerController.enabled = false;
+                playerController.SetPlayerInputEnabled(false);
+            }
+            
+            if (flashlightController != null)
+            {
+                flashlightController.SetFlashlightInputEnabled(false);
             }
             
             StartCoroutine(ScrollToBottomOnOpen());
@@ -112,6 +141,12 @@ public class MobilePhoneToggle : MonoBehaviour
             if (playerController != null)
             {
                 playerController.enabled = true;
+                playerController.SetPlayerInputEnabled(true);
+            }
+            
+            if (flashlightController != null)
+            {
+                flashlightController.SetFlashlightInputEnabled(true);
             }
         }
     }

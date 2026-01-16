@@ -55,7 +55,7 @@ public class CinematicManager : MonoBehaviour
         FlashlightController flashlightController = FindObjectOfType<FlashlightController>();
         if (flashlightController != null)
         {
-            flashlightController.enabled = false;
+            flashlightController.SetFlashlightInputEnabled(false);
         }
         
         PlayerInput playerInput = FindObjectOfType<PlayerInput>();
@@ -94,7 +94,7 @@ public class CinematicManager : MonoBehaviour
         FlashlightController flashlightController = FindObjectOfType<FlashlightController>();
         if (flashlightController != null)
         {
-            flashlightController.enabled = true;
+            flashlightController.SetFlashlightInputEnabled(true);
         }
         
         PlayerInput playerInput = FindObjectOfType<PlayerInput>();

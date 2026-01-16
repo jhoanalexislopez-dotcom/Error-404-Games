@@ -19,6 +19,11 @@ public class FlashlightController : MonoBehaviour
 
     [SerializeField] public float battery = 100f;
     [SerializeField] public int consume = 10;
+    
+    private PauseMenuManager pauseMenuManager;
+    private NoteInventoryUI noteInventoryUI;
+    private NoteUIManager noteUIManager;
+    private MobilePhoneToggle mobilePhoneToggle;
 
     public void RechargeBattery()
     {
@@ -27,6 +32,17 @@ public class FlashlightController : MonoBehaviour
         GameManager audioManager = FindAnyObjectByType<GameManager>();
         audioManager.PlayFlashlightRecharge();
 
+    }
+    
+    public void SetFlashlightInputEnabled(bool enabled)
+    {
+        if (flashlightAction != null && flashlightAction.action != null)
+        {
+            if (enabled)
+                flashlightAction.action.Enable();
+            else
+                flashlightAction.action.Disable();
+        }
     }
 
     void OnEnable()
@@ -44,11 +60,36 @@ public class FlashlightController : MonoBehaviour
     void Start()
     {
         flashlightLight.gameObject.SetActive(false);
+        
+        pauseMenuManager = FindObjectOfType<PauseMenuManager>();
+        noteInventoryUI = FindObjectOfType<NoteInventoryUI>();
+        noteUIManager = FindObjectOfType<NoteUIManager>();
+        mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
     }
 
     void Update()
     {
         if (CinematicManager.IsCinematicActive)
+        {
+            return;
+        }
+        
+        if (pauseMenuManager != null && pauseMenuManager.IsPaused)
+        {
+            return;
+        }
+        
+        if (noteInventoryUI != null && noteInventoryUI.IsInventoryOpen)
+        {
+            return;
+        }
+        
+        if (noteUIManager != null && noteUIManager.IsNoteActive)
+        {
+            return;
+        }
+        
+        if (mobilePhoneToggle != null && mobilePhoneToggle.IsPhoneVisible)
         {
             return;
         }

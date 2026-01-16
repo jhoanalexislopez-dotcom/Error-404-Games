@@ -20,6 +20,7 @@ public class NoteInventoryUI : MonoBehaviour
     private InputSystem_Actions inputActions;
     private int currentlySelectedNoteIndex = -1;
     private MobilePhoneToggle mobilePhoneToggle;
+    private FlashlightController flashlightController;
     
     public bool IsInventoryOpen => isInventoryOpen;
 
@@ -27,6 +28,7 @@ public class NoteInventoryUI : MonoBehaviour
     {
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
         mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
+        flashlightController = FindObjectOfType<FlashlightController>();
         inputActions = new InputSystem_Actions();
 
         inputActions.Player.Inventory.performed += OnInventoryPressed;
@@ -81,6 +83,16 @@ public class NoteInventoryUI : MonoBehaviour
         {
             pauseMenuManager.enabled = false;
         }
+        
+        if (mobilePhoneToggle != null)
+        {
+            mobilePhoneToggle.SetPhoneInputEnabled(false);
+        }
+        
+        if (flashlightController != null)
+        {
+            flashlightController.SetFlashlightInputEnabled(false);
+        }
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -88,9 +100,8 @@ public class NoteInventoryUI : MonoBehaviour
         var playerController = FindObjectOfType<FirstPersonController>();
         if (playerController != null)
         {
-            var playerInput = playerController.GetComponent<PlayerInput>();
-            if (playerInput != null)
-                playerInput.enabled = false;
+            playerController.enabled = false;
+            playerController.SetPlayerInputEnabled(false);
         }
 
         PopulateNoteList();
@@ -107,13 +118,25 @@ public class NoteInventoryUI : MonoBehaviour
         {
             pauseMenuManager.enabled = true;
         }
+        
+        if (mobilePhoneToggle != null)
+        {
+            mobilePhoneToggle.SetPhoneInputEnabled(true);
+        }
+        
+        if (flashlightController != null)
+        {
+            flashlightController.SetFlashlightInputEnabled(true);
+        }
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         var playerController = FindObjectOfType<FirstPersonController>();
         if (playerController != null)
         {
-            var playerInput = playerController.GetComponent<PlayerInput>();
-            if (playerInput != null)
-                playerInput.enabled = true;
+            playerController.enabled = true;
+            playerController.SetPlayerInputEnabled(true);
         }
     }
 
