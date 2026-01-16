@@ -20,7 +20,10 @@ public class Inventory3DController : MonoBehaviour
     
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI titleText;
-    [SerializeField] private TextMeshProUGUI contentText;
+    [SerializeField] private TextMeshProUGUI hintText;
+    
+    [Header("Note UI")]
+    [SerializeField] private NoteUIManager noteUIManager;
     
     private InputSystem_Actions inputActions;
     private int currentItemIndex = 0;
@@ -32,7 +35,7 @@ public class Inventory3DController : MonoBehaviour
     private Dictionary<Transform, Vector3> originalEulerAngles = new Dictionary<Transform, Vector3>();
     private Transform currentlySelectedItem;
     private Transform previouslySelectedItem;
-    private PlayerInput playerInput;
+    private PauseMenuManager pauseMenuManager;
 
     private void Awake()
     {
@@ -41,13 +44,34 @@ public class Inventory3DController : MonoBehaviour
         inputActions.Player.Previous.performed += OnPreviousPressed;
         inputActions.Player.Next.performed += OnNextPressed;
         inputActions.Player.Inventory.performed += OnInventoryPressed;
+        inputActions.Player.Interact.started += OnInteractPressed;
         
         if (inventoryContainer != null)
         {
             targetPosition = inventoryContainer.localPosition;
         }
         
+        if (noteUIManager == null)
+        {
+            noteUIManager = FindObjectOfType<NoteUIManager>();
+        }
+        
+        if (pauseMenuManager == null)
+        {
+            pauseMenuManager = FindObjectOfType<PauseMenuManager>();
+        }
+        
         CloseInventory();
+    }
+    
+    private void OnEnable()
+    {
+        inputActions?.Player.Enable();
+    }
+    
+    private void OnDisable()
+    {
+        inputActions?.Player.Disable();
     }
 
     private void CacheInventoryItems()
@@ -96,6 +120,54 @@ public class Inventory3DController : MonoBehaviour
         ToggleInventory();
     }
     
+    private void OnInteractPressed(InputAction.CallbackContext context)
+    {
+        Debug.Log($"Interact pressed! Inventory open: {isInventoryOpen}, Notes count: {collectedNotes.Count}, Current index: {currentItemIndex}");
+        
+        if (isInventoryOpen && collectedNotes.Count > 0 && currentItemIndex < collectedNotes.Count)
+        {
+            OpenSelectedNote();
+        }
+    }
+    
+    private void OpenSelectedNote()
+    {
+        if (noteUIManager == null)
+        {
+            Debug.LogWarning("NoteUIManager not found! Cannot open note.");
+            return;
+        }
+        
+        if (currentItemIndex < 0 || currentItemIndex >= collectedNotes.Count)
+        {
+            Debug.LogWarning("Invalid note index: " + currentItemIndex);
+            return;
+        }
+        
+        NoteData selectedNote = collectedNotes[currentItemIndex];
+        Debug.Log("Opening note: " + selectedNote.noteTitle);
+        
+        CloseInventory();
+        
+        noteUIManager.gameObject.SetActive(true);
+        noteUIManager.SetNoteActive(selectedNote.noteContent);
+        
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        
+        FirstPersonController playerController = FindObjectOfType<FirstPersonController>();
+        if (playerController != null)
+        {
+            playerController.enabled = false;
+        }
+        
+        if (pauseMenuManager != null)
+        {
+            pauseMenuManager.enabled = false;
+        }
+    }
+    
     public void ToggleInventory()
     {
         if (isInventoryOpen)
@@ -110,6 +182,24 @@ public class Inventory3DController : MonoBehaviour
     
     private void OpenInventory()
     {
+        if (noteUIManager != null && noteUIManager.IsNoteActive)
+        {
+            Debug.Log("Cannot open inventory while reading a note!");
+            return;
+        }
+        
+        if (pauseMenuManager != null && pauseMenuManager.IsPaused)
+        {
+            Debug.Log("Cannot open inventory while pause menu is open!");
+            return;
+        }
+        
+        if (CinematicManager.IsCinematicActive)
+        {
+            Debug.Log("Cannot open inventory during a cinematic!");
+            return;
+        }
+        
         CacheInventoryItems();
         
         if (inventoryItems.Count == 0)
@@ -128,12 +218,6 @@ public class Inventory3DController : MonoBehaviour
         if (inventoryCamera != null)
         {
             inventoryCamera.enabled = true;
-        }
-        
-        playerInput = FindObjectOfType<FirstPersonController>()?.GetComponent<PlayerInput>();
-        if (playerInput != null)
-        {
-            playerInput.enabled = false;
         }
         
         Time.timeScale = 0f;
@@ -159,12 +243,6 @@ public class Inventory3DController : MonoBehaviour
             inventoryCamera.enabled = false;
         }
         
-        if (playerInput != null)
-        {
-            playerInput.enabled = true;
-            playerInput = null;
-        }
-        
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -181,16 +259,6 @@ public class Inventory3DController : MonoBehaviour
         }
         
         previouslySelectedItem = null;
-    }
-
-    private void OnEnable()
-    {
-        inputActions?.Player.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions?.Player.Disable();
     }
 
     private void Update()
@@ -306,9 +374,9 @@ public class Inventory3DController : MonoBehaviour
             titleText.text = currentNote.noteTitle;
         }
         
-        if (contentText != null)
+        if (hintText != null)
         {
-            contentText.text = currentNote.noteContent;
+            hintText.text = "Press Interact to Read";
         }
     }
 
@@ -319,9 +387,9 @@ public class Inventory3DController : MonoBehaviour
             titleText.text = "";
         }
         
-        if (contentText != null)
+        if (hintText != null)
         {
-            contentText.text = "";
+            hintText.text = "";
         }
     }
 
@@ -332,6 +400,7 @@ public class Inventory3DController : MonoBehaviour
             inputActions.Player.Previous.performed -= OnPreviousPressed;
             inputActions.Player.Next.performed -= OnNextPressed;
             inputActions.Player.Inventory.performed -= OnInventoryPressed;
+            inputActions.Player.Interact.started -= OnInteractPressed;
             inputActions.Dispose();
         }
     }

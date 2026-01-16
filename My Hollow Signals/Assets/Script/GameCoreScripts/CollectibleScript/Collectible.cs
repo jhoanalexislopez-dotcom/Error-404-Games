@@ -59,10 +59,11 @@ public class Collectible : MonoBehaviour, IInteractable
                 noteUIManager.SetNoteActive(noteText);
             }
 
+            Time.timeScale = 0f;
+
             PauseMenuManager pauseManager = FindObjectOfType<PauseMenuManager>();
             if (pauseManager != null)
             {
-                pauseManager.PauseGame();
                 pauseManager.enabled = false;
             }
 
@@ -72,9 +73,7 @@ public class Collectible : MonoBehaviour, IInteractable
             var playerController = FindObjectOfType<FirstPersonController>();
             if (playerController != null)
             {
-                var playerInput = playerController.GetComponent<PlayerInput>();
-                if (playerInput != null)
-                    playerInput.enabled = false;
+                playerController.enabled = false;
             }
         }
 

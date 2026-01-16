@@ -3077,6 +3077,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5988432434661118701, guid: cb8e1e75afef6a2498e8ad5a6b12efa4, type: 3}
+--- !u!114 &397781106 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5988026981481576448, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+  m_PrefabInstance: {fileID: 623885352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &401470831 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1735415287244058123, guid: cb8e1e75afef6a2498e8ad5a6b12efa4, type: 3}
@@ -6041,6 +6052,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1009543470077808604, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 39.919983
+      objectReference: {fileID: 0}
+    - target: {fileID: 1982703487784312893, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2556541085933029647, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -6097,6 +6116,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3120270024837728484, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 150.03998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3449760481827131531, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4344798506074563826, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -6113,6 +6140,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5464668197722582599, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 209.98999
+      objectReference: {fileID: 0}
     - target: {fileID: 5530090884887891387, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: m_Name
       value: Inventory3D
@@ -6122,13 +6153,25 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: hintText
+      value: 
+      objectReference: {fileID: 397781106}
+    - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 1451842850}
     - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: noteUIManager
+      value: 
+      objectReference: {fileID: 1688654177}
+    - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: inventoryCamera
       value: 
       objectReference: {fileID: 1832460186}
+    - target: {fileID: 5988026981481576448, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: m_text
+      value: WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+      objectReference: {fileID: 0}
     - target: {fileID: 5988026981481576448, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -6160,6 +6203,14 @@ PrefabInstance:
     - target: {fileID: 7355913372372876110, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: m_SortingLayerID
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7866037925427379290, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8317115380293356131, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8395701560865187144, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6204,6 +6255,10 @@ PrefabInstance:
     - target: {fileID: 8397070663221036753, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8778564452823439737, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6777,6 +6832,24 @@ PrefabInstance:
       propertyPath: noteUI
       value: 
       objectReference: {fileID: 1688654175}
+    - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
+      propertyPath: noteText
+      value: 'SECOND MESSAGE
+
+
+        They watch me, they guide me, they show me
+        the truth.
+
+
+        You''ve always been weak, but I...
+
+
+        I''m learning
+        to be strong.
+
+
+        Soon you''ll understand.'
+      objectReference: {fileID: 0}
     - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: noteTitle
       value: Second Message
@@ -15252,8 +15325,8 @@ MonoBehaviour:
   DisplaySizeY: 1080
   StretchToDisplay: 1
   AspectRatio: 1.33
-  EnableTVCurvature: 0
-  Curvature: 0
+  EnableTVCurvature: 1
+  Curvature: 0.164
   TVOverlay: {fileID: 2800000, guid: 983b4e2248d599443981d96b39576aeb, type: 3}
   EnablePixelMask: 1
   PixelMaskTexture: {fileID: 2800000, guid: 55b9f85457b9afc46834d927aa2e61cc, type: 3}

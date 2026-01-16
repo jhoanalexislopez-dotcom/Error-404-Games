@@ -162,16 +162,26 @@ public class NoteUIManager : MonoBehaviour
             Debug.Log("NoteUI disabled");
         }
 
-        // Use PauseMenuManager to resume the game
+        // Resume the game manually
+        Time.timeScale = 1f;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        // Re-enable player controller
+        if (playerController != null)
+        {
+            playerController.enabled = true;
+            Debug.Log("Player controller re-enabled");
+        }
+
+        // Re-enable the pause menu
         if (pauseMenuManager != null)
         {
-            pauseMenuManager.ResumeGame();
-
-            // Re-enable the pause menu
             pauseMenuManager.enabled = true;
         }
 
-        Debug.Log("Note closed - NoteUI disabled and game resumed via PauseMenuManager");
+        Debug.Log("Note closed - NoteUI disabled and game resumed");
+        
         // Activar mesh renderer de flashlight
         if (flashlight != null)
         {
