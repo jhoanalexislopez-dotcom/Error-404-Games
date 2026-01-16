@@ -26,15 +26,15 @@ public class MessageManager : MonoBehaviour
 
     void Start()
     {
-        AddTimestamp("Yesterday", "9:41 AM");
+        //AddTimestamp("Yesterday", "9:41 AM");
 
-        AddMessage(true, "Hello!");
-        AddMessage(false, "Hi there!");
+        //AddMessage(true, "Hello!");
+        //AddMessage(false, "Hi there!");
 
-        AddTimestamp("Today", "2:15 PM");
+        //AddTimestamp("Today", "2:15 PM");
 
-        AddMessage(true, "Ayudame bibiiiiiiit");
-        AddMessage(false, "nau nau");
+        //AddMessage(true, "Ayudame bibiiiiiiit");
+        //AddMessage(false, "nau nau");
     }
 
     public void AddMessage(bool Sender_Player, string Message)

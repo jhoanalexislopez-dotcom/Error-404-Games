@@ -1633,6 +1633,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2896804723483632221, guid: cb8e1e75afef6a2498e8ad5a6b12efa4, type: 3}
+--- !u!1 &237489189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4433509322920314160, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+  m_PrefabInstance: {fileID: 1014072042}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &237489190 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6259562580671424956, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
@@ -5544,6 +5549,11 @@ MonoBehaviour:
   cameraTurnSpeed: 5
   hideUI: 1
   sanityLossAmount: 200
+  addPhoneMessages: 0
+  addTimestamp: 0
+  timestampDay: 
+  timestampTime: 
+  phoneMessages: []
   triggerOnlyOnce: 1
 --- !u!65 &583962703
 BoxCollider:
@@ -9395,9 +9405,21 @@ PrefabInstance:
       value: MessageManager
       objectReference: {fileID: 0}
     - target: {fileID: 7270183165596213723, guid: 11614c8cc29a99d47bb9d25087f4e266, type: 3}
+      propertyPath: messageEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 95522d48447d4d34aa5644fcb9ba1482, type: 2}
+    - target: {fileID: 7270183165596213723, guid: 11614c8cc29a99d47bb9d25087f4e266, type: 3}
+      propertyPath: messagePanel
+      value: 
+      objectReference: {fileID: 237489189}
+    - target: {fileID: 7270183165596213723, guid: 11614c8cc29a99d47bb9d25087f4e266, type: 3}
       propertyPath: Content_Parent
       value: 
       objectReference: {fileID: 237489190}
+    - target: {fileID: 7270183165596213723, guid: 11614c8cc29a99d47bb9d25087f4e266, type: 3}
+      propertyPath: timestampEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 8af78f0e28413244081902f13f314be2, type: 2}
     - target: {fileID: 7850169230825698830, guid: 11614c8cc29a99d47bb9d25087f4e266, type: 3}
       propertyPath: m_LocalPosition.x
       value: 959.75085
@@ -10305,9 +10327,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 380286630240431473, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 601120737852400702, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_Name
       value: MobileCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 601120737852400702, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 710263193004244964, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1894468843543433133, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1966473934206695196, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_Camera
@@ -10315,6 +10353,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1966473934206695196, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2980355120474247580, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667906011395105023, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3667906011395105023, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3693137224624340322, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
@@ -10325,8 +10375,24 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4433509322920314160, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4635780525851087277, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833278515935124122, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833278515935124122, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5833278515935124122, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6259562580671424956, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
@@ -10424,6 +10490,10 @@ PrefabInstance:
     - target: {fileID: 6501440293387665114, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7539045261629790055, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16251,6 +16321,15 @@ MonoBehaviour:
   cameraTurnSpeed: 5
   hideUI: 0
   sanityLossAmount: 100
+  addPhoneMessages: 1
+  addTimestamp: 1
+  timestampDay: Yesterday
+  timestampTime: 12:00 PM
+  phoneMessages:
+  - isPlayerMessage: 1
+    messageText: Hi!
+  - isPlayerMessage: 0
+    messageText: Hey!
   triggerOnlyOnce: 1
 --- !u!1 &1937295555 stripped
 GameObject:

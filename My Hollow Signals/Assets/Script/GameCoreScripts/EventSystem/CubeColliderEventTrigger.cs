@@ -40,6 +40,23 @@ public class CubeColliderEventTrigger : MonoBehaviour
     [Tooltip("Amount of sanity to lower when this event triggers")]
     public float sanityLossAmount = 0f;
 
+    [Header("Phone Message Settings")]
+    public bool addPhoneMessages = false;
+    [Tooltip("Add a timestamp before the messages")]
+    public bool addTimestamp = false;
+    [Tooltip("Custom day label (leave empty for current day)")]
+    public string timestampDay = "";
+    [Tooltip("Custom time text (leave empty for current time)")]
+    public string timestampTime = "";
+    [System.Serializable]
+    public struct PhoneMessage
+    {
+        public bool isPlayerMessage;
+        [TextArea]
+        public string messageText;
+    }
+    public PhoneMessage[] phoneMessages;
+
     [Header("Trigger Settings")]
     public bool triggerOnlyOnce = true;
     private bool hasTriggered = false;
@@ -149,6 +166,8 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         hasFinishedMainEvent = true;
 
+        AddPhoneMessagesIfEnabled();
+
         // Automatically show post-event dialogue if it exists
         if (postEventDialogueLines.Length > 0 && !hasShownPostEventDialogue)
         {
@@ -196,6 +215,41 @@ public class CubeColliderEventTrigger : MonoBehaviour
         {
             subtext.text += c;
             yield return new WaitForSeconds(typingSpeed);
+        }
+    }
+
+    // ------------------------------
+    // CINEMATIC CONTROL
+    // ------------------------------
+
+    private void AddPhoneMessagesIfEnabled()
+    {
+        if (!addPhoneMessages || phoneMessages.Length == 0)
+            return;
+
+        if (MessageManager.instance == null)
+        {
+            Debug.LogWarning("MessageManager instance not found. Cannot add phone messages.");
+            return;
+        }
+
+        if (addTimestamp)
+        {
+            if (string.IsNullOrEmpty(timestampDay) && string.IsNullOrEmpty(timestampTime))
+            {
+                MessageManager.instance.AddTimestamp();
+            }
+            else
+            {
+                string day = string.IsNullOrEmpty(timestampDay) ? System.DateTime.Now.ToString("dddd") : timestampDay;
+                string time = string.IsNullOrEmpty(timestampTime) ? System.DateTime.Now.ToString("h:mm tt") : timestampTime;
+                MessageManager.instance.AddTimestamp(day, time);
+            }
+        }
+
+        foreach (PhoneMessage message in phoneMessages)
+        {
+            MessageManager.instance.AddMessage(message.isPlayerMessage, message.messageText);
         }
     }
 
