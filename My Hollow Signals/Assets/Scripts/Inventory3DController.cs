@@ -36,13 +36,14 @@ public class Inventory3DController : MonoBehaviour
     private Transform currentlySelectedItem;
     private Transform previouslySelectedItem;
     private PauseMenuManager pauseMenuManager;
+    private float lastNavigateTime = 0f;
+    private float navigateCooldown = 0.2f;
 
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
         
-        inputActions.Player.Previous.performed += OnPreviousPressed;
-        inputActions.Player.Next.performed += OnNextPressed;
+        inputActions.UI.Navigate.performed += OnNavigate;
         inputActions.Player.Inventory.performed += OnInventoryPressed;
         inputActions.Player.Interact.started += OnInteractPressed;
         
@@ -66,11 +67,13 @@ public class Inventory3DController : MonoBehaviour
     
     private void OnEnable()
     {
+        inputActions?.UI.Enable();
         inputActions?.Player.Enable();
     }
     
     private void OnDisable()
     {
+        inputActions?.UI.Disable();
         inputActions?.Player.Disable();
     }
 
@@ -317,14 +320,25 @@ public class Inventory3DController : MonoBehaviour
         }
     }
 
-    private void OnPreviousPressed(InputAction.CallbackContext context)
+    private void OnNavigate(InputAction.CallbackContext context)
     {
-        NavigateToPreviousItem();
-    }
-
-    private void OnNextPressed(InputAction.CallbackContext context)
-    {
-        NavigateToNextItem();
+        if (!isInventoryOpen) return;
+        
+        if (Time.unscaledTime - lastNavigateTime < navigateCooldown)
+            return;
+        
+        Vector2 navigation = context.ReadValue<Vector2>();
+        
+        if (navigation.x < -0.5f)
+        {
+            NavigateToPreviousItem();
+            lastNavigateTime = Time.unscaledTime;
+        }
+        else if (navigation.x > 0.5f)
+        {
+            NavigateToNextItem();
+            lastNavigateTime = Time.unscaledTime;
+        }
     }
 
     private void NavigateToPreviousItem()
@@ -397,8 +411,7 @@ public class Inventory3DController : MonoBehaviour
     {
         if (inputActions != null)
         {
-            inputActions.Player.Previous.performed -= OnPreviousPressed;
-            inputActions.Player.Next.performed -= OnNextPressed;
+            inputActions.UI.Navigate.performed -= OnNavigate;
             inputActions.Player.Inventory.performed -= OnInventoryPressed;
             inputActions.Player.Interact.started -= OnInteractPressed;
             inputActions.Dispose();
