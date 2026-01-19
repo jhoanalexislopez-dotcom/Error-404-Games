@@ -101,11 +101,11 @@ Transform:
   m_GameObject: {fileID: 1982703487784312893}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 16.5931, y: -1.624814, z: -12.938937}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8395701560865187144}
+  m_Father: {fileID: 3359143946537150068}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!108 &7169464138957211644
 Light:
@@ -410,6 +410,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2788118903583814256}
   - {fileID: 2758231911832973881}
   - {fileID: 5464668197722582599}
   m_Father: {fileID: 2656800530026338343}
@@ -674,7 +675,6 @@ Transform:
   m_Children:
   - {fileID: 5080901102041293980}
   - {fileID: 2656800530026338343}
-  - {fileID: 2788118903583814256}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7479417087902055656
@@ -859,14 +859,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryContainer: {fileID: 8668452980675326378}
+  inventoryUI: {fileID: 0}
+  inventoryCamera: {fileID: 0}
   moveDistance: 2
   moveSpeed: 5
-  minItemIndex: 0
-  maxItemIndex: 4
   rotationSpeed: 50
   returnRotationSpeed: 10
   titleText: {fileID: 4818553953729693277}
-  contentText: {fileID: 5988026981481576448}
+  hintText: {fileID: 0}
+  noteUIManager: {fileID: 0}
+  audioSource: {fileID: 0}
+  openSound: {fileID: 0}
+  closeSound: {fileID: 0}
+  navigateSound: {fileID: 0}
+  selectSound: {fileID: 0}
 --- !u!1 &8317115380293356131
 GameObject:
   m_ObjectHideFlags: 0
