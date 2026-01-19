@@ -84,11 +84,6 @@ public class NoteInventoryUI : MonoBehaviour
             pauseMenuManager.enabled = false;
         }
         
-        if (mobilePhoneToggle != null)
-        {
-            mobilePhoneToggle.SetPhoneInputEnabled(false);
-        }
-        
         if (flashlightController != null)
         {
             flashlightController.SetFlashlightInputEnabled(false);
@@ -119,10 +114,6 @@ public class NoteInventoryUI : MonoBehaviour
             pauseMenuManager.enabled = true;
         }
         
-        if (mobilePhoneToggle != null)
-        {
-            mobilePhoneToggle.SetPhoneInputEnabled(true);
-        }
         
         if (flashlightController != null)
         {
