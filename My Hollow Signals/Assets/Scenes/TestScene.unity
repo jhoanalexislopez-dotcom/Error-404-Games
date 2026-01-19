@@ -4662,6 +4662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mobileCanvas: {fileID: 108668741}
   playerController: {fileID: 490301343}
+  phoneAction: {fileID: -7037669837972246789, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
 --- !u!1 &496224083 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -785227680258626056, guid: cb8e1e75afef6a2498e8ad5a6b12efa4, type: 3}

@@ -11,34 +11,21 @@ public class MobilePhoneToggle : MonoBehaviour
     [Header("Player References")]
     [SerializeField] private FirstPersonController playerController;
     
-    private InputSystem_Actions inputActions;
+    [Header("Input System")]
+    [Tooltip("Drag the InputAction 'Phone' from your Input Actions here as InputActionReference.")]
+    public InputActionReference phoneAction;
+    
     private bool isPhoneVisible = false;
     private ScrollRect scrollRect;
     private PauseMenuManager pauseMenuManager;
-    private NoteInventoryUI noteInventoryUI;
+    private Inventory3DController inventory3DController;
     private NoteUIManager noteUIManager;
     private FlashlightController flashlightController;
     
     public bool IsPhoneVisible => isPhoneVisible;
-    
-    public void SetPhoneInputEnabled(bool enabled)
-    {
-        if (enabled)
-        {
-            inputActions.Player.Enable();
-        }
-        else
-        {
-            inputActions.Player.Disable();
-        }
-    }
 
     void Awake()
     {
-        inputActions = new InputSystem_Actions();
-        
-        inputActions.Player.Phone.performed += ctx => TogglePhone();
-        
         if (mobileCanvas != null)
         {
             mobileCanvas.SetActive(isPhoneVisible);
@@ -51,26 +38,52 @@ public class MobilePhoneToggle : MonoBehaviour
         }
         
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
-        noteInventoryUI = FindObjectOfType<NoteInventoryUI>();
+        inventory3DController = FindObjectOfType<Inventory3DController>();
         noteUIManager = FindObjectOfType<NoteUIManager>(true);
         flashlightController = FindObjectOfType<FlashlightController>();
-        
-        if (noteUIManager == null)
-        {
-            Debug.LogWarning("NoteUIManager not found in MobilePhoneToggle!");
-        }
     }
 
     void OnEnable()
     {
-        inputActions.Player.Enable();
+        if (phoneAction != null && phoneAction.action != null)
+            phoneAction.action.Enable();
     }
 
     void OnDisable()
     {
-        inputActions.Player.Disable();
+        if (phoneAction != null && phoneAction.action != null)
+            phoneAction.action.Disable();
     }
-
+    
+    void Update()
+    {
+        if (CinematicManager.IsCinematicActive)
+        {
+            return;
+        }
+        
+        if (pauseMenuManager != null && pauseMenuManager.IsPaused)
+        {
+            return;
+        }
+        
+        if (inventory3DController != null && inventory3DController.IsInventoryOpen)
+        {
+            return;
+        }
+        
+        if (noteUIManager != null && noteUIManager.IsNoteActive)
+        {
+            return;
+        }
+        
+        if (phoneAction != null && phoneAction.action != null &&
+            phoneAction.action.WasPressedThisFrame())
+        {
+            TogglePhone();
+        }
+    }
+    
     private void TogglePhone()
     {
         if (mobileCanvas == null)
@@ -78,39 +91,6 @@ public class MobilePhoneToggle : MonoBehaviour
             Debug.LogWarning("Mobile Canvas reference is not set in MobilePhoneToggle!");
             return;
         }
-        
-        Debug.Log($"[MobilePhoneToggle] Attempting to toggle phone. Current state: {isPhoneVisible}");
-        Debug.Log($"[MobilePhoneToggle] NoteUIManager found: {noteUIManager != null}");
-        if (noteUIManager != null)
-        {
-            Debug.Log($"[MobilePhoneToggle] NoteUIManager.IsNoteActive: {noteUIManager.IsNoteActive}");
-        }
-        
-        if (pauseMenuManager != null && pauseMenuManager.IsPaused)
-        {
-            Debug.Log("Phone blocked: Pause menu is open");
-            return;
-        }
-        
-        if (noteInventoryUI != null && noteInventoryUI.IsInventoryOpen)
-        {
-            Debug.Log("Phone blocked: Inventory is open");
-            return;
-        }
-        
-        if (noteUIManager != null && noteUIManager.IsNoteActive)
-        {
-            Debug.Log("Phone blocked: Note UI is active");
-            return;
-        }
-        
-        if (CinematicManager.IsCinematicActive)
-        {
-            Debug.Log("Phone blocked: Cinematic is active");
-            return;
-        }
-        
-        Debug.Log($"[MobilePhoneToggle] All checks passed, toggling phone to: {!isPhoneVisible}");
         
         isPhoneVisible = !isPhoneVisible;
         mobileCanvas.SetActive(isPhoneVisible);

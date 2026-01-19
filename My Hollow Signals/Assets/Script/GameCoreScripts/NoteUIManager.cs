@@ -21,6 +21,7 @@ public class NoteUIManager : MonoBehaviour
     private PauseMenuManager pauseMenuManager;
     private MobilePhoneToggle mobilePhoneToggle;
     private FlashlightController flashlightController;
+    private NoteInventoryUI noteInventoryUI;
     private CursorLockMode originalCursorLockMode;
     private bool originalCursorVisible;
     private bool isNoteActive = false;
@@ -32,6 +33,7 @@ public class NoteUIManager : MonoBehaviour
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
         mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
         flashlightController = FindObjectOfType<FlashlightController>();
+        noteInventoryUI = FindObjectOfType<NoteInventoryUI>();
 
         // Find the note text component if not assigned
         if (noteText == null && notePanel != null)
@@ -161,18 +163,12 @@ public class NoteUIManager : MonoBehaviour
             pauseMenuManager.enabled = false;
         }
         
-        // Disable phone input while note is active
-        if (mobilePhoneToggle != null)
-        {
-            mobilePhoneToggle.SetPhoneInputEnabled(false);
-        }
-        
         // Disable flashlight controller while note is active
         if (flashlightController != null)
         {
             flashlightController.SetFlashlightInputEnabled(false);
         }
-
+        
         // Desactivar mesh renderer de flashlight
         if (flashlight != null)
         {
@@ -233,12 +229,6 @@ public class NoteUIManager : MonoBehaviour
         if (pauseMenuManager != null)
         {
             pauseMenuManager.enabled = true;
-        }
-        
-        // Re-enable phone input
-        if (mobilePhoneToggle != null)
-        {
-            mobilePhoneToggle.SetPhoneInputEnabled(true);
         }
         
         // Re-enable flashlight controller

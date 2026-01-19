@@ -26,6 +26,7 @@ public class PauseMenuManager : MonoBehaviour
     private GameManager gameManager;
     private MobilePhoneToggle mobilePhoneToggle;
     private FlashlightController flashlightController;
+    private NoteInventoryUI noteInventoryUI;
 
     // Store original cursor state
     private CursorLockMode originalCursorLockMode;
@@ -44,6 +45,7 @@ public class PauseMenuManager : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
         flashlightController = FindObjectOfType<FlashlightController>();
+        noteInventoryUI = FindObjectOfType<NoteInventoryUI>();
 
         // Set up button events
         if (resumeButton != null)
@@ -134,12 +136,6 @@ public class PauseMenuManager : MonoBehaviour
             playerController.SetPlayerInputEnabled(false);
         }
         
-        // Disable phone input
-        if (mobilePhoneToggle != null)
-        {
-            mobilePhoneToggle.SetPhoneInputEnabled(false);
-        }
-        
         // Disable flashlight controller
         if (flashlightController != null)
         {
@@ -171,12 +167,6 @@ public class PauseMenuManager : MonoBehaviour
         {
             playerController.enabled = true;
             playerController.SetPlayerInputEnabled(true);
-        }
-        
-        // Re-enable phone input
-        if (mobilePhoneToggle != null)
-        {
-            mobilePhoneToggle.SetPhoneInputEnabled(true);
         }
         
         // Re-enable flashlight controller

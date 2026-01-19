@@ -43,8 +43,11 @@ public class Inventory3DController : MonoBehaviour
     private Transform currentlySelectedItem;
     private Transform previouslySelectedItem;
     private PauseMenuManager pauseMenuManager;
+    private MobilePhoneToggle mobilePhoneToggle;
     private float lastNavigateTime = 0f;
     private float navigateCooldown = 0.2f;
+    
+    public bool IsInventoryOpen => isInventoryOpen;
 
     private void Awake()
     {
@@ -67,6 +70,11 @@ public class Inventory3DController : MonoBehaviour
         if (pauseMenuManager == null)
         {
             pauseMenuManager = FindObjectOfType<PauseMenuManager>();
+        }
+        
+        if (mobilePhoneToggle == null)
+        {
+            mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
         }
         
         if (audioSource == null)
@@ -137,6 +145,12 @@ public class Inventory3DController : MonoBehaviour
     
     private void OnInventoryPressed(InputAction.CallbackContext context)
     {
+        if (mobilePhoneToggle != null && mobilePhoneToggle.IsPhoneVisible)
+        {
+            Debug.Log("Cannot open inventory while phone is visible!");
+            return;
+        }
+        
         ToggleInventory();
     }
     
