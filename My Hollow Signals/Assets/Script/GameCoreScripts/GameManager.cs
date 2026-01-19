@@ -235,6 +235,12 @@ public class GameManager : MonoBehaviour
     // ---------- Flashlight ----------
     private void OnFlashlightToggle(InputAction.CallbackContext ctx)
     {
+        // Don't allow flashlight toggle if player hasn't collected it
+        if (PlayerInventory.Instance == null || !PlayerInventory.Instance.HasFlashlight)
+        {
+            return;
+        }
+        
         flashlightOn = !flashlightOn;
 
         if (flashlightObject != null)

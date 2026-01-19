@@ -10,6 +10,10 @@ public class Inventory3DController : MonoBehaviour
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private Camera inventoryCamera;
     
+    [Header("Flashlight Inventory")]
+    [Tooltip("The 3D flashlight model to show in inventory when collected")]
+    [SerializeField] private GameObject flashlightInventoryModel;
+    
     [Header("Movement Settings")]
     [SerializeField] private float moveDistance = 2f;
     [SerializeField] private float moveSpeed = 5f;
@@ -113,11 +117,42 @@ public class Inventory3DController : MonoBehaviour
             return;
         }
         
+        // Handle flashlight inventory model (now selectable)
+        if (flashlightInventoryModel != null)
+        {
+            bool hasFlashlight = PlayerInventory.Instance.HasFlashlight;
+            Debug.Log($"[Inventory] Has flashlight: {hasFlashlight}, FlashlightInventoryModel: {flashlightInventoryModel.name}");
+            
+            if (hasFlashlight)
+            {
+                flashlightInventoryModel.SetActive(true);
+                inventoryItems.Add(flashlightInventoryModel.transform);
+                originalEulerAngles[flashlightInventoryModel.transform] = flashlightInventoryModel.transform.localEulerAngles;
+                Debug.Log($"[Inventory] Flashlight model activated and added to selectable items");
+            }
+            else
+            {
+                flashlightInventoryModel.SetActive(false);
+                Debug.Log($"[Inventory] Flashlight model deactivated");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("[Inventory] FlashlightInventoryModel field is NULL! Please assign it in the Inspector.");
+        }
+        
+        // Handle notes (added after flashlight)
         collectedNotes = PlayerInventory.Instance.GetCollectedNotes();
         
         int childIndex = 0;
         foreach (Transform child in inventoryContainer)
         {
+            // Skip the flashlight model since we already handled it
+            if (flashlightInventoryModel != null && child.gameObject == flashlightInventoryModel)
+            {
+                continue;
+            }
+            
             if (childIndex < collectedNotes.Count)
             {
                 child.gameObject.SetActive(true);
@@ -158,10 +193,20 @@ public class Inventory3DController : MonoBehaviour
     {
         Debug.Log($"Interact pressed! Inventory open: {isInventoryOpen}, Notes count: {collectedNotes.Count}, Current index: {currentItemIndex}");
         
-        if (isInventoryOpen && collectedNotes.Count > 0 && currentItemIndex < collectedNotes.Count)
+        if (!isInventoryOpen || currentlySelectedItem == null)
         {
-            OpenSelectedNote();
+            return;
         }
+        
+        // Check if flashlight is selected - don't open note for flashlight
+        if (flashlightInventoryModel != null && currentlySelectedItem.gameObject == flashlightInventoryModel)
+        {
+            Debug.Log("Flashlight selected - no interaction available");
+            return;
+        }
+        
+        // Otherwise, try to open the note
+        OpenSelectedNote();
     }
     
     private void OpenSelectedNote()
@@ -172,13 +217,17 @@ public class Inventory3DController : MonoBehaviour
             return;
         }
         
-        if (currentItemIndex < 0 || currentItemIndex >= collectedNotes.Count)
+        // Calculate note index (subtract 1 if flashlight is collected, since it's first in the list)
+        bool hasFlashlight = PlayerInventory.Instance != null && PlayerInventory.Instance.HasFlashlight;
+        int noteIndex = hasFlashlight ? currentItemIndex - 1 : currentItemIndex;
+        
+        if (noteIndex < 0 || noteIndex >= collectedNotes.Count)
         {
-            Debug.LogWarning("Invalid note index: " + currentItemIndex);
+            Debug.LogWarning("Invalid note index: " + noteIndex);
             return;
         }
         
-        NoteData selectedNote = collectedNotes[currentItemIndex];
+        NoteData selectedNote = collectedNotes[noteIndex];
         Debug.Log("Opening note: " + selectedNote.noteTitle);
         
         PlaySound(selectSound);
@@ -238,9 +287,13 @@ public class Inventory3DController : MonoBehaviour
         
         CacheInventoryItems();
         
-        if (inventoryItems.Count == 0)
+        // Check if player has any items (notes OR flashlight)
+        bool hasFlashlight = PlayerInventory.Instance != null && PlayerInventory.Instance.HasFlashlight;
+        bool hasNotes = inventoryItems.Count > 0;
+        
+        if (!hasFlashlight && !hasNotes)
         {
-            Debug.Log("No notes collected yet!");
+            Debug.Log("No items collected yet!");
             return;
         }
         
@@ -403,7 +456,13 @@ public class Inventory3DController : MonoBehaviour
 
     private void MoveToItem(int itemIndex)
     {
-        float targetX = -itemIndex * moveDistance;
+        // Check if flashlight is collected to determine offset
+        // If flashlight is NOT collected, notes are at X=2,4,6 instead of 0,2,4
+        // Container moves opposite direction, so offset is NEGATIVE
+        bool hasFlashlight = PlayerInventory.Instance != null && PlayerInventory.Instance.HasFlashlight;
+        float offset = hasFlashlight ? 0f : -moveDistance;
+        
+        float targetX = (-itemIndex * moveDistance) + offset;
         targetPosition = new Vector3(targetX, inventoryContainer.localPosition.y, inventoryContainer.localPosition.z);
         isMoving = true;
         
@@ -417,13 +476,39 @@ public class Inventory3DController : MonoBehaviour
 
     private void UpdateDisplayText()
     {
-        if (currentlySelectedItem == null || currentItemIndex >= collectedNotes.Count)
+        if (currentlySelectedItem == null)
         {
             ClearDisplayText();
             return;
         }
         
-        NoteData currentNote = collectedNotes[currentItemIndex];
+        // Check if the selected item is the flashlight
+        if (flashlightInventoryModel != null && currentlySelectedItem.gameObject == flashlightInventoryModel)
+        {
+            if (titleText != null)
+            {
+                titleText.text = "Flashlight";
+            }
+            
+            if (hintText != null)
+            {
+                hintText.text = ""; // No interaction hint for flashlight
+            }
+            return;
+        }
+        
+        // Otherwise, it's a note - calculate the note index
+        // The note index is the current item index minus 1 if flashlight is collected (since flashlight is first)
+        bool hasFlashlight = PlayerInventory.Instance != null && PlayerInventory.Instance.HasFlashlight;
+        int noteIndex = hasFlashlight ? currentItemIndex - 1 : currentItemIndex;
+        
+        if (noteIndex < 0 || noteIndex >= collectedNotes.Count)
+        {
+            ClearDisplayText();
+            return;
+        }
+        
+        NoteData currentNote = collectedNotes[noteIndex];
         
         if (titleText != null)
         {

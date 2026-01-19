@@ -93,6 +93,12 @@ public class FlashlightController : MonoBehaviour
         {
             return;
         }
+        
+        // Check if player has collected the flashlight
+        if (PlayerInventory.Instance == null || !PlayerInventory.Instance.HasFlashlight)
+        {
+            return;
+        }
 
         if (flashlightAction != null && flashlightAction.action != null &&
             flashlightAction.action.WasPressedThisFrame())

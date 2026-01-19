@@ -40,6 +40,9 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private FlashlightController flashlight;
 
     private List<NoteData> collectedNotes = new List<NoteData>();
+    private bool hasFlashlight = false;
+
+    public bool HasFlashlight => hasFlashlight;
 
     private void Awake()
     {
@@ -50,6 +53,12 @@ public class PlayerInventory : MonoBehaviour
         }
         Instance = this;
         UpdateUI();
+    }
+
+    public void CollectFlashlight()
+    {
+        hasFlashlight = true;
+        Debug.Log("[PlayerInventory] Flashlight added to inventory! HasFlashlight is now: " + hasFlashlight);
     }
 
     public void AddItem(int amount = 1)
