@@ -69,6 +69,14 @@ public class CubeColliderEventTrigger : MonoBehaviour
     public PhoneMessage[] phoneMessages;
 
     // ==========================
+    // NOTIFICATION UI SYSTEM
+    // ==========================
+
+    [Header("Notification Settings")]
+    [Tooltip("Trigger the NotificationUI animator when this event fires")]
+    public bool triggerNotification = false;
+
+    // ==========================
     // INTERNAL STATE
     // ==========================
 
@@ -141,6 +149,9 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         // 🔥 ADD PHONE MESSAGES IMMEDIATELY
         AddPhoneMessagesIfEnabled();
+        
+        // 🔔 TRIGGER NOTIFICATION UI IF ENABLED
+        TriggerNotificationIfEnabled();
 
         StartCinematic();
 
@@ -264,6 +275,33 @@ public class CubeColliderEventTrigger : MonoBehaviour
                 );
             }
         }
+    }
+
+    // ==========================
+    // NOTIFICATION UI HANDLING
+    // ==========================
+
+    private void TriggerNotificationIfEnabled()
+    {
+        if (!triggerNotification)
+            return;
+
+        GameObject notificationUI = GameObject.Find("NotificationUI");
+        if (notificationUI == null)
+        {
+            Debug.LogWarning("NotificationUI GameObject not found in scene.");
+            return;
+        }
+
+        Animator animator = notificationUI.GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogWarning("NotificationUI does not have an Animator component.");
+            return;
+        }
+
+        animator.SetTrigger("SetNotification");
+        Debug.Log("NotificationUI animator trigger 'SetNotification' activated.");
     }
 
     // ==========================

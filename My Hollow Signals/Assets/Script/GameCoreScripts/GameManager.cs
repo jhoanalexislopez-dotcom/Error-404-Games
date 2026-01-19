@@ -71,6 +71,12 @@ public class GameManager : MonoBehaviour
     private float stepTimer;
     private bool isCrouched;
     private bool flashlightOn;
+    
+    // UI managers
+    private PauseMenuManager pauseMenuManager;
+    private MobilePhoneToggle mobilePhoneToggle;
+    private Inventory3DController inventory3DController;
+    private NoteUIManager noteUIManager;
 
     private void Reset()
     {
@@ -85,6 +91,12 @@ public class GameManager : MonoBehaviour
         EnableAction(sprintAction);
         EnableAction(crouchAction);
         EnableAction(flashlightToggle);
+        
+        // Cache UI managers
+        pauseMenuManager = FindObjectOfType<PauseMenuManager>();
+        mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
+        inventory3DController = FindObjectOfType<Inventory3DController>();
+        noteUIManager = FindObjectOfType<NoteUIManager>(true);
     }
 
     private void Start()
@@ -141,6 +153,31 @@ public class GameManager : MonoBehaviour
     private void HandleFootsteps()
     {
         if (CinematicManager.IsCinematicActive)
+        {
+            stepTimer = 0f;
+            return;
+        }
+        
+        // Check if any UI is open - disable footsteps
+        if (pauseMenuManager != null && pauseMenuManager.IsPaused)
+        {
+            stepTimer = 0f;
+            return;
+        }
+        
+        if (mobilePhoneToggle != null && mobilePhoneToggle.IsPhoneVisible)
+        {
+            stepTimer = 0f;
+            return;
+        }
+        
+        if (inventory3DController != null && inventory3DController.IsInventoryOpen)
+        {
+            stepTimer = 0f;
+            return;
+        }
+        
+        if (noteUIManager != null && noteUIManager.IsNoteActive)
         {
             stepTimer = 0f;
             return;

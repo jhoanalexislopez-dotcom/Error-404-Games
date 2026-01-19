@@ -82,6 +82,12 @@ public class HeadBob : MonoBehaviour
     private bool _hasMove;
     private bool _isSprinting;
     private float _idleBlendWeight = 0f;
+    
+    // UI managers
+    private PauseMenuManager pauseMenuManager;
+    private MobilePhoneToggle mobilePhoneToggle;
+    private Inventory3DController inventory3DController;
+    private NoteUIManager noteUIManager;
 
     void Reset()
     {
@@ -100,6 +106,12 @@ public class HeadBob : MonoBehaviour
             moveAction.action.Enable();
         if (sprintAction != null && sprintAction.action != null && !sprintAction.action.enabled)
             sprintAction.action.Enable();
+        
+        // Cache UI managers
+        pauseMenuManager = FindObjectOfType<PauseMenuManager>();
+        mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
+        inventory3DController = FindObjectOfType<Inventory3DController>();
+        noteUIManager = FindObjectOfType<NoteUIManager>(true);
     }
 
     void OnDisable()
@@ -115,6 +127,35 @@ public class HeadBob : MonoBehaviour
         if (cameraTarget == null) return;
 
         if (CinematicManager.IsCinematicActive)
+        {
+            _bobTimer = 0f;
+            _idleBlendWeight = 0f;
+            return;
+        }
+        
+        // Check if any UI is open - disable headbob
+        if (pauseMenuManager != null && pauseMenuManager.IsPaused)
+        {
+            _bobTimer = 0f;
+            _idleBlendWeight = 0f;
+            return;
+        }
+        
+        if (mobilePhoneToggle != null && mobilePhoneToggle.IsPhoneVisible)
+        {
+            _bobTimer = 0f;
+            _idleBlendWeight = 0f;
+            return;
+        }
+        
+        if (inventory3DController != null && inventory3DController.IsInventoryOpen)
+        {
+            _bobTimer = 0f;
+            _idleBlendWeight = 0f;
+            return;
+        }
+        
+        if (noteUIManager != null && noteUIManager.IsNoteActive)
         {
             _bobTimer = 0f;
             _idleBlendWeight = 0f;
