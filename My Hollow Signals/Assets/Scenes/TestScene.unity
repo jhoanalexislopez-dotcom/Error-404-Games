@@ -5045,7 +5045,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7.59
+  m_Intensity: 1
   m_Range: 15.21
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6184,7 +6184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5530090884887891387, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
       propertyPath: hintText
@@ -6604,7 +6604,7 @@ GameObject:
   - component: {fileID: 677709137}
   - component: {fileID: 677709138}
   - component: {fileID: 677709139}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9695,6 +9695,30 @@ PrefabInstance:
     - target: {fileID: 395617880081267455, guid: 3df83c8ecf3937a428a31dbbe64ff775, type: 3}
       propertyPath: description
       value: Pick up
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413453714167875304, guid: 3df83c8ecf3937a428a31dbbe64ff775, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413453714167875304, guid: 3df83c8ecf3937a428a31dbbe64ff775, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.22659753
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413453714167875304, guid: 3df83c8ecf3937a428a31dbbe64ff775, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.97398853
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413453714167875304, guid: 3df83c8ecf3937a428a31dbbe64ff775, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413453714167875304, guid: 3df83c8ecf3937a428a31dbbe64ff775, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3413453714167875304, guid: 3df83c8ecf3937a428a31dbbe64ff775, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 153.806
       objectReference: {fileID: 0}
     - target: {fileID: 4572672431704762209, guid: 3df83c8ecf3937a428a31dbbe64ff775, type: 3}
       propertyPath: m_Name
@@ -13679,7 +13703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a6d8e40f51fbdbb48a85863d6a0f20c9, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a6d8e40f51fbdbb48a85863d6a0f20c9, type: 3}
       propertyPath: m_IsActive
