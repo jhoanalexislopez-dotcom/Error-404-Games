@@ -9899,6 +9899,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4668630772915048263, guid: a66bba496ef77944daff2c032cde7117, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: da7dbfaebea83c244a79083b115c2a8e, type: 2}
     - target: {fileID: 919132149155446097, guid: a66bba496ef77944daff2c032cde7117, type: 3}
       propertyPath: m_Name
       value: HouseMesh

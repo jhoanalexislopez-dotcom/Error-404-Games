@@ -10,7 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c509dbaa7b6f416409e3195321a2187e, type: 3}
-  m_Name: New Layer Palette
+  m_Name: TerrainPalette
   m_EditorClassIdentifier: 
   PaletteLayers:
-  - {fileID: 8574412962073106934, guid: ce833e94f7f7eea468b012546444cf0c, type: 2}
+  - {fileID: 8574412962073106934, guid: 091c8116fbbb59c4dbf097d45e208d35, type: 2}
+  - {fileID: 8574412962073106934, guid: dc94c7e5ac8563c42a2f49a6cbb8f99d, type: 2}
