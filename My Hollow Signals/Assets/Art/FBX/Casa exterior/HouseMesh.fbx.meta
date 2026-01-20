@@ -5,390 +5,145 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects:
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: door_00_Albedo
-    second: {fileID: 2800000, guid: 7e94276793ed8ab4ab1fb55b5bd2c27c, type: 3}
+      name: Material
+    second: {fileID: 2100000, guid: 7b04bf698b5e70142af48819d36146de, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: door_00_Emission
-    second: {fileID: 2800000, guid: bedde1c685741e1469bca8eba546a02a, type: 3}
+      name: doorGlass
+    second: {fileID: 2100000, guid: 6fcd03079cff87646b43a41f5080a2b8, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: door_00_Metallic
-    second: {fileID: 2800000, guid: 8f193f29ca4dfb2448d0ea0c61dba05e, type: 3}
+      name: doorKnob
+    second: {fileID: 2100000, guid: e973e8e714bae9c409bd2dfcb376e658, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: door_00_Normal
-    second: {fileID: 2800000, guid: 14f0aa4e62cc09340be371d61d5d0a01, type: 3}
+      name: door_00
+    second: {fileID: 2100000, guid: 5b447394f4dc044488a62427c0f68bc5, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Body_00.001_Albedo
-    second: {fileID: 2800000, guid: 0174da7ec2050f4478205f6d245279ea, type: 3}
+      name: house_Body_00_001
+    second: {fileID: 2100000, guid: fcd84dbd448f5374190224cf55cbe121, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Body_00.001_Emission
-    second: {fileID: 2800000, guid: 07db63b08eed37c4f8e1c387c3c26ccc, type: 3}
+      name: house_FloorInside_00
+    second: {fileID: 2100000, guid: 9cd361f3542a3734dad1217d74994533, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Body_00.001_Metallic
-    second: {fileID: 2800000, guid: a7ce5d0bc2edce7418b2a582df066a42, type: 3}
+      name: house_FloorInside_01
+    second: {fileID: 2100000, guid: b8ec2cc67cc047143997fc148f9da630, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Body_00.001_Normal
-    second: {fileID: 2800000, guid: 8de11fab8ef402348a2df12945e2b543, type: 3}
+      name: house_Roof_00
+    second: {fileID: 2100000, guid: e5305f10b0917e04cb2d2bc9daf080a2, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_00.001_Albedo
-    second: {fileID: 2800000, guid: 7a0c44793114c2b49a9895f4e9a30940, type: 3}
+      name: house_Roof_00_001
+    second: {fileID: 2100000, guid: 5ef711cf283c2554db6387da5512dc1a, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_00.001_Emission
-    second: {fileID: 2800000, guid: a377ecb8a99aa3b4987f7808e620308c, type: 3}
+      name: house_Roof_00_002
+    second: {fileID: 2100000, guid: 7e08ce93a3fc5a641ad71dd4df5a917f, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_00.001_Metallic
-    second: {fileID: 2800000, guid: a913bde39e135ed47a378d75cd9ecdc4, type: 3}
+      name: house_Roof_01
+    second: {fileID: 2100000, guid: 8a698951e7f4fa843804fb0ce262c672, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_00.001_Normal
-    second: {fileID: 2800000, guid: 895dd7c044ff20e488a2ab31cbc51aef, type: 3}
+      name: house_Roof_01_001
+    second: {fileID: 2100000, guid: d6cd8bfe2d54bac49babd13993e4a04b, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_00.002_Albedo
-    second: {fileID: 2800000, guid: 3c2e8a3505f79964384973b6b861233d, type: 3}
+      name: house_body_00
+    second: {fileID: 2100000, guid: 7a20e001deb34be4fa559f68cad1e55e, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_00.002_Emission
-    second: {fileID: 2800000, guid: 4c2a4ad594cfba84ba5528432c05e23e, type: 3}
+      name: outside_Pillar_00
+    second: {fileID: 2100000, guid: 38348872b131fbe41a6f5abc00c362db, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_00.002_Metallic
-    second: {fileID: 2800000, guid: 689f392fc32312b46a75510e38cca5bb, type: 3}
+      name: outside_Pillar_01
+    second: {fileID: 2100000, guid: 03310df3a142a20449942540bf070782, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_00.002_Normal
-    second: {fileID: 2800000, guid: 0bbb3e0e7cbd1bf4aada620bbde42f7a, type: 3}
+      name: outside_Pillar_02
+    second: {fileID: 2100000, guid: 26d0df3bbc9c51f4d81b9245691b387f, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_00_Albedo
-    second: {fileID: 2800000, guid: 4a1a3d4527866e64d850773609a383f2, type: 3}
+      name: outside_Pillar_03
+    second: {fileID: 2100000, guid: 610037934a6fe78449f68b248a15b0d1, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_00_Emission
-    second: {fileID: 2800000, guid: cdaac89a4a888cc46b744d55d908e491, type: 3}
+      name: outside_Pillar_04
+    second: {fileID: 2100000, guid: 5fb917f6b4f66a444b22f85acc5ccaf1, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_00_Metallic
-    second: {fileID: 2800000, guid: 0d067455d19ddb048bc6ea0bd33b8067, type: 3}
+      name: outside_Pillar_05
+    second: {fileID: 2100000, guid: 9a87ebae009f6854abca21b191180f0c, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_00_Normal
-    second: {fileID: 2800000, guid: f7bc11f314c5f3e418891f2a69477d6f, type: 3}
+      name: outside_Pillar_06
+    second: {fileID: 2100000, guid: b6ad0fc6cce3f5147bbdbe4cce84f0f9, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_01.001_Albedo
-    second: {fileID: 2800000, guid: f951880f8fe759c47855a28319bd7c6d, type: 3}
+      name: outside_Stairs_00
+    second: {fileID: 2100000, guid: 9e9331cb9b5728b41a8856792a5a4264, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_01.001_Emission
-    second: {fileID: 2800000, guid: bf4bbad909a03014d98817b895dced41, type: 3}
+      name: windowBody
+    second: {fileID: 2100000, guid: 6fb0ad61bd71fec4eb836c6a9ab0f47f, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_01.001_Metallic
-    second: {fileID: 2800000, guid: 624874c95f0c6a84baea92a300d5b55a, type: 3}
+      name: windowGlass
+    second: {fileID: 2100000, guid: 10e89cd0ad21cce43a4d331866ba3d58, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_01.001_Normal
-    second: {fileID: 2800000, guid: 7b1453af362fa304c82d93d55e9ede34, type: 3}
+      name: window_00
+    second: {fileID: 2100000, guid: 9983a87395db79540bdd59c99088bb88, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_01_Albedo
-    second: {fileID: 2800000, guid: 0dfbf8abfb677d44b857b9db3e26a38a, type: 3}
+      name: window_01
+    second: {fileID: 2100000, guid: dbdfc51c052fb5942a969f711fc472b2, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_01_Emission
-    second: {fileID: 2800000, guid: d762a80c06098ec4c86d905216a68d53, type: 3}
+      name: window_02
+    second: {fileID: 2100000, guid: 160af6c1faf03b4488443952bbdb8e93, type: 2}
   - first:
-      type: UnityEngine:Texture2D
+      type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: house_Roof_01_Metallic
-    second: {fileID: 2800000, guid: 7e080e018d7942b478807951f92ca857, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: house_Roof_01_Normal
-    second: {fileID: 2800000, guid: 98460cc9b6749ad49bb46c97c632fa29, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: house_body_00_Albedo
-    second: {fileID: 2800000, guid: d55b9914c88305b4bbfe83059f6bc36a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: house_body_00_Emission
-    second: {fileID: 2800000, guid: 53b9f39fb3266e24da95230103387fd6, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: house_body_00_Metallic
-    second: {fileID: 2800000, guid: 3603447e96bafd349839cfd02a9b0481, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: house_body_00_Normal
-    second: {fileID: 2800000, guid: 4d1e74e52c602ba458ca461eed6075a9, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_00_Albedo
-    second: {fileID: 2800000, guid: 6ae18502585eb484687f78332c66c2dc, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_00_Emission
-    second: {fileID: 2800000, guid: ba8ac2aaebf8a784696aa7cdc69dc9b6, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_00_Metallic
-    second: {fileID: 2800000, guid: 71f8f8ebce48dd749926d19431761b49, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_00_Normal
-    second: {fileID: 2800000, guid: 31dc1f779424ae145b558c0bce25d3e2, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_01_Albedo
-    second: {fileID: 2800000, guid: c493e1290e980634188b78be3d425950, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_01_Emission
-    second: {fileID: 2800000, guid: 01082df218287c44596498ffdfca3771, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_01_Metallic
-    second: {fileID: 2800000, guid: 37ed555f7ce33804dbb38fbf2a04f3fb, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_01_Normal
-    second: {fileID: 2800000, guid: 1af6bc564aa865f49810944ae961f1d8, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_02_Albedo
-    second: {fileID: 2800000, guid: 98f0118e7a2e09548b6ff0ca3d7b487d, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_02_Emission
-    second: {fileID: 2800000, guid: b5357603b79a28a46a26259218f01715, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_02_Metallic
-    second: {fileID: 2800000, guid: 84eb62953bb513447bb323e06d6fb5ba, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_02_Normal
-    second: {fileID: 2800000, guid: c33d4722faa7ca240b7b0532ee53ac9a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_04_Albedo
-    second: {fileID: 2800000, guid: 206998476dc965442aaff4637df9ac5e, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_04_Emission
-    second: {fileID: 2800000, guid: 5502618672af8564b9c6cd3ed6d1617f, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_04_Metallic
-    second: {fileID: 2800000, guid: 2d77b8801024ee345a720037bfc97baf, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_04_Normal
-    second: {fileID: 2800000, guid: f1cac4836ca85c343a00d4063abcf246, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_05_Albedo
-    second: {fileID: 2800000, guid: 5a303084c89457540835b0ced621f0da, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_05_Emission
-    second: {fileID: 2800000, guid: aee9d495d05ca5c42967f8e9f29fd665, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_05_Metallic
-    second: {fileID: 2800000, guid: 7cb18e6e0d2d58a42a7beb5117c52d74, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Pillar_05_Normal
-    second: {fileID: 2800000, guid: bd0b6464bbb987f4498d66b63aec0c3a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Stairs_00_Albedo
-    second: {fileID: 2800000, guid: 73d7ee4ef58c71d4b938af31678aa604, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Stairs_00_Emission
-    second: {fileID: 2800000, guid: af5531718ac08494db1ca38f63b9fb5d, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Stairs_00_Metallic
-    second: {fileID: 2800000, guid: 4fcc751b070586b4382838484d8e57e7, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: outside_Stairs_00_Normal
-    second: {fileID: 2800000, guid: 4ac92cdbed5b05544bc6dd874324d268, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_00_Albedo
-    second: {fileID: 2800000, guid: 194715a6aae55bd4eb2adde4bd791868, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_00_Emission
-    second: {fileID: 2800000, guid: db0f91c9353ef2647ad142657de890a0, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_00_Metallic
-    second: {fileID: 2800000, guid: 35166d396377a4d47af1659720bc765a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_00_Normal
-    second: {fileID: 2800000, guid: 8b015bbf48eabb84595792447949c3e7, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_01_Albedo
-    second: {fileID: 2800000, guid: ef009463cefdf144dacb088c67eac369, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_01_Emission
-    second: {fileID: 2800000, guid: 6ebc225308a3baf489a67bdbce38382c, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_01_Metallic
-    second: {fileID: 2800000, guid: 437ecf3c21409e0408a3029ec967fc03, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_01_Normal
-    second: {fileID: 2800000, guid: 35397b8f3d55dec47a1da9255caa6b4d, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_02_Albedo
-    second: {fileID: 2800000, guid: 2516626ecf3bcd749a5ccaaba5a192ab, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_02_Emission
-    second: {fileID: 2800000, guid: ffd14585f812a524c87b023491880e75, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_02_Metallic
-    second: {fileID: 2800000, guid: 3742c51dc60edc6458882cc41c162010, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_02_Normal
-    second: {fileID: 2800000, guid: e301f2e8616489042a37ae18ee4c324b, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_03_Albedo
-    second: {fileID: 2800000, guid: 36f11f595ac670d4aa315b1b10ec2f3c, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_03_Emission
-    second: {fileID: 2800000, guid: edb54e8140534b4459732d57d7a14b54, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_03_Metallic
-    second: {fileID: 2800000, guid: 3feaef4b00846414090fe0d2c097c663, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_03_Normal
-    second: {fileID: 2800000, guid: c3b9b803c66cb10478618af474679c35, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_04_Albedo
-    second: {fileID: 2800000, guid: e14bffa3a32ba3845b99854344bcf574, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_04_Emission
-    second: {fileID: 2800000, guid: c5de42a64afa0ad43880c7d23ecf4051, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_04_Metallic
-    second: {fileID: 2800000, guid: a9227d72ac79d33468aafc496eb537ca, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: window_04_Normal
-    second: {fileID: 2800000, guid: a1291965c3de4e548b036f087f055389, type: 3}
+      name: window_03
+    second: {fileID: 2100000, guid: 49d68504553b19d41b99b2c0a58b1335, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

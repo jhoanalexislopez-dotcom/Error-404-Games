@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
     [Range(0f, 1f)][SerializeField] private float flashlightVolume = 0.8f;
 
     public GameObject BlackLayoutTransitionUI;
+    public GameObject Inventory3DObject;
 
     // Internos
     private float stepTimer;
@@ -103,6 +104,8 @@ public class GameManager : MonoBehaviour
     {
         if (BlackLayoutTransitionUI != null)
             BlackLayoutTransitionUI.SetActive(true);
+        if (Inventory3DObject != null)
+            Inventory3DObject.SetActive(true);
     }
     
     private void RefreshReferences()
