@@ -22,9 +22,40 @@ public class Collectible : MonoBehaviour, IInteractable
     [Tooltip("Amount of sanity to lower when this item is collected")]
     [SerializeField] private float sanityLossAmount = 0f;
 
+    [Header("Audio Settings")]
+    [Tooltip("Optional AudioSource to use. If not set, one will be created automatically")]
+    [SerializeField] private AudioSource customAudioSource;
+    
+    [Tooltip("Sound effect to play when collecting")]
+    [SerializeField] private AudioClip collectSound;
+    
+    [Tooltip("Volume for the collect sound")]
+    [SerializeField][Range(0f, 1f)] private float soundVolume = 1f;
+
+    private AudioSource audioSource;
+
     void Start()
     {
-
+        if (customAudioSource != null)
+        {
+            audioSource = customAudioSource;
+        }
+        else
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource == null && collectSound != null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+                audioSource.playOnAwake = false;
+                audioSource.loop = false;
+                audioSource.spatialBlend = 1f;
+            }
+        }
+        
+        if (audioSource != null)
+        {
+            audioSource.loop = false;
+        }
     }
 
     public string GetDescription()
@@ -34,6 +65,8 @@ public class Collectible : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        PlayCollectSound();
+
         if (PlayerInventory.Instance != null)
         {
             PlayerInventory.Instance.AddItem(value);
@@ -78,5 +111,16 @@ public class Collectible : MonoBehaviour, IInteractable
         }
 
         Destroy(gameObject);
+    }
+
+    private void PlayCollectSound()
+    {
+        if (collectSound != null && audioSource != null)
+        {
+            audioSource.loop = false;
+            audioSource.clip = collectSound;
+            audioSource.volume = soundVolume;
+            audioSource.Play();
+        }
     }
 }

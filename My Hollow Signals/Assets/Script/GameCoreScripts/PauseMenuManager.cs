@@ -27,6 +27,10 @@ public class PauseMenuManager : MonoBehaviour
     private MobilePhoneToggle mobilePhoneToggle;
     private FlashlightController flashlightController;
     private NoteInventoryUI noteInventoryUI;
+    
+    [Header("Flashlight Settings")]
+    [Tooltip("Reference to the flashlight mesh GameObject to hide when paused")]
+    public GameObject flashlightMesh;
 
     // Store original cursor state
     private CursorLockMode originalCursorLockMode;
@@ -141,6 +145,12 @@ public class PauseMenuManager : MonoBehaviour
         {
             flashlightController.SetFlashlightInputEnabled(false);
         }
+        
+        // Hide flashlight mesh
+        if (flashlightMesh != null)
+        {
+            flashlightMesh.SetActive(false);
+        }
 
         Debug.Log("Game Paused");
     }
@@ -173,6 +183,12 @@ public class PauseMenuManager : MonoBehaviour
         if (flashlightController != null)
         {
             flashlightController.SetFlashlightInputEnabled(true);
+        }
+        
+        // Show flashlight mesh (only if player has flashlight)
+        if (flashlightMesh != null && PlayerInventory.Instance != null && PlayerInventory.Instance.HasFlashlight)
+        {
+            flashlightMesh.SetActive(true);
         }
 
         Debug.Log("Game Resumed");

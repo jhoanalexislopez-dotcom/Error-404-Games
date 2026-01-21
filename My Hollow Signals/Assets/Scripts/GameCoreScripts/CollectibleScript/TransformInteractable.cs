@@ -1,0 +1,185 @@
+/*******************************************************
+ * Author: [Bianca Marinica]
+ * Last Modified: [21/11/2025]
+ * Description:
+ *    Interactable object that transforms (position, rotation, scale) when interacted with.
+ *    Used for doors, drawers, and other moveable objects.
+ *******************************************************/
+
+using UnityEngine;
+
+public class TransformInteractable : MonoBehaviour, IInteractable
+{
+    [SerializeField] private string description = "Interact";
+
+    [Header("Transform Settings")]
+    [Tooltip("Target position offset (local space)")]
+    [SerializeField] private Vector3 targetPosition;
+    
+    [Tooltip("Target rotation (local space)")]
+    [SerializeField] private Vector3 targetRotation;
+    
+    [Tooltip("Target scale")]
+    [SerializeField] private Vector3 targetScale = Vector3.one;
+
+    [Header("Animation Settings")]
+    [Tooltip("Time to complete the transformation")]
+    [SerializeField] private float transformDuration = 1f;
+    
+    [Tooltip("Animation curve for smooth movement")]
+    [SerializeField] private AnimationCurve transformCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+
+    [Header("Audio Settings")]
+    [Tooltip("Optional AudioSource to use. If not set, one will be created automatically")]
+    [SerializeField] private AudioSource customAudioSource;
+    
+    [Tooltip("Sound effect to play when interacting")]
+    [SerializeField] private AudioClip interactionSound;
+    
+    [Tooltip("Volume for the interaction sound")]
+    [SerializeField][Range(0f, 1f)] private float soundVolume = 1f;
+
+    [Header("Interaction Settings")]
+    [Tooltip("Can this object be interacted with multiple times?")]
+    [SerializeField] private bool canReInteract = false;
+    
+    [Tooltip("If true, object returns to original state. If false, toggles between states")]
+    [SerializeField] private bool returnToOriginal = false;
+
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
+    private Vector3 initialScale;
+
+    private Vector3 currentTargetPosition;
+    private Quaternion currentTargetRotation;
+    private Vector3 currentTargetScale;
+
+    private bool isTransforming = false;
+    private bool hasInteracted = false;
+    private bool isInTargetState = false;
+
+    private float transformProgress = 0f;
+    private AudioSource audioSource;
+
+    private const float EPSILON = 0.001f;
+
+    void Start()
+    {
+        initialPosition = transform.localPosition;
+        initialRotation = transform.localRotation;
+        initialScale = transform.localScale;
+
+        currentTargetPosition = initialPosition + targetPosition;
+        currentTargetRotation = Quaternion.Euler(targetRotation) * initialRotation;
+        currentTargetScale = targetScale;
+
+        if (customAudioSource != null)
+        {
+            audioSource = customAudioSource;
+        }
+        else
+        {
+            audioSource = gameObject.GetComponent<AudioSource>();
+            if (audioSource == null && interactionSound != null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+                audioSource.playOnAwake = false;
+                audioSource.loop = false;
+                audioSource.spatialBlend = 1f;
+            }
+        }
+        
+        if (audioSource != null)
+        {
+            audioSource.loop = false;
+        }
+    }
+
+    public string GetDescription()
+    {
+        return description;
+    }
+
+    public void Interact()
+    {
+        if (isTransforming)
+            return;
+
+        if (hasInteracted && !canReInteract)
+            return;
+
+        hasInteracted = true;
+
+        if (canReInteract && !returnToOriginal)
+        {
+            isInTargetState = !isInTargetState;
+        }
+
+        PlaySound();
+        StartTransform();
+    }
+
+    private void StartTransform()
+    {
+        isTransforming = true;
+        transformProgress = 0f;
+    }
+
+    private void PlaySound()
+    {
+        if (interactionSound != null && audioSource != null)
+        {
+            audioSource.loop = false;
+            audioSource.clip = interactionSound;
+            audioSource.volume = soundVolume;
+            audioSource.Play();
+        }
+    }
+
+    void Update()
+    {
+        if (isTransforming)
+        {
+            transformProgress += Time.deltaTime / transformDuration;
+            float curveValue = transformCurve.Evaluate(transformProgress);
+
+            Vector3 startPos, endPos;
+            Quaternion startRot, endRot;
+            Vector3 startScale, endScale;
+
+            if (returnToOriginal || (!canReInteract && !isInTargetState) || (canReInteract && isInTargetState))
+            {
+                startPos = initialPosition;
+                startRot = initialRotation;
+                startScale = initialScale;
+                endPos = currentTargetPosition;
+                endRot = currentTargetRotation;
+                endScale = currentTargetScale;
+            }
+            else
+            {
+                startPos = currentTargetPosition;
+                startRot = currentTargetRotation;
+                startScale = currentTargetScale;
+                endPos = initialPosition;
+                endRot = initialRotation;
+                endScale = initialScale;
+            }
+
+            transform.localPosition = Vector3.Lerp(startPos, endPos, curveValue);
+            transform.localRotation = Quaternion.Slerp(startRot, endRot, curveValue);
+            transform.localScale = Vector3.Lerp(startScale, endScale, curveValue);
+
+            if (transformProgress >= 1f)
+            {
+                isTransforming = false;
+                transformProgress = 1f;
+
+                if (returnToOriginal)
+                {
+                    hasInteracted = false;
+                }
+            }
+        }
+    }
+}
