@@ -26,6 +26,9 @@ public class SanityManager : MonoBehaviour
     public UnityEvent onInsane; //Evento cuando muere
     private bool isInsane = false;
 
+    [Header("Jumpscare")]
+    public JumpscareManager jumpscareManager;
+
     [Header("Sanity visual")]
     public Image sanityImage;
     public Sprite[] sanitySprites;
@@ -95,8 +98,13 @@ public class SanityManager : MonoBehaviour
             {
                 isInsane = true;
                 Debug.Log("You're nuts!");
-                onInsane.Invoke(); //Parte del evento cuando muere
-                vignette.intensity.value = 0f;
+                
+                if (jumpscareManager != null)
+                {
+                    jumpscareManager.TriggerJumpscare();
+                }
+                
+                onInsane.Invoke();
                 yield break;
             }
 
@@ -170,11 +178,13 @@ public class SanityManager : MonoBehaviour
         {
             isInsane = true;
             Debug.Log("You're nuts!");
-            onInsane.Invoke();
-            if (vignette != null)
+            
+            if (jumpscareManager != null)
             {
-                vignette.intensity.value = 0f;
+                jumpscareManager.TriggerJumpscare();
             }
+            
+            onInsane.Invoke();
         }
     }
 }
