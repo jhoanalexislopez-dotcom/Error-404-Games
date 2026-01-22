@@ -33,10 +33,7 @@ public class JumpscareManager : MonoBehaviour
     [SerializeField] private Inventory3DController inventory3DController;
     [SerializeField] private NoteUIManager noteUIManager;
 
-    [Header("Fade Settings")]
-    [SerializeField] private Animator fadeAnimator;
-    [SerializeField] private GameObject fadeImage;
-    [SerializeField] private float fadeOutDuration = 1f;
+    [Header("Scene Transition")]
     [SerializeField] private float onInsaneScreenDuration = 3f;
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
@@ -109,9 +106,6 @@ public class JumpscareManager : MonoBehaviour
 
         StopCameraShake();
 
-        FadeToBlack();
-        yield return new WaitForSeconds(fadeOutDuration);
-
         CleanupJumpscare();
 
         if (insanityEffectsManager != null)
@@ -120,9 +114,6 @@ public class JumpscareManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(onInsaneScreenDuration);
-
-        FadeToBlack();
-        yield return new WaitForSeconds(fadeOutDuration);
 
         LoadMainMenu();
     }
@@ -222,19 +213,6 @@ public class JumpscareManager : MonoBehaviour
         }
     }
 
-    private void FadeToBlack()
-    {
-        if (fadeImage != null)
-        {
-            fadeImage.SetActive(true);
-        }
-
-        if (fadeAnimator != null)
-        {
-            fadeAnimator.SetTrigger("FadeOut");
-        }
-    }
-
     private void LoadMainMenu()
     {
         SceneManager.LoadScene(mainMenuSceneName);
@@ -247,10 +225,10 @@ public class JumpscareManager : MonoBehaviour
             mainCanvas.SetActive(false);
         }
 
-        if (layoutCanvas != null)
-        {
-            layoutCanvas.SetActive(false);
-        }
+        //if (layoutCanvas != null)
+        //{
+        //    layoutCanvas.SetActive(false);
+        //}
 
         if (mobileCanvas != null)
         {
