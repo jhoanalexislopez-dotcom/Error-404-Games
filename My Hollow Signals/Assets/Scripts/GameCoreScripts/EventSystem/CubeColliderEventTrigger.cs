@@ -5,8 +5,14 @@ using System;
 
 public class CubeColliderEventTrigger : MonoBehaviour
 {
-    [Header("UI")]
-    public TextMeshProUGUI subtext;
+    // ==========================
+    // GLOBAL DIALOGUE TRACKING
+    // ==========================
+
+    private static DialogueUI globalActiveDialogueUI;
+
+    [Header("Dialogue UI")]
+    public GameObject dialogueUIPrefab;
 
     [Header("Main Dialogue (First Trigger Only)")]
     [TextArea]
@@ -89,7 +95,7 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
     private bool inCube = false;
     private bool cinematicActive = false;
-    private Coroutine typingCoroutine;
+    private DialogueUI currentDialogueUI;
 
     private Transform player;
     private MonoBehaviour playerController;
@@ -128,20 +134,10 @@ public class CubeColliderEventTrigger : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        if (hasFinishedMainEvent && postEventDialogueLines.Length > 0)
-        {
-            if (!hasShownPostEventDialogue)
-            {
-                PlayPostEventDialogue();
-                hasShownPostEventDialogue = true;
-            }
-            return;
-        }
-
         if (triggerOnlyOnce && hasTriggered)
             return;
 
-        if (inCube)
+        if (inCube || cinematicActive)
             return;
 
         inCube = true;
@@ -158,37 +154,42 @@ public class CubeColliderEventTrigger : MonoBehaviour
         if (playTriggerSound && audioSource != null && triggerSound != null)
             audioSource.PlayOneShot(triggerSound);
 
-        if (typingCoroutine != null)
-            StopCoroutine(typingCoroutine);
+        DestroyCurrentDialogue();
 
-        typingCoroutine = StartCoroutine(PlayDialogueSequence());
+        if (dialogueUIPrefab != null && dialogueLines.Length > 0)
+        {
+            GameObject uiInstance = Instantiate(dialogueUIPrefab);
+            currentDialogueUI = uiInstance.GetComponent<DialogueUI>();
+            globalActiveDialogueUI = currentDialogueUI;
+
+            if (currentDialogueUI != null)
+            {
+                currentDialogueUI.typingSpeed = typingSpeed;
+                currentDialogueUI.lineDelay = lineDelay;
+                currentDialogueUI.autoHideDelay = autoHideDelay;
+                currentDialogueUI.PlayDialogue(dialogueLines, OnMainDialogueComplete);
+            }
+        }
+        else
+        {
+            OnMainDialogueComplete();
+        }
     }
 
-    // ==========================
-    // MAIN DIALOGUE
-    // ==========================
-
-    private IEnumerator PlayDialogueSequence()
+    private void OnMainDialogueComplete()
     {
-        foreach (string line in dialogueLines)
-        {
-            yield return StartCoroutine(TypeText(line));
-            yield return new WaitForSeconds(lineDelay);
-        }
-
-        yield return new WaitForSeconds(autoHideDelay);
-
-        if (subtext != null)
-            subtext.text = "";
         EndCinematic();
-
         hasFinishedMainEvent = true;
+        
+        if (globalActiveDialogueUI == currentDialogueUI)
+            globalActiveDialogueUI = null;
+        
+        currentDialogueUI = null;
 
         if (postEventDialogueLines.Length > 0 && !hasShownPostEventDialogue)
         {
-            yield return new WaitForSeconds(0.5f);
             hasShownPostEventDialogue = true;
-            yield return StartCoroutine(PlayPostEventDialogueSequence());
+            PlayPostEventDialogue();
         }
     }
 
@@ -198,44 +199,37 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
     private void PlayPostEventDialogue()
     {
-        if (typingCoroutine != null)
-            StopCoroutine(typingCoroutine);
+        DestroyCurrentDialogue();
 
-        typingCoroutine = StartCoroutine(PlayPostEventDialogueSequence());
+        if (dialogueUIPrefab != null && postEventDialogueLines.Length > 0)
+        {
+            GameObject uiInstance = Instantiate(dialogueUIPrefab);
+            currentDialogueUI = uiInstance.GetComponent<DialogueUI>();
+            globalActiveDialogueUI = currentDialogueUI;
+
+            if (currentDialogueUI != null)
+            {
+                currentDialogueUI.typingSpeed = typingSpeed;
+                currentDialogueUI.lineDelay = lineDelay;
+                currentDialogueUI.autoHideDelay = autoHideDelay;
+                currentDialogueUI.PlayDialogue(postEventDialogueLines, () => { 
+                    currentDialogueUI = null;
+                    if (globalActiveDialogueUI == currentDialogueUI)
+                        globalActiveDialogueUI = null;
+                });
+            }
+        }
     }
 
-    private IEnumerator PlayPostEventDialogueSequence()
+    private void DestroyCurrentDialogue()
     {
-        foreach (string line in postEventDialogueLines)
+        if (globalActiveDialogueUI != null)
         {
-            yield return StartCoroutine(TypeText(line));
-            yield return new WaitForSeconds(lineDelay);
+            Destroy(globalActiveDialogueUI.gameObject);
+            globalActiveDialogueUI = null;
         }
 
-        yield return new WaitForSeconds(autoHideDelay);
-        if (subtext != null)
-            subtext.text = "";
-    }
-
-    // ==========================
-    // TYPEWRITER
-    // ==========================
-
-    private IEnumerator TypeText(string text)
-    {
-        if (subtext == null)
-        {
-            Debug.LogWarning($"Subtext TextMeshProUGUI is not assigned on {gameObject.name}");
-            yield break;
-        }
-
-        subtext.text = "";
-
-        foreach (char c in text)
-        {
-            subtext.text += c;
-            yield return new WaitForSeconds(typingSpeed);
-        }
+        currentDialogueUI = null;
     }
 
     // ==========================
