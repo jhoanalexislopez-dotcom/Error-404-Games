@@ -25,6 +25,7 @@ public class WaveformTextureGenerator : MonoBehaviour
     private Texture2D waveformTex;
     private float maxSampleValue = 0f;
     private int updateCount = 0;
+    private PauseMenuManager pauseMenuManager;
 
     void Start()
     {
@@ -50,6 +51,13 @@ public class WaveformTextureGenerator : MonoBehaviour
         {
             Debug.LogWarning("WaveformTextureGenerator: No target material assigned!");
         }
+
+        pauseMenuManager = FindObjectOfType<PauseMenuManager>();
+        
+        if (enableDebugLogs)
+        {
+            Debug.Log($"WaveformTextureGenerator: Found PauseMenuManager: {pauseMenuManager != null}");
+        }
     }
 
     void Update()
@@ -60,6 +68,11 @@ public class WaveformTextureGenerator : MonoBehaviour
             {
                 Debug.LogWarning($"WaveformTextureGenerator: Not updating - audioDetector={audioDetector != null}, isRecording={audioDetector?.IsRecording}, hasMaterial={targetMaterial != null}");
             }
+            return;
+        }
+
+        if (IsPaused())
+        {
             return;
         }
 
@@ -132,5 +145,15 @@ public class WaveformTextureGenerator : MonoBehaviour
         for (int x = 0; x < waveformTex.width; x++)
             waveformTex.SetPixel(x, 0, c);
         waveformTex.Apply();
+    }
+
+    private bool IsPaused()
+    {
+        if (pauseMenuManager != null && pauseMenuManager.IsPaused)
+        {
+            return true;
+        }
+
+        return false;
     }
 }
