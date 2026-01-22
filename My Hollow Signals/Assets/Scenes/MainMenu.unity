@@ -12224,7 +12224,7 @@ Transform:
   m_GameObject: {fileID: 384685369}
   serializedVersion: 2
   m_LocalRotation: {x: 7.1054274e-15, y: -0.33367777, z: 1.5987212e-14, w: 0.9426872}
-  m_LocalPosition: {x: 18.2, y: 5.650003, z: -22.1}
+  m_LocalPosition: {x: 21.73, y: 3.6, z: -23.4}
   m_LocalScale: {x: 1.1000001, y: 1.1, z: 1.1000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12271,7 +12271,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 58.7
+  field of view: 25
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -12353,7 +12353,7 @@ MonoBehaviour:
   StretchToDisplay: 1
   AspectRatio: 1.33
   EnableTVCurvature: 1
-  Curvature: 0.285
+  Curvature: 0.236
   TVOverlay: {fileID: 2800000, guid: 983b4e2248d599443981d96b39576aeb, type: 3}
   EnablePixelMask: 1
   PixelMaskTexture: {fileID: 2800000, guid: 55b9f85457b9afc46834d927aa2e61cc, type: 3}
@@ -12364,10 +12364,10 @@ MonoBehaviour:
   IQScale: {x: 1, y: 1}
   RFNoise: 0.25
   LumaSharpen: 0
-  QuantizeRGB: 0
-  RBits: 8
-  GBits: 8
-  BBits: 8
+  QuantizeRGB: 1
+  RBits: 6
+  GBits: 6
+  BBits: 6
   EnableBurstCountAnimation: 1
   AntiFlicker: 0
   EnableRollingFlicker: 0
@@ -12914,7 +12914,7 @@ Transform:
   m_GameObject: {fileID: 485133666}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.35, y: 0, z: 9.1}
+  m_LocalPosition: {x: -5.35, y: 0.51, z: 9.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13633,7 +13633,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 47.449326, y: 1.9810843, z: 28.63028}
+    m_Scale: {x: 47.449326, y: 1.1115497, z: 28.63028}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0

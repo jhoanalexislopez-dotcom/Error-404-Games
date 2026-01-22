@@ -4533,7 +4533,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7868173232864228316, guid: 4402df8d9e0fe044790970632b208147, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5f879d8fd7937eb4bbb7c4e0e36a451c, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
