@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JumpscareManager : MonoBehaviour
 {
@@ -34,7 +35,10 @@ public class JumpscareManager : MonoBehaviour
 
     [Header("Fade Settings")]
     [SerializeField] private Animator fadeAnimator;
+    [SerializeField] private GameObject fadeImage;
     [SerializeField] private float fadeOutDuration = 1f;
+    [SerializeField] private float onInsaneScreenDuration = 3f;
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
 
     private AudioSource audioSource;
     private GameObject spawnedEnemy;
@@ -107,7 +111,12 @@ public class JumpscareManager : MonoBehaviour
 
         CleanupJumpscare();
 
-        isJumpscareActive = false;
+        yield return new WaitForSeconds(onInsaneScreenDuration);
+
+        FadeToBlack();
+        yield return new WaitForSeconds(fadeOutDuration);
+
+        LoadMainMenu();
     }
 
     private void DisablePlayerInput()
@@ -148,8 +157,6 @@ public class JumpscareManager : MonoBehaviour
         {
             gameManager.enabled = gameManagerWasEnabled;
         }
-
-        EnableAllMenuInputs();
     }
 
     private void CloseAllMenus()
@@ -207,35 +214,22 @@ public class JumpscareManager : MonoBehaviour
         }
     }
 
-    private void EnableAllMenuInputs()
-    {
-        if (pauseMenuManager != null)
-        {
-            pauseMenuManager.enabled = true;
-        }
-
-        if (mobilePhoneToggle != null)
-        {
-            mobilePhoneToggle.enabled = true;
-        }
-
-        if (inventory3DController != null)
-        {
-            inventory3DController.enabled = true;
-        }
-
-        if (noteUIManager != null)
-        {
-            noteUIManager.enabled = true;
-        }
-    }
-
     private void FadeToBlack()
     {
+        if (fadeImage != null)
+        {
+            fadeImage.SetActive(true);
+        }
+
         if (fadeAnimator != null)
         {
             fadeAnimator.SetTrigger("FadeOut");
         }
+    }
+
+    private void LoadMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuSceneName);
     }
 
     private void HideUI()
@@ -377,7 +371,6 @@ public class JumpscareManager : MonoBehaviour
         }
 
         ShowUI();
-        EnablePlayerInput();
     }
 
     public bool IsJumpscareActive

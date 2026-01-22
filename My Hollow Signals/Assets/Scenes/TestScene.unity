@@ -1301,7 +1301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5879810087552982224, guid: 59b93443ba4a49a4d95c3be027ce68d1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5269,7 +5269,10 @@ MonoBehaviour:
   inventory3DController: {fileID: 1218190898}
   noteUIManager: {fileID: 1688654177}
   fadeAnimator: {fileID: 1575866658}
+  fadeImage: {fileID: 1575866656}
   fadeOutDuration: 1
+  onInsaneScreenDuration: 3
+  mainMenuSceneName: MainMenu
 --- !u!4 &722512560
 Transform:
   m_ObjectHideFlags: 0
@@ -11231,6 +11234,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1575866656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8336651541948456578, guid: 59b93443ba4a49a4d95c3be027ce68d1, type: 3}
+  m_PrefabInstance: {fileID: 217375720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1575866658 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 2362629516954277006, guid: 59b93443ba4a49a4d95c3be027ce68d1, type: 3}
