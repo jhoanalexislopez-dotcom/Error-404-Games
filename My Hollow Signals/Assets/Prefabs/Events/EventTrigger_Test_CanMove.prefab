@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987fd75dff38e2542ae46c7550f58d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  subtext: {fileID: 0}
+  dialogueUIPrefab: {fileID: 2521305128529513819, guid: f8a30331077a52040a885b710dd461a5, type: 3}
   dialogueLines:
   - Ya voy...
   postEventDialogueLines: []
