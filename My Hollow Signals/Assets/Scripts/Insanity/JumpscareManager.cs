@@ -40,6 +40,9 @@ public class JumpscareManager : MonoBehaviour
     [SerializeField] private float onInsaneScreenDuration = 3f;
     [SerializeField] private string mainMenuSceneName = "MainMenu";
 
+    [Header("Insanity Effects")]
+    [SerializeField] private InsanityEffectsManager insanityEffectsManager;
+
     private AudioSource audioSource;
     private GameObject spawnedEnemy;
     private bool isJumpscareActive = false;
@@ -110,6 +113,11 @@ public class JumpscareManager : MonoBehaviour
         yield return new WaitForSeconds(fadeOutDuration);
 
         CleanupJumpscare();
+
+        if (insanityEffectsManager != null)
+        {
+            insanityEffectsManager.ActivateInsaneScreen();
+        }
 
         yield return new WaitForSeconds(onInsaneScreenDuration);
 

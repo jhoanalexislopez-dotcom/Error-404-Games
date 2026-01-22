@@ -178,7 +178,8 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         yield return new WaitForSeconds(autoHideDelay);
 
-        subtext.text = "";
+        if (subtext != null)
+            subtext.text = "";
         EndCinematic();
 
         hasFinishedMainEvent = true;
@@ -212,7 +213,8 @@ public class CubeColliderEventTrigger : MonoBehaviour
         }
 
         yield return new WaitForSeconds(autoHideDelay);
-        subtext.text = "";
+        if (subtext != null)
+            subtext.text = "";
     }
 
     // ==========================
@@ -221,6 +223,12 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
     private IEnumerator TypeText(string text)
     {
+        if (subtext == null)
+        {
+            Debug.LogWarning($"Subtext TextMeshProUGUI is not assigned on {gameObject.name}");
+            yield break;
+        }
+
         subtext.text = "";
 
         foreach (char c in text)
