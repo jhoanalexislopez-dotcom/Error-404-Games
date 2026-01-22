@@ -130,6 +130,32 @@ public class MobilePhoneToggle : MonoBehaviour
             }
         }
     }
+
+    public void ClosePhone()
+    {
+        if (isPhoneVisible)
+        {
+            isPhoneVisible = false;
+            if (mobileCanvas != null)
+            {
+                mobileCanvas.SetActive(false);
+            }
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            
+            if (playerController != null)
+            {
+                playerController.enabled = true;
+                playerController.SetPlayerInputEnabled(true);
+            }
+            
+            if (flashlightController != null)
+            {
+                flashlightController.SetFlashlightInputEnabled(true);
+            }
+        }
+    }
     
     private IEnumerator ScrollToBottomOnOpen()
     {

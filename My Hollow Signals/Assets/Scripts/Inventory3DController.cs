@@ -318,7 +318,7 @@ public class Inventory3DController : MonoBehaviour
         UpdateDisplayText();
     }
     
-    private void CloseInventory()
+    public void CloseInventory()
     {
         if (isInventoryOpen)
         {

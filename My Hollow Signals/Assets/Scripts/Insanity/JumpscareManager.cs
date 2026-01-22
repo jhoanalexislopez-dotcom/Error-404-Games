@@ -26,6 +26,16 @@ public class JumpscareManager : MonoBehaviour
     [SerializeField] private HeadBob headBobController;
     [SerializeField] private GameManager gameManager;
 
+    [Header("UI Manager References")]
+    [SerializeField] private PauseMenuManager pauseMenuManager;
+    [SerializeField] private MobilePhoneToggle mobilePhoneToggle;
+    [SerializeField] private Inventory3DController inventory3DController;
+    [SerializeField] private NoteUIManager noteUIManager;
+
+    [Header("Fade Settings")]
+    [SerializeField] private Animator fadeAnimator;
+    [SerializeField] private float fadeOutDuration = 1f;
+
     private AudioSource audioSource;
     private GameObject spawnedEnemy;
     private bool isJumpscareActive = false;
@@ -34,6 +44,11 @@ public class JumpscareManager : MonoBehaviour
     
     private Vector3 originalCameraPosition;
     private Coroutine shakeCoroutine;
+
+    private bool wasPauseMenuOpen;
+    private bool wasMobilePhoneOpen;
+    private bool wasInventoryOpen;
+    private bool wasNoteOpen;
 
     private void Awake()
     {
@@ -70,6 +85,7 @@ public class JumpscareManager : MonoBehaviour
     {
         isJumpscareActive = true;
 
+        CloseAllMenus();
         DisablePlayerInput();
         HideUI();
 
@@ -85,6 +101,9 @@ public class JumpscareManager : MonoBehaviour
         yield return new WaitForSeconds(jumpscareDuration);
 
         StopCameraShake();
+
+        FadeToBlack();
+        yield return new WaitForSeconds(fadeOutDuration);
 
         CleanupJumpscare();
 
@@ -109,6 +128,8 @@ public class JumpscareManager : MonoBehaviour
             gameManagerWasEnabled = gameManager.enabled;
             gameManager.enabled = false;
         }
+
+        DisableAllMenuInputs();
     }
 
     private void EnablePlayerInput()
@@ -126,6 +147,94 @@ public class JumpscareManager : MonoBehaviour
         if (gameManager != null)
         {
             gameManager.enabled = gameManagerWasEnabled;
+        }
+
+        EnableAllMenuInputs();
+    }
+
+    private void CloseAllMenus()
+    {
+        wasPauseMenuOpen = false;
+        wasMobilePhoneOpen = false;
+        wasInventoryOpen = false;
+        wasNoteOpen = false;
+
+        if (pauseMenuManager != null && pauseMenuManager.IsPaused)
+        {
+            wasPauseMenuOpen = true;
+            pauseMenuManager.ResumeGame();
+        }
+
+        if (mobilePhoneToggle != null && mobilePhoneToggle.IsPhoneVisible)
+        {
+            wasMobilePhoneOpen = true;
+            mobilePhoneToggle.ClosePhone();
+        }
+
+        if (inventory3DController != null && inventory3DController.IsInventoryOpen)
+        {
+            wasInventoryOpen = true;
+            inventory3DController.CloseInventory();
+        }
+
+        if (noteUIManager != null && noteUIManager.IsNoteActive)
+        {
+            wasNoteOpen = true;
+            noteUIManager.CloseNote();
+        }
+    }
+
+    private void DisableAllMenuInputs()
+    {
+        if (pauseMenuManager != null)
+        {
+            pauseMenuManager.enabled = false;
+        }
+
+        if (mobilePhoneToggle != null)
+        {
+            mobilePhoneToggle.enabled = false;
+        }
+
+        if (inventory3DController != null)
+        {
+            inventory3DController.enabled = false;
+        }
+
+        if (noteUIManager != null)
+        {
+            noteUIManager.enabled = false;
+        }
+    }
+
+    private void EnableAllMenuInputs()
+    {
+        if (pauseMenuManager != null)
+        {
+            pauseMenuManager.enabled = true;
+        }
+
+        if (mobilePhoneToggle != null)
+        {
+            mobilePhoneToggle.enabled = true;
+        }
+
+        if (inventory3DController != null)
+        {
+            inventory3DController.enabled = true;
+        }
+
+        if (noteUIManager != null)
+        {
+            noteUIManager.enabled = true;
+        }
+    }
+
+    private void FadeToBlack()
+    {
+        if (fadeAnimator != null)
+        {
+            fadeAnimator.SetTrigger("FadeOut");
         }
     }
 

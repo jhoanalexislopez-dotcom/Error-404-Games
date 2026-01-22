@@ -5264,6 +5264,12 @@ MonoBehaviour:
   playerController: {fileID: 490301343}
   headBobController: {fileID: 384685374}
   gameManager: {fileID: 1725074351}
+  pauseMenuManager: {fileID: 1725074352}
+  mobilePhoneToggle: {fileID: 490301350}
+  inventory3DController: {fileID: 1218190898}
+  noteUIManager: {fileID: 1688654177}
+  fadeAnimator: {fileID: 1575866658}
+  fadeOutDuration: 1
 --- !u!4 &722512560
 Transform:
   m_ObjectHideFlags: 0
@@ -8691,6 +8697,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1218190898 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5601248423281246082, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
+  m_PrefabInstance: {fileID: 623885352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94280bad8bcf6d040b3ef355fd00f3a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1221883675
 GameObject:
   m_ObjectHideFlags: 0
@@ -11214,6 +11231,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!95 &1575866658 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2362629516954277006, guid: 59b93443ba4a49a4d95c3be027ce68d1, type: 3}
+  m_PrefabInstance: {fileID: 217375720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1589182363 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3545686074552161555, guid: e7bbcb1130996704bad67443a709705b, type: 3}
@@ -13364,6 +13386,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: addPhoneMessages
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
