@@ -1,0 +1,534 @@
+fileFormatVersion: 2
+guid: 0363491d043d87940a96650a658b117f
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: LapizBase
+    second: {fileID: 2800000, guid: 77b1c3a16df5e8b46b2dd92ccbf4e517, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_CajaPalet_AlbedoTransparency
+    second: {fileID: 2800000, guid: a7ffeaf1b627c3a4f89dd8fa9a9a5e25, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_CajaPalet_MetallicSmoothness
+    second: {fileID: 2800000, guid: 657c3abef6f7d8b478eb1925cbda83e7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_CajaPalet_Normal
+    second: {fileID: 2800000, guid: 9954de8923e191d4686254ebc4ee34eb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Cuchara_AlbedoTransparency
+    second: {fileID: 2800000, guid: e4379c792de70b14a8490eb4d3ef932d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Cuchara_MetallicSmoothness
+    second: {fileID: 2800000, guid: 80740938f3e3c184da2ac3ec21d0c734, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Cuchara_Normal
+    second: {fileID: 2800000, guid: 065d895ee0dd4974ea6e4d41623b73c4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_EstanteBase_AlbedoTransparency
+    second: {fileID: 2800000, guid: 789b56890c5562141802652342b4eee9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_EstanteBase_MetallicSmoothness
+    second: {fileID: 2800000, guid: 9294ef0b82b1bb24591df2a6cabc60bb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_EstanteBase_Normal
+    second: {fileID: 2800000, guid: 94decc2a3614bda4586e92ddfb7cada6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Estanteria_AlbedoTransparency
+    second: {fileID: 2800000, guid: d509fe00b14de0f4a9eca4e2a56483ed, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Estanteria_MetallicSmoothness
+    second: {fileID: 2800000, guid: e811fc2eaec5b9c41b3e30ed6d30a0d7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Estanteria_Normal
+    second: {fileID: 2800000, guid: 8359dc7c2c460b14ab05959e277131cd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Foto_AlbedoTransparency
+    second: {fileID: 2800000, guid: 504a6ce8dbad7394194bee60e620f7cf, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Foto_MetallicSmoothness
+    second: {fileID: 2800000, guid: 2ca83d5609e732940a67646c447acc6b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Foto_Normal
+    second: {fileID: 2800000, guid: 0099ffb503815684590ac16474554732, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Jarron00_AlbedoTransparency
+    second: {fileID: 2800000, guid: f7c6db76a9e03794fbf5e00547c1d082, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Jarron00_MetallicSmoothness
+    second: {fileID: 2800000, guid: 81b4e4cdf83c3bb41bf5dc3674b4e529, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Jarron00_Normal
+    second: {fileID: 2800000, guid: 6959c3b778f16794290315b6f580666d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Jarron_AlbedoTransparency
+    second: {fileID: 2800000, guid: 873a6ddb262234a46b73b88361f5e51d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Jarron_MetallicSmoothness
+    second: {fileID: 2800000, guid: ab103d9bc7b08174994b9b86f2f31849, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Jarron_Normal
+    second: {fileID: 2800000, guid: d6f0f73da826c6b44a7b86011a6a0158, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_LamparaBase_AlbedoTransparency
+    second: {fileID: 2800000, guid: 37fc323eb2cb7fb42a55d89969d700a3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_LamparaBase_MetallicSmoothness
+    second: {fileID: 2800000, guid: 71ffa0e80d2b8b64b9c384ffeee7cc9e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_LamparaBase_Normal
+    second: {fileID: 2800000, guid: a79e79dd718fbdd4187fc0bbe61b12e5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_LamparaBody_AlbedoTransparency
+    second: {fileID: 2800000, guid: df077cfb4ea593c4cb6193c87d7b4db6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_LamparaBody_MetallicSmoothness
+    second: {fileID: 2800000, guid: 59a482ac3a40a3746936fb48a4b415ec, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_LamparaBody_Normal
+    second: {fileID: 2800000, guid: ccbe8ff6d7eff094ba82de206b3d338d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_LamparaHead_AlbedoTransparency
+    second: {fileID: 2800000, guid: 6582c728bc2e7e842afc6d222da8354e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_LamparaHead_MetallicSmoothness
+    second: {fileID: 2800000, guid: 1ed6cbb724dd5a6428845b42c468f072, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_LamparaHead_Normal
+    second: {fileID: 2800000, guid: 01f025b7c94d1ef4cbfafd504dfe957a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Libro_AlbedoTransparency
+    second: {fileID: 2800000, guid: 721f12146eb89eb43b1cbb0402f3fc45, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Libro_MetallicSmoothness
+    second: {fileID: 2800000, guid: 639f96eae42d3d84594fd44816bbab49, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Libro_Normal
+    second: {fileID: 2800000, guid: 0b847c1e0dc70394290af64aba69b166, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MarcoBody_AlbedoTransparency
+    second: {fileID: 2800000, guid: 2a41427bd580e7c418f242a1cd1f00f2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MarcoBody_MetallicSmoothness
+    second: {fileID: 2800000, guid: c4bd1ce9daa6e994fb658ac6031e1f7a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MarcoBody_Normal
+    second: {fileID: 2800000, guid: bf766cf32b1587b489b8f8cb4b2d6f6b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Mesa_AlbedoTransparency
+    second: {fileID: 2800000, guid: 55f6d704428959a4b81ed210f37f2fff, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Mesa_MetallicSmoothness
+    second: {fileID: 2800000, guid: 5f5acfd86fc4b95429944fcdfe086bfa, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Mesa_Normal
+    second: {fileID: 2800000, guid: 97f7f46658298e64ca707f7dc164af54, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaBody_AlbedoTransparency
+    second: {fileID: 2800000, guid: faeab90345c4dca4b9873f0fd9847ca2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaBody_MetallicSmoothness
+    second: {fileID: 2800000, guid: f1d18a0a5ac75ea4bb09c15d8cdcdb22, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaBody_Normal
+    second: {fileID: 2800000, guid: fc4eccdf51f7806459cfcb10a1560332, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaBottom_AlbedoTransparency
+    second: {fileID: 2800000, guid: 35683c40619977e4ba5d91fb4572c933, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaBottom_MetallicSmoothness
+    second: {fileID: 2800000, guid: 4a8aa615af5a4c742b4723d5258fa1c9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaBottom_Normal
+    second: {fileID: 2800000, guid: 54e35286ae14b4f48885f0c593f887f6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaCajon_AlbedoTransparency
+    second: {fileID: 2800000, guid: abb82914f6f461b4badd9ede7ddfbea2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaCajon_MetallicSmoothness
+    second: {fileID: 2800000, guid: a15bdb09402a241449a68fdca2829761, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaCajon_Normal
+    second: {fileID: 2800000, guid: 52456720d3ae9de448c4a1273fa3c417, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaNoche_AlbedoTransparency
+    second: {fileID: 2800000, guid: 39d96e118da32af49aa04a9636f9b838, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaNoche_MetallicSmoothness
+    second: {fileID: 2800000, guid: 3884c337ea8b75c47809dac7a12ce4fe, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaNoche_Normal
+    second: {fileID: 2800000, guid: 7ad974282fe07204a9ab7e35211802cb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaPatas_AlbedoTransparency
+    second: {fileID: 2800000, guid: e125f647a3f6b8849afc20a948ef6501, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaPatas_MetallicSmoothness
+    second: {fileID: 2800000, guid: f0b3aeaab4eaa004c9893f4925d7ea7d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaPatas_Normal
+    second: {fileID: 2800000, guid: 0c56c86cf74d2804a828feb4d2a49c1e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaPomo_AlbedoTransparency
+    second: {fileID: 2800000, guid: 2f979370cbfafcb499372aad698bb08d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaPomo_MetallicSmoothness
+    second: {fileID: 2800000, guid: de9b2f328a4693a418e2e7230d90548f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaPomo_Normal
+    second: {fileID: 2800000, guid: 3d958a8ad6dd0ec4eaf80bb311c35047, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaTop_AlbedoTransparency
+    second: {fileID: 2800000, guid: f8a1b44d364af7f409e653e8a1cb2706, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaTop_MetallicSmoothness
+    second: {fileID: 2800000, guid: 5bf5e99d614643444aadb20f40530bbd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_MesitaTop_Normal
+    second: {fileID: 2800000, guid: c940ac13947a7d348a045dbb25af8189, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Pincel_AlbedoTransparency
+    second: {fileID: 2800000, guid: f8cb8576e72f5ee4e879a012a06fbf5f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Pincel_MetallicSmoothness
+    second: {fileID: 2800000, guid: 39fe2489720b9b048bb49a77fc827c09, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Pincel_Normal
+    second: {fileID: 2800000, guid: d9953dd2bab7a05428460389502a8b79, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Planta00_AlbedoTransparency
+    second: {fileID: 2800000, guid: b18e5a1c4c67b4442939d1206a42f329, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Planta00_MetallicSmoothness
+    second: {fileID: 2800000, guid: 8d10d08375f46184ba6316f715c69209, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Planta00_Normal
+    second: {fileID: 2800000, guid: 521e827c2e0ca424aab6e6be4153b558, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Planta01_AlbedoTransparency
+    second: {fileID: 2800000, guid: 822d4c4f074926a4aa12f53af94206ee, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Planta01_MetallicSmoothness
+    second: {fileID: 2800000, guid: bef84a5e774dbff46965d1b3d573eef2, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Planta01_Normal
+    second: {fileID: 2800000, guid: 250f4852577546c458a222c4ca122328, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Plato_AlbedoTransparency
+    second: {fileID: 2800000, guid: c537d5fc1369d9342b11c0b596a66d44, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Plato_MetallicSmoothness
+    second: {fileID: 2800000, guid: 0fc399f353bf257418fc1c711cab3cb6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Plato_Normal
+    second: {fileID: 2800000, guid: 16a4ba1573afc284a9a025a99e7a7b78, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_TarroBody_AlbedoTransparency
+    second: {fileID: 2800000, guid: bb444623286b05a4e8e7238d17eb4a63, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_TarroBody_MetallicSmoothness
+    second: {fileID: 2800000, guid: 439b17ef3893d5345971df4b96fe0d60, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_TarroBody_Normal
+    second: {fileID: 2800000, guid: 358fc0763fc8acf41ba86af1d4b992be, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_TarroTapa_AlbedoTransparency
+    second: {fileID: 2800000, guid: a5026d88928c00847b721b42333a7f3d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_TarroTapa_MetallicSmoothness
+    second: {fileID: 2800000, guid: 6666066603e0cd84b9b59cfe6ee79055, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_TarroTapa_Normal
+    second: {fileID: 2800000, guid: be2eb683dc4fce04498216530ea2333c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Taza_AlbedoTransparency
+    second: {fileID: 2800000, guid: f5fe11631f767684d933c0d171505a37, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Taza_MetallicSmoothness
+    second: {fileID: 2800000, guid: a63ecd7ae1e49da449638a11aa930943, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Taza_Normal
+    second: {fileID: 2800000, guid: 4ba0f791c413d2c4f8ebb02456057b34, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Vaso_AlbedoTransparency
+    second: {fileID: 2800000, guid: d772c64c70f40554490a7a4f6e2ca496, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Vaso_MetallicSmoothness
+    second: {fileID: 2800000, guid: 0e94c0809fb37b14f838dd1f2656ee09, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Props_Vaso_Normal
+    second: {fileID: 2800000, guid: 69e95074c4a8cea4196eb4eccd853f32, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
