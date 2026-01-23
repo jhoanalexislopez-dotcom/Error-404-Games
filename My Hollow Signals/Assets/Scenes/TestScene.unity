@@ -2998,7 +2998,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &447902307
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3265,6 +3265,7 @@ GameObject:
   - component: {fileID: 490301341}
   - component: {fileID: 490301349}
   - component: {fileID: 490301350}
+  - component: {fileID: 490301352}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3496,6 +3497,19 @@ MonoBehaviour:
   mobileCanvas: {fileID: 108668741}
   playerController: {fileID: 490301343}
   phoneAction: {fileID: -7037669837972246789, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
+--- !u!114 &490301352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490301340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ba50b957316374fbc48048470a2d42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noiseIntensity: 1
 --- !u!1 &496228783
 GameObject:
   m_ObjectHideFlags: 0
@@ -10471,6 +10485,7 @@ MonoBehaviour:
   micDetector: {fileID: 604117809}
   micSanityLossMultiplier: 40
   micQuietRecoveryMultiplier: 10
+  environmentalNoiseMultiplier: 5
   onInsane:
     m_PersistentCalls:
       m_Calls: []
@@ -12382,6 +12397,8 @@ MonoBehaviour:
   crouchVolume: 0.2
   moveThreshold: 0.1
   requireGrounded: 1
+  walkNoiseIntensity: 2
+  runNoiseIntensity: 0
   flashlightOnClip: {fileID: 8300000, guid: 9784b6f9765149e4cae74051c609607b, type: 3}
   flashlightOffClip: {fileID: 8300000, guid: 14e6f94ac89ea45408d309d7bd028912, type: 3}
   flashlightRechargeClip: {fileID: 8300000, guid: 0e8cfe2e7bfa1a84399afbc2ab2622f1, type: 3}

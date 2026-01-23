@@ -21,6 +21,10 @@ public class SanityManager : MonoBehaviour
     private float micThreshold = 0.01f; 
     public float micSanityLossMultiplier; //cu�nto afecta hablar fuerte
     public float micQuietRecoveryMultiplier; //cu�nto affecta no hablar
+    [Header("Environmental Noise Settings")]
+    [Tooltip("Multiplier for environmental noise (footsteps, doors, etc.). Should be lower than mic multiplier")]
+    public float environmentalNoiseMultiplier = 5f;
+
 
     [Header("Eventos")]
     public UnityEvent onInsane; //Evento cuando muere
@@ -53,6 +57,8 @@ public class SanityManager : MonoBehaviour
         {
             sanityCoroutine = StartCoroutine(MicSanityRoutine());
         }
+
+        EnvironmentalNoiseEmitter.OnEnvironmentalNoise += HandleEnvironmentalNoise;
     }
 
     void OnDisable()
@@ -62,6 +68,8 @@ public class SanityManager : MonoBehaviour
             StopCoroutine(sanityCoroutine);
             sanityCoroutine = null;
         }
+
+        EnvironmentalNoiseEmitter.OnEnvironmentalNoise -= HandleEnvironmentalNoise;
     }
 
     IEnumerator MicSanityRoutine()
@@ -149,6 +157,17 @@ public class SanityManager : MonoBehaviour
         }
 
         sanityImage.sprite = sanitySprites[index];
+    }
+
+    private void HandleEnvironmentalNoise(float noiseIntensity)
+    {
+        if (isInsane)
+        {
+            return;
+        }
+
+        float sanityLoss = noiseIntensity * environmentalNoiseMultiplier;
+        LowerSanity(sanityLoss);
     }
 
     public void LowerSanity(float amount)

@@ -59,6 +59,14 @@ public class GameManager : MonoBehaviour
     [Tooltip("Requiere estar en el suelo para sonar pasos.")]
     [SerializeField] private bool requireGrounded = true;
 
+    [Header("Footsteps - Sanity Impact")]
+    [Tooltip("Sanity impact when walking (lower = less impact)")]
+    [Range(0f, 100f)][SerializeField] private float walkNoiseIntensity = 0.2f;
+    [Tooltip("Sanity impact when running")]
+    [Range(0f, 100f)][SerializeField] private float runNoiseIntensity = 0.4f;
+
+
+
     [Header("Flashlight SFX")]
     [SerializeField] private AudioClip flashlightOnClip;
     [SerializeField] private AudioClip flashlightOffClip;
@@ -225,6 +233,13 @@ public class GameManager : MonoBehaviour
                 if (characterController != null) sfxSource.transform.position = characterController.transform.position;
 
                 sfxSource.PlayOneShot(clip, vol);
+            }
+
+            // Emit environmental noise for sanity system (only when NOT crouching)
+            if (walkNoiseIntensity > 0f || runNoiseIntensity > 0f)
+            {
+                float noiseIntensity = running ? runNoiseIntensity : walkNoiseIntensity;
+                EnvironmentalNoiseEmitter.OnEnvironmentalNoise?.Invoke(noiseIntensity);
             }
 
             // Ajuste simple con la velocidad para que aumente la cadencia si vas m�s r�pido
