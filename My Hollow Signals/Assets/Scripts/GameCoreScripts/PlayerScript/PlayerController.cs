@@ -15,6 +15,7 @@ public class FirstPersonController : MonoBehaviour
 
     [Header("Movimiento")]
     public float walkSpeed = 4f;
+    public float crouchSpeed = 1.5f;
     public float jumpHeight = 1.5f;
     public float gravity = -9.81f;
     public float crouchHeight = 1f;
@@ -149,20 +150,28 @@ public class FirstPersonController : MonoBehaviour
             return;
             
         // --- Ground Check ---
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isGrounded = Physics.Raycast(groundCheck.position, Vector3.down, groundDistance, groundMask);
         if (isGrounded && velocity.y < 0)
             velocity.y = -2f;
 
+        // --- Determinar velocidad actual ---
+        float currentSpeed = walkSpeed;
+        if (crouchPressed)
+        {
+            currentSpeed = crouchSpeed;
+        }
+        else if (walkPressed && isGrounded)
+        {
+            currentSpeed = 2.5f;
+        }
+
         // --- Movimiento ---
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
-        controller.Move(move * walkSpeed * Time.deltaTime);
+        controller.Move(move * currentSpeed * Time.deltaTime);
 
         // --- Salto ---
         if (jumpPressed && isGrounded)
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-
-        // --- Andar lento ---
-        walkSpeed = (walkPressed && isGrounded) ? 2.5f : 4f;
 
         // --- Agacharse ---
         float targetHeight = crouchPressed ? crouchHeight : originalHeight;

@@ -3336,6 +3336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crouchIcon: {fileID: 1099065795}
   walkSpeed: 4
+  crouchSpeed: 1.5
   jumpHeight: 1.5
   gravity: -45
   crouchHeight: 1
