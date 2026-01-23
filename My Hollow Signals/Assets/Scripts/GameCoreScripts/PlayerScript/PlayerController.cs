@@ -14,7 +14,7 @@ public class FirstPersonController : MonoBehaviour
     public GameObject crouchIcon;
 
     [Header("Movimiento")]
-    public float walkSpeed = 5f;
+    public float walkSpeed = 4f;
     public float jumpHeight = 1.5f;
     public float gravity = -9.81f;
     public float crouchHeight = 1f;
@@ -162,7 +162,7 @@ public class FirstPersonController : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 
         // --- Andar lento ---
-        walkSpeed = (walkPressed && isGrounded) ? 2.5f : 5.0f;
+        walkSpeed = (walkPressed && isGrounded) ? 2.5f : 4f;
 
         // --- Agacharse ---
         float targetHeight = crouchPressed ? crouchHeight : originalHeight;
