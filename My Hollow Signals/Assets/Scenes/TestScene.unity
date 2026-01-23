@@ -931,6 +931,7 @@ Transform:
   - {fileID: 1928848216}
   - {fileID: 583962706}
   - {fileID: 3025391215571377223}
+  - {fileID: 274175695}
   m_Father: {fileID: 1597441932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &187260178 stripped
@@ -1558,6 +1559,136 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270037379}
   m_CullTransparentMesh: 1
+--- !u!1001 &274175694
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 186131612}
+    m_Modifications:
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: subtext
+      value: 
+      objectReference: {fileID: 573712061}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 543942470}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: dialogueUIPrefab
+      value: 
+      objectReference: {fileID: 2521305128529513819, guid: f8a30331077a52040a885b710dd461a5, type: 3}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: dialogueLines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: dialogueLines.Array.data[0]
+      value: " Est\xE1 fuera\u2026 \xBFsola en el bosque?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: postEventDialogueLines.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: postEventDialogueLines.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[0].entryType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[0].messageText
+      value: Ven. Por favor.
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[1].messageText
+      value: "Silas\u2026 ay\xFAdame\u2026 bosque\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[0].timestampDay
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[0].timestampTime
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[0].isPlayerMessage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[1].isPlayerMessage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510838562914651732, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_Name
+      value: EventTrigger_Test_MessagePopUp (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.409823
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4206709
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -20.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071065
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071072
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+--- !u!4 &274175695 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+  m_PrefabInstance: {fileID: 274175694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &278705430
 GameObject:
   m_ObjectHideFlags: 0
@@ -15163,7 +15294,7 @@ PrefabInstance:
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: triggerSound
       value: 
-      objectReference: {fileID: 8300000, guid: 8e4b446555d6e394e87efc343785b37e, type: 3}
+      objectReference: {fileID: 8300000, guid: 28a2a71ffed9c7f41a88f3866dd804f2, type: 3}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: dialogueUIPrefab
       value: 
@@ -15178,7 +15309,7 @@ PrefabInstance:
       objectReference: {fileID: 643094167}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: dialogueLines.Array.data[0]
-      value: ?!
+      value: "\xBF...?"
       objectReference: {fileID: 0}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: postEventDialogueLines.Array.data[0]
