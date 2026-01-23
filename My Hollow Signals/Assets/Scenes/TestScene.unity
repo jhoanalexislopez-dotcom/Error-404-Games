@@ -1641,7 +1641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26
+      value: 26.135
       objectReference: {fileID: 0}
     - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12814,6 +12814,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorPivot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: lockedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 75dc35504e6c45f4eab244e507df71e9, type: 3}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: dialogueUIPrefab
+      value: 
+      objectReference: {fileID: 2521305128529513819, guid: 547a22c947a68d4428e03eb6ebd35508, type: 3}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: interactionRequirement.eventFlagName
+      value: maraRoomUnlocked
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: interactionRequirement.lockedMessage
+      value: "(Esta puerta... \xBFest\xE1 cerrada?)"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15164,7 +15180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.06
+      value: -18.651
       objectReference: {fileID: 0}
     - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15302,6 +15318,10 @@ PrefabInstance:
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: playTriggerSound
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
+      propertyPath: sanityLossAmount
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: cameraFocusTarget
@@ -15531,11 +15551,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
       propertyPath: m_LocalScale.z
-      value: 15.590694
+      value: 10.19
       objectReference: {fileID: 0}
     - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.921
+      value: 20.92
       objectReference: {fileID: 0}
     - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15543,7 +15563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.612
+      value: -25.221
       objectReference: {fileID: 0}
     - target: {fileID: 8153906645721171856, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15886,9 +15906,21 @@ PrefabInstance:
       value: DoorPivot
       objectReference: {fileID: 0}
     - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: dialogueUIPrefab
+      value: 
+      objectReference: {fileID: 2521305128529513819, guid: 547a22c947a68d4428e03eb6ebd35508, type: 3}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: customAudioSource
       value: 
       objectReference: {fileID: 543942470}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: interactionRequirement.lockedMessage
+      value: "(Est\xE1 muy oscuro afuera, necesito una linterna...)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: interactionRequirement.requiresFlashlight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

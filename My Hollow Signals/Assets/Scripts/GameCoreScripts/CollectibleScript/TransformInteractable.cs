@@ -45,6 +45,17 @@ public class TransformInteractable : MonoBehaviour, IInteractable
     
     [Tooltip("If true, object returns to original state. If false, toggles between states")]
     [SerializeField] private bool returnToOriginal = false;
+    
+    [Header("Requirements")]
+    [Tooltip("Optional requirements that must be met before interaction")]
+    [SerializeField] private InteractionRequirement interactionRequirement = null;
+    
+    [Header("Locked Feedback")]
+    [Tooltip("Optional AudioClip to play when requirements are not met")]
+    [SerializeField] private AudioClip lockedSound;
+    
+    [Tooltip("Reference to DialogueUI prefab for displaying locked messages")]
+    [SerializeField] private GameObject dialogueUIPrefab;
 
     private Vector3 initialPosition;
     private Quaternion initialRotation;
@@ -60,6 +71,7 @@ public class TransformInteractable : MonoBehaviour, IInteractable
 
     private float transformProgress = 0f;
     private AudioSource audioSource;
+    private DialogueUI currentDialogueUI;
 
     private const float EPSILON = 0.001f;
 
@@ -107,6 +119,12 @@ public class TransformInteractable : MonoBehaviour, IInteractable
 
         if (hasInteracted && !canReInteract)
             return;
+        
+        if (interactionRequirement != null && !interactionRequirement.AreRequirementsMet())
+        {
+            OnRequirementsNotMet();
+            return;
+        }
 
         hasInteracted = true;
 
@@ -117,6 +135,54 @@ public class TransformInteractable : MonoBehaviour, IInteractable
 
         PlaySound();
         StartTransform();
+    }
+    
+    private void OnRequirementsNotMet()
+    {
+        if (interactionRequirement != null)
+        {
+            string reason = interactionRequirement.GetLockReason();
+            
+            if (lockedSound != null && audioSource != null)
+            {
+                audioSource.loop = false;
+                audioSource.clip = lockedSound;
+                audioSource.volume = soundVolume;
+                audioSource.Play();
+            }
+            
+            ShowLockedDialogue(reason);
+        }
+    }
+    
+    private void ShowLockedDialogue(string message)
+    {
+        if (dialogueUIPrefab != null)
+        {
+            if (currentDialogueUI != null)
+            {
+                Destroy(currentDialogueUI.gameObject);
+                currentDialogueUI = null;
+            }
+            
+            GameObject uiInstance = Instantiate(dialogueUIPrefab);
+            currentDialogueUI = uiInstance.GetComponent<DialogueUI>();
+            
+            if (currentDialogueUI != null)
+            {
+                string[] lines = { message };
+                currentDialogueUI.PlayDialogue(lines, OnDialogueComplete);
+            }
+        }
+        else
+        {
+            Debug.Log($"Cannot interact: {message}");
+        }
+    }
+    
+    private void OnDialogueComplete()
+    {
+        currentDialogueUI = null;
     }
 
     private void StartTransform()
