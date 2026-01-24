@@ -12,8 +12,15 @@ public class MicrophoneStartupManager : MonoBehaviour
     [Tooltip("Main menu canvas/panel")]
     [SerializeField] private GameObject mainMenuCanvas;
 
+    [Header("Screens")]
+    [Tooltip("First screen - Warning message")]
+    [SerializeField] private GameObject warningScreen;
+
+    [Tooltip("Second screen - Microphone calibration")]
+    [SerializeField] private GameObject microphoneCalibrationScreen;
+
     [Header("No Microphone Elements")]
-    [Tooltip("TextMeshPro to show 'No microphone detected' message (can be inside MicroSetting canvas)")]
+    [Tooltip("GameObject to show when no microphone is detected (will be hidden if mic detected)")]
     [SerializeField] private GameObject noMicTextObject;
     
     [Tooltip("Panels to show when mic IS detected (source, calibration, sens panels)")]
@@ -23,13 +30,15 @@ public class MicrophoneStartupManager : MonoBehaviour
     [SerializeField] private GameObject[] alwaysVisibleElements;
 
     [Header("Buttons")]
-    [Tooltip("Button to close the mic setup and go to main menu")]
-    [SerializeField] private Button continueButton;
+    [Tooltip("Button on warning screen to proceed to calibration")]
+    [SerializeField] private Button warningContinueButton;
+
+    [Tooltip("Button on calibration screen to close and go to main menu")]
+    [SerializeField] private Button calibrationContinueButton;
 
     [Header("Settings")]
     [SerializeField] private float startupDelay = 0.5f;
     [SerializeField] private bool showEveryTime = false;
-    [SerializeField] private string noMicMessage = "No microphone detected.\n\nUse a microphone for a better experience!\n\nPress any button to continue.";
 
     private const string PREF_CALIBRATION_SHOWN = "MicCalibrationShown";
     private bool hasShownCalibration = false;
@@ -49,7 +58,7 @@ public class MicrophoneStartupManager : MonoBehaviour
         
         if (shouldShow)
         {
-            StartCoroutine(ShowCalibrationAfterDelay());
+            StartCoroutine(ShowWarningAfterDelay());
         }
         else
         {
@@ -58,23 +67,32 @@ public class MicrophoneStartupManager : MonoBehaviour
         }
     }
 
-    private IEnumerator ShowCalibrationAfterDelay()
+    private IEnumerator ShowWarningAfterDelay()
     {
-        Debug.Log($"MicrophoneStartupManager: Waiting {startupDelay} seconds before showing...");
+        Debug.Log($"MicrophoneStartupManager: Waiting {startupDelay} seconds before showing warning...");
         yield return new WaitForSeconds(startupDelay);
-        ShowMicrophoneSetup();
+        ShowWarningScreen();
     }
 
     private void SetupUI()
     {
-        if (continueButton != null)
-            continueButton.onClick.AddListener(OnContinueToMainMenu);
+        if (warningContinueButton != null)
+            warningContinueButton.onClick.AddListener(OnWarningContinue);
+
+        if (calibrationContinueButton != null)
+            calibrationContinueButton.onClick.AddListener(OnCalibrationContinue);
 
         if (mainMenuCanvas != null)
             mainMenuCanvas.SetActive(false);
         
         if (microSettingCanvas != null)
             microSettingCanvas.SetActive(true);
+
+        if (warningScreen != null)
+            warningScreen.SetActive(false);
+
+        if (microphoneCalibrationScreen != null)
+            microphoneCalibrationScreen.SetActive(false);
         
         if (noMicTextObject != null)
             noMicTextObject.SetActive(false);
@@ -92,26 +110,28 @@ public class MicrophoneStartupManager : MonoBehaviour
         }
     }
 
-    private IEnumerator CheckAndShowCalibration()
+    private void ShowWarningScreen()
     {
-        Debug.Log($"MicrophoneStartupManager: Waiting {startupDelay} seconds before checking...");
-        yield return new WaitForSeconds(startupDelay);
+        Debug.Log("MicrophoneStartupManager: Showing warning screen");
+        
+        if (warningScreen != null)
+            warningScreen.SetActive(true);
 
-        bool shouldShow = showEveryTime || !HasCompletedCalibration;
-        Debug.Log($"MicrophoneStartupManager: shouldShow = {shouldShow}");
-
-        if (shouldShow)
-        {
-            ShowMicrophoneSetup();
-        }
-        else
-        {
-            Debug.Log("MicrophoneStartupManager: Calibration already completed, skipping.");
-            GoToMainMenu();
-        }
+        if (microphoneCalibrationScreen != null)
+            microphoneCalibrationScreen.SetActive(false);
     }
 
-    private void ShowMicrophoneSetup()
+    private void OnWarningContinue()
+    {
+        Debug.Log("MicrophoneStartupManager: Warning continue button clicked");
+        
+        if (warningScreen != null)
+            warningScreen.SetActive(false);
+
+        ShowMicrophoneCalibrationScreen();
+    }
+
+    private void ShowMicrophoneCalibrationScreen()
     {
         if (hasShownCalibration)
         {
@@ -120,6 +140,9 @@ public class MicrophoneStartupManager : MonoBehaviour
         }
 
         hasShownCalibration = true;
+
+        if (microphoneCalibrationScreen != null)
+            microphoneCalibrationScreen.SetActive(true);
 
         bool hasMicrophone = Microphone.devices.Length > 0;
         Debug.Log($"MicrophoneStartupManager: Microphone detected = {hasMicrophone}, Device count = {Microphone.devices.Length}");
@@ -131,7 +154,7 @@ public class MicrophoneStartupManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("MicrophoneStartupManager: Showing no microphone message");
+            Debug.Log("MicrophoneStartupManager: No microphone detected, showing message");
             ShowNoMicrophoneMessage();
         }
     }
@@ -161,10 +184,7 @@ public class MicrophoneStartupManager : MonoBehaviour
         if (noMicTextObject != null)
         {
             noMicTextObject.SetActive(true);
-            
-            var textComponent = noMicTextObject.GetComponent<TextMeshProUGUI>();
-            if (textComponent != null)
-                textComponent.text = noMicMessage;
+            Debug.Log("MicrophoneStartupManager: NoMicText shown (using default text from TextMeshPro component)");
         }
 
         foreach (var panel in micControlPanels)
@@ -174,9 +194,9 @@ public class MicrophoneStartupManager : MonoBehaviour
         }
     }
 
-    private void OnContinueToMainMenu()
+    private void OnCalibrationContinue()
     {
-        Debug.Log("MicrophoneStartupManager: Continue button clicked");
+        Debug.Log("MicrophoneStartupManager: Calibration continue button clicked");
         PlayerPrefs.SetInt(PREF_CALIBRATION_SHOWN, 1);
         PlayerPrefs.Save();
         GoToMainMenu();
@@ -196,7 +216,7 @@ public class MicrophoneStartupManager : MonoBehaviour
     public void ForceShowCalibration()
     {
         hasShownCalibration = false;
-        ShowMicrophoneSetup();
+        ShowWarningScreen();
     }
 
     public void ResetCalibration()
