@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization;
 using TMPro;
 
 public class DialogueUI : MonoBehaviour
@@ -15,19 +16,19 @@ public class DialogueUI : MonoBehaviour
 
     private Coroutine typingCoroutine;
 
-    public void PlayDialogue(string[] lines, System.Action onComplete = null)
+    public void PlayDialogue(LocalizedString[] localizedLines, System.Action onComplete = null)
     {
         if (typingCoroutine != null)
             StopCoroutine(typingCoroutine);
 
-        typingCoroutine = StartCoroutine(PlayDialogueSequence(lines, onComplete));
+        typingCoroutine = StartCoroutine(PlayDialogueSequence(localizedLines, onComplete));
     }
 
-    private IEnumerator PlayDialogueSequence(string[] lines, System.Action onComplete)
+    private IEnumerator PlayDialogueSequence(LocalizedString[] localizedLines, System.Action onComplete)
     {
-        foreach (string line in lines)
+        foreach (LocalizedString localizedLine in localizedLines)
         {
-            yield return StartCoroutine(TypeText(line));
+            yield return StartCoroutine(LoadAndTypeText(localizedLine));
             yield return new WaitForSeconds(lineDelay);
         }
 
@@ -41,7 +42,7 @@ public class DialogueUI : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private IEnumerator TypeText(string text)
+    private IEnumerator LoadAndTypeText(LocalizedString localizedText)
     {
         if (dialogueText == null)
         {
@@ -49,6 +50,16 @@ public class DialogueUI : MonoBehaviour
             yield break;
         }
 
+        var loadOperation = localizedText.GetLocalizedStringAsync();
+        yield return loadOperation;
+
+        string text = loadOperation.Result;
+        
+        yield return StartCoroutine(TypeText(text));
+    }
+
+    private IEnumerator TypeText(string text)
+    {
         dialogueText.text = "";
 
         foreach (char c in text)

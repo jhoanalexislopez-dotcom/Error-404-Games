@@ -56,6 +56,10 @@ MonoBehaviour:
     m_Localized: "Hasta que una noche, mi tel\xE9fono vibra. Es un mensaje de ella...\r\n"
     m_Metadata:
       m_Items: []
+  - m_Id: 59832882159616
+    m_Localized: "CALIBRACI\xD3N DE MICR\xD3FONO"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

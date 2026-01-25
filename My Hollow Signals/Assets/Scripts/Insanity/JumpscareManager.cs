@@ -212,9 +212,28 @@ public class JumpscareManager : MonoBehaviour
             noteUIManager.enabled = false;
         }
     }
+    private void DestroyPersistentObjects()
+    {
+        GameManager gameManagerInstance = FindObjectOfType<GameManager>();
+        if (gameManagerInstance != null)
+        {
+            Destroy(gameManagerInstance.gameObject);
+        }
 
+        CinematicManager cinematicManagerInstance = FindObjectOfType<CinematicManager>();
+        if (cinematicManagerInstance != null)
+        {
+            Destroy(cinematicManagerInstance.gameObject);
+        }
+    }
     private void LoadMainMenu()
     {
+        DestroyPersistentObjects();
+
+        // Unlock and show cursor
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         SceneManager.LoadScene(mainMenuSceneName);
     }
 

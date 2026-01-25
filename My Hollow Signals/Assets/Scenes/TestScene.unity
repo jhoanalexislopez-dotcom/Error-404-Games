@@ -1971,6 +1971,22 @@ PrefabInstance:
       propertyPath: phoneMessages.Array.data[1].isPlayerMessage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: dialogueLines.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 887240794112
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: dialogueLines.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[0].messageText.m_TableEntryReference.m_KeyId
+      value: 46268440109056
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[0].messageText.m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
     - target: {fileID: 5510838562914651732, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
       propertyPath: m_Name
       value: EventTrigger_EnterKitchen_MessagePopUp
@@ -5447,6 +5463,7 @@ GameObject:
   - component: {fileID: 620298922}
   - component: {fileID: 620298924}
   - component: {fileID: 620298923}
+  - component: {fileID: 620298925}
   m_Layer: 5
   m_Name: Text (TMP) (2)
   m_TagString: Untagged
@@ -5570,6 +5587,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620298921}
   m_CullTransparentMesh: 1
+--- !u!114 &620298925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620298921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
+    m_TableEntryReference:
+      m_KeyId: 51163360649216
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 620298923}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &623885352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6956,6 +7013,22 @@ PrefabInstance:
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: postEventDialogueLines.Array.data[0]
       value: "\xBFQu\xE9 hora es?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
+      propertyPath: dialogueLines.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 44472447524864
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
+      propertyPath: dialogueLines.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
+      propertyPath: postEventDialogueLines.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 578363858944
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
+      propertyPath: postEventDialogueLines.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8980,6 +9053,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3693137224624340322, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4364021608954183585, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -9030,7 +9107,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6259562580671424956, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000015258789
+      value: 0.0000135190785
       objectReference: {fileID: 0}
     - target: {fileID: 6501440293387665114, guid: de7158e7396f2e947a4c3f8fd4f297d8, type: 3}
       propertyPath: m_Pivot.x
@@ -15281,6 +15358,14 @@ PrefabInstance:
       propertyPath: interactionRequirement.lockedMessage
       value: "(Esta puerta... \xBFest\xE1 cerrada?)"
       objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: interactionRequirement.lockedMessage.m_TableEntryReference.m_KeyId
+      value: 49094574727168
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: interactionRequirement.lockedMessage.m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16731,6 +16816,7 @@ GameObject:
   - component: {fileID: 1987339219}
   - component: {fileID: 1987339221}
   - component: {fileID: 1987339220}
+  - component: {fileID: 1987339222}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -16854,6 +16940,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987339218}
   m_CullTransparentMesh: 1
+--- !u!114 &1987339222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987339218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
+    m_TableEntryReference:
+      m_KeyId: 51361101111296
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1987339220}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1998662330
 GameObject:
   m_ObjectHideFlags: 0
@@ -18530,6 +18656,14 @@ PrefabInstance:
       propertyPath: dialogueLines.Array.data[0]
       value: "\u2026Vale. Estoy yendo.\r"
       objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: dialogueLines.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 968606097408
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: dialogueLines.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
     - target: {fileID: 6827942243661282751, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: m_Name
       value: EventTrigger_GoForest_CanMove
@@ -18634,6 +18768,22 @@ PrefabInstance:
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: postEventDialogueLines.Array.data[0]
       value: "\u2026Mara, \xBFotra vez movi\xE9ndote a oscuras?\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
+      propertyPath: dialogueLines.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 44472447524864
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
+      propertyPath: dialogueLines.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
+      propertyPath: postEventDialogueLines.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 719032426496
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
+      propertyPath: postEventDialogueLines.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18849,6 +18999,42 @@ PrefabInstance:
       propertyPath: phoneMessages.Array.data[1].isPlayerMessage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[1].messageText.m_FallbackState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: dialogueLines.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 44472447524864
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: dialogueLines.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: postEventDialogueLines.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 802201280512
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[1].messageText.m_TableEntryReference.m_KeyId
+      value: 45900792586240
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[0].timestampDay.m_TableEntryReference.m_KeyId
+      value: 49548490694656
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: postEventDialogueLines.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[1].messageText.m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
+    - target: {fileID: 220539413840855293, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
+      propertyPath: phoneMessages.Array.data[0].timestampDay.m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
     - target: {fileID: 5510838562914651732, guid: d58afbc6fcb62e34da423dc1225317cc, type: 3}
       propertyPath: m_Name
       value: EventTrigger_RecieveFirstMessage_MessagePopUp
@@ -19039,6 +19225,10 @@ PrefabInstance:
     - target: {fileID: 4862724473795555197, guid: e7bbcb1130996704bad67443a709705b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335712862386608623, guid: e7bbcb1130996704bad67443a709705b, type: 3}
+      propertyPath: m_text
+      value: WWWWWWWWWWWWWWWWWWWWWWWWW
       objectReference: {fileID: 0}
     - target: {fileID: 5335712862386608623, guid: e7bbcb1130996704bad67443a709705b, type: 3}
       propertyPath: m_fontSharedMaterials.Array.size
@@ -19239,6 +19429,14 @@ PrefabInstance:
     - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: interactionRequirement.requiresFlashlight
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: interactionRequirement.lockedMessage.m_TableEntryReference.m_KeyId
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: interactionRequirement.lockedMessage.m_TableReference.m_TableCollectionName
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

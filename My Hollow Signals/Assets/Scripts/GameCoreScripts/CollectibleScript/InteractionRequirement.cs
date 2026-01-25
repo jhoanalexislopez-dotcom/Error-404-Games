@@ -7,6 +7,7 @@
  *******************************************************/
 
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.Events;
 
 [System.Serializable]
@@ -24,8 +25,8 @@ public class InteractionRequirement
     public string eventFlagName = "";
     
     [Header("Feedback")]
-    [Tooltip("Message to display when requirements are not met")]
-    public string lockedMessage = "This door is locked.";
+    [Tooltip("Localized message to display when requirements are not met")]
+    public LocalizedString lockedMessage;
     
     public bool AreRequirementsMet()
     {
@@ -57,28 +58,13 @@ public class InteractionRequirement
         return true;
     }
     
-    public string GetLockReason()
+    public LocalizedString GetLockReason()
     {
-        if (!string.IsNullOrEmpty(lockedMessage))
+        if (lockedMessage != null && !lockedMessage.IsEmpty)
         {
             return lockedMessage;
         }
         
-        if (requiresFlashlight && (PlayerInventory.Instance == null || !PlayerInventory.Instance.HasFlashlight))
-        {
-            return "You need a flashlight to open this.";
-        }
-        
-        if (minimumItemsRequired > 0 && (PlayerInventory.Instance == null || PlayerInventory.Instance.collected < minimumItemsRequired))
-        {
-            return $"You need {minimumItemsRequired} items to open this.";
-        }
-        
-        if (!string.IsNullOrEmpty(eventFlagName))
-        {
-            return "This door is locked.";
-        }
-        
-        return "Requirements not met.";
+        return null;
     }
 }

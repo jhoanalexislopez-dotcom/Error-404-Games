@@ -110,6 +110,27 @@ MonoBehaviour:
     m_Localized: Salir
     m_Metadata:
       m_Items: []
+  - m_Id: 902768561741824
+    m_Localized: "Calibraci\xF3n de micr\xF3fono"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 903298457526272
+    m_Localized: "Micr\xF3fono"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904560536182784
+    m_Localized: ADVERTENCIA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904751528009728
+    m_Localized: "Para disfrutar al m\xE1ximo de este juego, se recomienda utilizar
+      auriculares.\nPara una inmersi\xF3n total, se recomienda encarecidamente utilizar
+      un micr\xF3fono.\n\nEste juego contiene una atm\xF3sfera intensa, audio perturbador
+      y momentos que dependen de la detecci\xF3n de sonidos y voces.\n\nJugar sin
+      auriculares o micr\xF3fono puede reducir significativamente la experiencia
+      prevista.\n\nJuega en un entorno oscuro y tranquilo."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

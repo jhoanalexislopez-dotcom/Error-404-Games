@@ -47,6 +47,10 @@ MonoBehaviour:
     m_Key: FS008
     m_Metadata:
       m_Items: []
+  - m_Id: 59832882159616
+    m_Key: MicrophoneTextHeader
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

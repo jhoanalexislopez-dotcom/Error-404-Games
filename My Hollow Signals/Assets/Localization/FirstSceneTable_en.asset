@@ -60,6 +60,10 @@ MonoBehaviour:
     m_Localized: "Until one night, my phone vibrates. It's a message from her\u2026\r\n"
     m_Metadata:
       m_Items: []
+  - m_Id: 59832882159616
+    m_Localized: MICROPHONE CALIBRATION
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

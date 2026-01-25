@@ -142,7 +142,7 @@ public class TransformInteractable : MonoBehaviour, IInteractable
     {
         if (interactionRequirement != null)
         {
-            string reason = interactionRequirement.GetLockReason();
+            LocalizedString reason = interactionRequirement.GetLockReason();
             
             if (lockedSound != null && audioSource != null)
             {
@@ -152,11 +152,14 @@ public class TransformInteractable : MonoBehaviour, IInteractable
                 audioSource.Play();
             }
             
-            ShowLockedDialogue(reason);
+            if (reason != null)
+            {
+                ShowLockedDialogue(reason);
+            }
         }
     }
     
-    private void ShowLockedDialogue(string message)
+    private void ShowLockedDialogue(LocalizedString localizedMessage)
     {
         if (dialogueUIPrefab != null)
         {
@@ -171,13 +174,13 @@ public class TransformInteractable : MonoBehaviour, IInteractable
             
             if (currentDialogueUI != null)
             {
-                string[] lines = { message };
+                LocalizedString[] lines = { localizedMessage };
                 currentDialogueUI.PlayDialogue(lines, OnDialogueComplete);
             }
         }
         else
         {
-            Debug.Log($"Cannot interact: {message}");
+            Debug.Log("Cannot interact: locked");
         }
     }
     

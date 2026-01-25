@@ -76,6 +76,38 @@ MonoBehaviour:
     m_Localized: Gamepad
     m_Metadata:
       m_Items: []
+  - m_Id: 44472447524864
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45900792586240
+    m_Localized: Silas... help me... forest...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46268440109056
+    m_Localized: Please... come.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47891015000064
+    m_Localized: Message Box > Mara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49094574727168
+    m_Localized: (This door... is locked?)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49548490694656
+    m_Localized: Today
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51163360649216
+    m_Localized: 1 Text Message
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51361101111296
+    m_Localized: MESSAGES
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

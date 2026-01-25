@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Localization;
 using TMPro;
 using System;
 
@@ -15,12 +16,10 @@ public class CubeColliderEventTrigger : MonoBehaviour
     public GameObject dialogueUIPrefab;
 
     [Header("Main Dialogue (First Trigger Only)")]
-    [TextArea]
-    public string[] dialogueLines;
+    public LocalizedString[] dialogueLines;
 
     [Header("Post-Event Dialogue (After Main Event Completes)")]
-    [TextArea]
-    public string[] postEventDialogueLines;
+    public LocalizedString[] postEventDialogueLines;
 
     [Header("Typing Settings")]
     [Range(0.01f, 0.2f)]
@@ -65,10 +64,9 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         public bool isPlayerMessage;
 
-        [TextArea]
-        public string messageText;
+        public LocalizedString messageText;
 
-        public string timestampDay;
+        public LocalizedString timestampDay;
         public string timestampTime;
     }
 
@@ -247,33 +245,42 @@ public class CubeColliderEventTrigger : MonoBehaviour
             return;
         }
 
+        StartCoroutine(AddPhoneMessagesCoroutine());
+    }
+
+    private IEnumerator AddPhoneMessagesCoroutine()
+    {
         foreach (PhoneMessage entry in phoneMessages)
         {
             if (entry.entryType == PhoneEntryType.Timestamp)
             {
-                if (string.IsNullOrEmpty(entry.timestampDay) &&
-                    string.IsNullOrEmpty(entry.timestampTime))
+                string day = "";
+                string time = entry.timestampTime;
+
+                if (entry.timestampDay != null && !entry.timestampDay.IsEmpty)
                 {
-                    MessageManager.instance.AddTimestamp();
+                    var dayLoadOperation = entry.timestampDay.GetLocalizedStringAsync();
+                    yield return dayLoadOperation;
+                    day = dayLoadOperation.Result;
+                }
+
+                if (!string.IsNullOrEmpty(day) || !string.IsNullOrEmpty(time))
+                {
+                    MessageManager.instance.AddTimestamp(day, time);
                 }
                 else
                 {
-                    string day = string.IsNullOrEmpty(entry.timestampDay)
-                        ? DateTime.Now.ToString("dddd")
-                        : entry.timestampDay;
-
-                    string time = string.IsNullOrEmpty(entry.timestampTime)
-                        ? DateTime.Now.ToString("h:mm tt")
-                        : entry.timestampTime;
-
-                    MessageManager.instance.AddTimestamp(day, time);
+                    MessageManager.instance.AddTimestamp();
                 }
             }
             else
             {
+                var loadOperation = entry.messageText.GetLocalizedStringAsync();
+                yield return loadOperation;
+
                 MessageManager.instance.AddMessage(
                     entry.isPlayerMessage,
-                    entry.messageText
+                    loadOperation.Result
                 );
             }
         }

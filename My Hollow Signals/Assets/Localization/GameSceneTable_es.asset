@@ -53,7 +53,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1290242105344
-    m_Localized: Pausado
+    m_Localized: Pausa
     m_Metadata:
       m_Items: []
   - m_Id: 1370059710464
@@ -65,11 +65,43 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2168210595840
-    m_Localized: Souris
+    m_Localized: "Rat\xF3n"
     m_Metadata:
       m_Items: []
   - m_Id: 2243531907072
     m_Localized: Mando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44472447524864
+    m_Localized: ...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45900792586240
+    m_Localized: "Silas\u2026 ay\xFAdame\u2026 bosque\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46268440109056
+    m_Localized: Ven. Por favor.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47891015000064
+    m_Localized: Mensajes > Mara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49094574727168
+    m_Localized: "(Esta puerta... \xBFest\xE1 cerrada?)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49548490694656
+    m_Localized: Hoy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51163360649216
+    m_Localized: 1 Mensaje nuevo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51361101111296
+    m_Localized: MENSAJES
     m_Metadata:
       m_Items: []
   references:

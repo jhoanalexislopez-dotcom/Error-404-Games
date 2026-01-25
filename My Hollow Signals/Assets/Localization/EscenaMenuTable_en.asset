@@ -110,6 +110,38 @@ MonoBehaviour:
     m_Localized: Quit
     m_Metadata:
       m_Items: []
+  - m_Id: 902768561741824
+    m_Localized: Microphone calibration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 903298457526272
+    m_Localized: Microphone device
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904560536182784
+    m_Localized: WARNING
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904751528009728
+    m_Localized: 'This game is best experienced with headphones.
+
+      For full
+      immersion, the use of a microphone is strongly recommended.
+
+
+      This game
+      contains intense atmosphere, disturbing audio, and moments that rely on sound
+      and voice detection.
+
+
+      Playing without headphones or a microphone may
+      significantly reduce the intended experience.
+
+
+      Play in a dark, quiet
+      environment.'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

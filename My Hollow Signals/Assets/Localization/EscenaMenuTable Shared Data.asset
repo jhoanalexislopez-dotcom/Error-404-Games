@@ -107,6 +107,24 @@ MonoBehaviour:
     m_Key: P003
     m_Metadata:
       m_Items: []
+  - m_Id: 902768561741824
+    m_Key: FirstTimeMicCalibration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 903298457526272
+    m_Key: 'FirstTimeMicSource
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904560536182784
+    m_Key: WarningTextHeader
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904751528009728
+    m_Key: WarningText
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
