@@ -92,7 +92,15 @@ MonoBehaviour:
     requiresFlashlight: 0
     minimumItemsRequired: 0
     eventFlagName: 
-    lockedMessage: This door is locked.
+    lockedMessage:
+      m_TableReference:
+        m_TableCollectionName: 
+      m_TableEntryReference:
+        m_KeyId: 0
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   lockedSound: {fileID: 0}
   dialogueUIPrefab: {fileID: 0}
   references:
@@ -117,8 +125,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.412005, y: 2.633327, z: 0.1}
-  m_Center: {x: -0.7049864, y: -0.11946368, z: 2.9130336e-15}
+  m_Size: {x: 1.412005, y: 2.633327, z: 0.40694752}
+  m_Center: {x: -0.7049864, y: -0.11946368, z: -0.018763956}
 --- !u!1001 &3590700544524094144
 PrefabInstance:
   m_ObjectHideFlags: 0

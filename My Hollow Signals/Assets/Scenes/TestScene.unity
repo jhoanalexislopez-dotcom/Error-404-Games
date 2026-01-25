@@ -12321,6 +12321,7 @@ MonoBehaviour:
   crtEffect: {fileID: 384685375}
   videoPlayer: {fileID: 384685376}
   insaneScreen: {fileID: 278705430}
+  flashlightMesh: {fileID: 714673319}
 --- !u!4 &1411828298
 Transform:
   m_ObjectHideFlags: 0
@@ -18068,6 +18069,14 @@ PrefabInstance:
     - target: {fileID: 585112775770501559, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: m_Name
       value: DoorPivot
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308760739180923938, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: m_Size.z
+      value: 0.35995248
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308760739180923938, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: m_Center.z
+      value: -0.031874117
       objectReference: {fileID: 0}
     - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: localizedDescription.m_TableEntryReference.m_KeyId

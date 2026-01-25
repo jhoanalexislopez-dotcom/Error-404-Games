@@ -11,6 +11,10 @@ public class InsanityEffectsManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private GameObject insaneScreen;
+    
+    [Header("Flashlight Settings")]
+    [Tooltip("Reference to the flashlight mesh GameObject to hide when game over screen shows")]
+    [SerializeField] private GameObject flashlightMesh;
 
     private void Awake()
     {
@@ -29,6 +33,11 @@ public class InsanityEffectsManager : MonoBehaviour
             insaneScreen.SetActive(true);
         }
 
+        if (flashlightMesh != null && PlayerInventory.Instance != null && PlayerInventory.Instance.HasFlashlight)
+        {
+            flashlightMesh.SetActive(false);
+        }
+
         EnableEffects();
     }
 
@@ -37,6 +46,11 @@ public class InsanityEffectsManager : MonoBehaviour
         if (insaneScreen != null)
         {
             insaneScreen.SetActive(false);
+        }
+        
+        if (flashlightMesh != null && PlayerInventory.Instance != null && PlayerInventory.Instance.HasFlashlight)
+        {
+            flashlightMesh.SetActive(true);
         }
 
         DisableEffects();
