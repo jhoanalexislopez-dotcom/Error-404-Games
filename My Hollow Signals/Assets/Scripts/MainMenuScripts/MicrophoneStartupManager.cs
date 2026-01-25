@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 using System.Collections;
 
@@ -36,12 +37,22 @@ public class MicrophoneStartupManager : MonoBehaviour
     [Tooltip("Button on calibration screen to close and go to main menu")]
     [SerializeField] private Button calibrationContinueButton;
 
+    [Header("Transition Settings")]
+    [Tooltip("Duration of fade transitions in seconds")]
+    [SerializeField] private float transitionDuration = 0.5f;
+
     [Header("Settings")]
     [SerializeField] private float startupDelay = 0.5f;
     [SerializeField] private bool showEveryTime = false;
 
     private const string PREF_CALIBRATION_SHOWN = "MicCalibrationShown";
     private bool hasShownCalibration = false;
+    private bool isTransitioning = false;
+    
+    private CanvasGroup warningCanvasGroup;
+    private CanvasGroup calibrationCanvasGroup;
+    private CanvasGroup microSettingCanvasGroup;
+    private CanvasGroup mainMenuCanvasGroup;
 
     public static bool HasCompletedCalibration => PlayerPrefs.GetInt(PREF_CALIBRATION_SHOWN, 0) == 1;
 
@@ -76,6 +87,11 @@ public class MicrophoneStartupManager : MonoBehaviour
 
     private void SetupUI()
     {
+        warningCanvasGroup = EnsureCanvasGroup(warningScreen);
+        calibrationCanvasGroup = EnsureCanvasGroup(microphoneCalibrationScreen);
+        microSettingCanvasGroup = EnsureCanvasGroup(microSettingCanvas);
+        mainMenuCanvasGroup = EnsureCanvasGroup(mainMenuCanvas);
+
         if (warningContinueButton != null)
             warningContinueButton.onClick.AddListener(OnWarningContinue);
 
@@ -83,16 +99,32 @@ public class MicrophoneStartupManager : MonoBehaviour
             calibrationContinueButton.onClick.AddListener(OnCalibrationContinue);
 
         if (mainMenuCanvas != null)
+        {
             mainMenuCanvas.SetActive(false);
+            if (mainMenuCanvasGroup != null)
+                mainMenuCanvasGroup.alpha = 0f;
+        }
         
         if (microSettingCanvas != null)
+        {
             microSettingCanvas.SetActive(true);
+            if (microSettingCanvasGroup != null)
+                microSettingCanvasGroup.alpha = 1f;
+        }
 
         if (warningScreen != null)
+        {
             warningScreen.SetActive(false);
+            if (warningCanvasGroup != null)
+                warningCanvasGroup.alpha = 0f;
+        }
 
         if (microphoneCalibrationScreen != null)
+        {
             microphoneCalibrationScreen.SetActive(false);
+            if (calibrationCanvasGroup != null)
+                calibrationCanvasGroup.alpha = 0f;
+        }
         
         if (noMicTextObject != null)
             noMicTextObject.SetActive(false);
@@ -110,25 +142,74 @@ public class MicrophoneStartupManager : MonoBehaviour
         }
     }
 
+    private CanvasGroup EnsureCanvasGroup(GameObject obj)
+    {
+        if (obj == null) return null;
+        
+        var canvasGroup = obj.GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+        {
+            canvasGroup = obj.AddComponent<CanvasGroup>();
+        }
+        return canvasGroup;
+    }
+
+    private IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float startAlpha, float targetAlpha, float duration)
+    {
+        if (canvasGroup == null) yield break;
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsed / duration);
+            yield return null;
+        }
+        canvasGroup.alpha = targetAlpha;
+    }
+
     private void ShowWarningScreen()
     {
         Debug.Log("MicrophoneStartupManager: Showing warning screen");
-        
-        if (warningScreen != null)
-            warningScreen.SetActive(true);
+        StartCoroutine(FadeInWarningScreen());
+    }
 
-        if (microphoneCalibrationScreen != null)
-            microphoneCalibrationScreen.SetActive(false);
+    private IEnumerator FadeInWarningScreen()
+    {
+        if (warningScreen != null)
+        {
+            warningScreen.SetActive(true);
+            if (warningCanvasGroup != null)
+            {
+                yield return StartCoroutine(FadeCanvasGroup(warningCanvasGroup, 0f, 1f, transitionDuration));
+            }
+            SetSelectedButton(warningContinueButton);
+        }
     }
 
     private void OnWarningContinue()
     {
-        Debug.Log("MicrophoneStartupManager: Warning continue button clicked");
+        if (isTransitioning) return;
         
+        Debug.Log("MicrophoneStartupManager: Warning continue button clicked");
+        StartCoroutine(TransitionToCalibration());
+    }
+
+    private IEnumerator TransitionToCalibration()
+    {
+        isTransitioning = true;
+
+        if (warningCanvasGroup != null)
+        {
+            yield return StartCoroutine(FadeCanvasGroup(warningCanvasGroup, 1f, 0f, transitionDuration));
+        }
+
         if (warningScreen != null)
             warningScreen.SetActive(false);
 
         ShowMicrophoneCalibrationScreen();
+        
+        isTransitioning = false;
     }
 
     private void ShowMicrophoneCalibrationScreen()
@@ -140,9 +221,6 @@ public class MicrophoneStartupManager : MonoBehaviour
         }
 
         hasShownCalibration = true;
-
-        if (microphoneCalibrationScreen != null)
-            microphoneCalibrationScreen.SetActive(true);
 
         bool hasMicrophone = Microphone.devices.Length > 0;
         Debug.Log($"MicrophoneStartupManager: Microphone detected = {hasMicrophone}, Device count = {Microphone.devices.Length}");
@@ -156,6 +234,21 @@ public class MicrophoneStartupManager : MonoBehaviour
         {
             Debug.Log("MicrophoneStartupManager: No microphone detected, showing message");
             ShowNoMicrophoneMessage();
+        }
+
+        StartCoroutine(FadeInCalibrationScreen());
+    }
+
+    private IEnumerator FadeInCalibrationScreen()
+    {
+        if (microphoneCalibrationScreen != null)
+        {
+            microphoneCalibrationScreen.SetActive(true);
+            if (calibrationCanvasGroup != null)
+            {
+                yield return StartCoroutine(FadeCanvasGroup(calibrationCanvasGroup, 0f, 1f, transitionDuration));
+            }
+            SetSelectedButton(calibrationContinueButton);
         }
     }
 
@@ -196,19 +289,68 @@ public class MicrophoneStartupManager : MonoBehaviour
 
     private void OnCalibrationContinue()
     {
+        if (isTransitioning) return;
+
         Debug.Log("MicrophoneStartupManager: Calibration continue button clicked");
         PlayerPrefs.SetInt(PREF_CALIBRATION_SHOWN, 1);
         PlayerPrefs.Save();
-        GoToMainMenu();
+        StartCoroutine(TransitionToMainMenu());
     }
 
-    private void GoToMainMenu()
+    private IEnumerator TransitionToMainMenu()
     {
+        isTransitioning = true;
+
+        if (calibrationCanvasGroup != null)
+        {
+            yield return StartCoroutine(FadeCanvasGroup(calibrationCanvasGroup, 1f, 0f, transitionDuration));
+        }
+
+        if (microSettingCanvasGroup != null)
+        {
+            yield return StartCoroutine(FadeCanvasGroup(microSettingCanvasGroup, 1f, 0f, transitionDuration));
+        }
+
+        if (microphoneCalibrationScreen != null)
+            microphoneCalibrationScreen.SetActive(false);
+
         if (microSettingCanvas != null)
             microSettingCanvas.SetActive(false);
 
         if (mainMenuCanvas != null)
+        {
             mainMenuCanvas.SetActive(true);
+            if (mainMenuCanvasGroup != null)
+            {
+                yield return StartCoroutine(FadeCanvasGroup(mainMenuCanvasGroup, 0f, 1f, transitionDuration));
+            }
+        }
+
+        Debug.Log("MicrophoneStartupManager: Switched to main menu");
+        isTransitioning = false;
+    }
+
+    private void GoToMainMenu()
+    {
+        StartCoroutine(GoToMainMenuImmediate());
+    }
+
+    private IEnumerator GoToMainMenuImmediate()
+    {
+        if (microSettingCanvasGroup != null)
+            microSettingCanvasGroup.alpha = 0f;
+
+        if (microSettingCanvas != null)
+            microSettingCanvas.SetActive(false);
+
+        if (mainMenuCanvas != null)
+        {
+            mainMenuCanvas.SetActive(true);
+            if (mainMenuCanvasGroup != null)
+            {
+                yield return StartCoroutine(FadeCanvasGroup(mainMenuCanvasGroup, 0f, 1f, transitionDuration));
+            }
+        }
         
         Debug.Log("MicrophoneStartupManager: Switched to main menu");
     }
@@ -224,5 +366,21 @@ public class MicrophoneStartupManager : MonoBehaviour
         PlayerPrefs.DeleteKey(PREF_CALIBRATION_SHOWN);
         PlayerPrefs.Save();
         hasShownCalibration = false;
+    }
+
+    private void SetSelectedButton(Button button)
+    {
+        if (button == null) return;
+
+        EventSystem eventSystem = EventSystem.current;
+        if (eventSystem != null)
+        {
+            eventSystem.SetSelectedGameObject(button.gameObject);
+            Debug.Log($"MicrophoneStartupManager: Selected button '{button.name}' for gamepad navigation");
+        }
+        else
+        {
+            Debug.LogWarning("MicrophoneStartupManager: No EventSystem found in scene for gamepad navigation");
+        }
     }
 }
