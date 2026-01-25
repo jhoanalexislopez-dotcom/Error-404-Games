@@ -12485,6 +12485,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1451701885}
+  - component: {fileID: 1451701886}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -12514,6 +12515,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1451701886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1451701884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd61ac3108de8344ae99e8620154fd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configureOnAwake: 1
 --- !u!1 &1451842850 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8317115380293356131, guid: a72e199e1758f9543bb4f122aaababb0, type: 3}
@@ -17450,7 +17464,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e637df420a6a6aa4e930f823ec35001f, type: 2}
   m_sharedMaterial: {fileID: -4786216806558671716, guid: e637df420a6a6aa4e930f823ec35001f, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: -4786216806558671716, guid: e637df420a6a6aa4e930f823ec35001f, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:

@@ -33350,6 +33350,7 @@ GameObject:
   - component: {fileID: 1158014088}
   - component: {fileID: 1158014087}
   - component: {fileID: 1158014091}
+  - component: {fileID: 1158014092}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -33450,6 +33451,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1158014086}
   m_CullTransparentMesh: 1
+--- !u!114 &1158014092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1158014086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd61ac3108de8344ae99e8620154fd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configureOnAwake: 1
 --- !u!1 &1158194344
 GameObject:
   m_ObjectHideFlags: 0
@@ -37701,7 +37715,7 @@ MonoBehaviour:
   mainMenuFirstButton: {fileID: 642891808}
   transitionDuration: 0.5
   startupDelay: 0
-  showEveryTime: 1
+  showEveryTime: 0
 --- !u!4 &1691450431
 Transform:
   m_ObjectHideFlags: 0
