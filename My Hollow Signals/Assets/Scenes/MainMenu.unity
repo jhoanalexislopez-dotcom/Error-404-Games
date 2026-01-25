@@ -652,7 +652,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &113201597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6880,7 +6880,7 @@ RectTransform:
   m_Father: {fileID: 1411844736}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0.00009918213, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -25108,7 +25108,7 @@ RectTransform:
   m_Father: {fileID: 1860593362}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -32577,7 +32577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1158014087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36714,8 +36714,10 @@ MonoBehaviour:
   - {fileID: 1339978902}
   warningContinueButton: {fileID: 1339978905}
   calibrationContinueButton: {fileID: 1007008689}
+  mainMenuFirstButton: {fileID: 642891808}
+  transitionDuration: 0.5
   startupDelay: 0
-  showEveryTime: 1
+  showEveryTime: 0
 --- !u!4 &1691450431
 Transform:
   m_ObjectHideFlags: 0

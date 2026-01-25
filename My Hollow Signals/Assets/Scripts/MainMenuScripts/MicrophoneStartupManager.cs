@@ -37,6 +37,9 @@ public class MicrophoneStartupManager : MonoBehaviour
     [Tooltip("Button on calibration screen to close and go to main menu")]
     [SerializeField] private Button calibrationContinueButton;
 
+    [Tooltip("First button to select in main menu for gamepad navigation (optional)")]
+    [SerializeField] private Button mainMenuFirstButton;
+
     [Header("Transition Settings")]
     [Tooltip("Duration of fade transitions in seconds")]
     [SerializeField] private float transitionDuration = 0.5f;
@@ -324,6 +327,7 @@ public class MicrophoneStartupManager : MonoBehaviour
             {
                 yield return StartCoroutine(FadeCanvasGroup(mainMenuCanvasGroup, 0f, 1f, transitionDuration));
             }
+            SetSelectedButton(mainMenuFirstButton);
         }
 
         Debug.Log("MicrophoneStartupManager: Switched to main menu");
@@ -350,6 +354,7 @@ public class MicrophoneStartupManager : MonoBehaviour
             {
                 yield return StartCoroutine(FadeCanvasGroup(mainMenuCanvasGroup, 0f, 1f, transitionDuration));
             }
+            SetSelectedButton(mainMenuFirstButton);
         }
         
         Debug.Log("MicrophoneStartupManager: Switched to main menu");
