@@ -6,9 +6,10 @@
  *******************************************************/
 
 using System.Collections.Generic;
+using UnityEngine.Localization;
 
 public interface IInteractable
 {
     void Interact();
-    string GetDescription();
+    LocalizedString GetLocalizedDescription();
 }

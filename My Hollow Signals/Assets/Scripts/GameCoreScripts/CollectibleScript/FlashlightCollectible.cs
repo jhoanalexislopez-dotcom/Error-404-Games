@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class FlashlightCollectible : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string description = "Pick up Flashlight";
+    [SerializeField] private LocalizedString localizedDescription;
     
     [Header("Player Flashlight")]
     [Tooltip("Reference to the player's Hand/flashlight GameObject to enable")]
@@ -12,9 +13,9 @@ public class FlashlightCollectible : MonoBehaviour, IInteractable
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip pickupSound;
     
-    public string GetDescription()
+    public LocalizedString GetLocalizedDescription()
     {
-        return description;
+        return localizedDescription;
     }
 
     public void Interact()
@@ -23,7 +24,6 @@ public class FlashlightCollectible : MonoBehaviour, IInteractable
         {
             PlayerInventory.Instance.CollectFlashlight();
             
-            // Enable the player's flashlight in hand
             if (playerFlashlightObject != null)
             {
                 playerFlashlightObject.SetActive(true);
@@ -31,7 +31,6 @@ public class FlashlightCollectible : MonoBehaviour, IInteractable
             }
             else
             {
-                // Fallback: Try to find it automatically
                 FlashlightController flashlightController = FindObjectOfType<FlashlightController>();
                 if (flashlightController != null)
                 {

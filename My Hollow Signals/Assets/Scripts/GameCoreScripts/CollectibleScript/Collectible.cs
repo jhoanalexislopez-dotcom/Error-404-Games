@@ -7,12 +7,13 @@
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Localization;
 
 public class Collectible : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string description = "Pick up";
+    [SerializeField] private LocalizedString localizedDescription;
     [SerializeField] private int value = 1;
-    [SerializeField] private GameObject noteUI; // Reference to NoteUI
+    [SerializeField] private GameObject noteUI;
 
     [Header("Note Settings")]
     [SerializeField] private string noteTitle = "Note";
@@ -58,9 +59,9 @@ public class Collectible : MonoBehaviour, IInteractable
         }
     }
 
-    public string GetDescription()
+    public LocalizedString GetLocalizedDescription()
     {
-        return description;
+        return localizedDescription;
     }
 
     public void Interact()

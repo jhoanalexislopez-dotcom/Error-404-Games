@@ -42,12 +42,12 @@ MonoBehaviour:
     m_Localized: "\u2026Va bene. Sto arrivando.\r\n"
     m_Metadata:
       m_Items: []
-  - m_Id: 1075472769024
-    m_Localized: Ricarica
+  - m_Id: 38149299363840
+    m_Localized: Ricaricare
     m_Metadata:
       m_Items: []
-  - m_Id: 1180015796224
-    m_Localized: Raccogli
+  - m_Id: 36778294632448
+    m_Localized: Raccolta
     m_Metadata:
       m_Items: []
   - m_Id: 1290242105344

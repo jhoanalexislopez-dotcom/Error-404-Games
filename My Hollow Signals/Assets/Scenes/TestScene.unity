@@ -1812,10 +1812,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5233132ea6967949a4f586ef9e9ec5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Pick up
+  localizedDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
+    m_TableEntryReference:
+      m_KeyId: 36778294632448
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   playerFlashlightObject: {fileID: 714673319}
   audioSource: {fileID: 543942470}
   pickupSound: {fileID: 8300000, guid: 0e8cfe2e7bfa1a84399afbc2ab2622f1, type: 3}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &270037379
 GameObject:
   m_ObjectHideFlags: 0
@@ -3980,7 +3991,7 @@ MonoBehaviour:
   interactionDistance: 2
   interactionUI: {fileID: 1828925601}
   interactionReticle: {fileID: 987315279}
-  interactionText: {fileID: 639604751}
+  interactionTextLocalizer: {fileID: 0}
   keyUI: {fileID: 668771910}
   buttonUI: {fileID: 1589182363}
   interactAction: {fileID: 1781555164194001046, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
@@ -5979,17 +5990,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &639604751 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5335712862386608623, guid: e7bbcb1130996704bad67443a709705b, type: 3}
-  m_PrefabInstance: {fileID: 5632539499555265244}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &643094166
 GameObject:
   m_ObjectHideFlags: 0
@@ -17872,6 +17872,14 @@ PrefabInstance:
     - target: {fileID: 585112775770501559, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: m_Name
       value: DoorPivot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: localizedDescription.m_TableEntryReference.m_KeyId
+      value: 490354778112
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: localizedDescription.m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

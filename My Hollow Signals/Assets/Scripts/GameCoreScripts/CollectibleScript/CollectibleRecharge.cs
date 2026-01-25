@@ -7,10 +7,11 @@
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Localization;
 
 public class CollectibleRecharge : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string description = "Recharge";
+    [SerializeField] private LocalizedString localizedDescription;
     [SerializeField] private FlashlightController flashlight;
 
     [Header("Sanity Settings")]
@@ -22,9 +23,9 @@ public class CollectibleRecharge : MonoBehaviour, IInteractable
 
     }
 
-    public string GetDescription()
+    public LocalizedString GetLocalizedDescription()
     {
-        return description;
+        return localizedDescription;
     }
 
     public void Interact()

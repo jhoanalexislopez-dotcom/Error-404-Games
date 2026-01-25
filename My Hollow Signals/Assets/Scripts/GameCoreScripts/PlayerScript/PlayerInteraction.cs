@@ -7,6 +7,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.Localization.Components;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class PlayerInteraction : MonoBehaviour
     [Header("UI")]
     public GameObject interactionUI;
     public GameObject interactionReticle;
-    public TextMeshProUGUI interactionText;
+    public LocalizeStringEvent interactionTextLocalizer;
 
     [Header("UI Elements")]
     public GameObject keyUI;    // ← arrastra aquí el objeto "Key"
@@ -81,8 +82,16 @@ public class PlayerInteraction : MonoBehaviour
             if (interactable != null)
             {
                 hitSomething = true;
-                if (interactionText != null)
-                    interactionText.text = interactable.GetDescription();
+                if (interactionTextLocalizer != null && interactionTextLocalizer.StringReference != null)
+                {
+                    var localizedDesc = interactable.GetLocalizedDescription();
+                    if (localizedDesc != null)
+                    {
+                        interactionTextLocalizer.StringReference.TableReference = localizedDesc.TableReference;
+                        interactionTextLocalizer.StringReference.TableEntryReference = localizedDesc.TableEntryReference;
+                        interactionTextLocalizer.RefreshString();
+                    }
+                }
 
                 if (interactAction != null && interactAction.action != null &&
                     interactAction.action.WasPressedThisFrame())

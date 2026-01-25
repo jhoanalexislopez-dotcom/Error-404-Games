@@ -7,10 +7,11 @@
  *******************************************************/
 
 using UnityEngine;
+using UnityEngine.Localization;
 
 public class TransformInteractable : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string description = "Interact";
+    [SerializeField] private LocalizedString localizedDescription;
 
     [Header("Transform Settings")]
     [Tooltip("Target position offset (local space)")]
@@ -107,9 +108,9 @@ public class TransformInteractable : MonoBehaviour, IInteractable
         }
     }
 
-    public string GetDescription()
+    public LocalizedString GetLocalizedDescription()
     {
-        return description;
+        return localizedDescription;
     }
 
     public void Interact()

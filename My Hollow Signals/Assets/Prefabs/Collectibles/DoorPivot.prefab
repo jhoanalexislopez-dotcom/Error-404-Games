@@ -46,7 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ebd9645b293ae43b02e9ced818a468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Open
+  localizedDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
+    m_TableEntryReference:
+      m_KeyId: 490354778112
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   targetPosition: {x: 0, y: 0, z: 0}
   targetRotation: {x: 0, y: 90, z: 0}
   targetScale: {x: 1, y: 1, z: 1}
@@ -80,6 +88,16 @@ MonoBehaviour:
   soundVolume: 0.8
   canReInteract: 1
   returnToOriginal: 0
+  interactionRequirement:
+    requiresFlashlight: 0
+    minimumItemsRequired: 0
+    eventFlagName: 
+    lockedMessage: This door is locked.
+  lockedSound: {fileID: 0}
+  dialogueUIPrefab: {fileID: 0}
+  references:
+    version: 2
+    RefIds: []
 --- !u!65 &3308760739180923938
 BoxCollider:
   m_ObjectHideFlags: 0

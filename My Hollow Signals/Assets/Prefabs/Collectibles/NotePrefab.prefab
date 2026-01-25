@@ -119,7 +119,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2395a89de5b430e49b41ba1f6e6d06c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: Pick up
+  localizedDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
+    m_TableEntryReference:
+      m_KeyId: 36778294632448
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   value: 1
   noteUI: {fileID: 0}
   noteTitle: First Message
@@ -138,6 +146,13 @@ MonoBehaviour:
 
 
     Soon you''ll understand.'
+  sanityLossAmount: 0
+  customAudioSource: {fileID: 0}
+  collectSound: {fileID: 0}
+  soundVolume: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &9138245449625673999
 PrefabInstance:
   m_ObjectHideFlags: 0

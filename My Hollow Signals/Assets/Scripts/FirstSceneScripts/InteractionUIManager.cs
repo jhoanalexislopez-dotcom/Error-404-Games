@@ -19,7 +19,7 @@ public class InteractionUICinematic : MonoBehaviour
     public GameObject BlackLayoutTransitionUI;
 
     [Header("Input System")]
-    [Tooltip("Arrastra aquí la InputAction 'Interact' o la que uses en tu DialogueSystem.")]
+    [Tooltip("Arrastra aquï¿½ la InputAction 'Interact' o la que uses en tu DialogueSystem.")]
     public InputActionReference interactAction;
 
     [Header("Dialogue")]
@@ -45,10 +45,6 @@ public class InteractionUICinematic : MonoBehaviour
 
     private void Start()
     {
-        if (interactionText != null)
-            interactionText.text = "Continue"; // Puedes cambiarlo desde inspector
-
-        // Asegurar que el UI empiece activo
         if (interactionUI != null)
             interactionUI.SetActive(true);
 
@@ -58,11 +54,11 @@ public class InteractionUICinematic : MonoBehaviour
 
     private void Update()
     {
-        // Mostrar iconos según dispositivo
+        // Mostrar iconos segï¿½n dispositivo
         if (keyUI != null) keyUI.SetActive(!usingGamepad);
         if (buttonUI != null) buttonUI.SetActive(usingGamepad);
 
-        // Si no hay diálogo, oculta la UI
+        // Si no hay diï¿½logo, oculta la UI
         if (dialogueSystem != null && !dialogueSystem.IsDialogueActive())
         {
             if (interactionUI != null)
