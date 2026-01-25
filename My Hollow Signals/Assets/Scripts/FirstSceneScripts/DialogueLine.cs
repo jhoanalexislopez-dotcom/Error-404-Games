@@ -8,10 +8,10 @@
 
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Localization;
 
 [System.Serializable]
 public class DialogueLine
 {
-    [TextArea(3, 5)]
-    public string text;
+    public LocalizedString text;
 }

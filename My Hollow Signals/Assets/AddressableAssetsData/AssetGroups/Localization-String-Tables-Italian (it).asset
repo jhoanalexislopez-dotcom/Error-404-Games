@@ -28,6 +28,7 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-it
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 78e6e46850315714aae565ddb206fc5d
     m_Address: EscenaMenuTable_it

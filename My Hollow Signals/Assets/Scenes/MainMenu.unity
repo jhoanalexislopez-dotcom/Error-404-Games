@@ -37701,7 +37701,7 @@ MonoBehaviour:
   mainMenuFirstButton: {fileID: 642891808}
   transitionDuration: 0.5
   startupDelay: 0
-  showEveryTime: 0
+  showEveryTime: 1
 --- !u!4 &1691450431
 Transform:
   m_ObjectHideFlags: 0

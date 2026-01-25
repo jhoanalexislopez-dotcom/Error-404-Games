@@ -14,6 +14,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Localization;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -172,11 +173,26 @@ public class DialogueSystem : MonoBehaviour
                 StopCoroutine(typingCoroutine);
             }
 
-            typingCoroutine = StartCoroutine(TypeText(currentLine.text));
+            StartCoroutine(LoadAndTypeText(currentLine.text));
         }
         else
         {
             EndDialogue();
+        }
+    }
+
+    private IEnumerator LoadAndTypeText(LocalizedString localizedText)
+    {
+        var loadOperation = localizedText.GetLocalizedStringAsync();
+        yield return loadOperation;
+
+        if (loadOperation.IsDone && !string.IsNullOrEmpty(loadOperation.Result))
+        {
+            typingCoroutine = StartCoroutine(TypeText(loadOperation.Result));
+        }
+        else
+        {
+            Debug.LogWarning("Failed to load localized string or result was empty.");
         }
     }
 
@@ -259,7 +275,18 @@ public class DialogueSystem : MonoBehaviour
 
         if (currentDialogueIndex < dialogueLines.Count)
         {
-            dialogueText.text = dialogueLines[currentDialogueIndex].text;
+            StartCoroutine(CompleteCurrentLineAsync());
+        }
+    }
+
+    private IEnumerator CompleteCurrentLineAsync()
+    {
+        var loadOperation = dialogueLines[currentDialogueIndex].text.GetLocalizedStringAsync();
+        yield return loadOperation;
+
+        if (loadOperation.IsDone && !string.IsNullOrEmpty(loadOperation.Result))
+        {
+            dialogueText.text = loadOperation.Result;
         }
     }
 
@@ -322,7 +349,7 @@ public class DialogueSystem : MonoBehaviour
         SetupInputAction();
     }
 
-    public void AddDialogueLine(string text)
+    public void AddDialogueLine(LocalizedString text)
     {
         DialogueLine newLine = new DialogueLine();
         newLine.text = text;

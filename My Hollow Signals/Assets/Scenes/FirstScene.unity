@@ -143,8 +143,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1947350157370610710, guid: e7bbcb1130996704bad67443a709705b, type: 3}
+      propertyPath: m_FlexibleWidth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1947350157370610710, guid: e7bbcb1130996704bad67443a709705b, type: 3}
       propertyPath: m_PreferredWidth
-      value: 150
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2805534699989275837, guid: e7bbcb1130996704bad67443a709705b, type: 3}
       propertyPath: m_text
@@ -208,6 +212,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4862724473795555197, guid: e7bbcb1130996704bad67443a709705b, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335712862386608623, guid: e7bbcb1130996704bad67443a709705b, type: 3}
+      propertyPath: m_isRightToLeft
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5907635687362747458, guid: e7bbcb1130996704bad67443a709705b, type: 3}
@@ -357,6 +365,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8907584435334342674, guid: e7bbcb1130996704bad67443a709705b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1547393842}
+    - targetCorrespondingSourceObject: {fileID: 6645869296324174629, guid: e7bbcb1130996704bad67443a709705b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 849809940}
   m_SourcePrefab: {fileID: 100100000, guid: e7bbcb1130996704bad67443a709705b, type: 3}
 --- !u!1 &239812523
 GameObject:
@@ -601,7 +612,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5335712862386608623, guid: e7bbcb1130996704bad67443a709705b, type: 3}
   m_PrefabInstance: {fileID: 124572724}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 849809937}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -965,6 +976,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -38.984, z: 0}
+--- !u!1 &849809937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6645869296324174629, guid: e7bbcb1130996704bad67443a709705b, type: 3}
+  m_PrefabInstance: {fileID: 124572724}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &849809940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849809937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:2d79eebcfc96f414e9609c2c18ae53bf
+    m_TableEntryReference:
+      m_KeyId: 2655215427584
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 477364146}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &985499742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,7 +1585,7 @@ MonoBehaviour:
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1714,16 +1770,60 @@ MonoBehaviour:
   dialogueText: {fileID: 2044987798}
   transitionAnimator: {fileID: 1431237696}
   dialogueLines:
-  - text: "They say blood ties never break\u2026 but ours was always different."
-  - text: My sister was born without the ability to see the world, and yet she always
-      seemed to understand it better than I did.
-  - text: "She was the one who could calm me in my worst moments, the one who spoke
-      of things she couldn\u2019t see but described as if they were right there."
-  - text: As the years passed, her words began to change. She spoke of voices, of
-      shadows whispering in the dark, of a presence that followed her even when she
-      was alone.
-  - text: No one believed her. Not even me.
-  - text: "Until one night, my phone vibrates. It\u2019s a message from her\u2026"
+  - text:
+      m_TableReference:
+        m_TableCollectionName: GUID:2d79eebcfc96f414e9609c2c18ae53bf
+      m_TableEntryReference:
+        m_KeyId: 2726715727872
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - text:
+      m_TableReference:
+        m_TableCollectionName: GUID:2d79eebcfc96f414e9609c2c18ae53bf
+      m_TableEntryReference:
+        m_KeyId: 2862632148992
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - text:
+      m_TableReference:
+        m_TableCollectionName: GUID:2d79eebcfc96f414e9609c2c18ae53bf
+      m_TableEntryReference:
+        m_KeyId: 3133424803840
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - text:
+      m_TableReference:
+        m_TableCollectionName: GUID:2d79eebcfc96f414e9609c2c18ae53bf
+      m_TableEntryReference:
+        m_KeyId: 3307396145152
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - text:
+      m_TableReference:
+        m_TableCollectionName: GUID:2d79eebcfc96f414e9609c2c18ae53bf
+      m_TableEntryReference:
+        m_KeyId: 3447704002560
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
+  - text:
+      m_TableReference:
+        m_TableCollectionName: GUID:2d79eebcfc96f414e9609c2c18ae53bf
+      m_TableEntryReference:
+        m_KeyId: 3616445046784
+        m_Key: 
+      m_FallbackState: 0
+      m_WaitForCompletion: 0
+      m_LocalVariables: []
   typingSpeed: 0.05
   playerInputActions: {fileID: -944628639613478452, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
   advanceActionName: Jump
@@ -1736,6 +1836,9 @@ MonoBehaviour:
   transitionDelayBeforeSceneLoad: 2
   nextSceneName: TestScene
   transitionTriggerName: StartTransition
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &6665251964523655247
 PrefabInstance:
   m_ObjectHideFlags: 0
