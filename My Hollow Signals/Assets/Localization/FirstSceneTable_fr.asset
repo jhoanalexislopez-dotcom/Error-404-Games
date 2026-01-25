@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: FirstSceneTable_fr
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: fr
+  m_SharedData: {fileID: 11400000, guid: 2d79eebcfc96f414e9609c2c18ae53bf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 109973348352
+    m_Localized: Espace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2655215427584
+    m_Localized: Continuer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2726715727872
+    m_Localized: "On dit que les liens du sang ne se brisent jamais\u2026 mais les
+      n\xF4tres ont toujours \xE9t\xE9 diff\xE9rents."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2862632148992
+    m_Localized: "Ma s\u0153ur est n\xE9e sans la capacit\xE9 de voir le monde, et
+      pourtant elle semblait toujours le comprendre mieux que moi."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3133424803840
+    m_Localized: "C\u2019\xE9tait elle qui pouvait me calmer dans mes pires moments,
+      celle qui parlait de choses qu\u2019elle ne pouvait pas voir mais d\xE9crivait
+      comme si elles \xE9taient l\xE0.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3307396145152
+    m_Localized: "Avec les ann\xE9es, ses paroles ont commenc\xE9 \xE0 changer. Elle
+      parlait de voix, d\u2019ombres chuchotant dans le noir, d\u2019une pr\xE9sence
+      qui la suivait m\xEAme lorsqu\u2019elle \xE9tait seule.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3447704002560
+    m_Localized: "Personne ne la croyait. M\xEAme pas moi.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616445046784
+    m_Localized: "Jusqu\u2019\xE0 une nuit, mon t\xE9l\xE9phone vibre. C\u2019est
+      un message d\u2019elle\u2026\r\n"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

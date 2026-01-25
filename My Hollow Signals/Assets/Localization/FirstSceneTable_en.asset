@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: FirstSceneTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 2d79eebcfc96f414e9609c2c18ae53bf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 109973348352
+    m_Localized: Space
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2655215427584
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2726715727872
+    m_Localized: They say blood ties never break... but ours was always different.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2862632148992
+    m_Localized: My sister was born without the ability to see the world, and yet
+      she always seemed to understand it better than I did.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3133424803840
+    m_Localized: 'She was the one who could calm me in my worst moments, the one
+      who spoke of things she couldn''t see but described as if they were right there.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3307396145152
+    m_Localized: 'As the years passed, her words began to change. She spoke of voices,
+      of shadows whispering in the dark, of a presence that followed her even when
+      she was alone.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3447704002560
+    m_Localized: 'No one believed her. Not even me.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616445046784
+    m_Localized: "Until one night, my phone vibrates. It's a message from her\u2026\r\n"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

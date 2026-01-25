@@ -23,6 +23,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-de
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c96ad9a58e276d14f9ae6ddcf1cdf4c3
+    m_Address: GameSceneTable_de
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-de
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cd5a5a83055d24a418a75624f6466b5f
+    m_Address: FirstSceneTable_de
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-de
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 7d8807bd0f12966418b0ee9d8d8bd536, type: 2}
   m_SchemaSet:

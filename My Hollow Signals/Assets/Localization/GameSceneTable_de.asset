@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: GameSceneTable_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 6bad540ea16450940815288811da18f3, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 490354778112
+    m_Localized: "\xD6ffnen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 578363858944
+    m_Localized: "Wie sp\xE4t ist es?\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 719032426496
+    m_Localized: "\u2026Mara, wieder im Dunkeln unterwegs?\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 802201280512
+    m_Localized: "Mara? Wo bist du? Was\u2026?\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 887240794112
+    m_Localized: "Sie ist drau\xDFen\u2026 Allein im Wald?\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 968606097408
+    m_Localized: "\u2026Alles klar. Ich bin unterwegs.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1075472769024
+    m_Localized: Aufladen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1180015796224
+    m_Localized: Aufheben
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1290242105344
+    m_Localized: Pausiert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1370059710464
+    m_Localized: Fortsetzen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1434375168000
+    m_Localized: Beenden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2168210595840
+    m_Localized: Maus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2243531907072
+    m_Localized: Gamepad
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

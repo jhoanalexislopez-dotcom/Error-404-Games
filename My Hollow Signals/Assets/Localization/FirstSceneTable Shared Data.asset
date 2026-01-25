@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: FirstSceneTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: FirstSceneTable
+  m_TableCollectionNameGuidString: 2d79eebcfc96f414e9609c2c18ae53bf
+  m_Entries:
+  - m_Id: 109973348352
+    m_Key: FS001
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2655215427584
+    m_Key: FS002
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2726715727872
+    m_Key: FS003
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2862632148992
+    m_Key: FS004
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3133424803840
+    m_Key: FS005
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3307396145152
+    m_Key: FS006
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3447704002560
+    m_Key: FS007
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616445046784
+    m_Key: FS008
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 5334368105891889154
+  references:
+    version: 2
+    RefIds:
+    - rid: 5334368105891889154
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1769368127368

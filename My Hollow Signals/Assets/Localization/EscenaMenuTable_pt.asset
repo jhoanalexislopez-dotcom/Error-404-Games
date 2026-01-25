@@ -19,7 +19,95 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 229924794368
-    m_Localized: SIU
+    m_Localized: Iniciar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818589278674944
+    m_Localized: "Op\xE7\xF5es"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818622308818944
+    m_Localized: Controles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818655791947776
+    m_Localized: Sair
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818751241723904
+    m_Localized: "\xC1udio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818856137072640
+    m_Localized: Volume mestre
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818917512323072
+    m_Localized: Volume BGM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818965277057024
+    m_Localized: Volume Efeitos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819008713269248
+    m_Localized: Microfone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819042917818368
+    m_Localized: Fonte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819079538286592
+    m_Localized: "Calibra\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819108596424704
+    m_Localized: "Restaurar padr\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819158345064448
+    m_Localized: Voltar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819234110971904
+    m_Localized: Mover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819284891410432
+    m_Localized: Interagir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819317019779072
+    m_Localized: Andar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819341342547968
+    m_Localized: Agachar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819379426828288
+    m_Localized: Pular
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819404693315584
+    m_Localized: Olhar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819439564759040
+    m_Localized: Lanterna LIGADA/DESLIGADA
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822506716667904
+    m_Localized: Pausado
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822550714916864
+    m_Localized: Retomar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822608210436096
+    m_Localized: Sair
     m_Metadata:
       m_Items: []
   references:

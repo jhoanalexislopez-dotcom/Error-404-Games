@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: FirstSceneTable_de
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: de
+  m_SharedData: {fileID: 11400000, guid: 2d79eebcfc96f414e9609c2c18ae53bf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 109973348352
+    m_Localized: Leertaste
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2655215427584
+    m_Localized: Fortsetzen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2726715727872
+    m_Localized: "Man sagt, Blutbande zerrei\xDFen nie\u2026 aber unsere waren immer
+      anders. Meine Schwester wurde geboren, ohne die Welt sehen zu k\xF6nnen, und
+      doch schien sie sie immer besser zu verstehen als ich. Sie war diejenige, die
+      mich in meinen schlimmsten Momenten beruhigen konnte, die von Dingen sprach,
+      die sie nicht sehen konnte, aber beschrieb, als w\xE4ren sie da. Mit den Jahren
+      begannen sich ihre Worte zu \xE4ndern. Sie sprach von Stimmen, von Schatten,
+      die im Dunkeln fl\xFCstern, von einer Pr\xE4senz, die ihr folgte, selbst wenn
+      sie allein war. Niemand glaubte ihr. Nicht einmal ich. Bis eines Nachts mein
+      Telefon vibriert. Es ist eine Nachricht von ihr\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2862632148992
+    m_Localized: "Meine Schwester wurde geboren, ohne die Welt sehen zu k\xF6nnen,
+      und doch schien sie sie immer besser zu verstehen als ich."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3133424803840
+    m_Localized: "Sie war diejenige, die mich in meinen schlimmsten Momenten beruhigen
+      konnte, die von Dingen sprach, die sie nicht sehen konnte, aber beschrieb,
+      als w\xE4ren sie da.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3307396145152
+    m_Localized: "Mit den Jahren begannen sich ihre Worte zu \xE4ndern. Sie sprach
+      von Stimmen, von Schatten, die im Dunkeln fl\xFCstern, von einer Pr\xE4senz,
+      die ihr folgte, selbst wenn sie allein war.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3447704002560
+    m_Localized: 'Niemand glaubte ihr. Nicht einmal ich.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616445046784
+    m_Localized: "Bis eines Nachts mein Telefon vibriert. Es ist eine Nachricht von
+      ihr\u2026\r\n"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

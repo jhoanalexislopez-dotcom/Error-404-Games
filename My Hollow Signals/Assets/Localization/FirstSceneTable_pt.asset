@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: FirstSceneTable_pt
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: pt
+  m_SharedData: {fileID: 11400000, guid: 2d79eebcfc96f414e9609c2c18ae53bf, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 109973348352
+    m_Localized: "Espa\xE7o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2655215427584
+    m_Localized: Continuar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2726715727872
+    m_Localized: "Dizem que la\xE7os de sangue nunca se quebram\u2026 mas os nossos
+      sempre foram diferentes."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2862632148992
+    m_Localized: "Minha irm\xE3 nasceu sem a capacidade de ver o mundo, e ainda assim
+      sempre parecia entend\xEA-lo melhor do que eu."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3133424803840
+    m_Localized: "Ela era quem conseguia me acalmar nos meus piores momentos, quem
+      falava de coisas que n\xE3o podia ver mas descrevia como se estivessem l\xE1.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3307396145152
+    m_Localized: "Com o passar dos anos, suas palavras come\xE7aram a mudar. Ela
+      falava de vozes, de sombras sussurrando no escuro, de uma presen\xE7a que a
+      seguia mesmo quando estava sozinha.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3447704002560
+    m_Localized: "Ningu\xE9m acreditava nela. Nem eu.\r\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3616445046784
+    m_Localized: "At\xE9 que, uma noite, meu telefone vibra. \xC9 uma mensagem dela\u2026\r\n"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

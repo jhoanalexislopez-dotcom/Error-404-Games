@@ -17,6 +17,16 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: ec69e691763c1cd41b18f44ea0d812b1
   m_SerializeEntries:
+  - m_GUID: 2d79eebcfc96f414e9609c2c18ae53bf
+    m_Address: Assets/Localization/FirstSceneTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6bad540ea16450940815288811da18f3
+    m_Address: Assets/Localization/GameSceneTable Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 843f0bf463fe53d45961d4cf8637bbad
     m_Address: Assets/Localization/EscenaMenuTable Shared Data.asset
     m_ReadOnly: 1

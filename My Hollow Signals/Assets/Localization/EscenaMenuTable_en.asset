@@ -19,7 +19,95 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 229924794368
-    m_Localized: MENU
+    m_Localized: Start Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818589278674944
+    m_Localized: Options
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818622308818944
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818655791947776
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818751241723904
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818856137072640
+    m_Localized: Master Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818917512323072
+    m_Localized: BGM Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 818965277057024
+    m_Localized: SFX Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819008713269248
+    m_Localized: Microphone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819042917818368
+    m_Localized: Source
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819079538286592
+    m_Localized: Calibration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819108596424704
+    m_Localized: Reset Defaults
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819158345064448
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819234110971904
+    m_Localized: Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819284891410432
+    m_Localized: Interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819317019779072
+    m_Localized: Walk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819341342547968
+    m_Localized: Crouch
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819379426828288
+    m_Localized: Jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819404693315584
+    m_Localized: Look
+    m_Metadata:
+      m_Items: []
+  - m_Id: 819439564759040
+    m_Localized: Flashlight ON/OFF
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822506716667904
+    m_Localized: Paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822550714916864
+    m_Localized: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 822608210436096
+    m_Localized: Quit
     m_Metadata:
       m_Items: []
   references:
