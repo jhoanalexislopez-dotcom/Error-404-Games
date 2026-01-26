@@ -117,7 +117,20 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 218746474336256
-    m_Localized: Tengo que seguirla
+    m_Localized: Tengo que seguirla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254023846727680
+    m_Localized: "Por favor, que est\xE9s bien\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254311936692224
+    m_Localized: "Fogata\u2026 la fogata. Ella habl\xF3 de eso antes. Tengo que llegar
+      ah\xED."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254815790043136
+    m_Localized: "Quiere que vuelva\u2026 \xBFpor qu\xE9?"
     m_Metadata:
       m_Items: []
   references:

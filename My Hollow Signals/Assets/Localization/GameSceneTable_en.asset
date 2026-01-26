@@ -116,6 +116,26 @@ MonoBehaviour:
     m_Localized: Nothing.
     m_Metadata:
       m_Items: []
+  - m_Id: 254023846727680
+    m_Localized: Hope you're okay...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254311936692224
+    m_Localized: Campfire... the campfire. She mentioned it. I need to go there.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218746474336256
+    m_Localized: I need to follow her.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218138795184128
+    m_Localized: The cave... what are you doing, Mara?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254815790043136
+    m_Localized: She wants me go back... but why?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
