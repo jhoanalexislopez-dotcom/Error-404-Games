@@ -3,7 +3,27 @@ guid: ea1460425c8a8304bbe7b87d50ca16fa
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LamaparaBombilla
+    second: {fileID: 2100000, guid: 8f40c89d24dd7d74d880a6dc915ce03a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LamparaBase
+    second: {fileID: 2100000, guid: 2fa1c0472654a7d44852f1eca46abd0c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LamparaBody
+    second: {fileID: 2100000, guid: 0991c8f116e08cc4ebf8466d2a84846f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LamparaHead
+    second: {fileID: 2100000, guid: 4a685053627302049997417c9abe01df, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
