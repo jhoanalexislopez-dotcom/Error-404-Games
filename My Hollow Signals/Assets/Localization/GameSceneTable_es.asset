@@ -104,6 +104,10 @@ MonoBehaviour:
     m_Localized: MENSAJES
     m_Metadata:
       m_Items: []
+  - m_Id: 206804678479872
+    m_Localized: " Mara\u2026 si est\xE1s aqu\xED\u2026 dame una se\xF1al."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
