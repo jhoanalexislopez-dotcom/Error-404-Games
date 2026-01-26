@@ -4530,6 +4530,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 447213895}
+  - component: {fileID: 447213896}
   m_Layer: 0
   m_Name: Lightning
   m_TagString: Untagged
@@ -4556,6 +4557,28 @@ Transform:
   - {fileID: 1833351112}
   m_Father: {fileID: 1262862370}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &447213896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447213894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab3abfa69ef33a42a423e59a027f7b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minIntensity: 0.2
+  maxIntensity: 1
+  minFlickerInterval: 0.5
+  maxFlickerInterval: 3
+  minFlickerDuration: 0.05
+  maxFlickerDuration: 0.3
+  burstCount: 3
+  burstDelay: 0.1
+  burstProbability: 0.3
+  affectChildLights: 1
 --- !u!1 &447902306
 GameObject:
   m_ObjectHideFlags: 0
@@ -4845,7 +4868,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1262862370}
+    m_TransformParent: {fileID: 1029851798}
     m_Modifications:
     - target: {fileID: 395850748920046066, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5707,7 +5730,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1905199401}
+    m_TransformParent: {fileID: 1249687686}
     m_Modifications:
     - target: {fileID: 395850748920046066, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5774,7 +5797,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &503110176
 Transform:
   m_ObjectHideFlags: 0
@@ -9978,7 +10001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 789060350}
   m_Layer: 3
-  m_Name: Meshes
+  m_Name: FurnitureMeshes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12637,6 +12660,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1025910036}
   m_CullTransparentMesh: 1
+--- !u!1 &1029851797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1029851798}
+  m_Layer: 3
+  m_Name: Doors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1029851798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029851797}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2113426228}
+  - {fileID: 482232022}
+  - {fileID: 1307847512}
+  - {fileID: 1510836777}
+  m_Father: {fileID: 1262862370}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1034383432
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14954,6 +15012,41 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bd554762a9a65847bfb460d808e0139, type: 3}
+--- !u!1 &1249687685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1249687686}
+  m_Layer: 3
+  m_Name: Doors
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1249687686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249687685}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1418234151}
+  - {fileID: 581646311}
+  - {fileID: 648163531}
+  - {fileID: 764145794}
+  m_Father: {fileID: 1905199401}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1250388192
 GameObject:
   m_ObjectHideFlags: 0
@@ -15181,7 +15274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1262862370}
   m_Layer: 3
-  m_Name: FurnitureEnding
+  m_Name: EndingState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15201,10 +15294,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 789060350}
-  - {fileID: 2113426228}
-  - {fileID: 482232022}
-  - {fileID: 1307847512}
-  - {fileID: 1510836777}
+  - {fileID: 1029851798}
   - {fileID: 447213895}
   m_Father: {fileID: 1597441932}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -15911,7 +16001,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1262862370}
+    m_TransformParent: {fileID: 1029851798}
     m_Modifications:
     - target: {fileID: 395850748920046066, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18654,7 +18744,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1262862370}
+    m_TransformParent: {fileID: 1029851798}
     m_Modifications:
     - target: {fileID: 395850748920046066, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21351,7 +21441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1794147273}
   m_Layer: 3
-  m_Name: Meshes
+  m_Name: FurnitureMeshes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21769,7 +21859,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1905199401}
+    m_TransformParent: {fileID: 1249687686}
     m_Modifications:
     - target: {fileID: 395850748920046066, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22817,7 +22907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1899570959
 Transform:
   m_ObjectHideFlags: 0
@@ -22905,7 +22995,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1905199401}
   m_Layer: 3
-  m_Name: FurnitureCalm
+  m_Name: CalmState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22925,10 +23015,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1794147273}
-  - {fileID: 1418234151}
-  - {fileID: 581646311}
-  - {fileID: 648163531}
-  - {fileID: 764145794}
+  - {fileID: 1249687686}
   - {fileID: 785627541}
   m_Father: {fileID: 1597441932}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -25208,7 +25295,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1905199401}
+    m_TransformParent: {fileID: 1249687686}
     m_Modifications:
     - target: {fileID: 395850748920046066, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25544,7 +25631,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1262862370}
+    m_TransformParent: {fileID: 1029851798}
     m_Modifications:
     - target: {fileID: 395850748920046066, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26844,7 +26931,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1905199401}
+    m_TransformParent: {fileID: 1249687686}
     m_Modifications:
     - target: {fileID: 395850748920046066, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: m_LocalPosition.x
