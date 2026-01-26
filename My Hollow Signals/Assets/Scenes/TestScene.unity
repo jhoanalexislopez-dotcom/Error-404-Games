@@ -1710,15 +1710,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.110031
+      value: 22.51
       objectReference: {fileID: 0}
     - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.319996
+      value: 5.32
       objectReference: {fileID: 0}
     - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.9500046
+      value: 3.95
       objectReference: {fileID: 0}
     - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1770,7 +1770,7 @@ PrefabInstance:
       objectReference: {fileID: 2521305128529513819, guid: f8a30331077a52040a885b710dd461a5, type: 3}
     - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: sanityLossAmount
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: dialogueLines.Array.size
@@ -1778,7 +1778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: requirements.eventFlagName
-      value: FirstNoteCollected
+      value: SecondNoteCollected
       objectReference: {fileID: 0}
     - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: dialogueLines.Array.data[0]
@@ -1806,11 +1806,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6827942243661282751, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: m_Name
-      value: EventTrigger_ExitCabin_CanMove
+      value: EventTrigger_ExitCave_CanMove
       objectReference: {fileID: 0}
     - target: {fileID: 6827942243661282751, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3560,6 +3560,7 @@ Transform:
   - {fileID: 468864514}
   - {fileID: 1675376923}
   - {fileID: 226370495}
+  - {fileID: 1120090268}
   m_Father: {fileID: 45506002}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &434587173
@@ -3870,7 +3871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1261175589581847837, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4230525666026827889, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: m_LocalScale.x
@@ -3886,15 +3887,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4230525666026827889, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.2700043
+      value: -28.42
       objectReference: {fileID: 0}
     - target: {fileID: 4230525666026827889, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 6.45
       objectReference: {fileID: 0}
     - target: {fileID: 4230525666026827889, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.759987
+      value: 8.23
       objectReference: {fileID: 0}
     - target: {fileID: 4230525666026827889, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3939,7 +3940,7 @@ PrefabInstance:
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: triggerSound
       value: 
-      objectReference: {fileID: 8300000, guid: 28a2a71ffed9c7f41a88f3866dd804f2, type: 3}
+      objectReference: {fileID: 8300000, guid: 674440cacfc8ccc41ad9f82d1d7267f3, type: 3}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: useRequirements
       value: 1
@@ -3954,19 +3955,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: sanityLossAmount
-      value: 300
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: cameraFocusTarget
       value: 
-      objectReference: {fileID: 49097823}
+      objectReference: {fileID: 1120090268}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: triggerNotification
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: requirements.eventFlagName
-      value: FirstNoteCollected
+      value: SecondNoteCollected
       objectReference: {fileID: 0}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: dialogueLines.Array.data[0]
@@ -4150,7 +4151,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3510322570651383621, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: m_Name
-      value: NotePrefab
+      value: NotePrefab02
       objectReference: {fileID: 0}
     - target: {fileID: 3510322570651383621, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: m_Layer
@@ -4222,30 +4223,22 @@ PrefabInstance:
       objectReference: {fileID: 1688654175}
     - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: noteText
-      value: 'SECOND MESSAGE
-
-
-        They watch me, they guide me, they show me
-        the truth.
-
-
-        You''ve always been weak, but I...
-
-
-        I''m learning
-        to be strong.
-
-
-        Soon you''ll understand.'
+      value: "I've seen things you wouldn't understand.\n\nThey watch me, they guide
+        me, \nthey show me the truth.\n\nYou've always been weak, but I...\n\nI'm
+        learning to be strong.\n\nSoon you'll understand."
       objectReference: {fileID: 0}
     - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: noteTitle
-      value: Second Message
+      value: Note found in the cave
       objectReference: {fileID: 0}
     - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: collectSound
       value: 
       objectReference: {fileID: 8300000, guid: 8179ff83f1324d84cb44cdb7fe68ff02, type: 3}
+    - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
+      propertyPath: eventFlagName
+      value: SecondNoteCollected
+      objectReference: {fileID: 0}
     - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: customAudioSource
       value: 
@@ -4525,7 +4518,7 @@ Transform:
   m_GameObject: {fileID: 490301340}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7052533, z: -0, w: -0.70895547}
-  m_LocalPosition: {x: 216.18, y: 4.623, z: -27.3}
+  m_LocalPosition: {x: 64.32, y: 4.623, z: 27.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4964,7 +4957,7 @@ Transform:
   m_GameObject: {fileID: 519719310}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.747, y: -7.881, z: 1.882}
+  m_LocalPosition: {x: -1.28, y: 4.309, z: 1.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6100,7 +6093,7 @@ PrefabInstance:
       objectReference: {fileID: 2521305128529513819, guid: f8a30331077a52040a885b710dd461a5, type: 3}
     - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: sanityLossAmount
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: dialogueLines.Array.data[0]
@@ -7306,7 +7299,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3510322570651383621, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: m_Name
-      value: NotePrefab
+      value: NotePrefab03
       objectReference: {fileID: 0}
     - target: {fileID: 3510322570651383621, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: m_Layer
@@ -7322,15 +7315,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3860242727769764016, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.814
+      value: -54.448
       objectReference: {fileID: 0}
     - target: {fileID: 3860242727769764016, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.259
+      value: -6.786
       objectReference: {fileID: 0}
     - target: {fileID: 3860242727769764016, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.236
+      value: 61.292
       objectReference: {fileID: 0}
     - target: {fileID: 3860242727769764016, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7378,30 +7371,34 @@ PrefabInstance:
       objectReference: {fileID: 1688654175}
     - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: noteText
-      value: 'SECOND MESSAGE
+      value: 'I don''t want you to suffer, that''s why
+
+        I pushed you away.
 
 
-        They watch me, they guide me, they show me
-        the truth.
+        You''ll
+        never understand,
+
+        but this power is mine-it always was.
 
 
-        You''ve always been weak, but I...
+        When
+        the time comes, you''ll have to choose:
 
-
-        I''m learning
-        to be strong.
-
-
-        Soon you''ll understand.'
+        follow me... or disappear.'
       objectReference: {fileID: 0}
     - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: noteTitle
-      value: Second Message
+      value: Note found in the campfire
       objectReference: {fileID: 0}
     - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: collectSound
       value: 
       objectReference: {fileID: 8300000, guid: 8179ff83f1324d84cb44cdb7fe68ff02, type: 3}
+    - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
+      propertyPath: eventFlagName
+      value: maraRoomUnlocked
+      objectReference: {fileID: 0}
     - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: customAudioSource
       value: 
@@ -10891,6 +10888,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 810051d237e90254893b9a42933948d5, type: 3}
+--- !u!1 &1120090267
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1120090268}
+  m_Layer: 0
+  m_Name: LookAt02
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1120090268
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120090267}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -17.01, y: 9.99, z: -18.85}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 412983092}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1134208441
 GameObject:
   m_ObjectHideFlags: 0
@@ -12194,7 +12222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: sanityLossAmount
-      value: 300
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: cameraFocusTarget
@@ -15345,7 +15373,7 @@ PrefabInstance:
       objectReference: {fileID: 2521305128529513819, guid: f8a30331077a52040a885b710dd461a5, type: 3}
     - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: sanityLossAmount
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: dialogueLines.Array.size
@@ -15754,7 +15782,7 @@ PrefabInstance:
       objectReference: {fileID: 2521305128529513819, guid: f8a30331077a52040a885b710dd461a5, type: 3}
     - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: sanityLossAmount
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: dialogueLines.Array.data[0]
@@ -17061,8 +17089,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  customAudioSource: {fileID: 0}
-  interactionSound: {fileID: 0}
+  customAudioSource: {fileID: 543942470}
+  interactionSound: {fileID: 8300000, guid: b90237b38a1ad104283e14108b23937b, type: 3}
   soundVolume: 1
   canReInteract: 0
   returnToOriginal: 0
@@ -20725,6 +20753,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2521305128529513819, guid: f8a30331077a52040a885b710dd461a5, type: 3}
     - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: sanityLossAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
       propertyPath: dialogueLines.Array.data[0]
       value: "\u2026Vale. Estoy yendo.\r"
       objectReference: {fileID: 0}
@@ -20827,7 +20859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: sanityLossAmount
-      value: 300
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: cameraFocusTarget
@@ -21253,6 +21285,17 @@ PrefabInstance:
       propertyPath: noteUI
       value: 
       objectReference: {fileID: 1688654175}
+    - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
+      propertyPath: noteText
+      value: "The voices won't stop...\n\nThey say I must find something, that only\nthen
+        everything will end.\n\nThey say I must find something, \nthat only then
+        everything will end.\n\nIf you find me, don't come close.\n\nI'm not the
+        same anymore."
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
+      propertyPath: noteTitle
+      value: Note found in the cabin
+      objectReference: {fileID: 0}
     - target: {fileID: 8606921339289438144, guid: 4fadf9e47bcae874b968e0e8e8b5263b, type: 3}
       propertyPath: collectSound
       value: 
