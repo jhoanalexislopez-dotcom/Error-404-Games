@@ -108,6 +108,18 @@ MonoBehaviour:
     m_Localized: " Mara\u2026 si est\xE1s aqu\xED\u2026 dame una se\xF1al."
     m_Metadata:
       m_Items: []
+  - m_Id: 217826734772224
+    m_Localized: Nada.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218138795184128
+    m_Localized: " La cueva\u2026 \xBFqu\xE9 est\xE1s haciendo, Mara?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218746474336256
+    m_Localized: Tengo que seguirla
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

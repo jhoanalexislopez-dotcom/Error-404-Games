@@ -4,10 +4,12 @@
  * Description:
  *    Component that can set event flags when triggered.
  *    Useful for unlocking doors after story events.
+ *    Supports lock flags to prevent triggering until requirements are met.
  *******************************************************/
 
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Localization;
 
 public class GameEventTrigger : MonoBehaviour
 {
@@ -25,9 +27,19 @@ public class GameEventTrigger : MonoBehaviour
     [Tooltip("Trigger when player enters collider")]
     [SerializeField] private bool triggerOnPlayerEnter = false;
     
+    [Header("Lock Requirements")]
+    [Tooltip("Enable to require specific flags before this event can trigger")]
+    [SerializeField] private bool useRequirements = false;
+    
+    [Tooltip("Requirements that must be met before this event can trigger")]
+    [SerializeField] private InteractionRequirement requirements;
+    
     [Header("Optional Callbacks")]
     [Tooltip("Unity event to invoke when triggered")]
     [SerializeField] private UnityEvent onTriggered;
+    
+    [Tooltip("Unity event to invoke when trigger is attempted but requirements not met")]
+    [SerializeField] private UnityEvent onRequirementsNotMet;
     
     private bool hasTriggered = false;
     
@@ -55,6 +67,12 @@ public class GameEventTrigger : MonoBehaviour
         if (hasTriggered)
             return;
         
+        if (useRequirements && !CheckRequirements())
+        {
+            onRequirementsNotMet?.Invoke();
+            return;
+        }
+        
         hasTriggered = true;
         
         if (!string.IsNullOrEmpty(eventFlagName))
@@ -70,6 +88,39 @@ public class GameEventTrigger : MonoBehaviour
         }
         
         onTriggered?.Invoke();
+    }
+    
+    private bool CheckRequirements()
+    {
+        if (requirements == null)
+        {
+            Debug.LogWarning($"Requirements enabled but not configured on {gameObject.name}");
+            return false;
+        }
+        
+        bool requirementsMet = requirements.AreRequirementsMet();
+        
+        if (!requirementsMet)
+        {
+            LocalizedString lockReason = requirements.GetLockReason();
+            if (lockReason != null && !lockReason.IsEmpty)
+            {
+                Debug.Log($"Event trigger requirements not met: {lockReason.GetLocalizedString()}");
+            }
+        }
+        
+        return requirementsMet;
+    }
+    
+    public bool CanTrigger()
+    {
+        if (hasTriggered)
+            return false;
+        
+        if (useRequirements)
+            return CheckRequirements();
+        
+        return true;
     }
     
     public void ResetTrigger()

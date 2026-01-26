@@ -33,6 +33,13 @@ public class Collectible : MonoBehaviour, IInteractable
     [Tooltip("Volume for the collect sound")]
     [SerializeField][Range(0f, 1f)] private float soundVolume = 1f;
 
+    [Header("Event Settings")]
+    [Tooltip("Optional event flag to set when this item is collected")]
+    [SerializeField] private string eventFlagName = "";
+    
+    [Tooltip("Value to set the event flag to")]
+    [SerializeField] private bool eventFlagValue = true;
+
     private AudioSource audioSource;
 
     void Start()
@@ -80,6 +87,18 @@ public class Collectible : MonoBehaviour, IInteractable
             if (sanityManager != null)
             {
                 sanityManager.LowerSanity(sanityLossAmount);
+            }
+        }
+
+        if (!string.IsNullOrEmpty(eventFlagName))
+        {
+            if (GameEventManager.Instance != null)
+            {
+                GameEventManager.Instance.SetEventFlag(eventFlagName, eventFlagValue);
+            }
+            else
+            {
+                Debug.LogWarning("GameEventManager instance not found!");
             }
         }
 

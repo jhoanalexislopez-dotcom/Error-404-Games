@@ -87,11 +87,19 @@ public class CubeColliderEventTrigger : MonoBehaviour
     [Header("Trigger Settings")]
     public bool triggerOnlyOnce = true;
 
+    [Header("Lock Requirements")]
+    [Tooltip("Enable to require specific flags before this event can trigger")]
+    public bool useRequirements = false;
+    
+    [Tooltip("Requirements that must be met before this event can trigger")]
+    public InteractionRequirement requirements;
+
     private bool hasTriggered = false;
     private bool hasFinishedMainEvent = false;
     private bool hasShownPostEventDialogue = false;
 
     private bool inCube = false;
+    private bool playerInsideTrigger = false;
     private bool cinematicActive = false;
     private DialogueUI currentDialogueUI;
 
@@ -114,17 +122,27 @@ public class CubeColliderEventTrigger : MonoBehaviour
     private void Update()
     {
         if (!cinematicActive || !useCinematicCamera)
-            return;
+        {
+            if (useRequirements && playerInsideTrigger && !hasTriggered && !cinematicActive)
+            {
+                if (CheckRequirements())
+                {
+                    TriggerEventSequence();
+                }
+            }
+        }
+        else
+        {
+            Camera cam = Camera.main;
+            if (cam == null || cameraFocusTarget == null)
+                return;
 
-        Camera cam = Camera.main;
-        if (cam == null || cameraFocusTarget == null)
-            return;
-
-        cam.transform.rotation = Quaternion.Lerp(
-            cam.transform.rotation,
-            Quaternion.LookRotation(cameraFocusTarget.position - cam.transform.position),
-            Time.deltaTime * cameraTurnSpeed
-        );
+            cam.transform.rotation = Quaternion.Lerp(
+                cam.transform.rotation,
+                Quaternion.LookRotation(cameraFocusTarget.position - cam.transform.position),
+                Time.deltaTime * cameraTurnSpeed
+            );
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -132,12 +150,31 @@ public class CubeColliderEventTrigger : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
+        playerInsideTrigger = true;
+
         if (triggerOnlyOnce && hasTriggered)
             return;
 
         if (inCube || cinematicActive)
             return;
 
+        if (useRequirements && !CheckRequirements())
+            return;
+
+        TriggerEventSequence();
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInsideTrigger = false;
+            inCube = false;
+        }
+    }
+
+    private void TriggerEventSequence()
+    {
         inCube = true;
         hasTriggered = true;
 
@@ -362,5 +399,27 @@ public class CubeColliderEventTrigger : MonoBehaviour
             uiToHide.SetActive(wasUIActive);
             uiToHide = null;
         }
+    }
+
+    private bool CheckRequirements()
+    {
+        if (requirements == null)
+        {
+            Debug.LogWarning($"Requirements enabled but not configured on {gameObject.name}");
+            return false;
+        }
+
+        bool requirementsMet = requirements.AreRequirementsMet();
+
+        if (!requirementsMet)
+        {
+            LocalizedString lockReason = requirements.GetLockReason();
+            if (lockReason != null && !lockReason.IsEmpty)
+            {
+                Debug.Log($"Event trigger requirements not met: {lockReason.GetLocalizedString()}");
+            }
+        }
+
+        return requirementsMet;
     }
 }

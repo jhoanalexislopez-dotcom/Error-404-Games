@@ -112,6 +112,10 @@ MonoBehaviour:
     m_Localized: ' Mara... if you''re here... give me a sign.'
     m_Metadata:
       m_Items: []
+  - m_Id: 217826734772224
+    m_Localized: Nothing.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
