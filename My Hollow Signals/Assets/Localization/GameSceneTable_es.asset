@@ -133,6 +133,22 @@ MonoBehaviour:
     m_Localized: "Quiere que vuelva\u2026 \xBFpor qu\xE9?"
     m_Metadata:
       m_Items: []
+  - m_Id: 419830011256832
+    m_Localized: "\u2026\xBFQu\xE9 ha pasado aqu\xED?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420081103265792
+    m_Localized: "\xBFEso\u2026 viene de arriba?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420281037348864
+    m_Localized: " Mara\u2026 \xBFest\xE1s ah\xED?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420405989859328
+    m_Localized: " No\u2026 no\u2026 Mara\u2026 \xA1no!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

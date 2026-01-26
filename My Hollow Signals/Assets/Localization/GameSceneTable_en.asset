@@ -136,6 +136,22 @@ MonoBehaviour:
     m_Localized: She wants me go back... but why?
     m_Metadata:
       m_Items: []
+  - m_Id: 419830011256832
+    m_Localized: ...What happened here?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420081103265792
+    m_Localized: Is that... coming from above?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420281037348864
+    m_Localized: Mara... are you there?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420405989859328
+    m_Localized: " No\u2026 no\u2026 Mara\u2026 no!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
