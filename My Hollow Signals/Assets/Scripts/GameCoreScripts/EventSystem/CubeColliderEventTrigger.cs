@@ -44,6 +44,14 @@ public class CubeColliderEventTrigger : MonoBehaviour
     [Header("Sanity Settings")]
     public float sanityLossAmount = 0f;
 
+    [Header("Scene Transition Settings")]
+    [Tooltip("Enable to trigger scene transition when event ends")]
+    public bool triggerSceneTransition = false;
+    [Tooltip("Name of the scene to load after transition")]
+    public string targetSceneName = "";
+    [Tooltip("Delay in seconds before loading the new scene")]
+    public float sceneTransitionDelay = 2f;
+
     // ==========================
     // PHONE MESSAGE SYSTEM
     // ==========================
@@ -226,6 +234,10 @@ public class CubeColliderEventTrigger : MonoBehaviour
             hasShownPostEventDialogue = true;
             PlayPostEventDialogue();
         }
+        else if (triggerSceneTransition && !string.IsNullOrEmpty(targetSceneName))
+        {
+            SceneTransitionManager.CutToBlackAndLoadScene(targetSceneName, sceneTransitionDelay);
+        }
     }
 
     // ==========================
@@ -251,6 +263,11 @@ public class CubeColliderEventTrigger : MonoBehaviour
                     currentDialogueUI = null;
                     if (globalActiveDialogueUI == currentDialogueUI)
                         globalActiveDialogueUI = null;
+                    
+                    if (triggerSceneTransition && !string.IsNullOrEmpty(targetSceneName))
+                    {
+                        SceneTransitionManager.CutToBlackAndLoadScene(targetSceneName, sceneTransitionDelay);
+                    }
                 });
             }
         }
