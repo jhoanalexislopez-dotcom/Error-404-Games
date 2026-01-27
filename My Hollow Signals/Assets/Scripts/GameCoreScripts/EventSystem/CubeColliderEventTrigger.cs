@@ -94,6 +94,10 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
     [Header("Trigger Settings")]
     public bool triggerOnlyOnce = true;
+    
+    [Header("Note UI Delay")]
+    [Tooltip("Wait for note UI to close before triggering event")]
+    public bool waitForNoteUIClose = false;
 
     [Header("Lock Requirements")]
     [Tooltip("Enable to require specific flags before this event can trigger")]
@@ -110,9 +114,11 @@ public class CubeColliderEventTrigger : MonoBehaviour
     private bool playerInsideTrigger = false;
     private bool cinematicActive = false;
     private DialogueUI currentDialogueUI;
+    private bool waitingForNoteClose = false;
 
     private Transform player;
     private MonoBehaviour playerController;
+    private NoteUIManager noteUIManager;
 
     private GameObject uiToHide;
     private bool wasUIActive;
@@ -121,6 +127,12 @@ public class CubeColliderEventTrigger : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         playerController = player?.GetComponent<MonoBehaviour>();
+        noteUIManager = FindObjectOfType<NoteUIManager>(true);
+
+        if (noteUIManager == null)
+        {
+            Debug.LogError($"Event {gameObject.name}: Failed to find NoteUIManager in scene!");
+        }
 
         MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
         if (meshRenderer != null)
@@ -131,11 +143,44 @@ public class CubeColliderEventTrigger : MonoBehaviour
     {
         if (!cinematicActive || !useCinematicCamera)
         {
-            if (useRequirements && playerInsideTrigger && !hasTriggered && !cinematicActive)
+            if (playerInsideTrigger && !hasTriggered && !cinematicActive)
             {
-                if (CheckRequirements())
+                if (useRequirements && !CheckRequirements())
+                    return;
+
+                if (waitForNoteUIClose)
                 {
-                    TriggerEventSequence();
+                    if (noteUIManager == null)
+                    {
+                        Debug.LogWarning($"Event {gameObject.name}: NoteUIManager is null!");
+                        return;
+                    }
+
+                    bool isNoteActive = noteUIManager.IsNoteActive;
+                    
+                    if (isNoteActive)
+                    {
+                        if (!waitingForNoteClose)
+                        {
+                            waitingForNoteClose = true;
+                            Debug.Log($"Event {gameObject.name} detected note is open, now waiting for it to close...");
+                        }
+                        return;
+                    }
+
+                    if (waitingForNoteClose && !isNoteActive)
+                    {
+                        Debug.Log($"Event {gameObject.name} detected note closed, triggering event now!");
+                        waitingForNoteClose = false;
+                        TriggerEventSequence();
+                    }
+                }
+                else if (useRequirements)
+                {
+                    if (CheckRequirements())
+                    {
+                        TriggerEventSequence();
+                    }
                 }
             }
         }
@@ -159,12 +204,19 @@ public class CubeColliderEventTrigger : MonoBehaviour
             return;
 
         playerInsideTrigger = true;
+        Debug.Log($"Event {gameObject.name}: Player entered trigger. waitForNoteUIClose={waitForNoteUIClose}");
 
         if (triggerOnlyOnce && hasTriggered)
             return;
 
         if (inCube || cinematicActive)
             return;
+
+        if (waitForNoteUIClose)
+        {
+            Debug.Log($"Event {gameObject.name}: Will wait for note UI in Update loop");
+            return;
+        }
 
         if (useRequirements && !CheckRequirements())
             return;

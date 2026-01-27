@@ -7,9 +7,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using System;
 
 public class NoteUIManager : MonoBehaviour
 {
+    public static event Action OnNoteClosed;
     [Header("UI Settings")]
     [SerializeField] private GameObject notePanel;
     [SerializeField] private TextMeshProUGUI noteText; // Reference to the text component
@@ -249,6 +251,8 @@ public class NoteUIManager : MonoBehaviour
             if (mesh != null)
                 mesh.enabled = true;
         }
+        
+        OnNoteClosed?.Invoke();
     }
 
     void OnDestroy()
