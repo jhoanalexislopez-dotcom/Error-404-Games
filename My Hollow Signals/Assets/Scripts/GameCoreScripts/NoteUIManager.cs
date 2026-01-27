@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using System;
+using UnityEngine.Localization;
 
 public class NoteUIManager : MonoBehaviour
 {
@@ -118,9 +119,13 @@ public class NoteUIManager : MonoBehaviour
     }
 
     // Public method for Collectible to set note text and make it active
-    public void SetNoteActive(string noteText = "")
+    public void SetNoteActive(LocalizedString localizedNoteText)
     {
-        Debug.Log($"[NoteUIManager] SetNoteActive called with text length: {noteText?.Length ?? 0}");
+        string noteTextString = localizedNoteText != null && !localizedNoteText.IsEmpty 
+            ? localizedNoteText.GetLocalizedString() 
+            : "";
+            
+        Debug.Log($"[NoteUIManager] SetNoteActive called with localized text length: {noteTextString?.Length ?? 0}");
         Debug.Log($"[NoteUIManager] MobilePhoneToggle found: {mobilePhoneToggle != null}");
         if (mobilePhoneToggle != null)
         {
@@ -136,13 +141,12 @@ public class NoteUIManager : MonoBehaviour
         isNoteActive = true;
         Debug.Log($"[NoteUIManager] isNoteActive set to TRUE");
 
-        // Set the note text if provided
-        if (!string.IsNullOrEmpty(noteText) && this.noteText != null)
+        if (!string.IsNullOrEmpty(noteTextString) && this.noteText != null)
         {
-            this.noteText.text = noteText;
+            this.noteText.text = noteTextString;
         }
 
-        Debug.Log("Note manually set as active with text: " + noteText);
+        Debug.Log("Note manually set as active with text: " + noteTextString);
 
         // Store cursor state
         originalCursorLockMode = Cursor.lockState;

@@ -16,8 +16,8 @@ public class Collectible : MonoBehaviour, IInteractable
     [SerializeField] private GameObject noteUI;
 
     [Header("Note Settings")]
-    [SerializeField] private string noteTitle = "Note";
-    [SerializeField][TextArea(3, 6)] private string noteText = "This is a note...";
+    [SerializeField] private LocalizedString localizedNoteTitle;
+    [SerializeField] private LocalizedString localizedNoteText;
 
     [Header("Sanity Settings")]
     [Tooltip("Amount of sanity to lower when this item is collected")]
@@ -78,7 +78,7 @@ public class Collectible : MonoBehaviour, IInteractable
         if (PlayerInventory.Instance != null)
         {
             PlayerInventory.Instance.AddItem(value);
-            PlayerInventory.Instance.AddNote(noteTitle, noteText);
+            PlayerInventory.Instance.AddNote(localizedNoteTitle, localizedNoteText);
         }
 
         if (sanityLossAmount > 0f)
@@ -109,7 +109,7 @@ public class Collectible : MonoBehaviour, IInteractable
             var noteUIManager = noteUI.GetComponent<NoteUIManager>();
             if (noteUIManager != null)
             {
-                noteUIManager.SetNoteActive(noteText);
+                noteUIManager.SetNoteActive(localizedNoteText);
             }
 
             Time.timeScale = 0f;

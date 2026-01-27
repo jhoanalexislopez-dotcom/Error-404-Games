@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.Localization;
 
 public class Inventory3DController : MonoBehaviour
 {
@@ -28,6 +29,12 @@ public class Inventory3DController : MonoBehaviour
     
     [Header("Note UI")]
     [SerializeField] private NoteUIManager noteUIManager;
+    
+    [Header("Localized UI Text")]
+    [Tooltip("Localized text for 'Press Interact to Read' hint")]
+    [SerializeField] private LocalizedString localizedInteractHintText;
+    [Tooltip("Localized text for 'Flashlight' title")]
+    [SerializeField] private LocalizedString localizedFlashlightText;
     
     [Header("Audio Settings")]
     [SerializeField] private AudioSource audioSource;
@@ -217,7 +224,6 @@ public class Inventory3DController : MonoBehaviour
             return;
         }
         
-        // Calculate note index (subtract 1 if flashlight is collected, since it's first in the list)
         bool hasFlashlight = PlayerInventory.Instance != null && PlayerInventory.Instance.HasFlashlight;
         int noteIndex = hasFlashlight ? currentItemIndex - 1 : currentItemIndex;
         
@@ -228,7 +234,10 @@ public class Inventory3DController : MonoBehaviour
         }
         
         NoteData selectedNote = collectedNotes[noteIndex];
-        Debug.Log("Opening note: " + selectedNote.noteTitle);
+        string noteTitleText = selectedNote.noteTitle != null && !selectedNote.noteTitle.IsEmpty 
+            ? selectedNote.noteTitle.GetLocalizedString() 
+            : "Untitled";
+        Debug.Log("Opening note: " + noteTitleText);
         
         PlaySound(selectSound);
         
@@ -487,12 +496,15 @@ public class Inventory3DController : MonoBehaviour
         {
             if (titleText != null)
             {
-                titleText.text = "Flashlight";
+                string flashlightText = localizedFlashlightText != null && !localizedFlashlightText.IsEmpty 
+                    ? localizedFlashlightText.GetLocalizedString() 
+                    : "Flashlight";
+                titleText.text = flashlightText;
             }
             
             if (hintText != null)
             {
-                hintText.text = ""; // No interaction hint for flashlight
+                hintText.text = "";
             }
             return;
         }
@@ -512,12 +524,18 @@ public class Inventory3DController : MonoBehaviour
         
         if (titleText != null)
         {
-            titleText.text = currentNote.noteTitle;
+            string noteTitleText = currentNote.noteTitle != null && !currentNote.noteTitle.IsEmpty 
+                ? currentNote.noteTitle.GetLocalizedString() 
+                : "Untitled";
+            titleText.text = noteTitleText;
         }
         
         if (hintText != null)
         {
-            hintText.text = "Press Interact to Read";
+            string interactHint = localizedInteractHintText != null && !localizedInteractHintText.IsEmpty 
+                ? localizedInteractHintText.GetLocalizedString() 
+                : "Press Interact to Read";
+            hintText.text = interactHint;
         }
     }
 

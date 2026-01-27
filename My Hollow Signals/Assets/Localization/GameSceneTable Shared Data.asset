@@ -151,6 +151,38 @@ MonoBehaviour:
     m_Key: G020
     m_Metadata:
       m_Items: []
+  - m_Id: 629111947399168
+    m_Key: "Note1.Text\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629158852300800
+    m_Key: Note1.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629426948018176
+    m_Key: Note2.Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629451044294656
+    m_Key: Note2.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629468895252480
+    m_Key: Note3.Text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629488889499648
+    m_Key: Note3.Title
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634508829659136
+    m_Key: InventoryFlashlightText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634707073437696
+    m_Key: InventoryHintText
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

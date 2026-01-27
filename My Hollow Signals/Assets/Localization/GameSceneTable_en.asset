@@ -160,6 +160,57 @@ MonoBehaviour:
     m_Localized: Who is "him"...?
     m_Metadata:
       m_Items: []
+  - m_Id: 629111947399168
+    m_Localized: "The voices won't stop...\n\nThey say I must find something, that
+      only\nthen everything will end.\n\nThey say I must find something, \nthat only
+      then everything will end.\n\nIf you find me, don't come close.\n\nI'm not the
+      same anymore."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629158852300800
+    m_Localized: Note found in the cabin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629426948018176
+    m_Localized: "I've seen things you wouldn't understand.\n\nThey watch me, they
+      guide me, \nthey show me the truth.\n\nYou've always been weak, but I...\n\nI'm
+      learning to be strong.\n\nSoon you'll understand."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629451044294656
+    m_Localized: Note found in the cave
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629468895252480
+    m_Localized: 'I don''t want you to suffer, that''s why
+
+      I pushed you away.
+
+
+      You''ll
+      never understand,
+
+      but this power is mine-it always was.
+
+
+      When
+      the time comes, you''ll have to choose:
+
+      follow me... or disappear.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629488889499648
+    m_Localized: Note found in the campfire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634508829659136
+    m_Localized: Flashlight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634707073437696
+    m_Localized: Press Interact to read
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

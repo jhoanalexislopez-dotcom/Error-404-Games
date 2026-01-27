@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
+using UnityEngine.Localization;
 
 public class NoteInventoryUI : MonoBehaviour
 {
@@ -157,7 +158,10 @@ public class NoteInventoryUI : MonoBehaviour
             TextMeshProUGUI buttonText = buttonObj.GetComponentInChildren<TextMeshProUGUI>();
             if (buttonText != null)
             {
-                buttonText.text = notes[i].noteTitle;
+                string titleText = notes[i].noteTitle != null && !notes[i].noteTitle.IsEmpty 
+                    ? notes[i].noteTitle.GetLocalizedString() 
+                    : "Untitled";
+                buttonText.text = titleText;
             }
 
             Button button = buttonObj.GetComponent<Button>();
@@ -223,10 +227,20 @@ public class NoteInventoryUI : MonoBehaviour
         NoteData selectedNote = notes[noteIndex];
 
         if (noteTitleText != null)
-            noteTitleText.text = selectedNote.noteTitle;
+        {
+            string titleText = selectedNote.noteTitle != null && !selectedNote.noteTitle.IsEmpty 
+                ? selectedNote.noteTitle.GetLocalizedString() 
+                : "Untitled";
+            noteTitleText.text = titleText;
+        }
 
         if (noteContentText != null)
-            noteContentText.text = selectedNote.noteContent;
+        {
+            string contentText = selectedNote.noteContent != null && !selectedNote.noteContent.IsEmpty 
+                ? selectedNote.noteContent.GetLocalizedString() 
+                : "";
+            noteContentText.text = contentText;
+        }
     }
 
     private void ClearNoteList()

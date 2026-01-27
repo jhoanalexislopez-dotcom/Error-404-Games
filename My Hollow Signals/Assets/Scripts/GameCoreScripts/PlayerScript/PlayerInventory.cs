@@ -7,14 +7,15 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.Localization;
 
 [System.Serializable]
 public class NoteData
 {
-    public string noteTitle;
-    public string noteContent;
+    public LocalizedString noteTitle;
+    public LocalizedString noteContent;
 
-    public NoteData(string title, string content)
+    public NoteData(LocalizedString title, LocalizedString content)
     {
         noteTitle = title;
         noteContent = content;
@@ -72,11 +73,13 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public void AddNote(string noteTitle, string noteContent)
+    public void AddNote(LocalizedString noteTitle, LocalizedString noteContent)
     {
         NoteData newNote = new NoteData(noteTitle, noteContent);
         collectedNotes.Add(newNote);
-        Debug.Log($"Note '{noteTitle}' added to inventory. Total notes: {collectedNotes.Count}");
+        
+        string titleText = noteTitle != null && !noteTitle.IsEmpty ? noteTitle.GetLocalizedString() : "Untitled";
+        Debug.Log($"Note '{titleText}' added to inventory. Total notes: {collectedNotes.Count}");
     }
 
     public List<NoteData> GetCollectedNotes()

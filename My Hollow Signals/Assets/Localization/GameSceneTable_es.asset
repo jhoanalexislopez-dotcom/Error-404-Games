@@ -157,6 +157,45 @@ MonoBehaviour:
     m_Localized: "\xBFQui\xE9n es \"\xE9l\"...?"
     m_Metadata:
       m_Items: []
+  - m_Id: 629158852300800
+    m_Localized: "Nota encontrada en la caba\xF1a"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629468895252480
+    m_Localized: "No quiero que sufras, por eso\r\nte alej\xE9 de m\xED.\r\n\r\nNunca
+      lo entender\xE1s,\r\npero este poder es m\xEDo, siempre lo ha sido.\r\n\r\nCuando
+      llegue el momento, tendr\xE1s que elegir:\r\nseguirme... o desaparecer."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629451044294656
+    m_Localized: Nota encontrada en la cueva
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629488889499648
+    m_Localized: Nota encontrada en la fogata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629111947399168
+    m_Localized: "Las voces no se detienen...\r\n\r\nDicen que debo encontrar algo,
+      que solo\r\nentonces todo terminar\xE1.\r\n\r\nDicen que debo encontrar algo,
+      \r\nque solo entonces todo terminar\xE1.\r\n\r\nSi me encuentras, no te acerques.\r\n\r\nYa
+      no soy el mismo."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629426948018176
+    m_Localized: "He visto cosas que t\xFA no entender\xEDas.\r\n\r\nMe observan,
+      me gu\xEDan, \r\nme muestran la verdad.\r\n\r\nSiempre has sido d\xE9bil, pero
+      yo...\r\n\r\nEstoy aprendiendo a ser fuerte.\r\n\r\nPronto lo entender\xE1s."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634508829659136
+    m_Localized: Linterna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634707073437696
+    m_Localized: Pulsa Interactuar para leer
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
