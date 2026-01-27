@@ -4736,6 +4736,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
+      propertyPath: typingSpeed
+      value: 0.1031
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: cameraFocusTarget
       value: 
       objectReference: {fileID: 1035655286}
@@ -6158,6 +6162,7 @@ Transform:
   m_Children:
   - {fileID: 958983768}
   - {fileID: 1745884774}
+  - {fileID: 821658393}
   m_Father: {fileID: 984559948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &515880372
@@ -10614,7 +10619,7 @@ MonoBehaviour:
   requiredEventFlags:
   - HasFlashlight
   requireAllFlags: 0
-  sanityDrainRate: 25
+  sanityDrainRate: 70
   drainDelay: 0.5
   warningMessage: It's too dark... you need a light source.
   debugLog: 1
@@ -10644,6 +10649,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7bd554762a9a65847bfb460d808e0139, type: 3}
   m_PrefabInstance: {fileID: 1231564428}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &821658392
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 821658393}
+  m_Layer: 0
+  m_Name: Events
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &821658393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821658392}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1479800356}
+  m_Father: {fileID: 509670032}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &829432476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15766,7 +15803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1262862370
 Transform:
   m_ObjectHideFlags: 0
@@ -16855,7 +16892,7 @@ MonoBehaviour:
   requiredEventFlags:
   - HasFlashlight
   requireAllFlags: 0
-  sanityDrainRate: 25
+  sanityDrainRate: 70
   drainDelay: 0.5
   warningMessage: It's too dark... you need a light source.
   debugLog: 1
@@ -18680,6 +18717,120 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6836504877400029499, guid: 79a0e457eab29184fb546bbcc5ef80a1, type: 3}
+--- !u!1001 &1479800355
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 821658393}
+    m_Modifications:
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9.267717
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 8.649761
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 10.206527
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -31.34497
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.6385
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.015739
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: useRequirements
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: addPhoneMessages
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: sanityLossAmount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: dialogueLines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: phoneMessages.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: requirements.eventFlagName
+      value: maraRoomUnlocked
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: dialogueLines.Array.data[0].m_TableEntryReference.m_KeyId
+      value: 606027160883200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: dialogueLines.Array.data[1].m_TableEntryReference.m_KeyId
+      value: 606148724396032
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: dialogueLines.Array.data[0].m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825503757964564253, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: dialogueLines.Array.data[1].m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6827942243661282751, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+      propertyPath: m_Name
+      value: EventTrigger_Campfire_CanMove
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+--- !u!4 &1479800356 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1270195112946403304, guid: 7a7ee2f60c0a98c4395320c5669aef19, type: 3}
+  m_PrefabInstance: {fileID: 1479800355}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1483230675
 GameObject:
   m_ObjectHideFlags: 0
@@ -23890,7 +24041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1905199401
 Transform:
   m_ObjectHideFlags: 0

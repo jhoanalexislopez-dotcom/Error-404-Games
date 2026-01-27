@@ -152,6 +152,14 @@ MonoBehaviour:
     m_Localized: " No\u2026 no\u2026 Mara\u2026 no!"
     m_Metadata:
       m_Items: []
+  - m_Id: 606027160883200
+    m_Localized: Him...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606148724396032
+    m_Localized: Who is "him"...?
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

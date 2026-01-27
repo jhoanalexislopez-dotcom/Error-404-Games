@@ -149,6 +149,14 @@ MonoBehaviour:
     m_Localized: " No\u2026 no\u2026 Mara\u2026 \xA1no!"
     m_Metadata:
       m_Items: []
+  - m_Id: 606027160883200
+    m_Localized: "\xC9l..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606148724396032
+    m_Localized: "\xBFQui\xE9n es \"\xE9l\"...?"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
