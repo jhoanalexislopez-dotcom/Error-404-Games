@@ -9,3 +9,5 @@
 - https://obsydianx.itch.io/horror-sfx-volume-1
 - https://kaffeeaffe.itch.io/terrain-textures
 - ui: https://bedsideseraphim.itch.io/survival-horror-ui-sfx
+- https://fox-jump.itch.io/toon-water-shader
+- 
