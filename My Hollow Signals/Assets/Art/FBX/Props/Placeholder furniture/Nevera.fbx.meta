@@ -3,7 +3,37 @@ guid: 1576f4c6ea1f73f41b15eac9018d6772
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Encimera_1
+    second: {fileID: 2800000, guid: b2508db66d9435b46b8f619e6b0b6ece, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Lavaplatos
+    second: {fileID: 2800000, guid: 582324550048f164fa44665c7e46968d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Mesa_Comedor
+    second: {fileID: 2800000, guid: 542363e87648b1c41b90d5f67834c9e1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Nevera
+    second: {fileID: 2800000, guid: 82c0ef4c9f0327c4e838f89f9a23c4f5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Patas_Comedor
+    second: {fileID: 2800000, guid: 02a2093ff5268734ab12f3f070f8dec4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Silla_Comedor
+    second: {fileID: 2800000, guid: a6228ea2a89250f4abd5e79aaaaaeb34, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

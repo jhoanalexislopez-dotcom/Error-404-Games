@@ -196,6 +196,10 @@ MonoBehaviour:
     m_Localized: Pulsa Interactuar para leer
     m_Metadata:
       m_Items: []
+  - m_Id: 1052137399246848
+    m_Localized: "(Est\xE1 oscuro afuera, necesito una linterna...)"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

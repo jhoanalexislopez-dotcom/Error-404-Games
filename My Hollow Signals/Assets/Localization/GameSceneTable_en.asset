@@ -211,6 +211,10 @@ MonoBehaviour:
     m_Localized: Press Interact to read
     m_Metadata:
       m_Items: []
+  - m_Id: 1052137399246848
+    m_Localized: (It's dark outside, I need a flashlight...)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

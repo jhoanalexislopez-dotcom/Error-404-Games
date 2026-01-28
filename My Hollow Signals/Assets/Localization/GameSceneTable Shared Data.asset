@@ -183,6 +183,10 @@ MonoBehaviour:
     m_Key: InventoryHintText
     m_Metadata:
       m_Items: []
+  - m_Id: 1052137399246848
+    m_Key: NoFlashlight
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
