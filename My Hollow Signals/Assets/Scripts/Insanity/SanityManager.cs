@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Events;
-using UnityEditorInternal.VersionControl;
 
 public class SanityManager : MonoBehaviour
 {   
