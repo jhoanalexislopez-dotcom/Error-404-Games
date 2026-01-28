@@ -215,6 +215,10 @@ MonoBehaviour:
     m_Localized: (It's dark outside, I need a flashlight...)
     m_Metadata:
       m_Items: []
+  - m_Id: 1100389322579968
+    m_Localized: Move
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
