@@ -169,7 +169,9 @@ public class TransformInteractable : MonoBehaviour, IInteractable
                 currentDialogueUI = null;
             }
             
-            GameObject uiInstance = Instantiate(dialogueUIPrefab);
+            GameObject gameUIObject = GameObject.Find("GameUI");
+            Transform parent = gameUIObject != null ? gameUIObject.transform : null;
+            GameObject uiInstance = Instantiate(dialogueUIPrefab, parent);
             currentDialogueUI = uiInstance.GetComponent<DialogueUI>();
             
             if (currentDialogueUI != null)

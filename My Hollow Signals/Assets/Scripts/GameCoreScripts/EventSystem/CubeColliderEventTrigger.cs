@@ -253,7 +253,9 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         if (dialogueUIPrefab != null && dialogueLines.Length > 0)
         {
-            GameObject uiInstance = Instantiate(dialogueUIPrefab);
+            GameObject gameUIObject = GameObject.Find("GameUI");
+            Transform parent = gameUIObject != null ? gameUIObject.transform : null;
+            GameObject uiInstance = Instantiate(dialogueUIPrefab, parent);
             currentDialogueUI = uiInstance.GetComponent<DialogueUI>();
             globalActiveDialogueUI = currentDialogueUI;
 
@@ -302,7 +304,9 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         if (dialogueUIPrefab != null && postEventDialogueLines.Length > 0)
         {
-            GameObject uiInstance = Instantiate(dialogueUIPrefab);
+            GameObject gameUIObject = GameObject.Find("GameUI");
+            Transform parent = gameUIObject != null ? gameUIObject.transform : null;
+            GameObject uiInstance = Instantiate(dialogueUIPrefab, parent);
             currentDialogueUI = uiInstance.GetComponent<DialogueUI>();
             globalActiveDialogueUI = currentDialogueUI;
 
