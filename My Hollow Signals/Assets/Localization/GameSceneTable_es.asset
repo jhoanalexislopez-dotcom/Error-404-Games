@@ -204,6 +204,10 @@ MonoBehaviour:
     m_Localized: Mover
     m_Metadata:
       m_Items: []
+  - m_Id: 1176303356076032
+    m_Localized: (Me estoy cansando...)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

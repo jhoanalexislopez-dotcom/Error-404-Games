@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.Events;
+using UnityEngine.Localization;
 
 public class SanityManager : MonoBehaviour
 {   
@@ -24,6 +25,15 @@ public class SanityManager : MonoBehaviour
     [Tooltip("Multiplier for environmental noise (footsteps, doors, etc.). Should be lower than mic multiplier")]
     public float environmentalNoiseMultiplier = 5f;
 
+    [Header("Low Sanity Warning")]
+    [Tooltip("DialogueUI_Thinking prefab to show warning")]
+    public GameObject dialogueUIPrefab;
+    [Tooltip("Warning message when sanity reaches threshold")]
+    public LocalizedString lowSanityWarning;
+    [Range(0f, 1f)]
+    [Tooltip("Sanity percentage threshold to show warning (0.5 = 50%)")]
+    public float warningThreshold = 0.5f;
+    private bool warningShown = false;
 
     [Header("Eventos")]
     public UnityEvent onInsane; //Evento cuando muere
@@ -100,6 +110,7 @@ public class SanityManager : MonoBehaviour
             vignette.intensity.value = Mathf.Clamp01(newValue) * 0.5f;
 
             UpdateSanityImage();
+            CheckAndShowLowSanityWarning();
 
             if (sanitySlider.value <= 0)
             {
@@ -191,6 +202,7 @@ public class SanityManager : MonoBehaviour
         }
 
         UpdateSanityImage();
+        CheckAndShowLowSanityWarning();
 
         if (sanitySlider.value <= 0)
         {
@@ -203,6 +215,42 @@ public class SanityManager : MonoBehaviour
             }
             
             onInsane.Invoke();
+        }
+    }
+
+    private void CheckAndShowLowSanityWarning()
+    {
+        if (warningShown || isInsane)
+        {
+            return;
+        }
+
+        float sanityPercent = sanitySlider.value / fullSanity;
+
+        if (sanityPercent <= warningThreshold)
+        {
+            warningShown = true;
+            ShowLowSanityWarning();
+        }
+    }
+
+    private void ShowLowSanityWarning()
+    {
+        if (dialogueUIPrefab == null || lowSanityWarning == null || lowSanityWarning.IsEmpty)
+        {
+            return;
+        }
+
+        GameObject gameUIObject = GameObject.Find("GameUI");
+        Transform parent = gameUIObject != null ? gameUIObject.transform : null;
+
+        GameObject uiInstance = Instantiate(dialogueUIPrefab, parent);
+        DialogueUI dialogueUI = uiInstance.GetComponent<DialogueUI>();
+
+        if (dialogueUI != null)
+        {
+            LocalizedString[] warningLines = new LocalizedString[] { lowSanityWarning };
+            dialogueUI.PlayDialogue(warningLines);
         }
     }
 }

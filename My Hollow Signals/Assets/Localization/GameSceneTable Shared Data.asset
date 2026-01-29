@@ -191,6 +191,10 @@ MonoBehaviour:
     m_Key: MoveInteractionText
     m_Metadata:
       m_Items: []
+  - m_Id: 1176303356076032
+    m_Key: LowSanityWarning
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

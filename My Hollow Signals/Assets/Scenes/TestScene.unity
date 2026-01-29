@@ -7446,7 +7446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &447902307
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30101,6 +30101,17 @@ MonoBehaviour:
   micSanityLossMultiplier: 40
   micQuietRecoveryMultiplier: 10
   environmentalNoiseMultiplier: 5
+  dialogueUIPrefab: {fileID: 2521305128529513819, guid: 547a22c947a68d4428e03eb6ebd35508, type: 3}
+  lowSanityWarning:
+    m_TableReference:
+      m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
+    m_TableEntryReference:
+      m_KeyId: 1176303356076032
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  warningThreshold: 0.5
   onInsane:
     m_PersistentCalls:
       m_Calls: []
@@ -30112,6 +30123,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d79ced202dc03bb42803868c023984ee, type: 3}
   - {fileID: 21300000, guid: 21280390b9484f5408755724b8c4e2b2, type: 3}
   - {fileID: 21300000, guid: bd846c5d5af930a4695c0974da5b082f, type: 3}
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1451701884
 GameObject:
   m_ObjectHideFlags: 0
