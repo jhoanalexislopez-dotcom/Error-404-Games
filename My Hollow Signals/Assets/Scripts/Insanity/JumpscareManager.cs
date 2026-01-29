@@ -39,6 +39,7 @@ public class JumpscareManager : MonoBehaviour
 
     [Header("Insanity Effects")]
     [SerializeField] private InsanityEffectsManager insanityEffectsManager;
+    [SerializeField] private SanityAudioController sanityAudioController;
 
     private AudioSource audioSource;
     private GameObject spawnedEnemy;
@@ -88,6 +89,11 @@ public class JumpscareManager : MonoBehaviour
     private IEnumerator JumpscareSequence()
     {
         isJumpscareActive = true;
+
+        if (sanityAudioController != null)
+        {
+            sanityAudioController.ResetEffectsAfterJumpscare();
+        }
 
         CloseAllMenus();
         DisablePlayerInput();
