@@ -41961,6 +41961,7 @@ GameObject:
   - component: {fileID: 1984890936}
   - component: {fileID: 1984890935}
   - component: {fileID: 1984890934}
+  - component: {fileID: 1984890937}
   m_Layer: 3
   m_Name: Terrain
   m_TagString: Untagged
@@ -41998,17 +41999,17 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: aa940d7bf2ae1b748aed59ca1325b59a, type: 2}
-  m_TreeDistance: 5000
-  m_TreeBillboardDistance: 200
-  m_TreeCrossFadeLength: 5
-  m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 1000
-  m_DetailObjectDensity: 1
-  m_HeightmapPixelError: 5
-  m_SplatMapDistance: 1000
+  m_TreeDistance: 800
+  m_TreeBillboardDistance: 60
+  m_TreeCrossFadeLength: 20
+  m_TreeMaximumFullLODCount: 15
+  m_DetailObjectDistance: 100
+  m_DetailObjectDensity: 0.5
+  m_HeightmapPixelError: 15
+  m_SplatMapDistance: 300
   m_HeightmapMinimumLODSimplification: 0
   m_HeightmapMaximumLOD: 0
-  m_ShadowCastingMode: 2
+  m_ShadowCastingMode: 1
   m_DrawHeightmap: 1
   m_DrawInstanced: 1
   m_DrawTreesAndFoliage: 1
@@ -42043,6 +42044,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 984559948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1984890937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984890933}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d409cc268fdb0a45a8f05d47e5c0755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrain: {fileID: 1984890935}
+  targetFrameRate: 60
+  performanceCheckInterval: 1
+  minDetailDistance: 50
+  maxDetailDistance: 100
+  minDetailDensity: 0.2
+  maxDetailDensity: 0.5
+  minTreeDistance: 400
+  maxTreeDistance: 800
+  minBillboardDistance: 30
+  maxBillboardDistance: 60
+  minMaxFullLODTrees: 5
+  maxMaxFullLODTrees: 15
+  playerCamera: {fileID: 384685372}
+  enableAggressiveFrustumCulling: 1
+  frustumCullCheckInterval: 0.1
+  terrainVisibilityMargin: 50
+  disableTreesWhenNotVisible: 1
+  disableDetailsWhenNotVisible: 1
+  enableCameraAngleCulling: 1
+  cameraAngleFadeStart: 45
+  cameraAngleFadeEnd: 75
 --- !u!1 &1987339218
 GameObject:
   m_ObjectHideFlags: 0
