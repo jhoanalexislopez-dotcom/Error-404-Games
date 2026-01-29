@@ -14,9 +14,9 @@ public class FirstPersonController : MonoBehaviour
     public GameObject crouchIcon;
 
     [Header("Movimiento")]
-    public float walkSpeed = 4f;
+    public float walkSpeed = 2.5f;
+    public float runSpeed = 4f;
     public float crouchSpeed = 1.5f;
-    public float jumpHeight = 1.5f;
     public float gravity = -9.81f;
     public float crouchHeight = 1f;
     public float crouchCameraOffset = 0.5f;
@@ -46,8 +46,7 @@ public class FirstPersonController : MonoBehaviour
     private InputSystem_Actions inputActions;
     private Vector2 moveInput;
     private Vector2 lookInput;
-    private bool jumpPressed;
-    private bool walkPressed;
+    private bool runPressed;
     private bool crouchPressed;
 
     // �ltimo dispositivo usado
@@ -84,13 +83,9 @@ public class FirstPersonController : MonoBehaviour
         };
         inputActions.Player.Look.canceled += ctx => lookInput = Vector2.zero;
 
-        // --- Salto ---
-        inputActions.Player.Jump.performed += ctx => { jumpPressed = true; lastUsedDevice = ctx.control.device; };
-        inputActions.Player.Jump.canceled += ctx => jumpPressed = false;
-
-        // --- Caminar lento ---
-        inputActions.Player.Walk.performed += ctx => { walkPressed = true; lastUsedDevice = ctx.control.device; };
-        inputActions.Player.Walk.canceled += ctx => walkPressed = false;
+        // --- Correr (Shift) ---
+        inputActions.Player.Walk.performed += ctx => { runPressed = true; lastUsedDevice = ctx.control.device; };
+        inputActions.Player.Walk.canceled += ctx => runPressed = false;
 
         // --- Agacharse ---
         inputActions.Player.Crouch.performed += ctx => { crouchPressed = true; lastUsedDevice = ctx.control.device; };
@@ -160,18 +155,14 @@ public class FirstPersonController : MonoBehaviour
         {
             currentSpeed = crouchSpeed;
         }
-        else if (walkPressed && isGrounded)
+        else if (runPressed && isGrounded)
         {
-            currentSpeed = 2.5f;
+            currentSpeed = runSpeed;
         }
 
         // --- Movimiento ---
         Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
         controller.Move(move * currentSpeed * Time.deltaTime);
-
-        // --- Salto ---
-        if (jumpPressed && isGrounded)
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 
         // --- Agacharse ---
         float targetHeight = crouchPressed ? crouchHeight : originalHeight;

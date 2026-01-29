@@ -8587,9 +8587,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crouchIcon: {fileID: 1099065795}
-  walkSpeed: 4
+  walkSpeed: 2.5
+  runSpeed: 4
   crouchSpeed: 1.5
-  jumpHeight: 0
   gravity: -45
   crouchHeight: 1
   crouchCameraOffset: 0.5
@@ -36242,16 +36242,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 437d59adef2c42848ad397d559c2433c, type: 3}
   - {fileID: 8300000, guid: a074e674d044345458ea35143f02b756, type: 3}
   - {fileID: 8300000, guid: d36e109844a75a841ab8a59f46408cff, type: 3}
-  walkStepInterval: 0.45
-  runStepInterval: 0.6
+  walkStepInterval: 0.5
+  runStepInterval: 0.3
   crouchStepInterval: 0.65
-  walkVolume: 0.4
-  runVolume: 0.3
+  walkVolume: 0.25
+  runVolume: 0.4
   crouchVolume: 0.2
   moveThreshold: 0.1
   requireGrounded: 1
-  walkNoiseIntensity: 2
-  runNoiseIntensity: 0
+  walkNoiseIntensity: 1
+  runNoiseIntensity: 2
   flashlightOnClip: {fileID: 8300000, guid: 9784b6f9765149e4cae74051c609607b, type: 3}
   flashlightOffClip: {fileID: 8300000, guid: 14e6f94ac89ea45408d309d7bd028912, type: 3}
   flashlightRechargeClip: {fileID: 8300000, guid: 0e8cfe2e7bfa1a84399afbc2ab2622f1, type: 3}
