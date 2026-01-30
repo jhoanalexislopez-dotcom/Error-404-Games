@@ -6178,8 +6178,8 @@ MonoBehaviour:
   smooth: 12
   walkAmplitude: 0.05
   walkFrequency: 9
-  runAmplitude: 0.03
-  runFrequency: 4
+  runAmplitude: 0.1
+  runFrequency: 15
   enableIdleMotion: 1
   idleAmplitude: 0.005
   idleFrequency: 1.2

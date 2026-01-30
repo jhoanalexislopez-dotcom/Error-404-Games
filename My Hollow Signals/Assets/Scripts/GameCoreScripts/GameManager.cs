@@ -81,6 +81,10 @@ public class GameManager : MonoBehaviour
     private bool isCrouched;
     private bool flashlightOn;
     
+    // Track previous movement state for footstep timing
+    private enum MovementState { Walk, Run, Crouch }
+    private MovementState previousMovementState = MovementState.Walk;
+    
     // UI managers
     private PauseMenuManager pauseMenuManager;
     private MobilePhoneToggle mobilePhoneToggle;
@@ -141,25 +145,20 @@ public class GameManager : MonoBehaviour
     {
         if (flashlightToggle != null && flashlightToggle.action != null)
             flashlightToggle.action.performed += OnFlashlightToggle;
-
-        if (crouchAction != null && crouchAction.action != null)
-            crouchAction.action.performed += OnCrouchPerformed;
     }
 
     private void OnDisable()
     {
         if (flashlightToggle != null && flashlightToggle.action != null)
             flashlightToggle.action.performed -= OnFlashlightToggle;
-
-        if (crouchAction != null && crouchAction.action != null)
-            crouchAction.action.performed -= OnCrouchPerformed;
     }
 
     private void Update()
     {
+        // Use hold-based crouch to match PlayerController behavior
+        isCrouched = crouchAction?.action?.IsPressed() ?? false;
+        
         HandleFootsteps();
-        // Si tu crouch es "hold" en vez de toggle, puedes leerlo aqu�:
-        // isCrouched = crouchAction?.action?.IsPressed() ?? isCrouched;
     }
 
     // ---------- Footsteps ----------
@@ -203,12 +202,9 @@ public class GameManager : MonoBehaviour
         bool moving = move.sqrMagnitude > (moveThreshold * moveThreshold);
 
         bool grounded = true;
-        float horizontalSpeed = 0f;
         if (characterController != null)
         {
             grounded = characterController.isGrounded;
-            Vector3 vel = characterController.velocity; vel.y = 0f;
-            horizontalSpeed = vel.magnitude;
         }
 
         if (requireGrounded && !grounded) { stepTimer = 0f; return; }
@@ -216,7 +212,17 @@ public class GameManager : MonoBehaviour
 
         bool running = sprintAction != null && sprintAction.action != null && sprintAction.action.IsPressed();
 
+        // Determine current movement state and interval
+        MovementState currentState = isCrouched ? MovementState.Crouch : (running ? MovementState.Run : MovementState.Walk);
         float interval = isCrouched ? crouchStepInterval : (running ? runStepInterval : walkStepInterval);
+        
+        // Reset timer to new interval if movement state changed
+        if (currentState != previousMovementState)
+        {
+            stepTimer = interval;
+            previousMovementState = currentState;
+        }
+
         stepTimer -= Time.deltaTime;
 
         if (stepTimer <= 0f)
@@ -244,11 +250,7 @@ public class GameManager : MonoBehaviour
                 EnvironmentalNoiseEmitter.OnEnvironmentalNoise?.Invoke(noiseIntensity);
             }
 
-            // Ajuste simple con la velocidad para que aumente la cadencia si vas m�s r�pido
-            float speedFactor = Mathf.Clamp01(horizontalSpeed); // 0..1 aprox
-            float dynamicInterval = Mathf.Lerp(interval * 0.75f, interval * 1.25f, 1f - speedFactor);
-
-            stepTimer = dynamicInterval;
+            stepTimer = interval;
         }
     }
 
@@ -283,13 +285,6 @@ public class GameManager : MonoBehaviour
     }
 
 
-    // Si tu crouch es toggle: cambia estado cuando se pulse
-    private void OnCrouchPerformed(InputAction.CallbackContext ctx)
-    {
-        // Si quieres "hold", comenta esta l�nea y usa isCrouched = crouchAction.action.IsPressed() en Update()
-        isCrouched = !isCrouched;
-    }
-
     // ---------- Helpers ----------
     private static void EnableAction(InputActionReference actionRef)
     {
@@ -298,7 +293,6 @@ public class GameManager : MonoBehaviour
     }
 
     // ---------- API p�blica opcional ----------
-    public void SetCrouched(bool crouched) => isCrouched = crouched;
     public void ForceFlashlight(bool on)
     {
         flashlightOn = on;
