@@ -17,11 +17,12 @@ public class HeadBob : MonoBehaviour
     [Tooltip("CharacterController opcional para saber si estás en el suelo.")]
     public CharacterController characterController;
 
+    [Tooltip("PlayerController para leer el estado de movimiento real.")]
+    public FirstPersonController playerController;
+
     [Header("Input (Input System)")]
     [Tooltip("InputActionReference del vector de movimiento (Vector2).")]
     public InputActionReference moveAction;   // ej: Player/Move (Value Vector2)
-    [Tooltip("InputActionReference del sprint (Button). Opcional.")]
-    public InputActionReference sprintAction; // ej: Player/Sprint (Button)
 
     [Header("Bob Settings")]
     [Tooltip("Requiere estar en el suelo para hacer headbob.")]
@@ -43,6 +44,10 @@ public class HeadBob : MonoBehaviour
     [Header("Running")]
     public float runAmplitude = 0.055f;
     public float runFrequency = 9.5f;
+
+    [Header("Crouching")]
+    public float crouchAmplitude = 0.02f;
+    public float crouchFrequency = 5f;
 
     [Header("Idle Motion")]
     [Tooltip("Enable subtle idle motion when not moving")]
@@ -104,8 +109,6 @@ public class HeadBob : MonoBehaviour
         // Habilitar acciones si vienen por referencia
         if (moveAction != null && moveAction.action != null && !moveAction.action.enabled)
             moveAction.action.Enable();
-        if (sprintAction != null && sprintAction.action != null && !sprintAction.action.enabled)
-            sprintAction.action.Enable();
         
         // Cache UI managers
         pauseMenuManager = FindObjectOfType<PauseMenuManager>();
@@ -118,8 +121,6 @@ public class HeadBob : MonoBehaviour
     {
         if (moveAction != null && moveAction.action != null && moveAction.action.enabled)
             moveAction.action.Disable();
-        if (sprintAction != null && sprintAction.action != null && sprintAction.action.enabled)
-            sprintAction.action.Disable();
     }
 
     void Update()
@@ -169,9 +170,9 @@ public class HeadBob : MonoBehaviour
 
         _hasMove = move.sqrMagnitude > (moveThreshold * moveThreshold);
 
-        _isSprinting = false;
-        if (sprintAction != null && sprintAction.action != null)
-            _isSprinting = sprintAction.action.IsPressed();
+        // Read actual movement state from PlayerController (accounts for mutual exclusion logic)
+        bool isCrouching = playerController != null && playerController.IsCrouching;
+        _isSprinting = playerController != null && playerController.IsRunning;
 
         // 2) Chequear grounded si procede
         if (requireGrounded && characterController != null && !characterController.isGrounded)
@@ -219,9 +220,23 @@ public class HeadBob : MonoBehaviour
             // Player is moving - apply movement bob
             _idleBlendWeight = Mathf.Lerp(_idleBlendWeight, 0f, Time.deltaTime * idleTransitionSpeed * 2f);
 
-            // 4) Elegir parámetros según sprint o walk
-            float amp = _isSprinting ? runAmplitude : walkAmplitude;
-            float freq = _isSprinting ? runFrequency : walkFrequency;
+            // Elegir parámetros según estado (Priority: Crouch > Run > Walk)
+            float amp, freq;
+            if (isCrouching)
+            {
+                amp = crouchAmplitude;
+                freq = crouchFrequency;
+            }
+            else if (_isSprinting)
+            {
+                amp = runAmplitude;
+                freq = runFrequency;
+            }
+            else
+            {
+                amp = walkAmplitude;
+                freq = walkFrequency;
+            }
 
             // Opcional: escalar por velocidad real
             float speedFactor = 1f;

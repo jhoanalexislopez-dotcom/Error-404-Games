@@ -52,6 +52,10 @@ public class FirstPersonController : MonoBehaviour
     // �ltimo dispositivo usado
     private InputDevice lastUsedDevice;
 
+    // Public accessors for actual movement state (after mutual exclusion logic)
+    public bool IsCrouching => crouchPressed;
+    public bool IsRunning => runPressed && !crouchPressed && isGrounded;
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -84,11 +88,23 @@ public class FirstPersonController : MonoBehaviour
         inputActions.Player.Look.canceled += ctx => lookInput = Vector2.zero;
 
         // --- Correr (Shift) ---
-        inputActions.Player.Walk.performed += ctx => { runPressed = true; lastUsedDevice = ctx.control.device; };
+        inputActions.Player.Walk.performed += ctx => 
+        { 
+            // Cannot run while crouching
+            if (!crouchPressed)
+                runPressed = true;
+            lastUsedDevice = ctx.control.device;
+        };
         inputActions.Player.Walk.canceled += ctx => runPressed = false;
 
         // --- Agacharse ---
-        inputActions.Player.Crouch.performed += ctx => { crouchPressed = true; lastUsedDevice = ctx.control.device; };
+        inputActions.Player.Crouch.performed += ctx => 
+        { 
+            crouchPressed = true;
+            // Cancel run when crouching
+            runPressed = false;
+            lastUsedDevice = ctx.control.device;
+        };
         inputActions.Player.Crouch.canceled += ctx => crouchPressed = false;
     }
 
@@ -150,7 +166,8 @@ public class FirstPersonController : MonoBehaviour
             velocity.y = -2f;
 
         // --- Determinar velocidad actual ---
-        float currentSpeed = walkSpeed;
+        // Priority: Crouch > Run > Walk (cannot run while crouching)
+        float currentSpeed;
         if (crouchPressed)
         {
             currentSpeed = crouchSpeed;
@@ -158,6 +175,10 @@ public class FirstPersonController : MonoBehaviour
         else if (runPressed && isGrounded)
         {
             currentSpeed = runSpeed;
+        }
+        else
+        {
+            currentSpeed = walkSpeed;
         }
 
         // --- Movimiento ---

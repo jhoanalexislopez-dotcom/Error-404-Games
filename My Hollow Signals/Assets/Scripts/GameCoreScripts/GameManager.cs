@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [Header("References")]
     [Tooltip("Opcional: CharacterController para grounded/velocidad.")]
     [SerializeField] private CharacterController characterController;
+    [Tooltip("PlayerController para leer el estado de movimiento real.")]
+    [SerializeField] private FirstPersonController playerController;
     [Tooltip("Objeto de la linterna que se enciende/apaga (opcional).")]
     [SerializeField] private GameObject flashlightObject;
 
@@ -78,7 +80,6 @@ public class GameManager : MonoBehaviour
 
     // Internos
     private float stepTimer;
-    private bool isCrouched;
     private bool flashlightOn;
     
     // Track previous movement state for footstep timing
@@ -155,9 +156,6 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // Use hold-based crouch to match PlayerController behavior
-        isCrouched = crouchAction?.action?.IsPressed() ?? false;
-        
         HandleFootsteps();
     }
 
@@ -210,7 +208,9 @@ public class GameManager : MonoBehaviour
         if (requireGrounded && !grounded) { stepTimer = 0f; return; }
         if (!moving) { stepTimer = 0f; return; }
 
-        bool running = sprintAction != null && sprintAction.action != null && sprintAction.action.IsPressed();
+        // Read actual movement state from PlayerController (accounts for mutual exclusion logic)
+        bool isCrouched = playerController != null && playerController.IsCrouching;
+        bool running = playerController != null && playerController.IsRunning;
 
         // Determine current movement state and interval
         MovementState currentState = isCrouched ? MovementState.Crouch : (running ? MovementState.Run : MovementState.Walk);

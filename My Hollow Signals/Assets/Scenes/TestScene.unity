@@ -6170,8 +6170,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraTarget: {fileID: 384685370}
   characterController: {fileID: 490301344}
+  playerController: {fileID: 490301343}
   moveAction: {fileID: -1680190386980627800, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
-  sprintAction: {fileID: -7471211009204490832, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
   requireGrounded: 1
   baseLocalOffset: {x: 0, y: 0, z: 0}
   moveThreshold: 0.1
@@ -6180,6 +6180,8 @@ MonoBehaviour:
   walkFrequency: 9
   runAmplitude: 0.1
   runFrequency: 15
+  crouchAmplitude: 0.02
+  crouchFrequency: 5
   enableIdleMotion: 1
   idleAmplitude: 0.005
   idleFrequency: 1.2
@@ -36207,6 +36209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 490301344}
+  playerController: {fileID: 490301343}
   flashlightObject: {fileID: 677709136}
   moveAction: {fileID: -1680190386980627800, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
   sprintAction: {fileID: -7471211009204490832, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
@@ -46029,6 +46032,10 @@ PrefabInstance:
     - target: {fileID: 7522188628576080686, guid: ed1197e8c20c3a044817672494871055, type: 3}
       propertyPath: m_Name
       value: FPSCounter
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522188628576080686, guid: ed1197e8c20c3a044817672494871055, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8851986634495349167, guid: ed1197e8c20c3a044817672494871055, type: 3}
       propertyPath: m_Pivot.x
