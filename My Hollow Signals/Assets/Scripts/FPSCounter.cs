@@ -46,26 +46,6 @@ public class FPSCounter : MonoBehaviour
         if (fpsText != null)
         {
             fpsText.text = string.Format(FPS_FORMAT, fps);
-            UpdateFPSColor(fps);
-        }
-    }
-
-    /// <summary>
-    /// Updates the color of the FPS text based on performance.
-    /// </summary>
-    private void UpdateFPSColor(float fps)
-    {
-        if (fps >= 60f)
-        {
-            fpsText.color = Color.green;
-        }
-        else if (fps >= 30f)
-        {
-            fpsText.color = Color.yellow;
-        }
-        else
-        {
-            fpsText.color = Color.red;
         }
     }
 

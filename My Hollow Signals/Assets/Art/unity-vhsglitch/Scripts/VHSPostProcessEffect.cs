@@ -28,22 +28,47 @@ public class VHSPostProcessEffect : MonoBehaviour
 
 	void OnRenderImage(RenderTexture source, RenderTexture destination)
 	{
-		_material.SetTexture("_VHSTex", _player.texture);
-
-		_yScanline += Time.deltaTime * 0.01f;
-		_xScanline -= Time.deltaTime * 0.1f;
-
-		if (_yScanline >= 1)
+		if (_material == null)
 		{
-			_yScanline = Random.value;
+			_material = new Material(shader);
 		}
-		if (_xScanline <= 0 || Random.value < 0.05)
+
+		if (_player == null)
 		{
-			_xScanline = Random.value;
+			_player = GetComponent<VideoPlayer>();
+			if (_player != null)
+			{
+				_player.isLooping = true;
+				_player.renderMode = VideoRenderMode.APIOnly;
+				_player.audioOutputMode = VideoAudioOutputMode.None;
+				_player.clip = VHSClip;
+				_player.Play();
+			}
 		}
-		_material.SetFloat("_yScanline", _yScanline);
-		_material.SetFloat("_xScanline", _xScanline);
-		Graphics.Blit(source, destination, _material);
+
+		if (_material != null && _player != null && _player.texture != null)
+		{
+			_material.SetTexture("_VHSTex", _player.texture);
+
+			_yScanline += Time.deltaTime * 0.01f;
+			_xScanline -= Time.deltaTime * 0.1f;
+
+			if (_yScanline >= 1)
+			{
+				_yScanline = Random.value;
+			}
+			if (_xScanline <= 0 || Random.value < 0.05)
+			{
+				_xScanline = Random.value;
+			}
+			_material.SetFloat("_yScanline", _yScanline);
+			_material.SetFloat("_xScanline", _xScanline);
+			Graphics.Blit(source, destination, _material);
+		}
+		else
+		{
+			Graphics.Blit(source, destination);
+		}
 	}
 
 	protected void OnDisable()
