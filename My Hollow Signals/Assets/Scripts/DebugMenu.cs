@@ -23,10 +23,17 @@ public class DebugMenu : MonoBehaviour
     [SerializeField] private float maxFOV = 90f;
     [SerializeField] private Camera freecam;
     
+    [Header("Freefly Settings")]
+    [SerializeField] private float freeflySpeed = 5f;
+    [SerializeField] private GameObject freeflyUILeft;
+    [SerializeField] private GameObject freeflyUIRight;
+    [SerializeField] private TextMeshProUGUI freeflyPositionText;
+    
     private InputSystem_Actions inputActions;
     private bool isMenuVisible = false;
     private bool isFreecamActive = false;
     private bool isUIHidden = false;
+    private bool isFreeflyActive = false;
     
     private Vector2 freecamMoveInput;
     private Vector2 freecamLookInput;
@@ -92,6 +99,16 @@ public class DebugMenu : MonoBehaviour
             freecam.gameObject.SetActive(false);
             currentFOV = freecam.fieldOfView;
         }
+        
+        if (freeflyUILeft != null)
+        {
+            freeflyUILeft.SetActive(false);
+        }
+        
+        if (freeflyUIRight != null)
+        {
+            freeflyUIRight.SetActive(false);
+        }
     }
     
     private void OnEnable()
@@ -122,10 +139,20 @@ public class DebugMenu : MonoBehaviour
             ToggleUI();
         }
         
+        if (Gamepad.current != null && Gamepad.current.selectButton.wasPressedThisFrame && !isMenuVisible && !isFreecamActive)
+        {
+            ToggleFreefly();
+        }
+        
         if (isFreecamActive)
         {
             HandleFreecamZoom();
             UpdateFreecam();
+        }
+        
+        if (isFreeflyActive)
+        {
+            UpdateFreefly();
         }
     }
     
@@ -385,6 +412,71 @@ public class DebugMenu : MonoBehaviour
         if (isMenuVisible)
         {
             ToggleMenu();
+        }
+    }
+    
+    private void ToggleFreefly()
+    {
+        isFreeflyActive = !isFreeflyActive;
+        
+        if (freeflyUILeft != null)
+        {
+            freeflyUILeft.SetActive(isFreeflyActive);
+        }
+        
+        if (freeflyUIRight != null)
+        {
+            freeflyUIRight.SetActive(isFreeflyActive);
+        }
+        
+        if (isFreeflyActive)
+        {
+            if (characterController != null)
+            {
+                characterController.enabled = false;
+            }
+            
+            if (playerController != null)
+            {
+                playerController.ResetLookInput();
+            }
+        }
+        else
+        {
+            if (characterController != null)
+            {
+                characterController.enabled = true;
+            }
+        }
+    }
+    
+    private void UpdateFreefly()
+    {
+        if (playerController == null || characterController == null) return;
+        
+        if (Gamepad.current == null) return;
+        
+        if (playerController != null)
+        {
+            playerController.ResetLookInput();
+        }
+        
+        Vector2 leftStick = Gamepad.current.leftStick.ReadValue();
+        Vector2 rightStick = Gamepad.current.rightStick.ReadValue();
+        
+        Transform playerTransform = playerController.transform;
+        
+        Vector3 moveDirection = Vector3.zero;
+        moveDirection += playerTransform.right * leftStick.x;
+        moveDirection += playerTransform.forward * leftStick.y;
+        moveDirection += Vector3.up * rightStick.y;
+        
+        playerTransform.position += moveDirection * freeflySpeed * Time.deltaTime;
+        
+        if (freeflyPositionText != null)
+        {
+            Vector3 pos = playerTransform.position;
+            freeflyPositionText.text = $"Pos : {pos.x:F1}, {pos.y:F1}, {pos.z:F1}";
         }
     }
 }
