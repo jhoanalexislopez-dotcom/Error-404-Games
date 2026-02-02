@@ -55,6 +55,7 @@ public class FirstPersonController : MonoBehaviour
     // Public accessors for actual movement state (after mutual exclusion logic)
     public bool IsCrouching => crouchPressed;
     public bool IsRunning => runPressed && !crouchPressed && isGrounded;
+    public bool IsMoving => moveInput.magnitude > 0.01f;
 
     void Awake()
     {

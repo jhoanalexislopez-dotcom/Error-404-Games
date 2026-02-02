@@ -23,6 +23,12 @@ public class DebugMenu : MonoBehaviour
     [SerializeField] private float maxFOV = 90f;
     [SerializeField] private Camera freecam;
     
+    [Header("Freecam Orbit Settings")]
+    [SerializeField] private Transform orbitTarget;
+    [SerializeField] private float orbitSpeed = 30f;
+    [SerializeField] private float orbitDistance = 5f;
+    [SerializeField] private float orbitVerticalSpeed = 20f;
+    
     [Header("Freefly Settings")]
     [SerializeField] private float freeflySpeed = 5f;
     [SerializeField] private GameObject freeflyUILeft;
@@ -44,6 +50,10 @@ public class DebugMenu : MonoBehaviour
     private bool freecamZoomOut;
     private Vector3 freecamRotation;
     private float currentFOV;
+    private bool isOrbitActive = false;
+    private float orbitAngle = 0f;
+    private float orbitHeight = 0f;
+    private float orbitLookAtOffset = 0f;
     
     private CharacterController characterController;
     private InputSystem_Actions freecamInputActions;
@@ -147,6 +157,7 @@ public class DebugMenu : MonoBehaviour
         if (isFreecamActive)
         {
             HandleFreecamZoom();
+            HandleFreecamOrbit();
             UpdateFreecam();
         }
         
@@ -194,6 +205,10 @@ public class DebugMenu : MonoBehaviour
                 freecam.transform.rotation = playerController.cameraRoot.rotation;
                 freecamRotation = freecam.transform.eulerAngles;
                 currentFOV = freecam.fieldOfView;
+                isOrbitActive = false;
+                orbitAngle = 0f;
+                orbitHeight = 0f;
+                orbitLookAtOffset = 0f;
                 
                 if (playerCamera != null)
                 {
@@ -378,33 +393,98 @@ public class DebugMenu : MonoBehaviour
         freecam.fieldOfView = currentFOV;
     }
     
+    private void HandleFreecamOrbit()
+    {
+        if (freecam == null || orbitTarget == null) return;
+        
+        if (Gamepad.current != null)
+        {
+            if (Gamepad.current.leftShoulder.isPressed)
+            {
+                isOrbitActive = true;
+            }
+            else
+            {
+                isOrbitActive = false;
+            }
+        }
+    }
+    
     private void UpdateFreecam()
     {
         if (freecam == null) return;
         
-        float speed = freecamFastMode ? freecamFastSpeed : freecamSpeed;
-        
-        Vector3 move = freecam.transform.right * freecamMoveInput.x + freecam.transform.forward * freecamMoveInput.y;
-        
-        if (freecamMoveUp)
+        if (isOrbitActive && orbitTarget != null)
         {
-            move += Vector3.up;
+            orbitAngle += orbitSpeed * Time.unscaledDeltaTime;
+            
+            bool moveUp = freecamMoveUp;
+            bool moveDown = freecamMoveDown;
+            
+            if (Gamepad.current != null)
+            {
+                Vector2 leftStick = Gamepad.current.leftStick.ReadValue();
+                orbitLookAtOffset += leftStick.y * orbitVerticalSpeed * Time.unscaledDeltaTime;
+                
+                if (Gamepad.current.buttonSouth.isPressed)
+                {
+                    moveUp = true;
+                }
+                if (Gamepad.current.buttonEast.isPressed)
+                {
+                    moveDown = true;
+                }
+            }
+            
+            if (moveUp)
+            {
+                orbitHeight += orbitVerticalSpeed * Time.unscaledDeltaTime;
+            }
+            if (moveDown)
+            {
+                orbitHeight -= orbitVerticalSpeed * Time.unscaledDeltaTime;
+            }
+            
+            float radians = orbitAngle * Mathf.Deg2Rad;
+            Vector3 offset = new Vector3(
+                Mathf.Sin(radians) * orbitDistance,
+                orbitHeight,
+                Mathf.Cos(radians) * orbitDistance
+            );
+            
+            freecam.transform.position = orbitTarget.position + offset;
+            
+            Vector3 lookAtPoint = orbitTarget.position + Vector3.up * orbitLookAtOffset;
+            freecam.transform.LookAt(lookAtPoint);
+            
+            freecamRotation = freecam.transform.eulerAngles;
         }
-        if (freecamMoveDown)
+        else
         {
-            move += Vector3.down;
+            float speed = freecamFastMode ? freecamFastSpeed : freecamSpeed;
+            
+            Vector3 move = freecam.transform.right * freecamMoveInput.x + freecam.transform.forward * freecamMoveInput.y;
+            
+            if (freecamMoveUp)
+            {
+                move += Vector3.up;
+            }
+            if (freecamMoveDown)
+            {
+                move += Vector3.down;
+            }
+            
+            freecam.transform.position += move * speed * Time.unscaledDeltaTime;
+            
+            float mouseX = freecamLookInput.x * 2f * Time.unscaledDeltaTime * 60f;
+            float mouseY = freecamLookInput.y * 2f * Time.unscaledDeltaTime * 60f;
+            
+            freecamRotation.y += mouseX;
+            freecamRotation.x -= mouseY;
+            freecamRotation.x = Mathf.Clamp(freecamRotation.x, -90f, 90f);
+            
+            freecam.transform.eulerAngles = freecamRotation;
         }
-        
-        freecam.transform.position += move * speed * Time.unscaledDeltaTime;
-        
-        float mouseX = freecamLookInput.x * 2f * Time.unscaledDeltaTime * 60f;
-        float mouseY = freecamLookInput.y * 2f * Time.unscaledDeltaTime * 60f;
-        
-        freecamRotation.y += mouseX;
-        freecamRotation.x -= mouseY;
-        freecamRotation.x = Mathf.Clamp(freecamRotation.x, -90f, 90f);
-        
-        freecam.transform.eulerAngles = freecamRotation;
     }
     
     public void CloseMenu()
