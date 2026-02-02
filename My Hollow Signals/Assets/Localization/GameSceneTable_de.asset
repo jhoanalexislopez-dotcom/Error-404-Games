@@ -74,6 +74,142 @@ MonoBehaviour:
     m_Localized: ...
     m_Metadata:
       m_Items: []
+  - m_Id: 49548490694656
+    m_Localized: Heute
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45900792586240
+    m_Localized: "Silas\u2026 hilf mir\u2026 Wald\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46268440109056
+    m_Localized: "Bitte\u2026 komm."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47891015000064
+    m_Localized: Nachrichtenfenster > Mara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49094574727168
+    m_Localized: "(Diese T\xFCr\u2026 ist verschlossen?)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51163360649216
+    m_Localized: 1 Textnachricht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51361101111296
+    m_Localized: NACHRICHTEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206804678479872
+    m_Localized: "Mara\u2026 wenn du hier bist\u2026 gib mir ein Zeichen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 217826734772224
+    m_Localized: Nichts.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218138795184128
+    m_Localized: "Die H\xF6hle\u2026 was machst du, Mara?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218746474336256
+    m_Localized: Ich muss ihr folgen.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254023846727680
+    m_Localized: "Hoffe, es geht dir gut\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254311936692224
+    m_Localized: "Das Lagerfeuer\u2026 das Lagerfeuer. Sie hat es erw\xE4hnt. Ich
+      muss dorthin."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254815790043136
+    m_Localized: "Sie will, dass ich zur\xFCckgehe\u2026 aber warum?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 419830011256832
+    m_Localized: "\u2026Was ist hier passiert?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420081103265792
+    m_Localized: "Kommt das\u2026 von oben?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420281037348864
+    m_Localized: "Mara\u2026 bist du da?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420405989859328
+    m_Localized: "Nein\u2026 nein\u2026 Mara\u2026 nein!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606027160883200
+    m_Localized: "Er\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606148724396032
+    m_Localized: "Wer ist \u201Eer\u201C\u2026?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629111947399168
+    m_Localized: "Die Stimmen h\xF6ren nicht auf\u2026\n\nSie sagen, ich muss etwas
+      finden, dass erst dann\nalles ein Ende haben wird.\n\nSie sagen, ich muss etwas
+      finden,\ndass erst dann alles ein Ende haben wird.\n\nWenn du mich findest,
+      komm nicht n\xE4her.\n\nIch bin nicht mehr dieselbe."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629158852300800
+    m_Localized: "Notiz in der H\xFCtte gefunden"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629426948018176
+    m_Localized: "Notiz in der H\xFCtte gefunden\n\nIch habe Dinge gesehen, die du
+      nicht verstehen w\xFCrdest.\n\nSie beobachten mich, sie f\xFChren mich, sie
+      zeigen mir die Wahrheit.\n\nDu warst immer schwach, aber ich\u2026\n\nIch lerne,
+      stark zu sein.\n\nBald wirst du es verstehen."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629451044294656
+    m_Localized: "Notiz in der H\xF6hle gefunden"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629468895252480
+    m_Localized: "Ich will nicht, dass du leidest, deshalb habe ich dich weggesto\xDFen.\n\nDu
+      wirst es nie verstehen, aber diese Macht geh\xF6rt mir \u2014 sie geh\xF6rte
+      mir schon immer.\n\nWenn die Zeit kommt, musst du w\xE4hlen: mir folgen\u2026
+      oder verschwinden."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629488889499648
+    m_Localized: Notiz beim Lagerfeuer gefunden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634508829659136
+    m_Localized: Taschenlampe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634707073437696
+    m_Localized: "Dr\xFCcke Interagieren zum Lesen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052137399246848
+    m_Localized: "(Drau\xDFen ist es dunkel, ich brauche eine Taschenlampe\u2026)\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100389322579968
+    m_Localized: 'Bewegen
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1176303356076032
+    m_Localized: "(Ich werde m\xFCde\u2026)"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

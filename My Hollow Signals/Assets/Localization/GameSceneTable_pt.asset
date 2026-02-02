@@ -74,6 +74,137 @@ MonoBehaviour:
     m_Localized: ...
     m_Metadata:
       m_Items: []
+  - m_Id: 45900792586240
+    m_Localized: "Silas\u2026 me ajude\u2026 floresta\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46268440109056
+    m_Localized: "Por favor\u2026 venha."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47891015000064
+    m_Localized: Caixa de mensagens > Mara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49094574727168
+    m_Localized: "(Esta porta\u2026 est\xE1 trancada?)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49548490694656
+    m_Localized: Hoje
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51163360649216
+    m_Localized: 1 mensagem de texto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51361101111296
+    m_Localized: MENSAGENS
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206804678479872
+    m_Localized: "Mara\u2026 se voc\xEA estiver aqui\u2026 me d\xEA um sinal."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 217826734772224
+    m_Localized: Nada.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218138795184128
+    m_Localized: "A caverna\u2026 o que voc\xEA est\xE1 fazendo, Mara?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218746474336256
+    m_Localized: Preciso segui-la.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254023846727680
+    m_Localized: "Espero que voc\xEA esteja bem\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254311936692224
+    m_Localized: "A fogueira\u2026 a fogueira. Ela mencionou. Preciso ir l\xE1."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254815790043136
+    m_Localized: "Ela quer que eu volte\u2026 mas por qu\xEA?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 419830011256832
+    m_Localized: "\u2026O que aconteceu aqui?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420081103265792
+    m_Localized: "Isso\u2026 vem de cima?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420281037348864
+    m_Localized: "Mara\u2026 voc\xEA est\xE1 a\xED?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420405989859328
+    m_Localized: "N\xE3o\u2026 n\xE3o\u2026 Mara\u2026 n\xE3o!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606027160883200
+    m_Localized: "Ele\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606148724396032
+    m_Localized: "Quem \xE9 \u201Cele\u201D\u2026?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629111947399168
+    m_Localized: "As vozes n\xE3o param\u2026\n\nDizem que eu preciso encontrar algo,
+      que s\xF3 ent\xE3o\ntudo vai acabar.\n\nDizem que eu preciso encontrar algo,\nque
+      s\xF3 ent\xE3o tudo vai acabar.\n\nSe me encontrar, n\xE3o chegue perto.\n\nEu
+      n\xE3o sou mais a mesma."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629158852300800
+    m_Localized: Bilhete encontrado na cabana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629426948018176
+    m_Localized: "Eu vi coisas que voc\xEA n\xE3o entenderia.\n\nEles me observam,
+      me guiam, me mostram a verdade.\n\nVoc\xEA sempre foi fraco, mas eu\u2026\n\nEstou
+      aprendendo a ser forte.\n\nEm breve voc\xEA vai entender."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629451044294656
+    m_Localized: Bilhete encontrado na caverna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629468895252480
+    m_Localized: "Eu n\xE3o quero que voc\xEA sofra, por isso te afastei.\n\nVoc\xEA
+      nunca vai entender, mas esse poder \xE9 meu \u2014 sempre foi.\n\nQuando chegar
+      a hora, voc\xEA ter\xE1 que escolher: me seguir\u2026 ou desaparecer."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629488889499648
+    m_Localized: Bilhete encontrado na fogueira
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634508829659136
+    m_Localized: Lanterna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634707073437696
+    m_Localized: Pressione Interagir para ler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052137399246848
+    m_Localized: "(Est\xE1 escuro l\xE1 fora, preciso de uma lanterna\u2026)\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100389322579968
+    m_Localized: Mover
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1176303356076032
+    m_Localized: "(Estou ficando cansado\u2026)"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

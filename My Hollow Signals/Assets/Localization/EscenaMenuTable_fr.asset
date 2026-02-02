@@ -110,6 +110,27 @@ MonoBehaviour:
     m_Localized: Quitter
     m_Metadata:
       m_Items: []
+  - m_Id: 902768561741824
+    m_Localized: Calibration du microphone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 903298457526272
+    m_Localized: Appareil microphone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904560536182784
+    m_Localized: ATTENTION
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904751528009728
+    m_Localized: "Ce jeu se vit mieux avec un casque.\nPour une immersion totale,
+      l\u2019utilisation d\u2019un microphone est fortement recommand\xE9e.\n\nCe
+      jeu contient une atmosph\xE8re intense, des sons perturbants et des moments
+      qui n\xE9cessitent la d\xE9tection de la voix et du son.\n\nJouer sans casque
+      ou microphone peut r\xE9duire consid\xE9rablement l\u2019exp\xE9rience pr\xE9vue.\n\nJouez
+      dans un environnement sombre et calme."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

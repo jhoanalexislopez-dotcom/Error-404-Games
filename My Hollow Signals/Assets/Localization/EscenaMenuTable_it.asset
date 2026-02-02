@@ -110,6 +110,27 @@ MonoBehaviour:
     m_Localized: Esci
     m_Metadata:
       m_Items: []
+  - m_Id: 902768561741824
+    m_Localized: Calibrazione microfono
+    m_Metadata:
+      m_Items: []
+  - m_Id: 903298457526272
+    m_Localized: Dispositivo microfono
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904560536182784
+    m_Localized: ATTENZIONE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904751528009728
+    m_Localized: "Questo gioco \xE8 meglio vissuto con le cuffie.\nPer un\u2019immersione
+      completa, si consiglia vivamente l\u2019uso di un microfono.\n\nQuesto gioco
+      contiene un\u2019atmosfera intensa, audio disturbante e momenti che richiedono
+      il rilevamento del suono e della voce.\n\nGiocare senza cuffie o microfono
+      pu\xF2 ridurre notevolmente l\u2019esperienza prevista.\n\nGioca in un ambiente
+      buio e silenzioso."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

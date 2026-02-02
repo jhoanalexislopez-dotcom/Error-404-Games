@@ -74,6 +74,141 @@ MonoBehaviour:
     m_Localized: ...
     m_Metadata:
       m_Items: []
+  - m_Id: 45900792586240
+    m_Localized: "Silas\u2026 aide-moi\u2026 for\xEAt\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46268440109056
+    m_Localized: "S\u2019il te pla\xEEt\u2026 viens."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47891015000064
+    m_Localized: "Bo\xEEte de messages > Mara"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49094574727168
+    m_Localized: "(Cette porte\u2026 est verrouill\xE9e ?)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49548490694656
+    m_Localized: "Aujourd\u2019hui"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51163360649216
+    m_Localized: 1 message texte
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51361101111296
+    m_Localized: MESSAGES
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206804678479872
+    m_Localized: "Mara\u2026 si tu es l\xE0\u2026 donne-moi un signe."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 217826734772224
+    m_Localized: Rien.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218138795184128
+    m_Localized: "La grotte\u2026 qu\u2019est-ce que tu fais, Mara ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218746474336256
+    m_Localized: Je dois la suivre.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254023846727680
+    m_Localized: "J\u2019esp\xE8re que tu vas bien\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254311936692224
+    m_Localized: "Le feu de camp\u2026 le feu de camp. Elle l\u2019a mentionn\xE9.
+      Je dois y aller."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254815790043136
+    m_Localized: "Elle veut que je fasse demi-tour\u2026 mais pourquoi ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 419830011256832
+    m_Localized: "\u2026Que s\u2019est-il pass\xE9 ici ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420081103265792
+    m_Localized: "\xC7a\u2026 vient d\u2019en haut ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420281037348864
+    m_Localized: "Mara\u2026 tu es l\xE0 ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420405989859328
+    m_Localized: "Non\u2026 non\u2026 Mara\u2026 non !"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606027160883200
+    m_Localized: "Lui\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606148724396032
+    m_Localized: "Qui est \xAB lui \xBB\u2026 ?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629111947399168
+    m_Localized: "Les voix ne s\u2019arr\xEAtent pas\u2026\n\nIls disent que je dois
+      trouver quelque chose, que ce n\u2019est qu\u2019alors\nque tout prendra fin.\n\nIls
+      disent que je dois trouver quelque chose,\nque ce n\u2019est qu\u2019alors
+      que tout prendra fin.\n\nSi tu me trouves, ne t\u2019approche pas.\n\nJe ne
+      suis plus la m\xEAme."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629158852300800
+    m_Localized: "Note trouv\xE9e dans la cabane"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629426948018176
+    m_Localized: "J\u2019ai vu des choses que tu ne comprendrais pas.\n\nIls m\u2019observent,
+      ils me guident, ils me montrent la v\xE9rit\xE9.\n\nTu as toujours \xE9t\xE9
+      faible, mais moi\u2026\n\nJ\u2019apprends \xE0 \xEAtre forte.\n\nBient\xF4t
+      tu comprendras."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629451044294656
+    m_Localized: "Note trouv\xE9e dans la grotte"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629468895252480
+    m_Localized: "Je ne veux pas que tu souffres, c\u2019est pour \xE7a que je t\u2019ai
+      \xE9loign\xE9.\n\nTu ne comprendras jamais, mais ce pouvoir est le mien \u2014
+      il l\u2019a toujours \xE9t\xE9.\n\nQuand le moment viendra, tu devras choisir
+      : me suivre\u2026 ou dispara\xEEtre."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629488889499648
+    m_Localized: "Note trouv\xE9e pr\xE8s du feu de camp"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634508829659136
+    m_Localized: Lampe torche
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634707073437696
+    m_Localized: Appuyez sur Interagir pour lire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052137399246848
+    m_Localized: "(C\u2019est sombre dehors, j\u2019ai besoin d\u2019une lampe torche\u2026)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100389322579968
+    m_Localized: "D\xE9placer"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1176303356076032
+    m_Localized: "(Je commence \xE0 me fatiguer\u2026)"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
