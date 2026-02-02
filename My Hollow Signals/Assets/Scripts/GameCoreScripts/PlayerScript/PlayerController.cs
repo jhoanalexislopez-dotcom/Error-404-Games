@@ -66,7 +66,12 @@ public class FirstPersonController : MonoBehaviour
         inputActions = new InputSystem_Actions();
 
         // --- Movimiento ---
-        inputActions.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        inputActions.Player.Move.performed += ctx =>
+        {
+            if (ignoreGamepadInput && ctx.control.device is Gamepad)
+                return;
+            moveInput = ctx.ReadValue<Vector2>();
+        };
         inputActions.Player.Move.canceled += ctx => moveInput = Vector2.zero;
 
         // --- Mirada ---
@@ -78,8 +83,14 @@ public class FirstPersonController : MonoBehaviour
                 return;
             }
             
+            if (ignoreGamepadInput && ctx.control.device is Gamepad)
+            {
+                lookInput = Vector2.zero;
+                return;
+            }
+            
             lookInput = ctx.ReadValue<Vector2>();
-            lastUsedDevice = ctx.control.device; // Guardamos el dispositivo
+            lastUsedDevice = ctx.control.device;
 
             if (lastUsedDevice is Mouse)
                 currentSensitivity = mouseSensitivity;
@@ -91,7 +102,9 @@ public class FirstPersonController : MonoBehaviour
         // --- Correr (Shift) ---
         inputActions.Player.Walk.performed += ctx => 
         { 
-            // Cannot run while crouching
+            if (ignoreGamepadInput && ctx.control.device is Gamepad)
+                return;
+            
             if (!crouchPressed)
                 runPressed = true;
             lastUsedDevice = ctx.control.device;
@@ -101,8 +114,10 @@ public class FirstPersonController : MonoBehaviour
         // --- Agacharse ---
         inputActions.Player.Crouch.performed += ctx => 
         { 
+            if (ignoreGamepadInput && ctx.control.device is Gamepad)
+                return;
+            
             crouchPressed = true;
-            // Cancel run when crouching
             runPressed = false;
             lastUsedDevice = ctx.control.device;
         };
@@ -133,6 +148,17 @@ public class FirstPersonController : MonoBehaviour
     public void ResetLookInput()
     {
         lookInput = Vector2.zero;
+    }
+    
+    private bool ignoreGamepadInput = false;
+    
+    public void SetIgnoreGamepadInput(bool ignore)
+    {
+        ignoreGamepadInput = ignore;
+        if (ignore)
+        {
+            lookInput = Vector2.zero;
+        }
     }
     
     public void SetPlayerInputEnabled(bool enabled)

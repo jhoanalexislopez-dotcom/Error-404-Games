@@ -29,6 +29,13 @@ public class DebugMenu : MonoBehaviour
     [SerializeField] private float orbitDistance = 5f;
     [SerializeField] private float orbitVerticalSpeed = 20f;
     
+    [Header("Lock Camera Settings")]
+    [SerializeField] private float lockCameraLookSensitivity = 1.5f;
+    [SerializeField] private float lockCameraDistanceSpeed = 5f;
+    [SerializeField] private float lockCameraHeightSpeed = 20f;
+    [SerializeField] private float lockCameraMinDistance = 1f;
+    [SerializeField] private float lockCameraMaxDistance = 20f;
+    
     [Header("Freefly Settings")]
     [SerializeField] private float freeflySpeed = 5f;
     [SerializeField] private GameObject freeflyUILeft;
@@ -40,6 +47,7 @@ public class DebugMenu : MonoBehaviour
     private bool isFreecamActive = false;
     private bool isUIHidden = false;
     private bool isFreeflyActive = false;
+    private bool isLockCameraActive = false;
     
     private Vector2 freecamMoveInput;
     private Vector2 freecamLookInput;
@@ -54,6 +62,10 @@ public class DebugMenu : MonoBehaviour
     private float orbitAngle = 0f;
     private float orbitHeight = 0f;
     private float orbitLookAtOffset = 0f;
+    
+    private Vector3 lockCameraOffset;
+    private float lockCameraDistance = 5f;
+    private float lockCameraVerticalAngle = 10f;
     
     private CharacterController characterController;
     private InputSystem_Actions freecamInputActions;
@@ -144,12 +156,17 @@ public class DebugMenu : MonoBehaviour
             ToggleFreecam();
         }
         
+        if (Keyboard.current != null && Keyboard.current.lKey.wasPressedThisFrame && !isMenuVisible)
+        {
+            ToggleLockCamera();
+        }
+        
         if (Keyboard.current != null && Keyboard.current.hKey.wasPressedThisFrame && !isMenuVisible)
         {
             ToggleUI();
         }
         
-        if (Gamepad.current != null && Gamepad.current.selectButton.wasPressedThisFrame && !isMenuVisible && !isFreecamActive)
+        if (Gamepad.current != null && Gamepad.current.selectButton.wasPressedThisFrame && !isMenuVisible && !isFreecamActive && !isLockCameraActive)
         {
             ToggleFreefly();
         }
@@ -159,6 +176,12 @@ public class DebugMenu : MonoBehaviour
             HandleFreecamZoom();
             HandleFreecamOrbit();
             UpdateFreecam();
+        }
+        
+        if (isLockCameraActive)
+        {
+            HandleFreecamZoom();
+            UpdateLockCamera();
         }
         
         if (isFreeflyActive)
@@ -302,6 +325,83 @@ public class DebugMenu : MonoBehaviour
         if (uiToHide != null)
         {
             uiToHide.SetActive(!isUIHidden);
+        }
+    }
+    
+    public void ToggleLockCamera()
+    {
+        isLockCameraActive = !isLockCameraActive;
+        
+        if (freecam != null && playerController != null)
+        {
+            freecam.gameObject.SetActive(isLockCameraActive);
+            
+            if (isLockCameraActive)
+            {
+                freecam.transform.position = playerController.cameraRoot.position;
+                freecam.transform.rotation = playerController.cameraRoot.rotation;
+                freecamRotation = freecam.transform.eulerAngles;
+                currentFOV = freecam.fieldOfView;
+                
+                lockCameraOffset = freecam.transform.position - playerController.transform.position;
+                lockCameraDistance = lockCameraOffset.magnitude;
+                
+                playerController.SetIgnoreGamepadInput(true);
+                
+                if (playerCamera != null)
+                {
+                    playerCamera.enabled = false;
+                }
+                
+                if (playerAudioListener != null)
+                {
+                    playerAudioListener.enabled = false;
+                }
+                
+                if (freecamAudioListener != null)
+                {
+                    freecamAudioListener.enabled = true;
+                }
+                
+                freecamInputActions.Player.Enable();
+                
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                
+                Debug.Log("Lock Camera enabled - Camera follows player with free look controls (L to toggle)");
+            }
+            else
+            {
+                freecamInputActions.Player.Disable();
+                
+                playerController.SetIgnoreGamepadInput(false);
+                
+                if (freecamAudioListener != null)
+                {
+                    freecamAudioListener.enabled = false;
+                }
+                
+                if (playerCamera != null)
+                {
+                    playerCamera.enabled = true;
+                }
+                
+                if (playerAudioListener != null)
+                {
+                    playerAudioListener.enabled = true;
+                }
+                
+                if (!isMenuVisible)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+            }
+        }
+        
+        if (isMenuVisible)
+        {
+            ToggleMenu();
         }
     }
     
@@ -558,5 +658,48 @@ public class DebugMenu : MonoBehaviour
             Vector3 pos = playerTransform.position;
             freeflyPositionText.text = $"Pos : {pos.x:F1}, {pos.y:F1}, {pos.z:F1}";
         }
+    }
+    
+    private void UpdateLockCamera()
+    {
+        if (freecam == null || playerController == null) return;
+        
+        if (Gamepad.current == null) return;
+        
+        Vector2 rightStick = Gamepad.current.rightStick.ReadValue();
+        
+        float mouseX = rightStick.x * lockCameraLookSensitivity * Time.unscaledDeltaTime * 60f;
+        float mouseY = rightStick.y * lockCameraLookSensitivity * Time.unscaledDeltaTime * 60f;
+        
+        freecamRotation.y += mouseX;
+        freecamRotation.x -= mouseY;
+        freecamRotation.x = Mathf.Clamp(freecamRotation.x, -90f, 90f);
+        
+        float verticalInput = 0f;
+        
+        if (Gamepad.current.buttonSouth.isPressed)
+        {
+            verticalInput += 1f;
+        }
+        if (Gamepad.current.buttonEast.isPressed)
+        {
+            verticalInput -= 1f;
+        }
+        
+        lockCameraVerticalAngle += verticalInput * lockCameraHeightSpeed * Time.unscaledDeltaTime;
+        lockCameraVerticalAngle = Mathf.Clamp(lockCameraVerticalAngle, -45f, 45f);
+        
+        Vector2 leftStick = Gamepad.current.leftStick.ReadValue();
+        float distanceAdjust = leftStick.y * lockCameraDistanceSpeed * Time.unscaledDeltaTime;
+        
+        lockCameraDistance += distanceAdjust;
+        lockCameraDistance = Mathf.Clamp(lockCameraDistance, lockCameraMinDistance, lockCameraMaxDistance);
+        
+        Quaternion rotation = Quaternion.Euler(freecamRotation.x, freecamRotation.y, 0f);
+        Vector3 direction = rotation * Vector3.back;
+        
+        Vector3 targetPosition = playerController.transform.position + Vector3.up * (1.5f + lockCameraVerticalAngle * 0.1f);
+        freecam.transform.position = targetPosition + direction * lockCameraDistance;
+        freecam.transform.LookAt(targetPosition);
     }
 }
