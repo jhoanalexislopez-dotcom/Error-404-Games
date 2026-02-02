@@ -55,6 +55,10 @@ MonoBehaviour:
     m_Localized: "At\xE9 que, uma noite, meu telefone vibra. \xC9 uma mensagem dela\u2026\r\n"
     m_Metadata:
       m_Items: []
+  - m_Id: 59832882159616
+    m_Localized: "CALIBRA\xC7\xC3O DO MICROFONE"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

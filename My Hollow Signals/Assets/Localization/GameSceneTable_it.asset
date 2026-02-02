@@ -74,6 +74,137 @@ MonoBehaviour:
     m_Localized: ...
     m_Metadata:
       m_Items: []
+  - m_Id: 218746474336256
+    m_Localized: Devo seguirla.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51163360649216
+    m_Localized: 1 messaggio di testo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 45900792586240
+    m_Localized: "Silas\u2026 aiutami\u2026 foresta\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49548490694656
+    m_Localized: Oggi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 217826734772224
+    m_Localized: Niente.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46268440109056
+    m_Localized: "Ti prego\u2026 vieni."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47891015000064
+    m_Localized: Finestra messaggi > Mara
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49094574727168
+    m_Localized: "(Questa porta\u2026 \xE8 chiusa?)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51361101111296
+    m_Localized: MESSAGGI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 206804678479872
+    m_Localized: "Mara\u2026 se sei qui\u2026 dammi un segno."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 218138795184128
+    m_Localized: "La grotta\u2026 cosa stai facendo, Mara?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254023846727680
+    m_Localized: "Spero tu stia bene\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254311936692224
+    m_Localized: "Il fal\xF2\u2026 il fal\xF2. Ne ha parlato. Devo andare l\xEC."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 254815790043136
+    m_Localized: "Vuole che io torni indietro\u2026 ma perch\xE9?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 419830011256832
+    m_Localized: "\u2026Che cosa \xE8 successo qui?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420081103265792
+    m_Localized: "Viene\u2026 dall\u2019alto?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420281037348864
+    m_Localized: "Mara\u2026 ci sei?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 420405989859328
+    m_Localized: "No\u2026 no\u2026 Mara\u2026 no!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606027160883200
+    m_Localized: "Lui\u2026"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606148724396032
+    m_Localized: "Chi \xE8 \u201Clui\u201D\u2026?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629111947399168
+    m_Localized: "Le voci non si fermano\u2026\n\nDicono che devo trovare qualcosa,
+      che solo allora\ntutto finir\xE0.\n\nDicono che devo trovare qualcosa,\nche
+      solo allora tutto finir\xE0.\n\nSe mi trovi, non avvicinarti.\n\nNon sono pi\xF9
+      la stessa."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629158852300800
+    m_Localized: Nota trovata nella capanna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629426948018176
+    m_Localized: "Ho visto cose che non capiresti.\n\nMi osservano, mi guidano, mi
+      mostrano la verit\xE0.\n\nSei sempre stato debole, ma io\u2026\n\nSto imparando
+      a essere forte.\n\nPresto capirai."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629451044294656
+    m_Localized: Nota trovata nella grotta
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629468895252480
+    m_Localized: "Non voglio che tu soffra, per questo ti ho allontanato.\n\nNon
+      capirai mai, ma questo potere \xE8 mio \u2014 lo \xE8 sempre stato.\n\nQuando
+      arriver\xE0 il momento, dovrai scegliere: seguirmi\u2026 o scomparire."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 629488889499648
+    m_Localized: "Nota trovata al fal\xF2"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634508829659136
+    m_Localized: Torcia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 634707073437696
+    m_Localized: Premi Interagisci per leggere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1052137399246848
+    m_Localized: "(\xC8 buio fuori, ho bisogno di una torcia\u2026)\n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1100389322579968
+    m_Localized: Muovi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1176303356076032
+    m_Localized: "(Mi sto stancando\u2026)"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

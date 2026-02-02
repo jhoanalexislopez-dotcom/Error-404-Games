@@ -110,6 +110,27 @@ MonoBehaviour:
     m_Localized: Beenden
     m_Metadata:
       m_Items: []
+  - m_Id: 902768561741824
+    m_Localized: Mikrofonkalibrierung
+    m_Metadata:
+      m_Items: []
+  - m_Id: 903298457526272
+    m_Localized: "Mikrofonger\xE4t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904560536182784
+    m_Localized: WARNUNG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904751528009728
+    m_Localized: "Dieses Spiel wird am besten mit Kopfh\xF6rern erlebt.\nF\xFCr vollst\xE4ndige
+      Immersion wird die Verwendung eines Mikrofons dringend empfohlen.\n\nDieses
+      Spiel enth\xE4lt intensive Atmosph\xE4re, verst\xF6rende Ger\xE4usche und Momente,
+      die auf Ton- und Spracherkennung angewiesen sind.\n\nDas Spielen ohne Kopfh\xF6rer
+      oder Mikrofon kann das beabsichtigte Erlebnis erheblich reduzieren.\n\nSpielen
+      Sie in einer dunklen, ruhigen Umgebung."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

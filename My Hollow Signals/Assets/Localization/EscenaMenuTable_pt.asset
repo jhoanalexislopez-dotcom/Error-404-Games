@@ -110,6 +110,27 @@ MonoBehaviour:
     m_Localized: Sair
     m_Metadata:
       m_Items: []
+  - m_Id: 902768561741824
+    m_Localized: "Calibra\xE7\xE3o do microfone"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 903298457526272
+    m_Localized: Dispositivo de microfone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904560536182784
+    m_Localized: AVISO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 904751528009728
+    m_Localized: "Este jogo \xE9 melhor apreciado com fones de ouvido.\nPara total
+      imers\xE3o, o uso de um microfone \xE9 fortemente recomendado.\n\nEste jogo
+      cont\xE9m atmosfera intensa, \xE1udio perturbador e momentos que dependem da
+      detec\xE7\xE3o de som e voz.\n\nJogar sem fones de ouvido ou microfone pode
+      reduzir significativamente a experi\xEAncia pretendida.\n\nJogue em um ambiente
+      escuro e silencioso."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
