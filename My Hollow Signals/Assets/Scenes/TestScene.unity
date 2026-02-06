@@ -5004,6 +5004,97 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1779583621}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &320198343
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1262862370}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 014427179114ce74eb8715570befd731, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.0830817
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 014427179114ce74eb8715570befd731, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.903019
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 014427179114ce74eb8715570befd731, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.5025818
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 014427179114ce74eb8715570befd731, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.54933643
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 014427179114ce74eb8715570befd731, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 014427179114ce74eb8715570befd731, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.83560133
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 014427179114ce74eb8715570befd731, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 014427179114ce74eb8715570befd731, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 014427179114ce74eb8715570befd731, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -113.357
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 014427179114ce74eb8715570befd731, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 014427179114ce74eb8715570befd731, type: 3}
+      propertyPath: m_Name
+      value: DeadMara
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 014427179114ce74eb8715570befd731, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 320198346}
+  m_SourcePrefab: {fileID: 100100000, guid: 014427179114ce74eb8715570befd731, type: 3}
+--- !u!4 &320198344 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 014427179114ce74eb8715570befd731, type: 3}
+  m_PrefabInstance: {fileID: 320198343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &320198345 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 014427179114ce74eb8715570befd731, type: 3}
+  m_PrefabInstance: {fileID: 320198343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &320198346
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320198345}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a8ccd59f4519e194e901c7dada29b1c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &327114402
 GameObject:
   m_ObjectHideFlags: 0
@@ -7303,7 +7394,7 @@ PrefabInstance:
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: cameraFocusTarget
       value: 
-      objectReference: {fileID: 1035655286}
+      objectReference: {fileID: 320198344}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: triggerNotification
       value: 0
@@ -14220,7 +14311,7 @@ MonoBehaviour:
   playerCamera: {fileID: 490301345}
   jumpscareDistance: -1
   jumpscareDuration: 1.5
-  enemyJumpSpeed: 1
+  enemyJumpSpeed: 0.8
   cameraTransform: {fileID: 384685370}
   shakeIntensity: 0.3
   shakeFrequency: 60
@@ -26585,6 +26676,7 @@ Transform:
   - {fileID: 1029851798}
   - {fileID: 447213895}
   - {fileID: 1192138784}
+  - {fileID: 320198344}
   m_Father: {fileID: 1597441932}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1264726601
