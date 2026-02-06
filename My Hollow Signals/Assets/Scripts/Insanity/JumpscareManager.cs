@@ -313,7 +313,7 @@ public class JumpscareManager : MonoBehaviour
             {
                 spawnedEnemy.transform.position = Vector3.Lerp(startPosition, targetPosition, t * enemyJumpSpeed);
                 spawnedEnemy.transform.LookAt(playerCamera);
-                spawnedEnemy.transform.Rotate(0, 180f, 0);
+                //spawnedEnemy.transform.Rotate(0, 180f, 0);
             }
 
             yield return null;
