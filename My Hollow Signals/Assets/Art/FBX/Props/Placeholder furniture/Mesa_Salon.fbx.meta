@@ -3,7 +3,27 @@ guid: f7025a7f5a960f4478a95d0b4c7f5f93
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: PatasMetalicas
+    second: {fileID: 2100000, guid: a1136e94547134c40ac22ea90d61205d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TablaMesa
+    second: {fileID: 2100000, guid: 0a7dc391fb0f48546a134eaa56a172c0, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: PatasMetal
+    second: {fileID: 2800000, guid: aa650d0f0d3c87e41808b33529e788a4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: TablaMesa
+    second: {fileID: 2800000, guid: ccfeb75055fb8004d828597a52fa8749, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

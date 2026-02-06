@@ -3,7 +3,17 @@ guid: 4826b23081c6db64cbe88f27d003a6b9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MesaTelevision
+    second: {fileID: 2100000, guid: 5d8529261798e844b8cb151b64329f68, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: MesaTelevisionTextura
+    second: {fileID: 2800000, guid: 845381474cd38924eb649bcee7420fc5, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

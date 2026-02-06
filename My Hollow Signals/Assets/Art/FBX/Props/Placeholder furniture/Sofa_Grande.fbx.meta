@@ -3,7 +3,47 @@ guid: 09074ec0bc84910468fad9c9b2b6a0a6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base2
+    second: {fileID: 2100000, guid: 504415675f994d14fa30a53a0ff0a9f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Brazo2
+    second: {fileID: 2100000, guid: 35ae51913548b1c4c958d27bbc540b79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Edredon2
+    second: {fileID: 2100000, guid: a5ddbd1a886aff941a1b43b070c64a3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Patas2
+    second: {fileID: 2100000, guid: 71eba7d93a7b256458edd7411b291691, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Base 2
+    second: {fileID: 2800000, guid: 026b0d292e14e87428e54b1f1ae7391e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Brazo2
+    second: {fileID: 2800000, guid: fa483791b207d8641a8093540ca05114, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Edredon2
+    second: {fileID: 2800000, guid: 732223d5dd9f727429fb749f1f74c8e8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Patas2
+    second: {fileID: 2800000, guid: caaedc50687d1274ebb606991e8b1ee3, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,62 @@ guid: 87e0371c7eb1bfc42b5fd50d7ebac1d9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base
+    second: {fileID: 2100000, guid: 9df05230c08334a4ba1cdfa429fb0245, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BrazoSofa
+    second: {fileID: 2100000, guid: de7560332c0738f42b68bb5c5c572527, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cojines
+    second: {fileID: 2100000, guid: 32d5be6048bb1fa48af7d39a803c9a93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Edredon
+    second: {fileID: 2100000, guid: 61eb5051a8f9abb47844a566d158672a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Patas
+    second: {fileID: 2100000, guid: f24ebf507faedce42841880172f20f67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 4f908a84768da53449972c27977e31a1, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Base
+    second: {fileID: 2800000, guid: 33f8e2617381bfa4d83a31517c2a0daa, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: BrazoSofa
+    second: {fileID: 2800000, guid: ea54e6a162b06d243b93f07cf4cab295, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Cojines
+    second: {fileID: 2800000, guid: 4b5963d5560667a4596458b37642e52a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Edredon
+    second: {fileID: 2800000, guid: 7573ec1409007124b92f82d1356fa64a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Patas
+    second: {fileID: 2800000, guid: 3cbb2a78957c00741adebec3f3ffea5d, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
