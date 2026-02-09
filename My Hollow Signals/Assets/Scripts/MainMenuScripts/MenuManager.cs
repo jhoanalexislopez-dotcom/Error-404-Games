@@ -72,16 +72,19 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        // Initialize sliders from mixer
-        float value;
-        if (mixer.GetFloat("masterVolume", out value)) mMasterSlider.value = value;
-        if (mixer.GetFloat("bgmVolume", out value)) mBGMSlider.value = value;
-        if (mixer.GetFloat("sfxVolume", out value)) mSFXSlider.value = value;
+        // Initialize sliders from mixer (only if old sliders are assigned)
+        if (mMasterSlider != null && mSFXSlider != null && mBGMSlider != null && mixer != null)
+        {
+            float value;
+            if (mixer.GetFloat("masterVolume", out value)) mMasterSlider.value = value;
+            if (mixer.GetFloat("bgmVolume", out value)) mBGMSlider.value = value;
+            if (mixer.GetFloat("sfxVolume", out value)) mSFXSlider.value = value;
 
-        // Hook up listeners
-        mMasterSlider.onValueChanged.AddListener(SetMasterVolume);
-        mBGMSlider.onValueChanged.AddListener(SetBGMVolume);
-        mSFXSlider.onValueChanged.AddListener(SetSFXVolume);
+            // Hook up listeners
+            mMasterSlider.onValueChanged.AddListener(SetMasterVolume);
+            mBGMSlider.onValueChanged.AddListener(SetBGMVolume);
+            mSFXSlider.onValueChanged.AddListener(SetSFXVolume);
+        }
 
         ShowMainMenu();
 
@@ -99,7 +102,7 @@ public class MenuManager : MonoBehaviour
     {
         mainMenuPanel.SetActive(true);
         if (optionsMenuLayout != null) optionsMenuLayout.SetActive(false);
-        audioPanel.SetActive(false);
+        if (audioPanel != null) audioPanel.SetActive(false);
         controlsPanel.SetActive(false);
 
         // Only auto-select if in gamepad mode
@@ -113,12 +116,14 @@ public class MenuManager : MonoBehaviour
     {
         mainMenuPanel.SetActive(false);
         if (optionsMenuLayout != null) optionsMenuLayout.SetActive(true);
-        audioPanel.SetActive(false);
+        if (audioPanel != null) audioPanel.SetActive(false);
         controlsPanel.SetActive(false);
     }
 
     public void ShowAudioMenu()
     {
+        if (audioPanel == null) return;
+        
         mainMenuPanel.SetActive(false);
         audioPanel.SetActive(true);
         controlsPanel.SetActive(false);

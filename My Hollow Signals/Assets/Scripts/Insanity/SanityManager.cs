@@ -18,7 +18,8 @@ public class SanityManager : MonoBehaviour
         
     [Header("Mic Settings")]
     public AudioLoudnessDetector micDetector;
-    private float micThreshold = 0.01f; 
+    private float micThreshold = 0.01f;
+    private const string MIC_SENSITIVITY_KEY = "MicrophoneSensitivity"; 
     public float micSanityLossMultiplier; //cu�nto afecta hablar fuerte
     public float micQuietRecoveryMultiplier; //cu�nto affecta no hablar
     [Header("Environmental Noise Settings")]
@@ -50,6 +51,8 @@ public class SanityManager : MonoBehaviour
 
     void Start()
     {
+        micThreshold = PlayerPrefs.GetFloat(MIC_SENSITIVITY_KEY, 0.01f);
+        
         profile.TryGetSettings(out vignette);
         sanitySlider = GetComponent<Slider>();
         sanitySlider.maxValue = fullSanity;

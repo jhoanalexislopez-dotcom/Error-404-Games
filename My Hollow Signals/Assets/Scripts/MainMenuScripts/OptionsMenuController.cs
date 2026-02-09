@@ -25,6 +25,8 @@ public class OptionsMenuController : MonoBehaviour
     [Header("Gameplay Settings")]
     [SerializeField] private TMP_Dropdown languageDropdown;
     [SerializeField] private TMP_Dropdown microphoneDropdown;
+    [SerializeField] private Slider microphoneSensitivitySlider;
+    [SerializeField] private TMP_Text microphoneSensitivityText;
 
     [Header("Controls Settings")]
     [SerializeField] private Slider mouseSensitivitySlider;
@@ -54,10 +56,12 @@ public class OptionsMenuController : MonoBehaviour
     private const string GAMMA_KEY = "GammaCorrection";
     private const string LANGUAGE_KEY = "SelectedLanguage";
     private const string MICROPHONE_KEY = "SelectedMicrophone";
+    private const string MIC_SENSITIVITY_KEY = "MicrophoneSensitivity";
 
     private const float DEFAULT_MOUSE_SENSITIVITY = 1f;
     private const float DEFAULT_GAMEPAD_SENSITIVITY = 3f;
     private const float DEFAULT_GAMMA = 2.2f;
+    private const float DEFAULT_MIC_SENSITIVITY = 0.01f;
 
     private MicrophoneSelector microphoneSelector;
     private MenuManager menuManager;
@@ -104,11 +108,15 @@ public class OptionsMenuController : MonoBehaviour
     {
         yield return LocalizationSettings.InitializationOperation;
 
+        Debug.Log("Localization initialized");
+
         if (languageDropdown != null)
         {
             var options = new List<TMP_Dropdown.OptionData>();
             int selected = 0;
             int savedLanguageIndex = PlayerPrefs.GetInt(LANGUAGE_KEY, 0);
+
+            Debug.Log($"Available locales count: {LocalizationSettings.AvailableLocales.Locales.Count}");
 
             for (int i = 0; i < LocalizationSettings.AvailableLocales.Locales.Count; ++i)
             {
@@ -116,13 +124,24 @@ public class OptionsMenuController : MonoBehaviour
                 if (LocalizationSettings.SelectedLocale == locale)
                     selected = i;
                 options.Add(new TMP_Dropdown.OptionData(locale.name));
+                Debug.Log($"Added locale {i}: {locale.name}");
             }
 
-            languageDropdown.options = options;
+            Debug.Log($"Saved language index: {savedLanguageIndex}, Options count: {options.Count}");
+
+            languageDropdown.ClearOptions();
+            languageDropdown.AddOptions(options);
             languageDropdown.value = savedLanguageIndex;
+            languageDropdown.RefreshShownValue();
             languageDropdown.onValueChanged.AddListener(OnLanguageChanged);
 
+            Debug.Log($"Language dropdown initialized with value: {languageDropdown.value}");
+
             LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[savedLanguageIndex];
+        }
+        else
+        {
+            Debug.LogError("Language dropdown is null!");
         }
     }
 
@@ -140,11 +159,21 @@ public class OptionsMenuController : MonoBehaviour
 
             if (options.Count > 0)
             {
-                microphoneDropdown.options = options;
+                microphoneDropdown.ClearOptions();
+                microphoneDropdown.AddOptions(options);
                 microphoneDropdown.value = Mathf.Clamp(savedMicIndex, 0, options.Count - 1);
+                microphoneDropdown.RefreshShownValue();
                 microphoneDropdown.onValueChanged.AddListener(OnMicrophoneChanged);
             }
         }
+
+        float micSensitivity = PlayerPrefs.GetFloat(MIC_SENSITIVITY_KEY, DEFAULT_MIC_SENSITIVITY);
+        if (microphoneSensitivitySlider != null)
+        {
+            microphoneSensitivitySlider.value = micSensitivity;
+            microphoneSensitivitySlider.onValueChanged.AddListener(OnMicrophoneSensitivityChanged);
+        }
+        UpdateMicrophoneSensitivityText();
 
         microphoneSelector = FindObjectOfType<MicrophoneSelector>();
     }
@@ -235,6 +264,13 @@ public class OptionsMenuController : MonoBehaviour
         }
     }
 
+    private void OnMicrophoneSensitivityChanged(float value)
+    {
+        PlayerPrefs.SetFloat(MIC_SENSITIVITY_KEY, value);
+        PlayerPrefs.Save();
+        UpdateMicrophoneSensitivityText();
+    }
+
     private void OnMouseSensitivityChanged(float value)
     {
         PlayerPrefs.SetFloat(MOUSE_SENSITIVITY_KEY, value);
@@ -291,6 +327,12 @@ public class OptionsMenuController : MonoBehaviour
 
         if (gamepadSensitivityText != null && gamepadSensitivitySlider != null)
             gamepadSensitivityText.text = gamepadSensitivitySlider.value.ToString("F2");
+    }
+
+    private void UpdateMicrophoneSensitivityText()
+    {
+        if (microphoneSensitivityText != null && microphoneSensitivitySlider != null)
+            microphoneSensitivityText.text = microphoneSensitivitySlider.value.ToString("F3");
     }
 
     private void UpdateGammaDisplay()
@@ -370,6 +412,9 @@ public class OptionsMenuController : MonoBehaviour
 
         if (gamepadSensitivitySlider != null)
             gamepadSensitivitySlider.value = DEFAULT_GAMEPAD_SENSITIVITY;
+
+        if (microphoneSensitivitySlider != null)
+            microphoneSensitivitySlider.value = DEFAULT_MIC_SENSITIVITY;
 
         if (gammaSlider != null)
             gammaSlider.value = DEFAULT_GAMMA;
