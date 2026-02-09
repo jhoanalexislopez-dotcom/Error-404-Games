@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.Localization.Settings;
+using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -65,14 +66,37 @@ public class OptionsMenuController : MonoBehaviour
 
     private MicrophoneSelector microphoneSelector;
     private MenuManager menuManager;
+    private bool isInitialized = false;
 
-    private void Start()
+    private void OnEnable()
     {
-        Debug.Log("OptionsMenuController: Start() called");
-        menuManager = FindObjectOfType<MenuManager>();
-        SetupButtons();
-        InitializeSettings();
-        ShowGameplayPanel();
+        Debug.Log("OptionsMenuController: OnEnable() called");
+        if (!isInitialized)
+        {
+            menuManager = FindObjectOfType<MenuManager>();
+            SetupButtons();
+            ShowGameplayPanel();
+            isInitialized = true;
+        }
+        StartCoroutine(InitializeSettingsCoroutine());
+        SetInitialSelection();
+    }
+
+    private void SetInitialSelection()
+    {
+        if (gameplayButton != null && EventSystem.current != null)
+        {
+            EventSystem.current.SetSelectedGameObject(gameplayButton.gameObject);
+        }
+    }
+
+    private IEnumerator InitializeSettingsCoroutine()
+    {
+        yield return StartCoroutine(InitializeLocalization());
+        InitializeMicrophoneDropdown();
+        LoadControlsSettings();
+        LoadGraphicsSettings();
+        LoadAudioSettings();
     }
 
     private void SetupButtons()
@@ -94,15 +118,6 @@ public class OptionsMenuController : MonoBehaviour
 
         if (exitButton != null)
             exitButton.onClick.AddListener(OnExitPressed);
-    }
-
-    private void InitializeSettings()
-    {
-        StartCoroutine(InitializeLocalization());
-        InitializeMicrophoneDropdown();
-        LoadControlsSettings();
-        LoadGraphicsSettings();
-        LoadAudioSettings();
     }
 
     private IEnumerator InitializeLocalization()
@@ -137,6 +152,8 @@ public class OptionsMenuController : MonoBehaviour
             languageDropdown.AddOptions(options);
             languageDropdown.value = savedLanguageIndex;
             languageDropdown.RefreshShownValue();
+            
+            languageDropdown.onValueChanged.RemoveListener(OnLanguageChanged);
             languageDropdown.onValueChanged.AddListener(OnLanguageChanged);
 
             Debug.Log($"Language dropdown initialized with value: {languageDropdown.value}, options: {languageDropdown.options.Count}");
@@ -167,6 +184,8 @@ public class OptionsMenuController : MonoBehaviour
                 microphoneDropdown.AddOptions(options);
                 microphoneDropdown.value = Mathf.Clamp(savedMicIndex, 0, options.Count - 1);
                 microphoneDropdown.RefreshShownValue();
+                
+                microphoneDropdown.onValueChanged.RemoveListener(OnMicrophoneChanged);
                 microphoneDropdown.onValueChanged.AddListener(OnMicrophoneChanged);
             }
         }
@@ -175,6 +194,8 @@ public class OptionsMenuController : MonoBehaviour
         if (microphoneSensitivitySlider != null)
         {
             microphoneSensitivitySlider.value = micSensitivity;
+            
+            microphoneSensitivitySlider.onValueChanged.RemoveListener(OnMicrophoneSensitivityChanged);
             microphoneSensitivitySlider.onValueChanged.AddListener(OnMicrophoneSensitivityChanged);
         }
         UpdateMicrophoneSensitivityText();
@@ -190,12 +211,16 @@ public class OptionsMenuController : MonoBehaviour
         if (mouseSensitivitySlider != null)
         {
             mouseSensitivitySlider.value = mouseSens;
+            
+            mouseSensitivitySlider.onValueChanged.RemoveListener(OnMouseSensitivityChanged);
             mouseSensitivitySlider.onValueChanged.AddListener(OnMouseSensitivityChanged);
         }
 
         if (gamepadSensitivitySlider != null)
         {
             gamepadSensitivitySlider.value = gamepadSens;
+            
+            gamepadSensitivitySlider.onValueChanged.RemoveListener(OnGamepadSensitivityChanged);
             gamepadSensitivitySlider.onValueChanged.AddListener(OnGamepadSensitivityChanged);
         }
 
@@ -209,6 +234,8 @@ public class OptionsMenuController : MonoBehaviour
         if (gammaSlider != null)
         {
             gammaSlider.value = gamma;
+            
+            gammaSlider.onValueChanged.RemoveListener(OnGammaChanged);
             gammaSlider.onValueChanged.AddListener(OnGammaChanged);
         }
 
@@ -226,6 +253,8 @@ public class OptionsMenuController : MonoBehaviour
             {
                 audioMixer.GetFloat("masterVolume", out masterValue);
                 masterVolumeSlider.value = masterValue;
+                
+                masterVolumeSlider.onValueChanged.RemoveListener(OnMasterVolumeChanged);
                 masterVolumeSlider.onValueChanged.AddListener(OnMasterVolumeChanged);
             }
 
@@ -233,6 +262,8 @@ public class OptionsMenuController : MonoBehaviour
             {
                 audioMixer.GetFloat("bgmVolume", out bgmValue);
                 bgmVolumeSlider.value = bgmValue;
+                
+                bgmVolumeSlider.onValueChanged.RemoveListener(OnBGMVolumeChanged);
                 bgmVolumeSlider.onValueChanged.AddListener(OnBGMVolumeChanged);
             }
 
@@ -240,6 +271,8 @@ public class OptionsMenuController : MonoBehaviour
             {
                 audioMixer.GetFloat("sfxVolume", out sfxValue);
                 sfxVolumeSlider.value = sfxValue;
+                
+                sfxVolumeSlider.onValueChanged.RemoveListener(OnSFXVolumeChanged);
                 sfxVolumeSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
             }
         }
@@ -376,24 +409,44 @@ public class OptionsMenuController : MonoBehaviour
     {
         SetActivePanel(gameplayPanel);
         HighlightButton(gameplayButton);
+        
+        if (EventSystem.current != null && languageDropdown != null)
+        {
+            EventSystem.current.SetSelectedGameObject(languageDropdown.gameObject);
+        }
     }
 
     public void ShowControlsPanel()
     {
         SetActivePanel(controlsPanel);
         HighlightButton(controlsButton);
+        
+        if (EventSystem.current != null && mouseSensitivitySlider != null)
+        {
+            EventSystem.current.SetSelectedGameObject(mouseSensitivitySlider.gameObject);
+        }
     }
 
     public void ShowGraphicsPanel()
     {
         SetActivePanel(graphicsPanel);
         HighlightButton(graphicsButton);
+        
+        if (EventSystem.current != null && gammaSlider != null)
+        {
+            EventSystem.current.SetSelectedGameObject(gammaSlider.gameObject);
+        }
     }
 
     public void ShowAudioPanel()
     {
         SetActivePanel(audioPanel);
         HighlightButton(audioButton);
+        
+        if (EventSystem.current != null && masterVolumeSlider != null)
+        {
+            EventSystem.current.SetSelectedGameObject(masterVolumeSlider.gameObject);
+        }
     }
 
     private void SetActivePanel(GameObject activePanel)
