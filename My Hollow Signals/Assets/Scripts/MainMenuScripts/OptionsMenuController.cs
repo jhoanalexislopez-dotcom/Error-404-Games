@@ -68,6 +68,7 @@ public class OptionsMenuController : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("OptionsMenuController: Start() called");
         menuManager = FindObjectOfType<MenuManager>();
         SetupButtons();
         InitializeSettings();
@@ -106,12 +107,15 @@ public class OptionsMenuController : MonoBehaviour
 
     private IEnumerator InitializeLocalization()
     {
+        Debug.Log("OptionsMenuController: Waiting for localization to initialize...");
         yield return LocalizationSettings.InitializationOperation;
 
         Debug.Log("Localization initialized");
 
         if (languageDropdown != null)
         {
+            Debug.Log($"Language dropdown: interactable={languageDropdown.interactable}, isActiveAndEnabled={languageDropdown.isActiveAndEnabled}");
+            
             var options = new List<TMP_Dropdown.OptionData>();
             int selected = 0;
             int savedLanguageIndex = PlayerPrefs.GetInt(LANGUAGE_KEY, 0);
@@ -135,7 +139,7 @@ public class OptionsMenuController : MonoBehaviour
             languageDropdown.RefreshShownValue();
             languageDropdown.onValueChanged.AddListener(OnLanguageChanged);
 
-            Debug.Log($"Language dropdown initialized with value: {languageDropdown.value}");
+            Debug.Log($"Language dropdown initialized with value: {languageDropdown.value}, options: {languageDropdown.options.Count}");
 
             LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[savedLanguageIndex];
         }
