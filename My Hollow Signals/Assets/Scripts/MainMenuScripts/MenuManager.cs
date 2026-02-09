@@ -22,6 +22,7 @@ public class MenuManager : MonoBehaviour
 
     [Header("Menu Objects")]
     [SerializeField] private GameObject mainMenuPanel;
+    [SerializeField] private GameObject optionsMenuLayout;
     [SerializeField] private GameObject audioPanel;
     [SerializeField] private GameObject controlsPanel;
 
@@ -97,6 +98,7 @@ public class MenuManager : MonoBehaviour
     public void ShowMainMenu()
     {
         mainMenuPanel.SetActive(true);
+        if (optionsMenuLayout != null) optionsMenuLayout.SetActive(false);
         audioPanel.SetActive(false);
         controlsPanel.SetActive(false);
 
@@ -105,6 +107,14 @@ public class MenuManager : MonoBehaviour
         {
             EventSystem.current.SetSelectedGameObject(playButton.gameObject);
         }
+    }
+
+    public void ShowOptionsMenu()
+    {
+        mainMenuPanel.SetActive(false);
+        if (optionsMenuLayout != null) optionsMenuLayout.SetActive(true);
+        audioPanel.SetActive(false);
+        controlsPanel.SetActive(false);
     }
 
     public void ShowAudioMenu()
