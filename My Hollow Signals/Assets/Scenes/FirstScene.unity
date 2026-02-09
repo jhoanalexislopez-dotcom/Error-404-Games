@@ -1549,7 +1549,7 @@ MonoBehaviour:
   typingVolume: 0.5
   fadeOutWaitTime: 1.67
   transitionDelayBeforeSceneLoad: 2
-  nextSceneName: TestScene
+  nextSceneName: World
   transitionTriggerName: StartTransition
   references:
     version: 2

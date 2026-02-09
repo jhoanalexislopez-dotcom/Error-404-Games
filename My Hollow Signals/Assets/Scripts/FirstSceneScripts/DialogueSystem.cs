@@ -61,7 +61,7 @@ public class DialogueSystem : MonoBehaviour
     public float transitionDelayBeforeSceneLoad = 2f;
 
     [Tooltip("Name of the scene to load after dialogue ends")]
-    public string nextSceneName = "TestScene";
+    public string nextSceneName = "World";
 
     [Tooltip("Name of the animator trigger for the transition")]
     public string transitionTriggerName = "StartTransition";
