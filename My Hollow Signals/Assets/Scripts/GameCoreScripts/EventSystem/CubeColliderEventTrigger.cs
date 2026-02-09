@@ -89,6 +89,17 @@ public class CubeColliderEventTrigger : MonoBehaviour
     public bool triggerNotification = false;
 
     // ==========================
+    // ADVICE UI SYSTEM
+    // ==========================
+
+    [Header("Advice Settings")]
+    [Tooltip("Show advice to the player after the event completes")]
+    public bool showAdvice = false;
+
+    [Tooltip("The advice text to display (localized)")]
+    public LocalizedString adviceText;
+
+    // ==========================
     // INTERNAL STATE
     // ==========================
 
@@ -283,6 +294,8 @@ public class CubeColliderEventTrigger : MonoBehaviour
         
         currentDialogueUI = null;
 
+        ShowAdviceIfEnabled();
+
         if (postEventDialogueLines.Length > 0 && !hasShownPostEventDialogue)
         {
             hasShownPostEventDialogue = true;
@@ -421,6 +434,56 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         animator.SetTrigger("SetNotification");
         Debug.Log("NotificationUI animator trigger 'SetNotification' activated.");
+    }
+
+    // ==========================
+    // ADVICE UI HANDLING
+    // ==========================
+
+    private void ShowAdviceIfEnabled()
+    {
+        if (!showAdvice)
+            return;
+
+        if (adviceText == null || adviceText.IsEmpty)
+        {
+            Debug.LogWarning("Advice is enabled but adviceText is not set.");
+            return;
+        }
+
+        StartCoroutine(ShowAdviceCoroutine());
+    }
+
+    private IEnumerator ShowAdviceCoroutine()
+    {
+        GameObject adviceUI = GameObject.Find("AdviceUI");
+        if (adviceUI == null)
+        {
+            Debug.LogWarning("AdviceUI GameObject not found in scene.");
+            yield break;
+        }
+
+        Animator animator = adviceUI.GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogWarning("AdviceUI does not have an Animator component.");
+            yield break;
+        }
+
+        TMP_Text adviceTextComponent = adviceUI.GetComponentInChildren<TMP_Text>();
+        if (adviceTextComponent == null)
+        {
+            Debug.LogWarning("AdviceUI does not have a TextMeshPro component in children.");
+            yield break;
+        }
+
+        var loadOperation = adviceText.GetLocalizedStringAsync();
+        yield return loadOperation;
+
+        adviceTextComponent.text = loadOperation.Result;
+
+        animator.SetTrigger("ShowAdvice");
+        Debug.Log("AdviceUI triggered with text: " + loadOperation.Result);
     }
 
     // ==========================

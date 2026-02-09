@@ -81,7 +81,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 46268440109056
-    m_Localized: Ven. Por favor.
+    m_Localized: "Por favor... Ven a la caba\xF1a yendo hacia el norte..."
     m_Metadata:
       m_Items: []
   - m_Id: 47891015000064
@@ -206,6 +206,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1176303356076032
     m_Localized: (Me estoy cansando...)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5153001684590592
+    m_Localized: Pulsa T (o arriba en la cruceta) para ver tus mensajes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5154230833766400
+    m_Localized: Pulsa F (o X) para abrir el inventario
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5156029573619712
+    m_Localized: "Puedes correr (Shift o L3) pero har\xE1s m\xE1s ruido"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5158819461062656
+    m_Localized: "Deber\xEDa volver a casa, a lo mejor est\xE1 all\xED."
     m_Metadata:
       m_Items: []
   references:

@@ -85,7 +85,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 46268440109056
-    m_Localized: Please... come.
+    m_Localized: Please... come to the cabin heading north...
     m_Metadata:
       m_Items: []
   - m_Id: 47891015000064
@@ -221,6 +221,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1176303356076032
     m_Localized: (I'm getting tired...)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5153001684590592
+    m_Localized: Press T (or D-PAD Up) to check your messages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5154230833766400
+    m_Localized: Press F (or X) to open the inventory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5156029573619712
+    m_Localized: You can run (Shift or L3) but you'll make more noise
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5158819461062656
+    m_Localized: I should get back home, she might be there.
     m_Metadata:
       m_Items: []
   references:
