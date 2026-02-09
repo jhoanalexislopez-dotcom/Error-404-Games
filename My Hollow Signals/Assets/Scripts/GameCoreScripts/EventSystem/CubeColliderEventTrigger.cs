@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization;
 using TMPro;
@@ -131,8 +132,8 @@ public class CubeColliderEventTrigger : MonoBehaviour
     private MonoBehaviour playerController;
     private NoteUIManager noteUIManager;
 
-    private GameObject uiToHide;
-    private bool wasUIActive;
+    private GameObject gameUIObject;
+    private List<GameObject> hiddenUIChildren = new List<GameObject>();
 
     private void Start()
     {
@@ -503,11 +504,18 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
         if (hideUI)
         {
-            uiToHide = GameObject.Find("GameUI");
-            if (uiToHide != null)
+            gameUIObject = GameObject.Find("GameUI");
+            if (gameUIObject != null)
             {
-                wasUIActive = uiToHide.activeSelf;
-                uiToHide.SetActive(false);
+                hiddenUIChildren.Clear();
+                foreach (Transform child in gameUIObject.transform)
+                {
+                    if (child.gameObject.activeSelf)
+                    {
+                        child.gameObject.SetActive(false);
+                        hiddenUIChildren.Add(child.gameObject);
+                    }
+                }
             }
         }
 
@@ -530,10 +538,17 @@ public class CubeColliderEventTrigger : MonoBehaviour
                 playerController.enabled = true;
         }
 
-        if (hideUI && uiToHide != null)
+        if (hideUI && gameUIObject != null)
         {
-            uiToHide.SetActive(wasUIActive);
-            uiToHide = null;
+            foreach (GameObject child in hiddenUIChildren)
+            {
+                if (child != null)
+                {
+                    child.SetActive(true);
+                }
+            }
+            hiddenUIChildren.Clear();
+            gameUIObject = null;
         }
     }
 
