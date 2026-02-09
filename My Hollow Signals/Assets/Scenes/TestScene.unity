@@ -18065,7 +18065,7 @@ MonoBehaviour:
   requiredEventFlags:
   - HasFlashlight
   requireAllFlags: 0
-  sanityDrainRate: 70
+  sanityDrainRate: 40
   drainDelay: 0.5
   warningMessage: It's too dark... you need a light source.
   debugLog: 1
