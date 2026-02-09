@@ -30,8 +30,8 @@ public class OptionsMenuController : MonoBehaviour
     [SerializeField] private TMP_Text microphoneSensitivityText;
 
     [Header("Controls Settings")]
-    [SerializeField] private Slider mouseSensitivitySlider;
-    [SerializeField] private Slider gamepadSensitivitySlider;
+    public Slider mouseSensitivitySlider;
+    public Slider gamepadSensitivitySlider;
     [SerializeField] private TMP_Text mouseSensitivityText;
     [SerializeField] private TMP_Text gamepadSensitivityText;
 
@@ -82,7 +82,7 @@ public class OptionsMenuController : MonoBehaviour
         SetInitialSelection();
     }
 
-    private void SetInitialSelection()
+    public void SetInitialSelection()
     {
         if (gameplayButton != null && EventSystem.current != null)
         {

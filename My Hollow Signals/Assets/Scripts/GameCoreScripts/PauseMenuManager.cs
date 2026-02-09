@@ -31,10 +31,15 @@ public class PauseMenuManager : MonoBehaviour
     [Header("Flashlight Settings")]
     [Tooltip("Reference to the flashlight mesh GameObject to hide when paused")]
     public GameObject flashlightMesh;
+    
+    [Header("Options Menu")]
+    [Tooltip("Reference to the options menu GameObject")]
+    public GameObject optionsMenuObject;
 
     // Store original cursor state
     private CursorLockMode originalCursorLockMode;
     private bool originalCursorVisible;
+    private InGameOptionsController inGameOptionsController;
 
     void Awake()
     {
@@ -50,6 +55,24 @@ public class PauseMenuManager : MonoBehaviour
         mobilePhoneToggle = FindObjectOfType<MobilePhoneToggle>();
         flashlightController = FindObjectOfType<FlashlightController>();
         noteInventoryUI = FindObjectOfType<NoteInventoryUI>();
+        
+        // Find InGameOptionsController in children (works even if inactive)
+        if (pauseMenuUI != null)
+        {
+            inGameOptionsController = pauseMenuUI.GetComponentInChildren<InGameOptionsController>(true);
+            if (inGameOptionsController != null)
+            {
+                Debug.Log("InGameOptionsController found successfully!");
+            }
+            else
+            {
+                Debug.LogWarning("InGameOptionsController NOT found in pauseMenuUI children!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("pauseMenuUI is null!");
+        }
 
         // Set up button events
         if (resumeButton != null)
@@ -196,15 +219,14 @@ public class PauseMenuManager : MonoBehaviour
 
     public void OpenOptions()
     {
-        SensitivitySettingsManager settingsManager = FindObjectOfType<SensitivitySettingsManager>();
-        if (settingsManager != null)
+        if (inGameOptionsController != null)
         {
-            settingsManager.OpenSettings();
-            Debug.Log("Opening sensitivity settings from pause menu");
+            inGameOptionsController.OpenOptions();
+            Debug.Log("Opening options menu from pause menu");
         }
         else
         {
-            Debug.LogWarning("SensitivitySettingsManager not found! Please add it to your scene.");
+            Debug.LogWarning("InGameOptionsController not found! Please add it to your scene.");
         }
     }
 
