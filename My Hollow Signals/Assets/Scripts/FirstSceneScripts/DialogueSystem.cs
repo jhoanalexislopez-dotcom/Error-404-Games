@@ -171,9 +171,13 @@ public class DialogueSystem : MonoBehaviour
             if (typingCoroutine != null)
             {
                 StopCoroutine(typingCoroutine);
+                typingCoroutine = null;
             }
 
-            StartCoroutine(LoadAndTypeText(currentLine.text));
+            isTyping = false;
+            dialogueText.text = "";
+
+            typingCoroutine = StartCoroutine(LoadAndTypeText(currentLine.text));
         }
         else
         {
@@ -188,11 +192,12 @@ public class DialogueSystem : MonoBehaviour
 
         if (loadOperation.IsDone && !string.IsNullOrEmpty(loadOperation.Result))
         {
-            typingCoroutine = StartCoroutine(TypeText(loadOperation.Result));
+            yield return TypeText(loadOperation.Result);
         }
         else
         {
             Debug.LogWarning("Failed to load localized string or result was empty.");
+            isTyping = false;
         }
     }
 
@@ -264,6 +269,7 @@ public class DialogueSystem : MonoBehaviour
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
+            typingCoroutine = null;
         }
 
         if (typingAudioSource != null)
