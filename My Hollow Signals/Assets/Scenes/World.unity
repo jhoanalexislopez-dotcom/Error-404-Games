@@ -8145,7 +8145,7 @@ PrefabInstance:
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: cameraFocusTarget
       value: 
-      objectReference: {fileID: 320198344}
+      objectReference: {fileID: 1035655286}
     - target: {fileID: 7668545017123793984, guid: a3937562dfea471448652ce3eacde4d0, type: 3}
       propertyPath: triggerNotification
       value: 0
@@ -23728,7 +23728,7 @@ Transform:
   m_GameObject: {fileID: 1035655285}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000014305114}
-  m_LocalPosition: {x: -4.674, y: 3.749, z: 3.202}
+  m_LocalPosition: {x: -1.434, y: 3.997, z: 3.927}
   m_LocalScale: {x: 1, y: 2.1698565, z: 1.4207524}
   m_ConstrainProportionsScale: 0
   m_Children: []
