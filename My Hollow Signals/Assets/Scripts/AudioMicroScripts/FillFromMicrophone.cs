@@ -5,9 +5,6 @@
  *    This script fills a UI Image (audioBar) based on the loudness detected from the microphone input. It uses a sensitivity slider to adjust how responsive the audio bar is to changes in loudness. The script also includes a threshold to prevent the audio bar from filling up due to very low-level noise, ensuring that only significant sounds will affect the visual representation.
  *******************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 

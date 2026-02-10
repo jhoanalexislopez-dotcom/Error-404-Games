@@ -23,7 +23,6 @@ public class GameEventManager : MonoBehaviour
             return;
         }
         Instance = this;
-        //DontDestroyOnLoad(gameObject);
     }
     
     public void SetEventFlag(string flagName, bool value)

@@ -5,7 +5,6 @@
  *    This script manages the jumpscare sequence, including spawning the enemy, playing the scream sound, shaking the camera, and transitioning to the main menu after the jumpscare. It also handles disabling player input and UI interactions during the jumpscare to ensure a seamless and immersive experience.
  *******************************************************/
 
-
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -57,11 +56,6 @@ public class JumpscareManager : MonoBehaviour
     
     private Vector3 originalCameraPosition;
     private Coroutine shakeCoroutine;
-
-    private bool wasPauseMenuOpen;
-    private bool wasMobilePhoneOpen;
-    private bool wasInventoryOpen;
-    private bool wasNoteOpen;
 
     private void Awake()
     {
@@ -174,32 +168,23 @@ public class JumpscareManager : MonoBehaviour
 
     private void CloseAllMenus()
     {
-        wasPauseMenuOpen = false;
-        wasMobilePhoneOpen = false;
-        wasInventoryOpen = false;
-        wasNoteOpen = false;
-
         if (pauseMenuManager != null && pauseMenuManager.IsPaused)
         {
-            wasPauseMenuOpen = true;
             pauseMenuManager.ResumeGame();
         }
 
         if (mobilePhoneToggle != null && mobilePhoneToggle.IsPhoneVisible)
         {
-            wasMobilePhoneOpen = true;
             mobilePhoneToggle.ClosePhone();
         }
 
         if (inventory3DController != null && inventory3DController.IsInventoryOpen)
         {
-            wasInventoryOpen = true;
             inventory3DController.CloseInventory();
         }
 
         if (noteUIManager != null && noteUIManager.IsNoteActive)
         {
-            wasNoteOpen = true;
             noteUIManager.CloseNote();
         }
     }

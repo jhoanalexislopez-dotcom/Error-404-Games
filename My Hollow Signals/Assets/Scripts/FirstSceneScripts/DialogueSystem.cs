@@ -311,7 +311,6 @@ public class DialogueSystem : MonoBehaviour
             typingAudioSource.Stop();
         }
 
-        Debug.Log("Dialogue ended, triggering transition animation...");
         StartCoroutine(TriggerTransitionAndChangeScene());
     }
 
@@ -319,7 +318,6 @@ public class DialogueSystem : MonoBehaviour
     {
         if (transitionAnimator != null)
         {
-            Debug.Log($"Triggering animator with '{transitionTriggerName}' trigger...");
             transitionAnimator.SetTrigger(transitionTriggerName);
         }
         else
@@ -327,16 +325,8 @@ public class DialogueSystem : MonoBehaviour
             Debug.LogWarning("transitionAnimator is null, cannot trigger transition animation!");
         }
 
-        Debug.Log($"Waiting {transitionDelayBeforeSceneLoad} seconds before loading scene...");
         yield return new WaitForSeconds(transitionDelayBeforeSceneLoad);
-
-        Debug.Log($"Loading scene: {nextSceneName}");
         SceneManager.LoadScene(nextSceneName);
-    }
-
-    public void RestartDialogue()
-    {
-        StartDialogue();
     }
 
     public bool IsDialogueActive()
@@ -347,26 +337,5 @@ public class DialogueSystem : MonoBehaviour
     public bool IsCurrentlyTyping()
     {
         return isTyping;
-    }
-
-    public void ChangeAdvanceAction(string newActionName)
-    {
-        CleanupInputAction();
-        advanceActionName = newActionName;
-        SetupInputAction();
-    }
-
-    public void AddDialogueLine(LocalizedString text)
-    {
-        DialogueLine newLine = new DialogueLine();
-        newLine.text = text;
-        dialogueLines.Add(newLine);
-    }
-
-    public void ClearDialogue()
-    {
-        dialogueLines.Clear();
-        currentDialogueIndex = 0;
-        dialogueComplete = true;
     }
 }

@@ -5,7 +5,6 @@
  *   This script allows users to select a microphone device from a dropdown menu. It populates the dropdown with available microphone devices and triggers an event when the user selects a different microphone. This enables other scripts, such as the AudioLoudnessDetector, to update their audio input source dynamically based on the user's choice.
  *******************************************************/
 
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;

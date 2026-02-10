@@ -52,7 +52,6 @@ public class CreditsRollController : MonoBehaviour
 
     private CanvasGroup logoCanvasGroup;
     private CanvasGroup creditsCanvasGroup;
-    private bool isScrolling = false;
     private float scrollStartPosition;
     private float scrollEndPosition;
 
@@ -305,16 +304,12 @@ public class CreditsRollController : MonoBehaviour
 
     private IEnumerator ScrollCredits()
     {
-        isScrolling = true;
-
         while (scrollContent.anchoredPosition.y < scrollEndPosition)
         {
             float newY = scrollContent.anchoredPosition.y + (scrollSpeed * Time.deltaTime);
             scrollContent.anchoredPosition = new Vector2(scrollContent.anchoredPosition.x, newY);
             yield return null;
         }
-
-        isScrolling = false;
     }
 
     private IEnumerator TransitionToNextScene()

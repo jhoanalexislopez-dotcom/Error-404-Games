@@ -35,7 +35,5 @@ public class LocalizationHelper : MonoBehaviour
                 localizeEvent.StringReference.WaitForCompletion = true;
             }
         }
-
-        Debug.Log($"Configured {localizeEvents.Length} LocalizeStringEvent components to wait for completion.");
     }
 }

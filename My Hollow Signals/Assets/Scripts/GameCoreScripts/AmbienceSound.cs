@@ -5,19 +5,7 @@
  *   This script manages ambient sounds in the game, allowing for smooth volume transitions as the player enters or exits defined zones. It uses a trigger collider to determine when the player is within the area of effect and adjusts the volume of attached audio sources accordingly. The script also supports ignoring vertical position changes to prevent crouching from affecting the sound, and it smoothly fades between inside and outside volumes for a more immersive experience.
  *******************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
-// Source: https://www.youtube.com/watch?v=8-SnHgtXV3k
-
-// ============== INSTRUCTION ==============
-// Create empty game object and add "Box Collider" component
-// Set the "Box Collider" to "Is Trigger"
-// Adjust its size to fit the ambience area
-// Create another empty game object and add this script
-// Select "Area" as well as "Player" in the inspector
-// Add sound to the object
 
 public class AmbienceSound : MonoBehaviour
 {

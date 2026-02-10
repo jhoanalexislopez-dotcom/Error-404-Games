@@ -18,7 +18,6 @@ public class PlayerAnimationController : MonoBehaviour
     [Header("Animation Parameters")]
     [SerializeField] private string isWalkingParam = "IsWalking";
     [SerializeField] private string isRunningParam = "IsRunning";
-    [SerializeField] private float movementThreshold = 0.1f;
     
     [Header("Debug")]
     [SerializeField] private bool showDebugInfo = false;
@@ -56,8 +55,6 @@ public class PlayerAnimationController : MonoBehaviour
         {
             Debug.LogError("PlayerAnimationController: Animator has no controller assigned!");
         }
-        
-        Debug.Log("PlayerAnimationController initialized successfully!");
     }
     
     private void Update()

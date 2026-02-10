@@ -5,8 +5,6 @@
  *    This script detects the loudness of audio input from the microphone. It captures audio data in real-time and calculates the average loudness over a specified sample window. The script also allows for dynamic selection of different microphone devices, making it versatile for various applications that require audio input analysis.
  *******************************************************/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioLoudnessDetector : MonoBehaviour
