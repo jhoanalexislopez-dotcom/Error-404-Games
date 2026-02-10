@@ -10,6 +10,7 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.Localization.Settings;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering.PostProcessing;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -45,7 +46,7 @@ public class OptionsMenuController : MonoBehaviour
     [Header("Graphics Settings")]
     [SerializeField] private Slider gammaSlider;
     [SerializeField] private TMP_Text gammaValueText;
-    [SerializeField] private Image gammaPreviewImage;
+    [SerializeField] private PostProcessVolume postProcessVolume;
 
     [Header("Audio Settings")]
     [SerializeField] private Slider masterVolumeSlider;
@@ -61,18 +62,19 @@ public class OptionsMenuController : MonoBehaviour
 
     private const string MOUSE_SENSITIVITY_KEY = "MouseSensitivity";
     private const string GAMEPAD_SENSITIVITY_KEY = "GamepadSensitivity";
-    private const string GAMMA_KEY = "GammaCorrection";
+    private const string GAMMA_KEY = "GameGamma";
     private const string LANGUAGE_KEY = "SelectedLanguage";
     private const string MICROPHONE_KEY = "SelectedMicrophone";
     private const string MIC_SENSITIVITY_KEY = "MicrophoneSensitivity";
 
     private const float DEFAULT_MOUSE_SENSITIVITY = 1f;
     private const float DEFAULT_GAMEPAD_SENSITIVITY = 3f;
-    private const float DEFAULT_GAMMA = 2.2f;
+    private const float DEFAULT_GAMMA = 1f;
     private const float DEFAULT_MIC_SENSITIVITY = 0.01f;
 
     private MicrophoneSelector microphoneSelector;
     private MenuManager menuManager;
+    private ColorGrading colorGrading;
     private bool isInitialized = false;
 
     private void OnEnable()
@@ -236,10 +238,35 @@ public class OptionsMenuController : MonoBehaviour
 
     private void LoadGraphicsSettings()
     {
+        if (postProcessVolume == null)
+        {
+            postProcessVolume = FindObjectOfType<PostProcessVolume>();
+        }
+
+        if (postProcessVolume != null && postProcessVolume.profile != null)
+        {
+            postProcessVolume.profile.TryGetSettings(out colorGrading);
+            
+            if (colorGrading != null)
+            {
+                if (!colorGrading.enabled.value)
+                {
+                    colorGrading.enabled.Override(true);
+                }
+
+                if (!colorGrading.postExposure.overrideState)
+                {
+                    colorGrading.postExposure.overrideState = true;
+                }
+            }
+        }
+
         float gamma = PlayerPrefs.GetFloat(GAMMA_KEY, DEFAULT_GAMMA);
 
         if (gammaSlider != null)
         {
+            gammaSlider.minValue = 0.5f;
+            gammaSlider.maxValue = 2f;
             gammaSlider.value = gamma;
             
             gammaSlider.onValueChanged.RemoveListener(OnGammaChanged);
@@ -382,7 +409,7 @@ public class OptionsMenuController : MonoBehaviour
     private void UpdateGammaDisplay()
     {
         if (gammaValueText != null && gammaSlider != null)
-            gammaValueText.text = gammaSlider.value.ToString("F2");
+            gammaValueText.text = gammaSlider.value.ToString("F1");
     }
 
     private void UpdateVolumeTexts()
@@ -403,12 +430,11 @@ public class OptionsMenuController : MonoBehaviour
         return percentage.ToString("F0") + "%";
     }
 
-    private void ApplyGamma(float gamma)
+    private void ApplyGamma(float value)
     {
-        if (gammaPreviewImage != null)
+        if (colorGrading != null)
         {
-            Color gammaColor = new Color(gamma / 2.2f, gamma / 2.2f, gamma / 2.2f, 1f);
-            gammaPreviewImage.color = gammaColor;
+            colorGrading.postExposure.value = value - 1f;
         }
     }
 
@@ -481,7 +507,10 @@ public class OptionsMenuController : MonoBehaviour
             microphoneSensitivitySlider.value = DEFAULT_MIC_SENSITIVITY;
 
         if (gammaSlider != null)
+        {
             gammaSlider.value = DEFAULT_GAMMA;
+            ApplyGamma(DEFAULT_GAMMA);
+        }
 
         if (audioMixer != null)
         {
