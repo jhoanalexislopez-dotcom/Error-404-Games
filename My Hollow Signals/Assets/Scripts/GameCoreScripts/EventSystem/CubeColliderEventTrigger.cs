@@ -294,6 +294,16 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
     private void OnMainDialogueComplete()
     {
+        // Apply sanity loss after dialogue completes, not during the cinematic
+        if (sanityLossAmount > 0f)
+        {
+            SanityManager sanityManager = FindObjectOfType<SanityManager>(true);
+            if (sanityManager != null)
+            {
+                sanityManager.LowerSanity(sanityLossAmount);
+            }
+        }
+
         EndCinematic();
         hasFinishedMainEvent = true;
         
@@ -526,12 +536,7 @@ public class CubeColliderEventTrigger : MonoBehaviour
             }
         }
 
-        if (sanityLossAmount > 0f)
-        {
-            SanityManager sanityManager = FindObjectOfType<SanityManager>(true);
-            if (sanityManager != null)
-                sanityManager.LowerSanity(sanityLossAmount);
-        }
+        // Sanity loss moved to OnMainDialogueComplete() to trigger after event finishes
     }
 
     private void EndCinematic()
