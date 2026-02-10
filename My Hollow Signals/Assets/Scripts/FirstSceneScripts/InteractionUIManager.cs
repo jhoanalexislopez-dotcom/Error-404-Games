@@ -1,6 +1,6 @@
 /*******************************************************
  * Author: [Ignacio Lopez]
- * Last Modified: [25/11/2025]
+ * Last Modified: [25/01/2026]
  * Description:
  *    Handles interaction UI during cinematics without raycasting.
  *    Shows keyboard/gamepad prompts and sends input to the DialogueSystem.
@@ -19,7 +19,7 @@ public class InteractionUICinematic : MonoBehaviour
     public GameObject BlackLayoutTransitionUI;
 
     [Header("Input System")]
-    [Tooltip("Arrastra aqu� la InputAction 'Interact' o la que uses en tu DialogueSystem.")]
+    [Tooltip("Arrastra aquí la InputAction 'Interact' o la que uses en tu DialogueSystem.")]
     public InputActionReference interactAction;
 
     [Header("Dialogue")]
@@ -54,11 +54,11 @@ public class InteractionUICinematic : MonoBehaviour
 
     private void Update()
     {
-        // Mostrar iconos seg�n dispositivo
+        // Mostrar iconos según dispositivo
         if (keyUI != null) keyUI.SetActive(!usingGamepad);
         if (buttonUI != null) buttonUI.SetActive(usingGamepad);
 
-        // Si no hay di�logo, oculta la UI
+        // Si no hay diálogo, oculta la UI
         if (dialogueSystem != null && !dialogueSystem.IsDialogueActive())
         {
             if (interactionUI != null)

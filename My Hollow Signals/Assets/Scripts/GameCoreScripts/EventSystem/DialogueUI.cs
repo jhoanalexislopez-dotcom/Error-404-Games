@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio López]
+ * Last Modified: [26/01/2026]
+ * Description:
+ *  This script manages the dialogue UI system in the game. It handles displaying localized dialogue lines with a typing effect, managing the timing between lines, and automatically hiding the dialogue after a delay. It also provides a callback for when the dialogue sequence is complete, allowing for chaining events or actions after the dialogue finishes.
+ *******************************************************/
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Localization;

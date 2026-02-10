@@ -1,6 +1,6 @@
 /*******************************************************
  * Author: [Bianca Marinica]
- * Last Modified: [21/11/2025]
+ * Last Modified: [29/01/2026]
  * Description:
  *    Interactable object that transforms (position, rotation, scale) when interacted with.
  *    Used for doors, drawers, and other moveable objects.

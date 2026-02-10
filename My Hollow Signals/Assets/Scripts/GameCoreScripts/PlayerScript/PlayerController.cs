@@ -1,6 +1,7 @@
 /*******************************************************
  * Author: [Jhoan Alexis Lopez]
- * Last Modified: [21/11/2025]
+ * Updated by: [Ignacio López]
+ * Last Modified: [30/01/2026]
  * Description:
  *    Main first-person controller handling movement, looking, crouching, and player physics.
  *******************************************************/
@@ -26,7 +27,7 @@ public class FirstPersonController : MonoBehaviour
 
     [Header("Cinemachine")]
     public Transform cameraRoot;
-    [Tooltip("Sensibilidad al usar rat�n")]
+    [Tooltip("Sensibilidad al usar ratón")]
     public float mouseSensitivity = 1f;
     [Tooltip("Sensibilidad al usar gamepad")]
     public float gamepadSensitivity = 3f;
@@ -49,7 +50,7 @@ public class FirstPersonController : MonoBehaviour
     private bool runPressed;
     private bool crouchPressed;
 
-    // �ltimo dispositivo usado
+    // Último dispositivo usado
     private InputDevice lastUsedDevice;
 
     // Public accessors for actual movement state (after mutual exclusion logic)
@@ -175,7 +176,7 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
-        // Forzar c�mara mirando al frente
+        // Forzar cámara mirando al frente
         xRotation = 0f;
 
         if (cameraRoot != null)
@@ -216,7 +217,7 @@ public class FirstPersonController : MonoBehaviour
         float targetHeight = crouchPressed ? crouchHeight : originalHeight;
         controller.height = Mathf.Lerp(controller.height, targetHeight, Time.deltaTime * 10f);
 
-        // --- C�mara suavizada al agacharse ---
+        // --- Cámara suavizada al agacharse ---
         Vector3 targetCameraPos = crouchPressed
             ? originalCameraPos + Vector3.down * crouchCameraOffset
             : originalCameraPos;
@@ -226,7 +227,7 @@ public class FirstPersonController : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        // --- Rotaci�n de c�mara ---
+        // --- Rotación de cámara ---
         // Make sensitivity frame rate independent
         float frameRateMultiplier = Time.unscaledDeltaTime * 60f; // Normalize to 60 FPS
         float mouseX = lookInput.x * currentSensitivity * frameRateMultiplier;

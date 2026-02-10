@@ -1,6 +1,7 @@
 /*******************************************************
  * Author: [Jhoan Alexis Lopez]
  * Last Modified: [21/11/2025]
+ * Updated by: [Ignacio López]
  * Description:
  *    Handles player interaction with objects in the world using raycasting.
  *******************************************************/

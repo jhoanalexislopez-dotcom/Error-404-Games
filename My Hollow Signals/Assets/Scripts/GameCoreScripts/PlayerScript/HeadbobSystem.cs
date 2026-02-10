@@ -1,6 +1,7 @@
 /*******************************************************
  * Author: [Jhoan Alexis Lopez]
- * Last Modified: [21/11/2025]
+ * Updated by: [Ignacio López]
+ * Last Modified: [30/01/2026]
  * Description:
  *    Creates realistic camera bobbing effect when the player walks or runs.
  *******************************************************/

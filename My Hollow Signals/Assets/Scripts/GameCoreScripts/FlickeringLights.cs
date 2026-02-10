@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio López]
+ * Last Modified: [26/01/2026]
+ * Description:
+ *   Adds flickering effects to lights to create a tense atmosphere. Supports random flickering, bursts of flickers, and can affect all child lights or just the attached light. Configurable intensity and timing settings allow for a variety of flicker patterns to enhance the game's ambiance.
+ *******************************************************/
+
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;

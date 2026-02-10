@@ -1,6 +1,7 @@
 /*******************************************************
  * Author: [Jhoan Alexis Lopez]
- * Last Modified: [21/11/2025]
+ * Updated by: [Ignacio López]
+ * Last Modified: [29/01/2026]
  * Description:
  *    Singleton inventory system tracking collected items.
  *******************************************************/
@@ -34,7 +35,7 @@ public class PlayerInventory : MonoBehaviour
     public int target = 3;
 
     [Header("UI (opcional)")]
-    [Tooltip("Arrastra aqu� un TextMeshProUGUI para mostrar el contador")]
+    [Tooltip("Arrastra aquí un TextMeshProUGUI para mostrar el contador")]
     public TextMeshProUGUI counterText;
     public TextMeshProUGUI batteryUI;
 
@@ -113,7 +114,7 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnAllCollected()
     {
-        // Aqu� puedes lanzar un evento, cargar escena, mostrar mensaje, etc.
-        Debug.Log("�Has recogido todos los objetos!");
+        // Aquí puedes lanzar un evento, cargar escena, mostrar mensaje, etc.
+        Debug.Log("¡Has recogido todos los objetos!");
     }
 }

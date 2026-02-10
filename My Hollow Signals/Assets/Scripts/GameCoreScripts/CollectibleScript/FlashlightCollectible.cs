@@ -1,3 +1,12 @@
+
+/*******************************************************
+ * Author: [Ignacio López]
+ * Last Modified: [25/01/2026]
+ * Description:
+ *    Represents a collectible flashlight item that players can pick up. Implements the IInteractable interface. Handles localization, audio feedback, and enabling the player's flashlight.
+ *******************************************************/
+
+
 using UnityEngine;
 using UnityEngine.Localization;
 

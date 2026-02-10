@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio López]
+ * Last Modified: [22/01/2026]
+ * Description:
+ * This script generates a texture representing the waveform of the audio input from the microphone. It captures audio data in real-time and updates a Texture2D with the waveform information, which can then be used in materials for visual effects. The script also includes options for scaling the waveform and debugging logs to monitor its performance and behavior during development.
+ *******************************************************/
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;

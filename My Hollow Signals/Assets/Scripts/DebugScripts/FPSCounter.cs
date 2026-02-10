@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [31/01/2026]
+ * Description:
+ * This script displays the current frames per second (FPS) in a TextMeshProUGUI element. It calculates the FPS by counting the number of frames rendered over a specified update interval and updates the display accordingly. The script also includes functionality to toggle the visibility of the FPS counter, allowing developers to monitor performance during testing and debugging sessions without cluttering the screen when not needed. 
+ *******************************************************/
+
 using UnityEngine;
 using TMPro;
 

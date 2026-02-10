@@ -1,8 +1,9 @@
 /*******************************************************
  * Author: [Bianca Marinica]
- * Last Modified: [21/11/2025]
+ * Updated by: [Ignacio López]
+ * Last Modified: [27/01/2026]
  * Description:
- *    Represents collectible items (like notes or objects) that players can pick up. Implements the IInteractable interface..
+ *    Represents collectible items (like notes or objects) that players can pick up. Implements the IInteractable interface. Handles localization, sanity effects, audio feedback, and optional event triggering upon collection.
  *******************************************************/
 
 using UnityEngine;

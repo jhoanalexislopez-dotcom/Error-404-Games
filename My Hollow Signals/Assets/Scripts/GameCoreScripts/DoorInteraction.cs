@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Bianca Marinica]
+ * Last Modified: [23/01/2026]
+ * Description:
+ *   Handles player interaction with doors, allowing them to open and close. It also emits noise when the door is used, which can affect the player's sanity if they are nearby. The script supports smooth opening/closing animations and optional audio feedback for door sounds. Additionally, it includes UnityEvents for custom behavior when the door is opened or closed.
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.Events;
 

@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio López]
+ * Last Modified: [27/01/2026]
+ * Description:
+ *  Manages cinematic sequences by disabling player control and saving/restoring camera and player states. Provides static methods to start and end cinematics, ensuring a smooth transition in and out of cinematic mode while maintaining the player's original orientation and camera settings.
+*******************************************************/
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 

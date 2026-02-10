@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio López]
+ * Last Modified: [29/01/2026]
+ * Description:
+ *   This script is attached to invisible cube colliders in the scene that are used to trigger events when the player enters them. It handles dialogue triggering, cinematic control, sanity effects, phone message additions, and more. It also supports requirements for triggering and can be configured to only trigger once or wait for certain conditions (like a note UI closing) before activating.
+ *******************************************************/
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,8 +1,8 @@
 /*******************************************************
- * Author: [Ignacio Lopez]
- * Last Modified: [21/11/2025]
+ * Author: [Ignacio López]
+ * Last Modified: [25/01/2026]
  * Description:
- *    Represents rechargable items that players can pick up. Implements the IInteractable interface.
+ *    Represents rechargable items that players can pick up. Implements the IInteractable interface. Handles localization, sanity effects, audio feedback, and optional event triggering upon collection.
  *******************************************************/
 
 using UnityEngine;

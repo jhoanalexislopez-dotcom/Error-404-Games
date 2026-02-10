@@ -1,6 +1,6 @@
 /*******************************************************
  * Author: [Ignacio Lopez]
- * Last Modified: [21/11/2025]
+ * Last Modified: [30/01/2026]
  * Description:
  *    Manages game-wide audio system including footsteps, flashlight sounds, and environmental audio based on player state.
  *******************************************************/
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InputActionReference flashlightToggle;  // Button
 
     [Header("Audio Sources")]
-    [Tooltip("Source para efectos (PlayOneShot). Si est� vac�o, se crea uno.")]
+    [Tooltip("Source para efectos (PlayOneShot). Si está vacío, se crea uno.")]
     [SerializeField] private AudioSource sfxSource;
     [Tooltip("Pitch aleatorio de pasos (min/max).")]
     [SerializeField] private Vector2 footstepPitchRange = new Vector2(0.95f, 1.05f);
@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioClip[] walkFootsteps;
     [Tooltip("Clips de pasos corriendo (pueden ser los mismos).")]
     [SerializeField] private AudioClip[] runFootsteps;
-    [Tooltip("Clips de pasos agachado (m�s suaves).")]
+    [Tooltip("Clips de pasos agachado (más suaves).")]
     [SerializeField] private AudioClip[] crouchFootsteps;
 
     [Header("Footsteps - Timings & Volumes")]
@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     [Range(0f, 1f)][SerializeField] private float crouchVolume = 0.5f;
 
     [Header("Footsteps - Misc")]
-    [Tooltip("Umbral m�nimo de input para considerar que te mueves.")]
+    [Tooltip("Umbral mínimo de input para considerar que te mueves.")]
     [SerializeField] private float moveThreshold = 0.1f;
     [Tooltip("Requiere estar en el suelo para sonar pasos.")]
     [SerializeField] private bool requireGrounded = true;
@@ -227,17 +227,17 @@ public class GameManager : MonoBehaviour
 
         if (stepTimer <= 0f)
         {
-            // Elige set de clips seg�n estado
+            // Elige set de clips según estado
             AudioClip[] pool = isCrouched ? crouchFootsteps : (running ? runFootsteps : walkFootsteps);
             if (pool != null && pool.Length > 0 && sfxSource != null)
             {
                 var clip = pool[Random.Range(0, pool.Length)];
                 float vol = isCrouched ? crouchVolume : (running ? runVolume : walkVolume);
 
-                // sutil variaci�n de pitch
+                // sutil variación de pitch
                 sfxSource.pitch = Random.Range(footstepPitchRange.x, footstepPitchRange.y);
 
-                // Reproducir en la posici�n del CharacterController si existe
+                // Reproducir en la posición del CharacterController si existe
                 if (characterController != null) sfxSource.transform.position = characterController.transform.position;
 
                 sfxSource.PlayOneShot(clip, vol);
@@ -292,7 +292,7 @@ public class GameManager : MonoBehaviour
             actionRef.action.Enable();
     }
 
-    // ---------- API p�blica opcional ----------
+    // ---------- API pública opcional ----------
     public void ForceFlashlight(bool on)
     {
         flashlightOn = on;

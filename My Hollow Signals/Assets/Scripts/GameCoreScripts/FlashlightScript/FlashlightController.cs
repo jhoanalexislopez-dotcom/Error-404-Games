@@ -1,6 +1,6 @@
 /*******************************************************
  * Author: [Bianca Marinica]
- * Last Modified: [21/11/2025]
+ * Last Modified: [19/01/2026]
  * Description:
  *    Controls flashlight on/off state, likely handles input for toggling and manages light intensity/battery if applicable.
  *******************************************************/
@@ -14,7 +14,7 @@ public class FlashlightController : MonoBehaviour
     private bool flashlightEnabled = false;
 
     [Header("Input System")]
-    [Tooltip("Arrastra aqu� la InputAction 'Flashlight' desde tu Input Actions (como InputActionReference).")]
+    [Tooltip("Arrastra aquí la InputAction 'Flashlight' desde tu Input Actions (como InputActionReference).")]
     public InputActionReference flashlightAction;
 
     [SerializeField] public float battery = 100f;

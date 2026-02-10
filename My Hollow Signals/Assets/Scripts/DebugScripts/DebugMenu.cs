@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [02/02/2026]
+ * Description:
+ *  This script provides a debug menu for testing various features in the game. It allows developers to toggle a freecam mode, teleport to specific locations, set collectible flags, and adjust UI visibility. The menu can be accessed by pressing F12 and includes options for orbiting the camera around a target, locking the camera to the player with free look controls, and a freefly mode for unrestricted movement. This tool is essential for quickly testing and debugging different aspects of the game during development. 
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;

@@ -1,9 +1,10 @@
 /*******************************************************
  * Author: [Bianca Marinica]
- * Last Modified: [21/11/2025]
+ * Last Modified: [25/01/2026]
  * Description:
  *    Defines requirements that must be met before an object can be interacted with.
  *    Supports collectible requirements (flashlight, items) and event-based requirements.
+ *    Also includes feedback for when requirements are not met.
  *******************************************************/
 
 using UnityEngine;

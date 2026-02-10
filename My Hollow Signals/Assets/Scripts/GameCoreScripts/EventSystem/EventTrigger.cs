@@ -1,6 +1,6 @@
 /*******************************************************
- * Author: [Bianca Marinica]
- * Last Modified: [21/11/2025]
+ * Author: [Ignacio López]
+ * Last Modified: [26/01/2026]
  * Description:
  *    Component that can set event flags when triggered.
  *    Useful for unlocking doors after story events.

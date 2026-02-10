@@ -20,8 +20,8 @@ public class SanityManager : MonoBehaviour
     public AudioLoudnessDetector micDetector;
     private float micThreshold = 0.01f;
     private const string MIC_SENSITIVITY_KEY = "MicrophoneSensitivity"; 
-    public float micSanityLossMultiplier; //cu�nto afecta hablar fuerte
-    public float micQuietRecoveryMultiplier; //cu�nto affecta no hablar
+    public float micSanityLossMultiplier; //cuánto afecta hablar fuerte
+    public float micQuietRecoveryMultiplier; //cuánto afecta no hablar
     [Header("Environmental Noise Settings")]
     [Tooltip("Multiplier for environmental noise (footsteps, doors, etc.). Should be lower than mic multiplier")]
     public float environmentalNoiseMultiplier = 5f;

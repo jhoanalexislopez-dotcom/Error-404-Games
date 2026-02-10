@@ -1,6 +1,6 @@
 /*******************************************************
- * Author: [Bianca Marinica]
- * Last Modified: [21/11/2025]
+ * Author: [Ignacio López]
+ * Last Modified: [23/01/2026]
  * Description:
  *    Displays feedback messages for interactions (e.g., locked doors).
  *******************************************************/
