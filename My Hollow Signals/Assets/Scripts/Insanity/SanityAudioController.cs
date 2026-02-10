@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [29/01/2026]
+ * Description:
+ *    This script manages the audio effects related to the player's sanity level. It plays a specific sound when the player's sanity drops below a certain threshold and adjusts the volume based on how low the sanity is. Additionally, it can modify the RF Noise of a CRT effect to enhance the atmosphere as sanity decreases. The script also includes functionality to reset these effects after a jumpscare event.
+ *******************************************************/
+
 using UnityEngine;
 using RetroTVFX;
 

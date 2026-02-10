@@ -1,3 +1,11 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [09/02/2026]
+ * Description:
+ *    This script manages scene transitions by displaying a black screen and then loading the specified scene after a delay. It creates a temporary GameObject to handle the transition and ensures that the transition effect is displayed before the new scene loads.
+ *******************************************************/
+
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;

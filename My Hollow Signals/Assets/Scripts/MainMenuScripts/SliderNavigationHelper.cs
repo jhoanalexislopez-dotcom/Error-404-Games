@@ -1,3 +1,11 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [09/02/2026]
+ * Description:
+ *    This script provides helper functionality for sliders in the main menu, allowing for better navigation and interaction when using a gamepad. It manages an "edit mode" for sliders, which disables navigation and changes the appearance of the slider when the player is adjusting its value with a gamepad. The script also ensures that the slider's navigation is restored when exiting edit mode or when the slider is deselected.
+ *******************************************************/
+
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;

@@ -1,3 +1,11 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [02/02/2026]
+ * Description:
+ *    This script manages the player's animation states based on their movement and running status. It references the Animator component to control the animations and checks the player's movement and running state from the FirstPersonController. The script updates the Animator parameters accordingly to transition between walking and running animations, providing visual feedback that matches the player's actions in the game.
+ *******************************************************/
+
+
 using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour

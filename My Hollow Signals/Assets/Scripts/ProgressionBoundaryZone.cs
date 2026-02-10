@@ -1,3 +1,11 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [27/02/2026]
+ * Description:
+ *    This script defines a progression boundary zone that can be used to restrict player access to certain areas of the game until specific conditions are met. The zone can be configured as a safe zone (where the player should stay inside) or a forbidden zone (where the player should stay outside). The script checks for required event flags to determine if the player has met the conditions to access the area, and applies sanity drain if the player is in a forbidden state. It also provides visual feedback in the editor to indicate the status of the zone.
+ *******************************************************/
+
+
 using UnityEngine;
 
 public class ProgressionBoundaryZone : MonoBehaviour

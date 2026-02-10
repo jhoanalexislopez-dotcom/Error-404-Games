@@ -1,3 +1,11 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [27/01/2026]
+ * Description:
+ *    This script manages the 3D inventory system, allowing players to view and interact with collected items such as notes and the flashlight. It handles opening and closing the inventory, navigating between items, displaying item information, and integrating with the note UI for reading notes. The script also includes functionality for rotating the displayed items and playing audio feedback for inventory interactions.
+ *******************************************************/
+
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;

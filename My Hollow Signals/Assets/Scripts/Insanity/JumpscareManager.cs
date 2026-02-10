@@ -1,3 +1,11 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [06/02/2026]
+ * Description:
+ *    This script manages the jumpscare sequence, including spawning the enemy, playing the scream sound, shaking the camera, and transitioning to the main menu after the jumpscare. It also handles disabling player input and UI interactions during the jumpscare to ensure a seamless and immersive experience.
+ *******************************************************/
+
+
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;

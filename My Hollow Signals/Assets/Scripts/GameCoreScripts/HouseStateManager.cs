@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [26/01/2026]
+ * Description:
+ *   This script manages the state of the house based on event flags. It allows you to specify which GameObjects should be enabled or disabled when certain flags are set to specific values. The script can check for flag changes continuously or only on start, and it provides options for debugging and manual state checks.
+ *******************************************************/
+
 using UnityEngine;
 using System.Collections.Generic;
 

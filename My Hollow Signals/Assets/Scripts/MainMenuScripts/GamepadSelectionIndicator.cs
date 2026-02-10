@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [09/02/2026]
+ * Description:
+ *    This script manages the gamepad selection indicator in the main menu, providing visual feedback for the currently selected UI element when using a gamepad. It checks for gamepad input and updates the position and size of the selection frame to match the currently selected UI element. The script also allows for customization of the selection color and padding around the selected element.
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;

@@ -1,3 +1,11 @@
+/*******************************************************
+ * Author: [Bianca Marinica]
+ * Last Modified: [23/01/2026]
+ * Description:
+ *    This script manages the player's sanity level, which is affected by microphone input and environmental noise. It updates a UI slider to reflect the current sanity, applies visual effects like vignette intensity based on sanity, and triggers events when sanity reaches critical levels (e.g., showing a warning or triggering a jumpscare). The script also allows for sanity recovery when the player is quiet and includes functionality to update a sanity image based on the current sanity percentage.
+ *******************************************************/
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

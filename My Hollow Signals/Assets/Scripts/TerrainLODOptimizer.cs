@@ -1,3 +1,11 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [29/01/2026]
+ * Description:
+ *    This script optimizes terrain rendering by dynamically adjusting LOD settings based on player performance and camera visibility. It includes features such as performance-based LOD adjustments, aggressive frustum culling, and camera angle-based culling to improve frame rates while maintaining visual quality. The script allows for customization of various parameters to fine-tune the optimization process according to the specific needs of the game.
+ *******************************************************/
+
+
 using UnityEngine;
 
 public class TerrainLODOptimizer : MonoBehaviour

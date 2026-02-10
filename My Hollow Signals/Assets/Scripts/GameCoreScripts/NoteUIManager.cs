@@ -1,9 +1,10 @@
 /*******************************************************
  * Author: [Ignacio Lopez]
- * Last Modified: [21/11/2025]
+ * Last Modified: [27/01/2026]
  * Description:
- *    Manages the display of collectible notes/documents in the UI.
+ *    This script manages the note UI, allowing players to view the content of collected notes. It handles opening and closing the note UI, updating the displayed text, and managing player controls while a note is active.
  *******************************************************/
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;

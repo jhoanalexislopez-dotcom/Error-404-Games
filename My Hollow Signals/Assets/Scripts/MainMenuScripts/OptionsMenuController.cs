@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [09/02/2026]
+ * Description:
+ *    This script manages the options menu in the main menu, allowing players to adjust various settings such as gameplay, controls, graphics, and audio. It handles the navigation between different submenus, saving and loading player preferences using PlayerPrefs, and applying changes in real-time. The script also includes functionality to restore default settings and integrates with the localization system for language selection.
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;

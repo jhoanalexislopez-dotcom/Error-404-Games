@@ -1,3 +1,11 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [27/01/2026]
+ * Description:
+ *    This script manages the note inventory UI, allowing players to view and interact with collected notes. It handles opening and closing the inventory, populating the list of notes, and displaying the content of the selected note.
+ *******************************************************/
+
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;

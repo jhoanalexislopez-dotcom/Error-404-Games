@@ -1,3 +1,11 @@
+/*******************************************************
+ * Author: [Bianca Marinica]
+ * Last Modified: [25/01/2026]
+ * Description:
+ *    This script manages the microphone calibration and startup sequence for the game. It handles showing a warning message, checking for microphone availability, displaying calibration controls if a microphone is detected, and transitioning to the main menu. The script also includes functionality to remember if the calibration has been completed before and to force show the calibration if needed.
+ *******************************************************/
+
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;

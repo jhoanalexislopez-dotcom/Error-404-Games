@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [26/01/2026]
+ * Description:
+ *    This script manages the visual and audio effects related to the player's insanity level. It allows you to activate and deactivate an "insane screen" overlay, as well as enable or disable post-processing effects like VHS and CRT distortion. The script also handles hiding the flashlight mesh when the insane screen is active, if the player has a flashlight in their inventory.
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.Video;
 using RetroTVFX;

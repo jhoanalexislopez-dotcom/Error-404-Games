@@ -1,6 +1,6 @@
 /*******************************************************
  * Author: [Ignacio Lopez]
- * Last Modified: [21/11/2025]
+ * Last Modified: [09/02/2026]
  * Description:
  *    Handles pause menu functionality including pausing/resuming the game, cursor management, and menu navigation.
  *******************************************************/

@@ -1,3 +1,11 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [16/01/2026]
+ * Description:
+ *    This script manages the in-game messaging system, allowing for the display of messages from the player and contacts, as well as timestamps. It provides methods to add new messages and timestamps to the UI, and automatically scrolls to the bottom of the message list when new content is added. The script uses prefabs for player messages, contact messages, and timestamps, which can be customized in the Unity editor.
+ *******************************************************/
+
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;

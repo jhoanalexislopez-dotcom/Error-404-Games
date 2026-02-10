@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [22/01/2026]
+ * Description:
+ *    This script manages the mobile phone UI toggle functionality, allowing players to open and close the in-game mobile phone interface. It handles player input to toggle the phone, manages cursor visibility and lock state, and interacts with other game systems such as the player's movement and flashlight controls to ensure a seamless experience when using the mobile phone. The script also includes a coroutine to automatically scroll to the bottom of the message list when the phone is opened.
+ *******************************************************/
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;

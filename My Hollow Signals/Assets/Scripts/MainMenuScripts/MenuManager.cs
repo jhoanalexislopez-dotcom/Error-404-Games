@@ -1,6 +1,6 @@
 /*******************************************************
  * Author: [Bianca Marinica]
- * Last Modified: [21/11/2025]
+ * Last Modified: [09/02/2026]
  * Description:
  *    Main menu controller handling settings, scene loading, and menu navigation.
  *******************************************************/

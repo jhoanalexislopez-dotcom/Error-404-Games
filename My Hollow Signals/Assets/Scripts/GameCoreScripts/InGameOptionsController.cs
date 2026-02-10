@@ -1,3 +1,11 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [09/02/2026]
+ * Description:
+ *    This script manages the in-game options menu, allowing players to adjust settings such as mouse and gamepad sensitivity. It handles the opening and closing of the options menu, updates player preferences, and ensures that changes are applied to the player's controls in real-time. The script also integrates with the pause menu for seamless navigation.
+ *******************************************************/
+
+
 using UnityEngine;
 using UnityEngine.UI;
 

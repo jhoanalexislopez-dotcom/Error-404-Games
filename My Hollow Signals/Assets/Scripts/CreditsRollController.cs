@@ -1,3 +1,10 @@
+/*******************************************************
+ * Author: [Ignacio Lopez]
+ * Last Modified: [09/02/2026]
+ * Description:
+ *    This script manages the credits roll sequence, including displaying a logo, parsing a CSV file to create credit entries, scrolling the credits, and transitioning to the next scene. It handles the timing and fading of the logo and credits, as well as user input to skip the credits. The script also allows for customization of text styles for departments and credited people, and ensures a smooth transition to the next scene after the credits finish.
+ *******************************************************/
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
