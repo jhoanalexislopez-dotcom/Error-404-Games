@@ -55,6 +55,10 @@ public class MenuManager : MonoBehaviour
 
     private void Start()
     {
+        // Ensure cursor is unlocked and visible when main menu loads
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         // Get or add InputModeManager
         inputModeManager = FindObjectOfType<InputModeManager>();
         if (inputModeManager == null)
