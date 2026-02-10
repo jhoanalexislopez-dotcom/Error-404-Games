@@ -17,9 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StaffRoll.unity
     guid: 5ac938d6dc4af2e44b03a091b8b11d93
-  - enabled: 0
-    path: Assets/Scenes/TestScene.unity
-    guid: a69bbe4414b1586448c6662d8ff0524d
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 8086d43ce1502b640a3e57261683091c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 399fa2757c6bd79479fbb4789cfdd4ba, type: 3}
