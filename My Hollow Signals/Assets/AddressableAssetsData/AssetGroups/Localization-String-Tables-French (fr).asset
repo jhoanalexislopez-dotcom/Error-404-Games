@@ -22,12 +22,14 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fr
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 58eb8ce06598ac0449e0473c6f9a9f9f
     m_Address: EscenaMenuTable_fr
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-fr
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b40202e080456d94fae6c45295c8b818
     m_Address: FirstSceneTable_fr

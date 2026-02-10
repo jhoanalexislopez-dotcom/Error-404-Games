@@ -131,6 +131,26 @@ MonoBehaviour:
       Sie in einer dunklen, ruhigen Umgebung."
     m_Metadata:
       m_Items: []
+  - m_Id: 6483562511863808
+    m_Localized: Gameplay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6484294237556736
+    m_Localized: Grafik
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6490097157804032
+    m_Localized: Sprache
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6491392610537472
+    m_Localized: Mausempfindlichkeit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6491938016858112
+    m_Localized: Controller-Empfindlichkeit
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -131,6 +131,26 @@ MonoBehaviour:
       prevista.\n\nJuega en un entorno oscuro y tranquilo."
     m_Metadata:
       m_Items: []
+  - m_Id: 6483562511863808
+    m_Localized: Juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6490097157804032
+    m_Localized: Idioma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6484294237556736
+    m_Localized: "Gr\xE1ficos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6491938016858112
+    m_Localized: Sensibilidad del mando
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6491392610537472
+    m_Localized: "Sensibilidad del rat\xF3n"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

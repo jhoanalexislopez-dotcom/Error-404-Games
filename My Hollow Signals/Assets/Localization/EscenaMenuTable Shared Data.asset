@@ -125,6 +125,26 @@ MonoBehaviour:
     m_Key: WarningText
     m_Metadata:
       m_Items: []
+  - m_Id: 6483562511863808
+    m_Key: SettingsTabGameplay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6484294237556736
+    m_Key: SettingsTabGraphics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6490097157804032
+    m_Key: SettingsTabLanguage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6491392610537472
+    m_Key: SettingsTabMouseSens
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6491938016858112
+    m_Key: SettingsTabGamepadSens
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

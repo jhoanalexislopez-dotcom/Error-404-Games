@@ -510,14 +510,14 @@ MonoBehaviour:
   RFNoise: 0.25
   LumaSharpen: 0
   QuantizeRGB: 0
-  RBits: 5
-  GBits: 6
-  BBits: 4
+  RBits: 6
+  GBits: 7
+  BBits: 7
   EnableBurstCountAnimation: 1
   AntiFlicker: 0
   EnableRollingFlicker: 1
-  RollingFlickerFactor: 0.275
-  RollingVSyncTime: 1
+  RollingFlickerFactor: 0.211
+  RollingVSyncTime: 1.198
 --- !u!114 &490134198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,8 +629,8 @@ Camera:
   m_GameObject: {fileID: 490134196}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -754,12 +754,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 511d4585d862f944d82123c6f13ef284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  creditsCSV: {fileID: 4900000, guid: 00a0aa8ef3ee3bb44bb623a4670c7f78, type: 3}
+  creditsCSV: {fileID: 4900000, guid: 2f41b11522574f1449020a3c3343ea33, type: 3}
   logoImage: {fileID: 1629190762}
   logoDisplayDuration: 3
   logoFadeDuration: 1
   scrollContent: {fileID: 2024877065}
-  scrollSpeed: 150
+  scrollSpeed: 120
   startDelay: 0
   endPauseDuration: 0
   departmentFont: {fileID: 11400000, guid: e93ae3a573efa4f4db59e8fa0d0989aa, type: 2}

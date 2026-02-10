@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{44CEACCD-C64D-76D9-C882-149B770ECDAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{EE40801B-7458-485B-2F5A-FB4DD7D07234}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bezi.Editor", "Bezi.Editor.csproj", "{682304BC-6192-B0F2-0CB9-F723517282AD}"
 EndProject
 Global
@@ -17,10 +15,6 @@ Global
 		{44CEACCD-C64D-76D9-C882-149B770ECDAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44CEACCD-C64D-76D9-C882-149B770ECDAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44CEACCD-C64D-76D9-C882-149B770ECDAD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EE40801B-7458-485B-2F5A-FB4DD7D07234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE40801B-7458-485B-2F5A-FB4DD7D07234}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE40801B-7458-485B-2F5A-FB4DD7D07234}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE40801B-7458-485B-2F5A-FB4DD7D07234}.Release|Any CPU.Build.0 = Release|Any CPU
 		{682304BC-6192-B0F2-0CB9-F723517282AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{682304BC-6192-B0F2-0CB9-F723517282AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{682304BC-6192-B0F2-0CB9-F723517282AD}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -22,12 +22,14 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-pt
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 54e0ccde28ede4f42973fc638654d18f
     m_Address: GameSceneTable_pt
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-pt
+    - Preload
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 84fc36cce41fc97428e3553de4b7e1de
     m_Address: FirstSceneTable_pt

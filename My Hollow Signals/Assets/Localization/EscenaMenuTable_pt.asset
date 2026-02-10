@@ -131,6 +131,26 @@ MonoBehaviour:
       escuro e silencioso."
     m_Metadata:
       m_Items: []
+  - m_Id: 6483562511863808
+    m_Localized: Jogabilidade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6484294237556736
+    m_Localized: "Gr\xE1ficos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6490097157804032
+    m_Localized: Idioma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6491392610537472
+    m_Localized: Sensibilidade do rato
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6491938016858112
+    m_Localized: Sensibilidade do comando
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
