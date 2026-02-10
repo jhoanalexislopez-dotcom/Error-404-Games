@@ -210,6 +210,23 @@ MonoBehaviour:
     m_Localized: "(Ich werde m\xFCde\u2026)"
     m_Metadata:
       m_Items: []
+  - m_Id: 5153001684590592
+    m_Localized: "Dr\xFCcke T (oder oben auf dem Steuerkreuz), um deine Nachrichten
+      zu sehen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5154230833766400
+    m_Localized: "Dr\xFCcke F (oder X), um das Inventar zu \xF6ffnen"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5156029573619712
+    m_Localized: "Du kannst rennen (Shift oder L3), aber du machst mehr L\xE4rm"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5158819461062656
+    m_Localized: "Ich sollte nach Hause zur\xFCckgehen, vielleicht ist es dort"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

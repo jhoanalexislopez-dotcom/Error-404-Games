@@ -205,6 +205,22 @@ MonoBehaviour:
     m_Localized: "(Estou ficando cansado\u2026)"
     m_Metadata:
       m_Items: []
+  - m_Id: 5153001684590592
+    m_Localized: Pressiona T (ou para cima no direcional) para ver as tuas mensagens
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5154230833766400
+    m_Localized: "Pressiona F (ou X) para abrir o invent\xE1rio"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5156029573619712
+    m_Localized: "Podes correr (Shift ou L3), mas far\xE1s mais barulho"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5158819461062656
+    m_Localized: "Deveria voltar para casa, talvez esteja l\xE1."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

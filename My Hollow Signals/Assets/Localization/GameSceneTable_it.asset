@@ -205,6 +205,22 @@ MonoBehaviour:
     m_Localized: "(Mi sto stancando\u2026)"
     m_Metadata:
       m_Items: []
+  - m_Id: 5153001684590592
+    m_Localized: Premi T (o su sulla croce direzionale) per vedere i tuoi messaggi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5154230833766400
+    m_Localized: "Premi F (o X) per aprire l\u2019inventario"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5156029573619712
+    m_Localized: "Puoi correre (Shift o L3), ma farai pi\xF9 rumore"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5158819461062656
+    m_Localized: "Dovrei tornare a casa, forse \xE8 l\xEC."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

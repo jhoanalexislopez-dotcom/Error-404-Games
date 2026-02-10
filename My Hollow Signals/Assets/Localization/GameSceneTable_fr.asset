@@ -209,6 +209,24 @@ MonoBehaviour:
     m_Localized: "(Je commence \xE0 me fatiguer\u2026)"
     m_Metadata:
       m_Items: []
+  - m_Id: 5153001684590592
+    m_Localized: Appuie sur T (ou haut sur la croix directionnelle) pour voir tes
+      messages
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5154230833766400
+    m_Localized: "Appuie sur F (ou X) pour ouvrir l\u2019inventaire"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5156029573619712
+    m_Localized: Tu peux courir (Shift ou L3), mais tu feras plus de bruit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5158819461062656
+    m_Localized: "Je devrais rentrer \xE0 la maison, peut-\xEAtre que c\u2019est
+      l\xE0-bas."
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
