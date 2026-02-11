@@ -141,6 +141,9 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
     private GameObject gameUIObject;
     private List<GameObject> hiddenUIChildren = new List<GameObject>();
+    
+    private Quaternion originalCameraRotation;
+    private bool cameraRotationStored = false;
 
     private void Start()
     {
@@ -294,17 +297,48 @@ public class CubeColliderEventTrigger : MonoBehaviour
 
     private void OnMainDialogueComplete()
     {
+        bool jumpscareTriggered = false;
+        
         // Apply sanity loss after dialogue completes, not during the cinematic
         if (sanityLossAmount > 0f)
         {
             SanityManager sanityManager = FindObjectOfType<SanityManager>(true);
             if (sanityManager != null)
             {
+                float sanityBeforeLoss = sanityManager.sanitySlider.value;
+                
+                // Check if jumpscare will be triggered (sanity will reach 0)
+                bool willTriggerJumpscare = sanityBeforeLoss > 0f && (sanityBeforeLoss - sanityLossAmount) <= 0f;
+                
+                // Restore camera rotation BEFORE triggering jumpscare
+                if (willTriggerJumpscare && cameraRotationStored)
+                {
+                    Camera cam = Camera.main;
+                    if (cam != null)
+                    {
+                        cam.transform.rotation = originalCameraRotation;
+                        Debug.Log("Camera rotation restored before jumpscare");
+                    }
+                    cameraRotationStored = false;
+                }
+                
                 sanityManager.LowerSanity(sanityLossAmount);
+                
+                // Check if the jumpscare was triggered by sanity reaching 0
+                if (sanityBeforeLoss > 0f && sanityManager.sanitySlider.value <= 0f)
+                {
+                    jumpscareTriggered = true;
+                }
             }
         }
 
-        EndCinematic();
+        // Only end cinematic if jumpscare was NOT triggered
+        // The jumpscare manager will handle input locking
+        if (!jumpscareTriggered)
+        {
+            EndCinematic();
+        }
+        
         hasFinishedMainEvent = true;
         
         if (globalActiveDialogueUI == currentDialogueUI)
@@ -312,16 +346,20 @@ public class CubeColliderEventTrigger : MonoBehaviour
         
         currentDialogueUI = null;
 
-        ShowAdviceIfEnabled();
+        // Only show advice/post-event dialogue if jumpscare wasn't triggered
+        if (!jumpscareTriggered)
+        {
+            ShowAdviceIfEnabled();
 
-        if (postEventDialogueLines.Length > 0 && !hasShownPostEventDialogue)
-        {
-            hasShownPostEventDialogue = true;
-            PlayPostEventDialogue();
-        }
-        else if (triggerSceneTransition && !string.IsNullOrEmpty(targetSceneName))
-        {
-            SceneTransitionManager.CutToBlackAndLoadScene(targetSceneName, sceneTransitionDelay);
+            if (postEventDialogueLines.Length > 0 && !hasShownPostEventDialogue)
+            {
+                hasShownPostEventDialogue = true;
+                PlayPostEventDialogue();
+            }
+            else if (triggerSceneTransition && !string.IsNullOrEmpty(targetSceneName))
+            {
+                SceneTransitionManager.CutToBlackAndLoadScene(targetSceneName, sceneTransitionDelay);
+            }
         }
     }
 
@@ -512,6 +550,17 @@ public class CubeColliderEventTrigger : MonoBehaviour
     {
         cinematicActive = true;
 
+        // Store original camera rotation if using cinematic camera
+        if (useCinematicCamera)
+        {
+            Camera cam = Camera.main;
+            if (cam != null)
+            {
+                originalCameraRotation = cam.transform.rotation;
+                cameraRotationStored = true;
+            }
+        }
+
         if (lockPlayer)
         {
             CinematicManager.StartCinematic();
@@ -542,6 +591,17 @@ public class CubeColliderEventTrigger : MonoBehaviour
     private void EndCinematic()
     {
         cinematicActive = false;
+
+        // Restore camera rotation if it was stored and not already restored
+        if (cameraRotationStored)
+        {
+            Camera cam = Camera.main;
+            if (cam != null)
+            {
+                cam.transform.rotation = originalCameraRotation;
+            }
+            cameraRotationStored = false;
+        }
 
         if (lockPlayer)
         {
