@@ -224,6 +224,10 @@ MonoBehaviour:
     m_Localized: "Deber\xEDa volver a casa, a lo mejor est\xE1 all\xED."
     m_Metadata:
       m_Items: []
+  - m_Id: 6269547878277120
+    m_Localized: Cerrar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

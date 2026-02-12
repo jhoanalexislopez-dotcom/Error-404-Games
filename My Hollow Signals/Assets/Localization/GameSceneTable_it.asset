@@ -221,6 +221,10 @@ MonoBehaviour:
     m_Localized: "Dovrei tornare a casa, forse \xE8 l\xEC."
     m_Metadata:
       m_Items: []
+  - m_Id: 6269547878277120
+    m_Localized: Chiudi
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

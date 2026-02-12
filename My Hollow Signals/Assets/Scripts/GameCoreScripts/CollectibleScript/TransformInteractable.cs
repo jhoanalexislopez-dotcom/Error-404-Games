@@ -12,6 +12,10 @@ using UnityEngine.Localization;
 public class TransformInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private LocalizedString localizedDescription;
+    
+    [Header("Alternate Description (for re-interactable objects)")]
+    [Tooltip("Optional alternate description to show when in target state (e.g., 'Close' for an open door)")]
+    [SerializeField] private LocalizedString alternateLocalizedDescription;
 
     [Header("Transform Settings")]
     [Tooltip("Target position offset (local space)")]
@@ -110,6 +114,16 @@ public class TransformInteractable : MonoBehaviour, IInteractable
 
     public LocalizedString GetLocalizedDescription()
     {
+        // If we have an alternate description and can re-interact
+        if (canReInteract && alternateLocalizedDescription != null && !alternateLocalizedDescription.IsEmpty)
+        {
+            // Show alternate description when in target state
+            if (isInTargetState)
+            {
+                return alternateLocalizedDescription;
+            }
+        }
+        
         return localizedDescription;
     }
 

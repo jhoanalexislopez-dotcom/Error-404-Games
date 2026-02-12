@@ -227,6 +227,10 @@ MonoBehaviour:
       l\xE0-bas."
     m_Metadata:
       m_Items: []
+  - m_Id: 6269547878277120
+    m_Localized: Fermer
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

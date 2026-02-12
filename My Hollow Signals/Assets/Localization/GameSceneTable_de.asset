@@ -227,6 +227,10 @@ MonoBehaviour:
     m_Localized: "Ich sollte nach Hause zur\xFCckgehen, vielleicht ist es dort"
     m_Metadata:
       m_Items: []
+  - m_Id: 6269547878277120
+    m_Localized: "Schlie\xDFen"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

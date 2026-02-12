@@ -213,6 +213,10 @@ MonoBehaviour:
     m_Key: G021
     m_Metadata:
       m_Items: []
+  - m_Id: 6269547878277120
+    m_Key: InteractableClose
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

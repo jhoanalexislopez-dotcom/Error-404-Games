@@ -239,6 +239,10 @@ MonoBehaviour:
     m_Localized: I should get back home, she might be there.
     m_Metadata:
       m_Items: []
+  - m_Id: 6269547878277120
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

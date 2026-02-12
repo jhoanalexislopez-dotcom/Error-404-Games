@@ -221,6 +221,10 @@ MonoBehaviour:
     m_Localized: "Deveria voltar para casa, talvez esteja l\xE1."
     m_Metadata:
       m_Items: []
+  - m_Id: 6269547878277120
+    m_Localized: Fechar
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

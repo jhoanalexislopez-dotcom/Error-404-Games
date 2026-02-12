@@ -1846,6 +1846,15 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   targetPosition: {x: 0, y: 0, z: 0.809}
   targetRotation: {x: 0, y: 0, z: 0}
   targetScale: {x: 100, y: 100, z: 100}
@@ -3288,6 +3297,15 @@ MonoBehaviour:
       m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
     m_TableEntryReference:
       m_KeyId: 1100389322579968
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -4821,6 +4839,15 @@ MonoBehaviour:
       m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
     m_TableEntryReference:
       m_KeyId: 490354778112
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
+    m_TableEntryReference:
+      m_KeyId: 6269547878277120
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -9910,6 +9937,14 @@ PrefabInstance:
     - target: {fileID: 585112775770501559, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: m_Name
       value: DoorPivot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: alternateLocalizedDescription.m_TableEntryReference.m_KeyId
+      value: 6269547878277120
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: alternateLocalizedDescription.m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -16754,6 +16789,15 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
+    m_TableEntryReference:
+      m_KeyId: 6269547878277120
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   targetPosition: {x: 0, y: 0, z: 0.4}
   targetRotation: {x: 0, y: 0, z: 0}
   targetScale: {x: 100, y: 100, z: 100}
@@ -17213,6 +17257,15 @@ MonoBehaviour:
       m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
     m_TableEntryReference:
       m_KeyId: 1100389322579968
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -18792,6 +18845,15 @@ MonoBehaviour:
       m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
     m_TableEntryReference:
       m_KeyId: 490354778112
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
+    m_TableEntryReference:
+      m_KeyId: 6269547878277120
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -33284,6 +33346,15 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   targetPosition: {x: 0, y: 0, z: -0.4}
   targetRotation: {x: 0, y: 0, z: 0}
   targetScale: {x: 100, y: 100, z: 100}
@@ -41632,6 +41703,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 75dc35504e6c45f4eab244e507df71e9, type: 3}
     - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: canReInteract
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: dialogueUIPrefab
       value: 
       objectReference: {fileID: 2521305128529513819, guid: 547a22c947a68d4428e03eb6ebd35508, type: 3}
@@ -42715,6 +42790,15 @@ MonoBehaviour:
       m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
     m_TableEntryReference:
       m_KeyId: 1100389322579968
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -44544,6 +44628,15 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
+    m_TableEntryReference:
+      m_KeyId: 6269547878277120
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   targetPosition: {x: 0, y: 0, z: 0.8}
   targetRotation: {x: 0, y: 0, z: 0}
   targetScale: {x: 100, y: 100, z: 100}
@@ -44831,6 +44924,15 @@ MonoBehaviour:
       m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
     m_TableEntryReference:
       m_KeyId: 1100389322579968
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -46888,6 +46990,15 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   targetPosition: {x: 0.26, y: 0, z: 0.194}
   targetRotation: {x: 0, y: 0, z: 0}
   targetScale: {x: 49.62, y: 49.62, z: 49.62}
@@ -47794,6 +47905,15 @@ MonoBehaviour:
       m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
     m_TableEntryReference:
       m_KeyId: 490354778112
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
+    m_TableEntryReference:
+      m_KeyId: 6269547878277120
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -49605,6 +49725,15 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   targetPosition: {x: 0, y: 0, z: 0.8}
   targetRotation: {x: 0, y: 0, z: 0}
   targetScale: {x: 100, y: 100, z: 100}
@@ -51072,6 +51201,15 @@ MonoBehaviour:
       m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
     m_TableEntryReference:
       m_KeyId: 490354778112
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  alternateLocalizedDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:6bad540ea16450940815288811da18f3
+    m_TableEntryReference:
+      m_KeyId: 6269547878277120
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -54497,7 +54635,15 @@ PrefabInstance:
       value: 490354778112
       objectReference: {fileID: 0}
     - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: alternateLocalizedDescription.m_TableEntryReference.m_KeyId
+      value: 6269547878277120
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: localizedDescription.m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: alternateLocalizedDescription.m_TableReference.m_TableCollectionName
       value: GUID:6bad540ea16450940815288811da18f3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -54991,8 +55137,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: alternateLocalizedDescription.m_TableEntryReference.m_KeyId
+      value: 6269547878277120
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: interactionRequirement.lockedMessage.m_TableEntryReference.m_KeyId
       value: 49094574727168
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: alternateLocalizedDescription.m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
       objectReference: {fileID: 0}
     - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: interactionRequirement.lockedMessage.m_TableReference.m_TableCollectionName
@@ -57630,8 +57784,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: alternateLocalizedDescription.m_TableEntryReference.m_KeyId
+      value: 6269547878277120
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: interactionRequirement.lockedMessage.m_TableEntryReference.m_KeyId
       value: 1052137399246848
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
+      propertyPath: alternateLocalizedDescription.m_TableReference.m_TableCollectionName
+      value: GUID:6bad540ea16450940815288811da18f3
       objectReference: {fileID: 0}
     - target: {fileID: 6122416473981040696, guid: 2172e1474ceb1ee4c8f21b21ba071ce2, type: 3}
       propertyPath: interactionRequirement.lockedMessage.m_TableReference.m_TableCollectionName
