@@ -16102,7 +16102,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v.1.0.0 Prod-RC / 11.02.2026
+  m_text: v.1.0.1 dev-RC / 11.02.2026
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e637df420a6a6aa4e930f823ec35001f, type: 2}
   m_sharedMaterial: {fileID: -4786216806558671716, guid: e637df420a6a6aa4e930f823ec35001f, type: 2}
@@ -16193,7 +16193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefix: v.
-  suffix: ' Prod-RC / 11.02.2026'
+  suffix: ' dev-RC / 11.02.2026'
 --- !u!1 &454653978
 GameObject:
   m_ObjectHideFlags: 0
