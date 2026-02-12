@@ -6,6 +6,7 @@
  *******************************************************/
 
 using UnityEngine;
+using System.Collections.Generic;
 
 public class AmbienceSound : MonoBehaviour
 {
@@ -28,6 +29,14 @@ public class AmbienceSound : MonoBehaviour
     [Tooltip("Speed of volume fade transition")]
     public float fadeSpeed = 2f;
 
+    [Header("Priority Settings")]
+    [Tooltip("Priority level - higher priority zones override lower priority ones when overlapping")]
+    public int priority = 0;
+    
+    [Header("Debug")]
+    [Tooltip("Enable debug logging for this ambience zone")]
+    public bool debugMode = false;
+
     [Header("Event Requirements")]
     [Tooltip("Optional event flag that must be true for this ambience to play")]
     public string requiredEventFlag = "";
@@ -37,6 +46,21 @@ public class AmbienceSound : MonoBehaviour
     private float[] originalVolumes;
     private float targetVolumeMultiplier = 1f;
     private float currentVolumeMultiplier = 1f;
+    
+    private static List<AmbienceSound> allAmbienceSounds = new List<AmbienceSound>();
+
+    void OnEnable()
+    {
+        if (!allAmbienceSounds.Contains(this))
+        {
+            allAmbienceSounds.Add(this);
+        }
+    }
+
+    void OnDisable()
+    {
+        allAmbienceSounds.Remove(this);
+    }
 
     void Start()
     {
@@ -48,13 +72,13 @@ public class AmbienceSound : MonoBehaviour
             originalVolumes[i] = audioSources[i].volume;
         }
 
+        if (ignoreVerticalPosition && Area != null)
+        {
+            fixedYPosition = Area.bounds.center.y;
+        }
+
         if (Player != null)
         {
-            if (ignoreVerticalPosition)
-            {
-                fixedYPosition = Player.transform.position.y;
-            }
-
             InitializeVolume();
         }
         else
@@ -122,7 +146,18 @@ public class AmbienceSound : MonoBehaviour
         Vector3 closestPoint = Area.ClosestPoint(trackPosition);
         bool isInside = Vector3.Distance(closestPoint, trackPosition) < 0.01f;
         
-        if (flagRequirementMet && isInside)
+        bool isOverridden = false;
+        if (isInside && flagRequirementMet)
+        {
+            isOverridden = CheckIfOverriddenByHigherPriority(trackPosition);
+        }
+        
+        if (debugMode)
+        {
+            Debug.Log($"[{gameObject.name}] isInside={isInside}, flagMet={flagRequirementMet}, isOverridden={isOverridden}, target={targetVolumeMultiplier}, current={currentVolumeMultiplier}");
+        }
+        
+        if (flagRequirementMet && isInside && !isOverridden)
         {
             targetVolumeMultiplier = insideVolume;
         }
@@ -136,5 +171,49 @@ public class AmbienceSound : MonoBehaviour
         ApplyVolume();
         
         transform.position = closestPoint;
+    }
+
+    private bool CheckIfOverriddenByHigherPriority(Vector3 playerPosition)
+    {
+        foreach (AmbienceSound other in allAmbienceSounds)
+        {
+            if (other == this || other == null || other.Area == null || other.Player == null)
+                continue;
+            
+            if (other.priority <= this.priority)
+                continue;
+            
+            bool otherFlagRequirementMet = true;
+            if (!string.IsNullOrEmpty(other.requiredEventFlag))
+            {
+                if (GameEventManager.Instance != null)
+                {
+                    otherFlagRequirementMet = GameEventManager.Instance.GetEventFlag(other.requiredEventFlag);
+                }
+                else
+                {
+                    otherFlagRequirementMet = false;
+                }
+            }
+            
+            if (!otherFlagRequirementMet)
+                continue;
+            
+            Vector3 checkPosition = playerPosition;
+            if (other.ignoreVerticalPosition)
+            {
+                checkPosition.y = other.Area.bounds.center.y;
+            }
+            
+            Vector3 otherClosestPoint = other.Area.ClosestPoint(checkPosition);
+            bool isInsideOther = Vector3.Distance(otherClosestPoint, checkPosition) < 0.01f;
+            
+            if (isInsideOther)
+            {
+                return true;
+            }
+        }
+        
+        return false;
     }
 }
