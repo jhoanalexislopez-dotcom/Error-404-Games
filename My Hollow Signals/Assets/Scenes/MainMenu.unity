@@ -2253,6 +2253,7 @@ GameObject:
   - component: {fileID: 172324340}
   - component: {fileID: 172324339}
   - component: {fileID: 172324338}
+  - component: {fileID: 172324342}
   m_Layer: 5
   m_Name: MicrophoneSelector
   m_TagString: Untagged
@@ -2403,6 +2404,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172324336}
   m_CullTransparentMesh: 1
+--- !u!114 &172324342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172324336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55cb89e48f2e39c449b349d510195195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 1, g: 1, b: 0, a: 1}
+  highlightBorderWidth: 3
+  dropdownImage: {fileID: 0}
+  outline: {fileID: 0}
 --- !u!1 &179077135
 GameObject:
   m_ObjectHideFlags: 0
@@ -7646,6 +7663,7 @@ GameObject:
   - component: {fileID: 204288721}
   - component: {fileID: 204288720}
   - component: {fileID: 204288719}
+  - component: {fileID: 204288722}
   m_Layer: 5
   m_Name: LanguageDropdown
   m_TagString: Untagged
@@ -7767,6 +7785,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204288717}
   m_CullTransparentMesh: 1
+--- !u!114 &204288722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204288717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55cb89e48f2e39c449b349d510195195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 1, g: 1, b: 0, a: 1}
+  highlightBorderWidth: 3
+  dropdownImage: {fileID: 0}
+  outline: {fileID: 0}
 --- !u!1 &209644061
 GameObject:
   m_ObjectHideFlags: 0
@@ -45656,6 +45690,7 @@ GameObject:
   - component: {fileID: 1838783253}
   - component: {fileID: 1838783252}
   - component: {fileID: 1838783251}
+  - component: {fileID: 1838783254}
   m_Layer: 5
   m_Name: MicrophoneDropdown
   m_TagString: Untagged
@@ -45777,6 +45812,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838783249}
   m_CullTransparentMesh: 1
+--- !u!114 &1838783254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838783249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55cb89e48f2e39c449b349d510195195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highlightColor: {r: 1, g: 1, b: 0, a: 1}
+  highlightBorderWidth: 3
+  dropdownImage: {fileID: 0}
+  outline: {fileID: 0}
 --- !u!1 &1840956106
 GameObject:
   m_ObjectHideFlags: 0
