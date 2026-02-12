@@ -12,4 +12,5 @@ public interface IInteractable
 {
     void Interact();
     LocalizedString GetLocalizedDescription();
+    bool CanInteract();
 }

@@ -80,7 +80,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
 
-            if (interactable != null)
+            if (interactable != null && interactable.CanInteract())
             {
                 hitSomething = true;
                 if (interactionTextLocalizer != null && interactionTextLocalizer.StringReference != null)

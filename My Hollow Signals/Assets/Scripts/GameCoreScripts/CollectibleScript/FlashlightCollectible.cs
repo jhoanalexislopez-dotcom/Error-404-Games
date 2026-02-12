@@ -27,6 +27,11 @@ public class FlashlightCollectible : MonoBehaviour, IInteractable
         return localizedDescription;
     }
 
+    public bool CanInteract()
+    {
+        return true;
+    }
+
     public void Interact()
     {
         if (PlayerInventory.Instance != null)

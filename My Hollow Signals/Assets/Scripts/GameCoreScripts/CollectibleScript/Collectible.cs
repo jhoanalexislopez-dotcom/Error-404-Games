@@ -72,6 +72,11 @@ public class Collectible : MonoBehaviour, IInteractable
         return localizedDescription;
     }
 
+    public bool CanInteract()
+    {
+        return true;
+    }
+
     public void Interact()
     {
         PlayCollectSound();

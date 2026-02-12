@@ -113,6 +113,17 @@ public class TransformInteractable : MonoBehaviour, IInteractable
         return localizedDescription;
     }
 
+    public bool CanInteract()
+    {
+        if (isTransforming)
+            return false;
+
+        if (hasInteracted && !canReInteract)
+            return false;
+
+        return true;
+    }
+
     public void Interact()
     {
         if (isTransforming)

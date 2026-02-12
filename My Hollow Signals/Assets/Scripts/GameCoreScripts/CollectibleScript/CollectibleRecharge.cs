@@ -28,6 +28,11 @@ public class CollectibleRecharge : MonoBehaviour, IInteractable
         return localizedDescription;
     }
 
+    public bool CanInteract()
+    {
+        return true;
+    }
+
     public void Interact()
     {
         if (sanityLossAmount > 0f)
