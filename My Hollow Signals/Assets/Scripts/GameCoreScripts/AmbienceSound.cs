@@ -36,17 +36,58 @@ public class AmbienceSound : MonoBehaviour
 
     void Start()
     {
-        if (Player != null && ignoreVerticalPosition)
-        {
-            fixedYPosition = Player.transform.position.y;
-        }
-        
         audioSources = GetComponents<AudioSource>();
         originalVolumes = new float[audioSources.Length];
         
         for (int i = 0; i < audioSources.Length; i++)
         {
             originalVolumes[i] = audioSources[i].volume;
+        }
+
+        if (Player != null)
+        {
+            if (ignoreVerticalPosition)
+            {
+                fixedYPosition = Player.transform.position.y;
+            }
+
+            InitializeVolume();
+        }
+        else
+        {
+            currentVolumeMultiplier = outsideVolume;
+            targetVolumeMultiplier = outsideVolume;
+            ApplyVolume();
+        }
+    }
+
+    private void InitializeVolume()
+    {
+        Vector3 trackPosition = Player.transform.position;
+        
+        if (ignoreVerticalPosition)
+        {
+            trackPosition.y = fixedYPosition;
+        }
+
+        Vector3 closestPoint = Area.ClosestPoint(trackPosition);
+        bool isInside = Vector3.Distance(closestPoint, trackPosition) < 0.01f;
+
+        currentVolumeMultiplier = isInside ? insideVolume : outsideVolume;
+        targetVolumeMultiplier = currentVolumeMultiplier;
+
+        ApplyVolume();
+        transform.position = closestPoint;
+    }
+
+    private void ApplyVolume()
+    {
+        for (int i = 0; i < audioSources.Length; i++)
+        {
+            if (audioSources[i] != null)
+            {
+                audioSources[i].volume = originalVolumes[i] * currentVolumeMultiplier;
+            }
         }
     }
 
@@ -61,26 +102,15 @@ public class AmbienceSound : MonoBehaviour
             trackPosition.y = fixedYPosition;
         }
         
-        // Check if player is inside the zone
         Vector3 closestPoint = Area.ClosestPoint(trackPosition);
         bool isInside = Vector3.Distance(closestPoint, trackPosition) < 0.01f;
         
-        // Set target volume based on whether player is inside
         targetVolumeMultiplier = isInside ? insideVolume : outsideVolume;
         
-        // Smoothly transition volume
         currentVolumeMultiplier = Mathf.Lerp(currentVolumeMultiplier, targetVolumeMultiplier, Time.deltaTime * fadeSpeed);
         
-        // Apply volume to all audio sources
-        for (int i = 0; i < audioSources.Length; i++)
-        {
-            if (audioSources[i] != null)
-            {
-                audioSources[i].volume = originalVolumes[i] * currentVolumeMultiplier;
-            }
-        }
+        ApplyVolume();
         
-        // Set position to closest point to the player (for 3D audio panning)
         transform.position = closestPoint;
     }
 }
