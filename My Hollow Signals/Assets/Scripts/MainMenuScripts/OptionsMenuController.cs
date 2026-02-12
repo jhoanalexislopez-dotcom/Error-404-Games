@@ -452,7 +452,8 @@ public class OptionsMenuController : MonoBehaviour
 
     private string LinearToPercentage(float linearValue)
     {
-        float percentage = Mathf.InverseLerp(-80f, 0f, linearValue) * 100f;
+        // Slider values are now 0.0001 to 1, so just convert directly to percentage
+        float percentage = linearValue * 100f;
         return percentage.ToString("F0") + "%";
     }
 
