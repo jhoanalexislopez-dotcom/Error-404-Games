@@ -45830,7 +45830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highlightColor: {r: 1, g: 1, b: 0, a: 1}
   highlightBorderWidth: 3
-  itemHighlightColor: {r: 1, g: 1, b: 0, a: 1}
+  itemHighlightColor: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
   itemHighlightBorderWidth: 2
   dropdownImage: {fileID: 0}
   outline: {fileID: 0}
