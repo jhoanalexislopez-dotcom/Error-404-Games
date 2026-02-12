@@ -28,6 +28,8 @@ public class ButtonHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExit
     private bool isHovered = false;
     private Transform parentToWatch;
 
+    private static ButtonHighlight currentActiveHighlight;
+
     private void Awake()
     {
         button = GetComponent<Button>();
@@ -86,6 +88,7 @@ public class ButtonHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExit
         if (!isHovered && button.interactable)
         {
             isHovered = true;
+            ClearOtherHighlights();
             ShowHighlight();
         }
     }
@@ -100,6 +103,7 @@ public class ButtonHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExit
     {
         if (showHighlightOnSelect && !isHovered && button.interactable)
         {
+            ClearOtherHighlights();
             ShowHighlight();
         }
     }
@@ -114,10 +118,28 @@ public class ButtonHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     private void ShowHighlight()
     {
-        if (highlightPrefab != null && currentHighlight == null)
+        if (highlightPrefab == null)
+            return;
+
+        if (currentHighlight != null)
+            return;
+
+        currentHighlight = Instantiate(highlightPrefab, transform);
+        currentActiveHighlight = this;
+    }
+
+    private void ClearOtherHighlights()
+    {
+        if (currentActiveHighlight != null && currentActiveHighlight != this)
         {
-            currentHighlight = Instantiate(highlightPrefab, transform);
+            currentActiveHighlight.ForceHideHighlight();
         }
+    }
+
+    private void ForceHideHighlight()
+    {
+        isHovered = false;
+        HideHighlight();
     }
 
     private void HideHighlight()
@@ -132,6 +154,25 @@ public class ButtonHighlight : MonoBehaviour, IPointerEnterHandler, IPointerExit
             Destroy(currentHighlight);
             currentHighlight = null;
         }
+        else
+        {
+            Transform existingHighlight = transform.Find(highlightPrefab != null ? highlightPrefab.name + "(Clone)" : "HighlightPrefab(Clone)");
+            if (existingHighlight != null)
+            {
+                Destroy(existingHighlight.gameObject);
+            }
+        }
+
+        if (currentActiveHighlight == this)
+        {
+            currentActiveHighlight = null;
+        }
+    }
+
+    private void OnEnable()
+    {
+        DestroyHighlight();
+        isHovered = false;
     }
 
     private void OnDisable()
