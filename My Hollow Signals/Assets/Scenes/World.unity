@@ -48233,7 +48233,7 @@ MonoBehaviour:
   crouchVolume: 0.2
   moveThreshold: 0.1
   requireGrounded: 1
-  walkNoiseIntensity: 1
+  walkNoiseIntensity: 0.5
   runNoiseIntensity: 2
   flashlightOnClip: {fileID: 8300000, guid: 9784b6f9765149e4cae74051c609607b, type: 3}
   flashlightOffClip: {fileID: 8300000, guid: 14e6f94ac89ea45408d309d7bd028912, type: 3}
