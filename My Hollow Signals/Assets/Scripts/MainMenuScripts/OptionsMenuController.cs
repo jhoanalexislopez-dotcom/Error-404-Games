@@ -11,6 +11,7 @@ using UnityEngine.Audio;
 using UnityEngine.Localization.Settings;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -543,19 +544,19 @@ public class OptionsMenuController : MonoBehaviour
         {
             if (masterVolumeSlider != null)
             {
-                masterVolumeSlider.value = 0f;
+                masterVolumeSlider.value = 1f;  // 100% volume (0dB)
                 audioMixer.SetFloat("masterVolume", 0f);
             }
 
             if (bgmVolumeSlider != null)
             {
-                bgmVolumeSlider.value = 0f;
+                bgmVolumeSlider.value = 1f;  // 100% volume (0dB)
                 audioMixer.SetFloat("bgmVolume", 0f);
             }
 
             if (sfxVolumeSlider != null)
             {
-                sfxVolumeSlider.value = 0f;
+                sfxVolumeSlider.value = 1f;  // 100% volume (0dB)
                 audioMixer.SetFloat("sfxVolume", 0f);
             }
         }
@@ -572,6 +573,21 @@ public class OptionsMenuController : MonoBehaviour
         UpdateSensitivityTexts();
         UpdateGammaDisplay();
         UpdateVolumeTexts();
+        
+        // Reload the menu scene to apply all defaults
+        StartCoroutine(ReloadMenuScene());
+    }
+    
+    private IEnumerator ReloadMenuScene()
+    {
+        // Wait a frame to ensure all changes are saved
+        yield return new WaitForEndOfFrame();
+        
+        // Get the current scene name
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        
+        // Reload the scene
+        SceneManager.LoadScene(currentSceneName);
     }
 
     private void OnExitPressed()
