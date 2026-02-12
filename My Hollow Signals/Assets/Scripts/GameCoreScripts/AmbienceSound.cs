@@ -27,6 +27,10 @@ public class AmbienceSound : MonoBehaviour
     
     [Tooltip("Speed of volume fade transition")]
     public float fadeSpeed = 2f;
+
+    [Header("Event Requirements")]
+    [Tooltip("Optional event flag that must be true for this ambience to play")]
+    public string requiredEventFlag = "";
     
     private float fixedYPosition;
     private AudioSource[] audioSources;
@@ -94,6 +98,19 @@ public class AmbienceSound : MonoBehaviour
     void Update()
     {
         if (Player == null) return;
+
+        bool flagRequirementMet = true;
+        if (!string.IsNullOrEmpty(requiredEventFlag))
+        {
+            if (GameEventManager.Instance != null)
+            {
+                flagRequirementMet = GameEventManager.Instance.GetEventFlag(requiredEventFlag);
+            }
+            else
+            {
+                flagRequirementMet = false;
+            }
+        }
         
         Vector3 trackPosition = Player.transform.position;
         
@@ -105,7 +122,14 @@ public class AmbienceSound : MonoBehaviour
         Vector3 closestPoint = Area.ClosestPoint(trackPosition);
         bool isInside = Vector3.Distance(closestPoint, trackPosition) < 0.01f;
         
-        targetVolumeMultiplier = isInside ? insideVolume : outsideVolume;
+        if (flagRequirementMet && isInside)
+        {
+            targetVolumeMultiplier = insideVolume;
+        }
+        else
+        {
+            targetVolumeMultiplier = outsideVolume;
+        }
         
         currentVolumeMultiplier = Mathf.Lerp(currentVolumeMultiplier, targetVolumeMultiplier, Time.deltaTime * fadeSpeed);
         

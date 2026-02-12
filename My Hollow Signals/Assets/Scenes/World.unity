@@ -2645,13 +2645,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 116033872}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000014305114}
-  m_LocalPosition: {x: -93.72954, y: -17.150002, z: -69.02766}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 186172969}
-  m_Father: {fileID: 1262862370}
+  m_Father: {fileID: 1597441932}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &118029455
 GameObject:
@@ -8340,6 +8340,7 @@ MonoBehaviour:
   insideVolume: 1
   outsideVolume: 0
   fadeSpeed: 2
+  requiredEventFlag: 
 --- !u!4 &435895025 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1e743e7a193d7604eab5cde546777c00, type: 3}
@@ -27882,6 +27883,7 @@ MonoBehaviour:
   insideVolume: 1
   outsideVolume: 0
   fadeSpeed: 2
+  requiredEventFlag: 
 --- !u!1 &1158014086
 GameObject:
   m_ObjectHideFlags: 0
@@ -28416,6 +28418,7 @@ MonoBehaviour:
   insideVolume: 0.511
   outsideVolume: 0
   fadeSpeed: 2
+  requiredEventFlag: 
 --- !u!82 &1185347182
 AudioSource:
   m_ObjectHideFlags: 0
@@ -34290,6 +34293,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2791732888169499925, guid: ec10d31445549b3478c2b83de385d30e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1209325053}
+    - targetCorrespondingSourceObject: {fileID: 1258376266870110285, guid: ec10d31445549b3478c2b83de385d30e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1726077404}
   m_SourcePrefab: {fileID: 100100000, guid: ec10d31445549b3478c2b83de385d30e, type: 3}
 --- !u!4 &1217832632 stripped
 Transform:
@@ -35497,7 +35503,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 116033873}
   - {fileID: 397749067}
   - {fileID: 789060350}
   - {fileID: 1029851798}
@@ -36136,6 +36141,7 @@ MonoBehaviour:
   insideVolume: 1
   outsideVolume: 0
   fadeSpeed: 2
+  requiredEventFlag: maraRoomUnlocked
 --- !u!1 &1284012550
 GameObject:
   m_ObjectHideFlags: 0
@@ -41193,6 +41199,7 @@ MonoBehaviour:
   insideVolume: 1
   outsideVolume: 0
   fadeSpeed: 2
+  requiredEventFlag: 
 --- !u!82 &1483859039
 AudioSource:
   m_ObjectHideFlags: 0
@@ -41647,6 +41654,7 @@ MonoBehaviour:
   insideVolume: 0.5
   outsideVolume: 0
   fadeSpeed: 2
+  requiredEventFlag: 
 --- !u!1001 &1498776548
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45573,6 +45581,7 @@ Transform:
   - {fileID: 1498829423}
   - {fileID: 1905199401}
   - {fileID: 1262862370}
+  - {fileID: 116033873}
   m_Father: {fileID: 984559948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1597441933
@@ -48382,6 +48391,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fdf064ad36ca0d40bf4f87805cd45af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1726077400 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1258376266870110285, guid: ec10d31445549b3478c2b83de385d30e, type: 3}
+  m_PrefabInstance: {fileID: 1217832631}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1726077404
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726077400}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7675373022079391502, guid: ec10d31445549b3478c2b83de385d30e, type: 3}
 --- !u!1001 &1732928114
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50134,6 +50170,7 @@ MonoBehaviour:
   insideVolume: 1
   outsideVolume: 0
   fadeSpeed: 2
+  requiredEventFlag: 
 --- !u!1001 &1792841616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50673,6 +50710,7 @@ MonoBehaviour:
   insideVolume: 0.571
   outsideVolume: 0
   fadeSpeed: 2
+  requiredEventFlag: 
 --- !u!1001 &1806762521
 PrefabInstance:
   m_ObjectHideFlags: 0
