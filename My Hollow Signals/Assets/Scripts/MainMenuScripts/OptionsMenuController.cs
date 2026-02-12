@@ -285,8 +285,12 @@ public class OptionsMenuController : MonoBehaviour
 
             if (masterVolumeSlider != null)
             {
+                // Set slider to linear range for natural feel
+                masterVolumeSlider.minValue = 0.0001f;  // Avoid log10(0)
+                masterVolumeSlider.maxValue = 1f;
+                
                 audioMixer.GetFloat("masterVolume", out masterValue);
-                masterVolumeSlider.value = masterValue;
+                masterVolumeSlider.value = DecibelToLinear(masterValue);
                 
                 masterVolumeSlider.onValueChanged.RemoveListener(OnMasterVolumeChanged);
                 masterVolumeSlider.onValueChanged.AddListener(OnMasterVolumeChanged);
@@ -294,8 +298,12 @@ public class OptionsMenuController : MonoBehaviour
 
             if (bgmVolumeSlider != null)
             {
+                // Set slider to linear range for natural feel
+                bgmVolumeSlider.minValue = 0.0001f;
+                bgmVolumeSlider.maxValue = 1f;
+                
                 audioMixer.GetFloat("bgmVolume", out bgmValue);
-                bgmVolumeSlider.value = bgmValue;
+                bgmVolumeSlider.value = DecibelToLinear(bgmValue);
                 
                 bgmVolumeSlider.onValueChanged.RemoveListener(OnBGMVolumeChanged);
                 bgmVolumeSlider.onValueChanged.AddListener(OnBGMVolumeChanged);
@@ -303,8 +311,12 @@ public class OptionsMenuController : MonoBehaviour
 
             if (sfxVolumeSlider != null)
             {
+                // Set slider to linear range for natural feel
+                sfxVolumeSlider.minValue = 0.0001f;
+                sfxVolumeSlider.maxValue = 1f;
+                
                 audioMixer.GetFloat("sfxVolume", out sfxValue);
-                sfxVolumeSlider.value = sfxValue;
+                sfxVolumeSlider.value = DecibelToLinear(sfxValue);
                 
                 sfxVolumeSlider.onValueChanged.RemoveListener(OnSFXVolumeChanged);
                 sfxVolumeSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
@@ -368,7 +380,7 @@ public class OptionsMenuController : MonoBehaviour
     {
         if (audioMixer != null)
         {
-            audioMixer.SetFloat("masterVolume", value);
+            audioMixer.SetFloat("masterVolume", LinearToDecibel(value));
             UpdateVolumeTexts();
         }
     }
@@ -377,7 +389,7 @@ public class OptionsMenuController : MonoBehaviour
     {
         if (audioMixer != null)
         {
-            audioMixer.SetFloat("bgmVolume", value);
+            audioMixer.SetFloat("bgmVolume", LinearToDecibel(value));
             UpdateVolumeTexts();
         }
     }
@@ -386,9 +398,23 @@ public class OptionsMenuController : MonoBehaviour
     {
         if (audioMixer != null)
         {
-            audioMixer.SetFloat("sfxVolume", value);
+            audioMixer.SetFloat("sfxVolume", LinearToDecibel(value));
             UpdateVolumeTexts();
         }
+    }
+    
+    private float LinearToDecibel(float linear)
+    {
+        // Convert linear slider value (0.0001-1) to decibels (-80 to 0)
+        // Using logarithmic formula for natural audio perception
+        float dB = 20f * Mathf.Log10(Mathf.Max(linear, 0.0001f));
+        return Mathf.Clamp(dB, -80f, 0f);
+    }
+    
+    private float DecibelToLinear(float dB)
+    {
+        // Convert decibels (-80 to 0) back to linear (0.0001-1)
+        return Mathf.Pow(10f, dB / 20f);
     }
 
     private void UpdateSensitivityTexts()

@@ -79,10 +79,18 @@ public class MenuManager : MonoBehaviour
         // Initialize sliders from mixer (only if old sliders are assigned)
         if (mMasterSlider != null && mSFXSlider != null && mBGMSlider != null && mixer != null)
         {
+            // Keep slider ranges at default 0-1 for natural feel
+            mMasterSlider.minValue = 0.0001f;  // Avoid log10(0)
+            mMasterSlider.maxValue = 1f;
+            mSFXSlider.minValue = 0.0001f;
+            mSFXSlider.maxValue = 1f;
+            mBGMSlider.minValue = 0.0001f;
+            mBGMSlider.maxValue = 1f;
+            
             float value;
-            if (mixer.GetFloat("masterVolume", out value)) mMasterSlider.value = value;
-            if (mixer.GetFloat("bgmVolume", out value)) mBGMSlider.value = value;
-            if (mixer.GetFloat("sfxVolume", out value)) mSFXSlider.value = value;
+            if (mixer.GetFloat("masterVolume", out value)) mMasterSlider.value = DecibelToLinear(value);
+            if (mixer.GetFloat("bgmVolume", out value)) mBGMSlider.value = DecibelToLinear(value);
+            if (mixer.GetFloat("sfxVolume", out value)) mSFXSlider.value = DecibelToLinear(value);
 
             // Hook up listeners
             mMasterSlider.onValueChanged.AddListener(SetMasterVolume);
@@ -97,9 +105,23 @@ public class MenuManager : MonoBehaviour
     }
 
     // ---------------- AUDIO ----------------
-    private void SetMasterVolume(float value) => mixer.SetFloat("masterVolume", value);
-    private void SetBGMVolume(float value) => mixer.SetFloat("bgmVolume", value);
-    private void SetSFXVolume(float value) => mixer.SetFloat("sfxVolume", value);
+    private void SetMasterVolume(float value) => mixer.SetFloat("masterVolume", LinearToDecibel(value));
+    private void SetBGMVolume(float value) => mixer.SetFloat("bgmVolume", LinearToDecibel(value));
+    private void SetSFXVolume(float value) => mixer.SetFloat("sfxVolume", LinearToDecibel(value));
+    
+    private float LinearToDecibel(float linear)
+    {
+        // Convert linear slider value (0.0001-1) to decibels (-80 to 0)
+        // Using logarithmic formula for natural audio perception
+        float dB = 20f * Mathf.Log10(Mathf.Max(linear, 0.0001f));
+        return Mathf.Clamp(dB, -80f, 0f);
+    }
+    
+    private float DecibelToLinear(float dB)
+    {
+        // Convert decibels (-80 to 0) back to linear (0.0001-1)
+        return Mathf.Pow(10f, dB / 20f);
+    }
 
     // ---------------- MENUS ----------------
     public void ShowMainMenu()
