@@ -320,6 +320,9 @@ public class CubeColliderEventTrigger : MonoBehaviour
                         Debug.Log("Camera rotation restored before jumpscare");
                     }
                     cameraRotationStored = false;
+                    
+                    // Stop the cinematic to prevent Update() from continuing to rotate the camera
+                    cinematicActive = false;
                 }
                 
                 sanityManager.LowerSanity(sanityLossAmount);
