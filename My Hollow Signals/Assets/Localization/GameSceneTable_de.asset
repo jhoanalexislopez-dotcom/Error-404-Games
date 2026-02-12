@@ -156,10 +156,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 629111947399168
-    m_Localized: "Die Stimmen h\xF6ren nicht auf\u2026\n\nSie sagen, ich muss etwas
-      finden, dass erst dann\nalles ein Ende haben wird.\n\nSie sagen, ich muss etwas
-      finden,\ndass erst dann alles ein Ende haben wird.\n\nWenn du mich findest,
-      komm nicht n\xE4her.\n\nIch bin nicht mehr dieselbe."
+    m_Localized: "Die Stimmen h\xF6ren nicht auf\u2026Sie sagen, ich muss etwas finden,
+      dass erst dann\nalles ein Ende haben wird.\nSie sagen, ich muss etwas finden,\ndass
+      erst dann alles ein Ende haben wird.\nWenn du mich findest, komm nicht n\xE4her.\nIch
+      bin nicht mehr dieselbe."
     m_Metadata:
       m_Items: []
   - m_Id: 629158852300800
@@ -167,10 +167,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 629426948018176
-    m_Localized: "Notiz in der H\xFCtte gefunden\n\nIch habe Dinge gesehen, die du
-      nicht verstehen w\xFCrdest.\n\nSie beobachten mich, sie f\xFChren mich, sie
-      zeigen mir die Wahrheit.\n\nDu warst immer schwach, aber ich\u2026\n\nIch lerne,
-      stark zu sein.\n\nBald wirst du es verstehen."
+    m_Localized: "Notiz in der H\xFCtte gefunden\nIch habe Dinge gesehen, die du
+      nicht verstehen w\xFCrdest.\nSie beobachten mich, sie f\xFChren mich, sie zeigen
+      mir die Wahrheit.\nDu warst immer schwach, aber ich\u2026\nIch lerne, stark
+      zu sein.\nBald wirst du es verstehen."
     m_Metadata:
       m_Items: []
   - m_Id: 629451044294656
@@ -178,9 +178,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 629468895252480
-    m_Localized: "Ich will nicht, dass du leidest, deshalb habe ich dich weggesto\xDFen.\n\nDu
+    m_Localized: "Ich will nicht, dass du leidest, deshalb habe ich dich weggesto\xDFen.\nDu
       wirst es nie verstehen, aber diese Macht geh\xF6rt mir \u2014 sie geh\xF6rte
-      mir schon immer.\n\nWenn die Zeit kommt, musst du w\xE4hlen: mir folgen\u2026
+      mir schon immer.\nWenn die Zeit kommt, musst du w\xE4hlen: mir folgen\u2026
       oder verschwinden."
     m_Metadata:
       m_Items: []

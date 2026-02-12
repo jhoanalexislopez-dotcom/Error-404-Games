@@ -161,10 +161,17 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 629111947399168
-    m_Localized: "The voices won't stop...\n\nThey say I must find something, that
-      only\nthen everything will end.\n\nThey say I must find something, \nthat only
-      then everything will end.\n\nIf you find me, don't come close.\n\nI'm not the
-      same anymore."
+    m_Localized: 'The voices won''t stop...
+
+      They say I must find something,
+      that only
+
+      then everything will end.
+
+      If you find me, don''t come
+      close.
+
+      I''m not the same anymore.'
     m_Metadata:
       m_Items: []
   - m_Id: 629158852300800
@@ -172,9 +179,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 629426948018176
-    m_Localized: "I've seen things you wouldn't understand.\n\nThey watch me, they
-      guide me, \nthey show me the truth.\n\nYou've always been weak, but I...\n\nI'm
-      learning to be strong.\n\nSoon you'll understand."
+    m_Localized: "I've seen things you wouldn't understand.\nThey watch me, they
+      guide me, \nthey show me the truth.\nYou've always been weak, but I...\nI'm
+      learning to be strong.\nSoon you'll understand."
     m_Metadata:
       m_Items: []
   - m_Id: 629451044294656
@@ -186,12 +193,10 @@ MonoBehaviour:
 
       I pushed you away.
 
-
       You''ll
       never understand,
 
       but this power is mine-it always was.
-
 
       When
       the time comes, you''ll have to choose:

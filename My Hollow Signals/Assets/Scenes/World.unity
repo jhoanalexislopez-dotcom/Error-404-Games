@@ -7391,12 +7391,12 @@ MonoBehaviour:
   smooth: 12
   walkAmplitude: 0.05
   walkFrequency: 9
-  runAmplitude: 0.1
+  runAmplitude: 0.2
   runFrequency: 15
   crouchAmplitude: 0.02
   crouchFrequency: 5
   enableIdleMotion: 1
-  idleAmplitude: 0.005
+  idleAmplitude: 0.01235
   idleFrequency: 1.2
   idleTransitionSpeed: 3
   horizontalBobFactor: 0.3

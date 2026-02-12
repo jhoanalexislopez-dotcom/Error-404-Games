@@ -156,11 +156,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 629111947399168
-    m_Localized: "Les voix ne s\u2019arr\xEAtent pas\u2026\n\nIls disent que je dois
-      trouver quelque chose, que ce n\u2019est qu\u2019alors\nque tout prendra fin.\n\nIls
+    m_Localized: "Les voix ne s\u2019arr\xEAtent pas\u2026Ils disent que je dois
+      trouver quelque chose, que ce n\u2019est qu\u2019alors\nque tout prendra fin.\nIls
       disent que je dois trouver quelque chose,\nque ce n\u2019est qu\u2019alors
-      que tout prendra fin.\n\nSi tu me trouves, ne t\u2019approche pas.\n\nJe ne
-      suis plus la m\xEAme."
+      que tout prendra fin.\nSi tu me trouves, ne t\u2019approche pas.\nJe ne suis
+      plus la m\xEAme."
     m_Metadata:
       m_Items: []
   - m_Id: 629158852300800
@@ -168,10 +168,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 629426948018176
-    m_Localized: "J\u2019ai vu des choses que tu ne comprendrais pas.\n\nIls m\u2019observent,
-      ils me guident, ils me montrent la v\xE9rit\xE9.\n\nTu as toujours \xE9t\xE9
-      faible, mais moi\u2026\n\nJ\u2019apprends \xE0 \xEAtre forte.\n\nBient\xF4t
-      tu comprendras."
+    m_Localized: "J\u2019ai vu des choses que tu ne comprendrais pas.\nIls m\u2019observent,
+      ils me guident, ils me montrent la v\xE9rit\xE9.\nTu as toujours \xE9t\xE9
+      faible, mais moi\u2026\nJ\u2019apprends \xE0 \xEAtre forte.\nBient\xF4t tu
+      comprendras."
     m_Metadata:
       m_Items: []
   - m_Id: 629451044294656
@@ -180,8 +180,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 629468895252480
     m_Localized: "Je ne veux pas que tu souffres, c\u2019est pour \xE7a que je t\u2019ai
-      \xE9loign\xE9.\n\nTu ne comprendras jamais, mais ce pouvoir est le mien \u2014
-      il l\u2019a toujours \xE9t\xE9.\n\nQuand le moment viendra, tu devras choisir
+      \xE9loign\xE9.\nTu ne comprendras jamais, mais ce pouvoir est le mien \u2014
+      il l\u2019a toujours \xE9t\xE9.\nQuand le moment viendra, tu devras choisir
       : me suivre\u2026 ou dispara\xEEtre."
     m_Metadata:
       m_Items: []
